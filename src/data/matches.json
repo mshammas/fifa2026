@@ -27,6 +27,44 @@
           "pen": false,
           "og": false
         }
+      ],
+      "cards": [
+        {
+          "side": "away",
+          "player": "T. Mokoena",
+          "minute": "17'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "B. Gutiérrez",
+          "minute": "23'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "S. Sithole",
+          "minute": "49'",
+          "type": "red"
+        },
+        {
+          "side": "away",
+          "player": "N. Sibisi",
+          "minute": "74'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "T. Zwane",
+          "minute": "84'",
+          "type": "red"
+        },
+        {
+          "side": "home",
+          "player": "C. Montes",
+          "minute": "90'+2'",
+          "type": "red"
+        }
       ]
     },
     {
@@ -63,6 +101,14 @@
           "pen": false,
           "og": false
         }
+      ],
+      "cards": [
+        {
+          "side": "home",
+          "player": "L. Gi-Hyuk",
+          "minute": "90'+6'",
+          "type": "yellow"
+        }
       ]
     },
     {
@@ -91,6 +137,38 @@
           "minute": "78'",
           "pen": false,
           "og": false
+        }
+      ],
+      "cards": [
+        {
+          "side": "home",
+          "player": "A. Johnston",
+          "minute": "11'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "E. Demirovic",
+          "minute": "45'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Lukic",
+          "minute": "45'+1'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "L. de Fougerolles",
+          "minute": "53'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "N. Katic",
+          "minute": "90'+3'",
+          "type": "yellow"
         }
       ]
     },
@@ -142,6 +220,44 @@
           "pen": false,
           "og": false
         }
+      ],
+      "cards": [
+        {
+          "side": "away",
+          "player": "J. Cáceres",
+          "minute": "10'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Almirón",
+          "minute": "53'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "T. Adams",
+          "minute": "59'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "D. Gómez",
+          "minute": "79'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Arce",
+          "minute": "88'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Alonso",
+          "minute": "90'+3'",
+          "type": "yellow"
+        }
       ]
     },
     {
@@ -171,6 +287,26 @@
           "pen": false,
           "og": true
         }
+      ],
+      "cards": [
+        {
+          "side": "home",
+          "player": "M. Abunada",
+          "minute": "16'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "J. Gaber",
+          "minute": "23'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "D. Zakaria",
+          "minute": "42'",
+          "type": "yellow"
+        }
       ]
     },
     {
@@ -184,7 +320,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "76'",
+      "clock": "85'",
       "goals": [
         {
           "side": "away",
@@ -200,6 +336,20 @@
           "pen": false,
           "og": false
         }
+      ],
+      "cards": [
+        {
+          "side": "home",
+          "player": "Casemiro",
+          "minute": "37'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "R. Ibañez",
+          "minute": "43'",
+          "type": "yellow"
+        }
       ]
     },
     {
@@ -214,7 +364,8 @@
       "awayScore": null,
       "status": "NS",
       "clock": null,
-      "goals": []
+      "goals": [],
+      "cards": []
     },
     {
       "id": "b8",
@@ -228,9 +379,10 @@
       "awayScore": null,
       "status": "NS",
       "clock": null,
-      "goals": []
+      "goals": [],
+      "cards": []
     }
   ],
-  "lastUpdated": "2026-06-13T23:43:52.353Z",
+  "lastUpdated": "2026-06-13T23:49:55.289Z",
   "source": "ESPN (live) · zero API tokens used"
 }

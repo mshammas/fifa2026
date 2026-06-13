@@ -313,6 +313,12 @@ function ResultCard({ m, tz }) {
   const awayGoals = goals.filter((g) => g.side === "away");
   const fmtGoal = (g) => `${g.player} ${g.minute}${g.pen ? " (P)" : ""}${g.og ? " (OG)" : ""}`;
 
+  const cards = m.cards || [];
+  const homeCards = cards.filter((c) => c.side === "home");
+  const awayCards = cards.filter((c) => c.side === "away");
+  const fmtCard = (c) => `${c.type === "red" ? "🟥" : "🟨"} ${c.player} ${c.minute}`;
+  const hlQuery = encodeURIComponent(`${m.home} vs ${m.away} World Cup 2026 highlights`);
+
   const teamLine = (team, score, win) => (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
       <span style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
@@ -348,17 +354,45 @@ function ResultCard({ m, tz }) {
       </div>
 
       {open && (
-        <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 8, paddingTop: 10, display: "grid", gap: 8 }}>
-          <div style={{ fontSize: 14, fontWeight: 800 }}>⚽ Goals</div>
-          {goals.length > 0 ? (
-            <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
-              <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeGoals.length ? homeGoals.map(fmtGoal).join(", ") : "—"}</div>
-              <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayGoals.length ? awayGoals.map(fmtGoal).join(", ") : "—"}</div>
+        <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 8, paddingTop: 10, display: "grid", gap: 12 }}>
+          <div>
+            <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>⚽ Goals</div>
+            {goals.length > 0 ? (
+              <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
+                <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeGoals.length ? homeGoals.map(fmtGoal).join(", ") : "—"}</div>
+                <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayGoals.length ? awayGoals.map(fmtGoal).join(", ") : "—"}</div>
+              </div>
+            ) : (
+              <div style={{ fontSize: 14, color: C.dim }}>Goal details unavailable for this match.</div>
+            )}
+          </div>
+
+          {cards.length > 0 && (
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>🟨🟥 Cards</div>
+              <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
+                {homeCards.length > 0 && (
+                  <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeCards.map(fmtCard).join(", ")}</div>
+                )}
+                {awayCards.length > 0 && (
+                  <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayCards.map(fmtCard).join(", ")}</div>
+                )}
+              </div>
             </div>
-          ) : (
-            <div style={{ fontSize: 14, color: C.dim }}>Goal details unavailable for this match.</div>
           )}
+
           <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
+
+          <a
+            className="wc-btn"
+            href={`https://www.youtube.com/results?search_query=${hlQuery}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            style={{ justifySelf: "start", fontSize: 14, fontWeight: 800, color: "#fff", background: "#ff0033", borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
+          >
+            ▶ Watch highlights
+          </a>
         </div>
       )}
     </div>

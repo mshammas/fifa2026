@@ -115,19 +115,30 @@ async function scrapeESPN() {
     } else {
       status = "NS"; // "pre" — leave scores null (ESPN reports 0-0 pre-match)
     }
-    // Goal scorers (with minute), attributed to home/away via team id.
+    // Map each team id to its side, then pull goals and cards from the events.
     const sideOf = {};
     for (const c of comp.competitors) if (c.team?.id) sideOf[c.team.id] = c.homeAway;
+    const playerName = (d) =>
+      d.athletesInvolved?.[0]?.shortName || d.athletesInvolved?.[0]?.displayName || "—";
     const goals = (comp.details || [])
       .filter((d) => d.scoringPlay && !d.shootout)
       .map((d) => ({
         side: sideOf[d.team?.id] || null,
-        player: d.athletesInvolved?.[0]?.shortName || d.athletesInvolved?.[0]?.displayName || "—",
+        player: playerName(d),
         minute: d.clock?.displayValue || "",
         pen: !!d.penaltyKick,
         og: !!d.ownGoal,
       }))
       .filter((g) => g.side);
+    const cards = (comp.details || [])
+      .filter((d) => d.yellowCard || d.redCard)
+      .map((d) => ({
+        side: sideOf[d.team?.id] || null,
+        player: playerName(d),
+        minute: d.clock?.displayValue || "",
+        type: d.redCard ? "red" : "yellow",
+      }))
+      .filter((c) => c.side);
 
     out.set(pairKey(home.team.displayName, away.team.displayName), {
       status,
@@ -135,6 +146,7 @@ async function scrapeESPN() {
       awayScore: Number.isFinite(as) ? as : null,
       clock,
       goals,
+      cards,
     });
   }
   console.log(`  ✓ ESPN: ${out.size} matches in window`);
@@ -162,7 +174,7 @@ async function scrapeWikipedia() {
 
 async function main() {
   // Always start from a complete, valid baseline (clock = live minute, goals = scorers).
-  const matches = BASELINE.map((m) => ({ ...m, clock: null, goals: [] }));
+  const matches = BASELINE.map((m) => ({ ...m, clock: null, goals: [], cards: [] }));
 
   let espn = new Map();
   let wiki = new Map();
@@ -184,6 +196,7 @@ async function main() {
       m.status = e.status;
       m.clock = e.clock ?? null;
       m.goals = e.goals ?? [];
+      m.cards = e.cards ?? [];
       fromEspn++;
     } else if (w) {
       // ESPN didn't have a result; use Wikipedia's final if present.
