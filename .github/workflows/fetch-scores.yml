@@ -5,19 +5,28 @@ on:
     - cron: '0 */6 * * *'  # Every 6 hours
   workflow_dispatch:
 
+# Needed so the bot can commit the refreshed matches.json back to the repo.
+permissions:
+  contents: write
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-      
+          node-version: '20'
+          cache: 'npm'
+
+      # Install deps so the scraper can `import cheerio` (it's a devDependency).
+      - name: Install dependencies
+        run: npm ci
+
       - name: Fetch and parse scores
-        run: node scripts/fetch-scores.mjs
-      
+        run: npm run fetch-scores
+
       - name: Commit changes
         run: |
           git config user.name "⚽ World Cup Bot"
