@@ -234,7 +234,7 @@ function Tabs({ tab, setTab }) {
   );
 }
 
-function StatusBadge({ status }) {
+function StatusBadge({ status, clock }) {
   const s = STATUS[status] || STATUS.NS;
   return (
     <span
@@ -244,7 +244,7 @@ function StatusBadge({ status }) {
         background: s.bg, borderRadius: 999, padding: "4px 10px", whiteSpace: "nowrap",
       }}
     >
-      {s.live ? "🔴 " : ""}{s.label}
+      {s.live ? "🔴 " : ""}{s.label}{s.live && clock ? ` ${clock}` : ""}
     </span>
   );
 }
@@ -282,7 +282,7 @@ function MatchCard({ m, tz }) {
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>Group {m.group}</span>
-        <StatusBadge status={m.status} />
+        <StatusBadge status={m.status} clock={m.clock} />
       </div>
 
       <div style={{ display: "grid", gap: 8 }}>

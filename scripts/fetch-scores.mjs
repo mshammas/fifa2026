@@ -100,7 +100,7 @@ async function scrapeESPN() {
     const away = comp?.competitors?.find((c) => c.homeAway === "away");
     if (!home?.team || !away?.team) continue;
     const t = comp.status?.type || {};
-    let status, hs = null, as = null;
+    let status, hs = null, as = null, clock = null;
     if (t.state === "post") {
       status = "FT";
       hs = parseInt(home.score, 10);
@@ -110,6 +110,8 @@ async function scrapeESPN() {
       status = halftime ? "HT" : "LIVE";
       hs = parseInt(home.score, 10);
       as = parseInt(away.score, 10);
+      // Live match minute, e.g. "45'" or "90'+2'" (only meaningful while LIVE).
+      if (!halftime) clock = (t.shortDetail || t.detail || "").trim() || null;
     } else {
       status = "NS"; // "pre" — leave scores null (ESPN reports 0-0 pre-match)
     }
@@ -117,6 +119,7 @@ async function scrapeESPN() {
       status,
       homeScore: Number.isFinite(hs) ? hs : null,
       awayScore: Number.isFinite(as) ? as : null,
+      clock,
     });
   }
   console.log(`  ✓ ESPN: ${out.size} matches in window`);
@@ -143,8 +146,8 @@ async function scrapeWikipedia() {
 }
 
 async function main() {
-  // Always start from a complete, valid baseline.
-  const matches = BASELINE.map((m) => ({ ...m }));
+  // Always start from a complete, valid baseline (clock = live minute, if any).
+  const matches = BASELINE.map((m) => ({ ...m, clock: null }));
 
   let espn = new Map();
   let wiki = new Map();
@@ -164,6 +167,7 @@ async function main() {
       m.homeScore = e.homeScore;
       m.awayScore = e.awayScore;
       m.status = e.status;
+      m.clock = e.clock ?? null;
       fromEspn++;
     } else if (w) {
       // ESPN didn't have a result; use Wikipedia's final if present.

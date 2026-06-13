@@ -5,7 +5,7 @@
 
 **What it does:**
 - Live FIFA World Cup 2026 match scores, schedules, standings
-- Auto-updates every 15 minutes via GitHub Action scraping Wikipedia/ESPN
+- Auto-updates every 5 minutes via GitHub Action scraping ESPN/Wikipedia
 - Timezone picker for family viewing across regions
 - Zero runtime API calls, zero token usage by viewers
 - Deployed on GitHub Pages (optional custom domain `fifa.shammas.in`)
@@ -21,7 +21,7 @@
 - `src/main.jsx` — React app entry point (has timezone picker, schedule, standings, watch links)
 - `src/data/matches.json` — Static match data (auto-updated by GitHub Action)
 - `scripts/fetch-scores.mjs` — Web scraper (runs on schedule, commits JSON)
-- `.github/workflows/fetch-scores.yml` — scraper Action (every 15 minutes, commits JSON)
+- `.github/workflows/fetch-scores.yml` — scraper Action (every 5 minutes, commits JSON)
 - `.github/workflows/deploy.yml` — builds and deploys the site to GitHub Pages
 - `vite.config.js` — Build config (`base: './'` so it works at the Pages subpath or a root domain)
 - `index.html` — HTML shell
