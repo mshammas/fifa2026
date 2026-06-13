@@ -1,5 +1,5 @@
 # FIFA 2026 — World Cup Live Scores App
-⚽ Zero API tokens. Static data sourced from public web scraping. Cloudflare Pages + GitHub Actions.
+⚽ Zero API tokens. Static data sourced from public web scraping. GitHub Pages + GitHub Actions.
 
 ## Project Overview
 
@@ -8,12 +8,12 @@
 - Auto-updates every 6 hours via GitHub Action scraping Wikipedia/ESPN
 - Timezone picker for family viewing across regions
 - Zero runtime API calls, zero token usage by viewers
-- Deployed on Cloudflare Pages at `fifa.shammas.in`
+- Deployed on GitHub Pages (optional custom domain `fifa.shammas.in`)
 
 **Tech Stack:**
-- Frontend: React 18 + Vite + Tailwind (elder-friendly UI, large fonts)
+- Frontend: React 18 + Vite, inline styles (elder-friendly UI, large fonts)
 - Backend: GitHub Actions (scheduled Node.js scraper)
-- Hosting: Cloudflare Pages (auto-rebuild on data commits)
+- Hosting: GitHub Pages (built & deployed by GitHub Actions on every push)
 - Data: Static JSON imported at build time
 
 ## Key Files
@@ -21,8 +21,9 @@
 - `src/main.jsx` — React app entry point (has timezone picker, schedule, standings, watch links)
 - `src/data/matches.json` — Static match data (auto-updated by GitHub Action)
 - `scripts/fetch-scores.mjs` — Web scraper (runs on schedule, commits JSON)
-- `.github/workflows/fetch-scores.yml` — GitHub Action trigger (every 6 hours)
-- `vite.config.js` — Build config
+- `.github/workflows/fetch-scores.yml` — scraper Action (every 6 hours, commits JSON)
+- `.github/workflows/deploy.yml` — builds and deploys the site to GitHub Pages
+- `vite.config.js` — Build config (`base: './'` so it works at the Pages subpath or a root domain)
 - `index.html` — HTML shell
 - `package.json` — Dependencies (React, Vite, Cheerio for scraping)
 
@@ -78,16 +79,17 @@ npm run build
    - Verify standings compute from static data
    - Test on mobile viewport (elder-friendly UX)
 
-4. **Deploy to Cloudflare Pages**
-   - Connect this GitHub repo
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Custom domain: `fifa.shammas.in`
+4. **Deploy to GitHub Pages**
+   - Repo → Settings → Pages → Source: **GitHub Actions**
+   - The `deploy.yml` workflow builds (`npm run build`) and publishes `dist/`
+   - Live at `https://mshammas.github.io/fifa2026/`
+   - Optional custom domain `fifa.shammas.in`: set it in Settings → Pages and add a
+     DNS CNAME `fifa` → `mshammas.github.io`
 
-5. **Verify GitHub Action works**
-   - Wait for first scheduled run (6 hours)
-   - Check that `src/data/matches.json` gets updated
-   - Verify Pages rebuild triggers automatically
+5. **Verify GitHub Actions work**
+   - Actions tab → run/check "Fetch World Cup Scores" and "Deploy to GitHub Pages"
+   - Scraper commits `src/data/matches.json`; that completion fires the deploy
+     via `workflow_run`, rebuilding the site with fresh scores
 
 ## Known Limitations / To-Do
 
@@ -100,7 +102,7 @@ npm run build
 
 None needed! This is the whole point — no secrets, no tokens, no auth keys.
 
-All data is public (scraping Wikipedia), all code is visible (GitHub repo is public), all builds are free (Cloudflare Pages free tier).
+All data is public (scraping Wikipedia), all code is visible (GitHub repo is public), all builds are free (GitHub Pages + Actions free tier).
 
 ## Questions?
 

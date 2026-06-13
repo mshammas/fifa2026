@@ -13,18 +13,18 @@
    - No runtime API calls
    - Instant page load, no tokens burned
 
-3. **Cloudflare Pages** (deploys on every commit)
-   - Rebuilds the site automatically
-   - Custom domain support (fifa.shammas.in)
-   - Free tier covers everything
+3. **GitHub Pages** (built & deployed by GitHub Actions)
+   - `deploy.yml` runs `npm run build` and publishes `dist/`
+   - Redeploys on every push and after each scraper update
+   - Optional custom domain (fifa.shammas.in); free tier covers everything
 
 ## Setup Instructions
 
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/shammas/wc26-cloudflare.git
-cd wc26-cloudflare
+git clone https://github.com/mshammas/fifa2026.git
+cd fifa2026
 npm install
 ```
 
@@ -42,28 +42,31 @@ git commit -m "Initial match data"
 git push
 ```
 
-### 3. Connect to Cloudflare Pages
+### 3. Enable GitHub Pages
 
-- Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → Pages
-- Connect your GitHub repo
-- Build command: `npm run build`
-- Build output: `dist`
-- Environment variable: none needed (no secrets!)
-- Deploy
+- Go to the repo → **Settings → Pages**
+- Under **Source**, select **GitHub Actions** (not "Deploy from a branch")
+- The `deploy.yml` workflow builds (`npm run build`) and publishes `dist/`
+- No environment variables or secrets needed
+
+Your site goes live at `https://mshammas.github.io/fifa2026/`.
 
 ### 4. Activate the GitHub Action
 
-The workflow file (`.github/workflows/fetch-scores.yml`) runs automatically every 6 hours. On first run, it will:
-- Fetch latest scores from Wikipedia
-- Update `src/data/matches.json`
-- Trigger a Pages rebuild
+The scraper (`.github/workflows/fetch-scores.yml`) runs automatically every 6 hours. On each run it:
+- Fetches latest scores from Wikipedia (+ ESPN for live status)
+- Updates and commits `src/data/matches.json`
+- That completion triggers `deploy.yml` (via `workflow_run`), rebuilding the site
 - Your published site gets fresh data
 
-### 5. Add Your Custom Domain
+You can also trigger either workflow manually from the **Actions** tab.
 
-In Cloudflare Pages settings:
-- Add custom domain: `fifa.shammas.in`
-- Follow the DNS prompt
+### 5. Add Your Custom Domain (optional)
+
+GitHub Pages supports custom domains — no Cloudflare required:
+- Settings → Pages → **Custom domain** → enter `fifa.shammas.in` → Save
+- At your DNS provider for `shammas.in`, add a **CNAME**: `fifa` → `mshammas.github.io`
+- GitHub auto-provisions HTTPS
 
 Now your family visits `https://fifa.shammas.in` and always gets the latest data — automatically.
 
@@ -94,4 +97,4 @@ Your family can share the link with anyone. Zero concerns about token exposure o
 
 ---
 
-**Created by Shammas Oliyath** · No dependencies on paid APIs · Built with React + Vite + Cloudflare Pages
+**Created by Shammas Oliyath** · No dependencies on paid APIs · Built with React + Vite + GitHub Pages
