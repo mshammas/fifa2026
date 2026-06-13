@@ -1,0 +1,559 @@
+import React, { useState, useMemo } from "react";
+import ReactDOM from "react-dom/client";
+import matchesData from "./data/matches.json";
+
+/* ============================================================
+   FIFA World Cup 2026 — Live Scores (elder-friendly, zero-token)
+   All data is imported statically from src/data/matches.json.
+   No runtime fetch / API calls happen anywhere in this file.
+   ============================================================ */
+
+// Flag emojis for the teams in the tournament (falls back to ⚽).
+const FLAGS = {
+  Mexico: "🇲🇽", "South Africa": "🇿🇦", "South Korea": "🇰🇷", Czechia: "🇨🇿",
+  Canada: "🇨🇦", "Bosnia & Herzegovina": "🇧🇦", USA: "🇺🇸", Paraguay: "🇵🇾",
+  Qatar: "🇶🇦", Switzerland: "🇨🇭", Brazil: "🇧🇷", Morocco: "🇲🇦",
+  Haiti: "🇭🇹", Scotland: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", Australia: "🇦🇺", "Türkiye": "🇹🇷",
+  Argentina: "🇦🇷", France: "🇫🇷", England: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", Spain: "🇪🇸",
+  Germany: "🇩🇪", Portugal: "🇵🇹", Netherlands: "🇳🇱", Japan: "🇯🇵",
+  Croatia: "🇭🇷", Belgium: "🇧🇪", Uruguay: "🇺🇾", Colombia: "🇨🇴",
+};
+const flag = (team) => FLAGS[team] || "⚽";
+
+// Timezones offered in the picker. "local" resolves to the viewer's device tz.
+const TIMEZONES = [
+  { value: "local", label: "📍 My Local Time" },
+  { value: "America/New_York", label: "🇺🇸 New York (ET)" },
+  { value: "America/Chicago", label: "🇺🇸 Chicago (CT)" },
+  { value: "America/Denver", label: "🇺🇸 Denver (MT)" },
+  { value: "America/Los_Angeles", label: "🇺🇸 Los Angeles (PT)" },
+  { value: "America/Mexico_City", label: "🇲🇽 Mexico City" },
+  { value: "America/Toronto", label: "🇨🇦 Toronto" },
+  { value: "Europe/London", label: "🇬🇧 London (UK)" },
+  { value: "Europe/Paris", label: "🇪🇺 Paris (CET)" },
+  { value: "Asia/Dubai", label: "🇦🇪 Dubai (GST)" },
+  { value: "Asia/Kolkata", label: "🇮🇳 India (IST)" },
+  { value: "Asia/Singapore", label: "🇸🇬 Singapore" },
+  { value: "Australia/Sydney", label: "🇦🇺 Sydney" },
+];
+
+// Where the family can watch — public broadcaster links (no auth, no tokens).
+const WATCH_PROVIDERS = [
+  { name: "FOX Sports", note: "English (USA)", url: "https://www.foxsports.com/soccer/fifa-world-cup" },
+  { name: "Telemundo", note: "Español (USA)", url: "https://www.telemundodeportes.com/futbol/copa-mundial" },
+  { name: "Tubi", note: "Free stream (USA)", url: "https://tubitv.com/" },
+  { name: "FIFA+", note: "Worldwide", url: "https://www.plus.fifa.com/" },
+];
+
+const STATUS = {
+  LIVE: { label: "LIVE", color: "#ef4444", bg: "rgba(239,68,68,0.15)", live: true },
+  HT: { label: "Half Time", color: "#f59e0b", bg: "rgba(245,158,11,0.15)" },
+  FT: { label: "Full Time", color: "#94a3b8", bg: "rgba(148,163,184,0.15)" },
+  NS: { label: "Upcoming", color: "#22c55e", bg: "rgba(34,197,94,0.15)" },
+};
+
+/* ----------------------------- helpers ----------------------------- */
+
+const tzArg = (tz) => (tz === "local" ? undefined : tz);
+
+function fmt(iso, tz, opts) {
+  try {
+    return new Intl.DateTimeFormat("en-US", { timeZone: tzArg(tz), ...opts }).format(new Date(iso));
+  } catch {
+    return new Intl.DateTimeFormat("en-US", opts).format(new Date(iso));
+  }
+}
+
+const timeLabel = (iso, tz) => fmt(iso, tz, { hour: "numeric", minute: "2-digit" });
+const dayHeader = (iso, tz) => fmt(iso, tz, { weekday: "long", month: "long", day: "numeric" });
+
+// Sortable YYYY-MM-DD key for the *viewer's* chosen timezone.
+function dateKey(iso, tz) {
+  try {
+    return new Intl.DateTimeFormat("en-CA", {
+      timeZone: tzArg(tz), year: "numeric", month: "2-digit", day: "2-digit",
+    }).format(new Date(iso));
+  } catch {
+    return iso.slice(0, 10);
+  }
+}
+
+// Compute group standings purely from played matches (FT or LIVE with scores).
+function computeStandings(matches) {
+  const groups = {};
+  for (const m of matches) {
+    if (!m.group) continue;
+    (groups[m.group] ||= {});
+    for (const team of [m.home, m.away]) {
+      groups[m.group][team] ||= { team, P: 0, W: 0, D: 0, L: 0, GF: 0, GA: 0, GD: 0, Pts: 0 };
+    }
+    const played =
+      (m.status === "FT" || m.status === "LIVE" || m.status === "HT") &&
+      m.homeScore != null && m.awayScore != null;
+    if (!played) continue;
+    const h = groups[m.group][m.home];
+    const a = groups[m.group][m.away];
+    h.P++; a.P++;
+    h.GF += m.homeScore; h.GA += m.awayScore;
+    a.GF += m.awayScore; a.GA += m.homeScore;
+    if (m.homeScore > m.awayScore) { h.W++; a.L++; h.Pts += 3; }
+    else if (m.homeScore < m.awayScore) { a.W++; h.L++; a.Pts += 3; }
+    else { h.D++; a.D++; h.Pts++; a.Pts++; }
+  }
+  const out = {};
+  for (const g of Object.keys(groups).sort()) {
+    const rows = Object.values(groups[g]);
+    rows.forEach((r) => (r.GD = r.GF - r.GA));
+    rows.sort((x, y) => y.Pts - x.Pts || y.GD - x.GD || y.GF - x.GF || x.team.localeCompare(y.team));
+    out[g] = rows;
+  }
+  return out;
+}
+
+/* ----------------------------- styles ------------------------------ */
+
+const C = {
+  bg: "#0e0e14", card: "#16161e", card2: "#1a1a24", border: "#2a2a38",
+  text: "#ffffff", dim: "#9aa0b4", green: "#22c55e", red: "#ef4444", gold: "#fbbf24",
+};
+
+function GlobalStyles() {
+  return (
+    <style>{`
+      :root { color-scheme: dark; }
+      html { -webkit-text-size-adjust: 100%; }
+      body { font-size: 18px; line-height: 1.5; }
+      button { font-family: inherit; cursor: pointer; }
+      select { font-family: inherit; }
+      a { color: ${C.green}; }
+      .wc-tab:hover { background: ${C.card2} !important; }
+      .wc-card { transition: transform .12s ease, box-shadow .12s ease; }
+      .wc-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+      .wc-btn:hover { filter: brightness(1.12); }
+      .wc-live { animation: wcPulse 1.4s ease-in-out infinite; }
+      @keyframes wcPulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+      .wc-wrap { max-width: 860px; margin: 0 auto; }
+      @media (max-width: 640px) {
+        body { font-size: 17px; }
+        .wc-hide-sm { display: none !important; }
+      }
+    `}</style>
+  );
+}
+
+/* --------------------------- components ---------------------------- */
+
+function Header({ lastUpdated, tz }) {
+  return (
+    <header style={{ textAlign: "center", padding: "8px 0 4px" }}>
+      <div style={{ fontSize: 40 }}>⚽</div>
+      <h1 style={{ fontSize: 30, fontWeight: 900, letterSpacing: -0.5, margin: "4px 0" }}>
+        FIFA World Cup 2026
+      </h1>
+      <p style={{ color: C.dim, fontSize: 16, margin: 0 }}>
+        Live scores · USA · Canada · Mexico
+      </p>
+      {lastUpdated && (
+        <p style={{ color: C.dim, fontSize: 14, marginTop: 6 }}>
+          Updated {fmt(lastUpdated, tz, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
+        </p>
+      )}
+    </header>
+  );
+}
+
+function Controls({ tz, setTz, onRefresh }) {
+  return (
+    <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", margin: "16px 0" }}>
+      <label style={{ display: "flex", alignItems: "center", gap: 8, flex: "1 1 220px" }}>
+        <span style={{ fontSize: 16, color: C.dim, whiteSpace: "nowrap" }}>🕒 Show times in</span>
+        <select
+          value={tz}
+          onChange={(e) => setTz(e.target.value)}
+          style={{
+            flex: 1, fontSize: 17, fontWeight: 700, color: C.text, background: C.card,
+            border: `2px solid ${C.border}`, borderRadius: 10, padding: "12px 10px",
+          }}
+        >
+          {TIMEZONES.map((t) => (
+            <option key={t.value} value={t.value}>{t.label}</option>
+          ))}
+        </select>
+      </label>
+      <button
+        className="wc-btn"
+        onClick={onRefresh}
+        style={{
+          fontSize: 16, fontWeight: 800, color: "#06210f", background: C.green,
+          border: "none", borderRadius: 10, padding: "12px 18px",
+        }}
+        title="Reload the page to pick up the latest published scores"
+      >
+        ↻ Refresh
+      </button>
+    </div>
+  );
+}
+
+function Tabs({ tab, setTab }) {
+  const items = [
+    { id: "matches", label: "📅 Matches" },
+    { id: "standings", label: "📊 Standings" },
+    { id: "highlights", label: "🎬 Highlights" },
+    { id: "watch", label: "📺 Watch" },
+  ];
+  return (
+    <div
+      role="tablist"
+      style={{
+        display: "flex", gap: 6, background: C.card, border: `1px solid ${C.border}`,
+        borderRadius: 14, padding: 6, marginBottom: 18,
+      }}
+    >
+      {items.map((it) => {
+        const active = tab === it.id;
+        return (
+          <button
+            key={it.id}
+            role="tab"
+            aria-selected={active}
+            className="wc-tab"
+            onClick={() => setTab(it.id)}
+            style={{
+              flex: 1, fontSize: 16, fontWeight: 800, padding: "12px 6px",
+              borderRadius: 10, border: "none",
+              color: active ? "#06210f" : C.text,
+              background: active ? C.green : "transparent",
+            }}
+          >
+            {it.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function StatusBadge({ status }) {
+  const s = STATUS[status] || STATUS.NS;
+  return (
+    <span
+      className={s.live ? "wc-live" : undefined}
+      style={{
+        fontSize: 13, fontWeight: 800, letterSpacing: 0.5, color: s.color,
+        background: s.bg, borderRadius: 999, padding: "4px 10px", whiteSpace: "nowrap",
+      }}
+    >
+      {s.live ? "🔴 " : ""}{s.label}
+    </span>
+  );
+}
+
+function TeamRow({ team, score, winner }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+      <span style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+        <span style={{ fontSize: 28, lineHeight: 1 }}>{flag(team)}</span>
+        <span style={{
+          fontSize: 20, fontWeight: winner ? 900 : 700,
+          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+        }}>
+          {team}
+        </span>
+      </span>
+      <span style={{ fontSize: 26, fontWeight: 900, color: winner ? C.gold : C.text }}>
+        {score == null ? "–" : score}
+      </span>
+    </div>
+  );
+}
+
+function MatchCard({ m, tz }) {
+  const hasScore = m.homeScore != null && m.awayScore != null;
+  const homeWin = hasScore && m.status === "FT" && m.homeScore > m.awayScore;
+  const awayWin = hasScore && m.status === "FT" && m.awayScore > m.homeScore;
+  return (
+    <div
+      className="wc-card"
+      style={{
+        background: C.card, border: `1px solid ${C.border}`, borderRadius: 14,
+        padding: 16, marginBottom: 12,
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+        <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>Group {m.group}</span>
+        <StatusBadge status={m.status} />
+      </div>
+
+      <div style={{ display: "grid", gap: 8 }}>
+        <TeamRow team={m.home} score={hasScore ? m.homeScore : null} winner={homeWin} />
+        <TeamRow team={m.away} score={hasScore ? m.awayScore : null} winner={awayWin} />
+      </div>
+
+      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+        <span style={{ fontSize: 15, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          📍 {m.venue}
+        </span>
+        <span style={{ fontSize: 16, fontWeight: 800, color: m.status === "NS" ? C.green : C.dim, whiteSpace: "nowrap" }}>
+          {m.status === "NS" ? `⏰ ${timeLabel(m.date, tz)}` : timeLabel(m.date, tz)}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function MatchesTab({ matches, tz }) {
+  const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
+  const [groupFilter, setGroupFilter] = useState("All");
+
+  const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
+  const sorted = [...filtered].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // Section the schedule by calendar day in the chosen timezone.
+  const sections = [];
+  let currentKey = null;
+  for (const m of sorted) {
+    const key = dateKey(m.date, tz);
+    if (key !== currentKey) {
+      currentKey = key;
+      sections.push({ key, label: dayHeader(m.date, tz), items: [] });
+    }
+    sections[sections.length - 1].items.push(m);
+  }
+
+  return (
+    <div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+        {groups.map((g) => {
+          const active = groupFilter === g;
+          return (
+            <button
+              key={g}
+              className="wc-btn"
+              onClick={() => setGroupFilter(g)}
+              style={{
+                fontSize: 15, fontWeight: 800, padding: "8px 14px", borderRadius: 999,
+                border: `2px solid ${active ? C.green : C.border}`,
+                color: active ? "#06210f" : C.text,
+                background: active ? C.green : C.card,
+              }}
+            >
+              {g === "All" ? "All" : `Group ${g}`}
+            </button>
+          );
+        })}
+      </div>
+
+      {sections.length === 0 && (
+        <EmptyState emoji="📭" text="No matches to show yet." />
+      )}
+
+      {sections.map((sec) => (
+        <section key={sec.key} style={{ marginBottom: 24 }}>
+          <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>
+            {sec.label}
+          </h2>
+          {sec.items.map((m) => (
+            <MatchCard key={m.id} m={m} tz={tz} />
+          ))}
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function StandingsTab({ matches }) {
+  const standings = useMemo(() => computeStandings(matches), [matches]);
+  const groups = Object.keys(standings);
+  const anyPlayed = matches.some(
+    (m) => (m.status === "FT" || m.status === "LIVE" || m.status === "HT") && m.homeScore != null
+  );
+
+  if (!anyPlayed) {
+    return <EmptyState emoji="📊" text="Standings will appear here once matches are played." />;
+  }
+
+  const cell = { padding: "10px 8px", textAlign: "center", fontSize: 16, fontWeight: 700 };
+  const head = { ...cell, fontSize: 13, color: C.dim, fontWeight: 800 };
+
+  return (
+    <div>
+      {groups.map((g) => (
+        <section key={g} style={{ marginBottom: 26 }}>
+          <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 10px" }}>Group {g}</h2>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead>
+                <tr style={{ background: C.card2 }}>
+                  <th style={{ ...head, textAlign: "left", paddingLeft: 14 }}>Team</th>
+                  <th style={head}>P</th>
+                  <th style={head} className="wc-hide-sm">W</th>
+                  <th style={head} className="wc-hide-sm">D</th>
+                  <th style={head} className="wc-hide-sm">L</th>
+                  <th style={head}>GD</th>
+                  <th style={{ ...head, color: C.green }}>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                {standings[g].map((r, i) => (
+                  <tr key={r.team} style={{ borderTop: `1px solid ${C.border}`, background: i < 2 ? "rgba(34,197,94,0.06)" : "transparent" }}>
+                    <td style={{ ...cell, textAlign: "left", paddingLeft: 14 }}>
+                      <span style={{ marginRight: 8 }}>{flag(r.team)}</span>
+                      {r.team}
+                    </td>
+                    <td style={cell}>{r.P}</td>
+                    <td style={cell} className="wc-hide-sm">{r.W}</td>
+                    <td style={cell} className="wc-hide-sm">{r.D}</td>
+                    <td style={cell} className="wc-hide-sm">{r.L}</td>
+                    <td style={cell}>{r.GD > 0 ? `+${r.GD}` : r.GD}</td>
+                    <td style={{ ...cell, color: C.green, fontWeight: 900 }}>{r.Pts}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ fontSize: 13, color: C.dim, margin: "8px 2px 0" }}>
+            Top 2 (highlighted) advance · P=Played W=Won D=Draw L=Lost GD=Goal diff
+          </p>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function HighlightsTab({ matches, tz }) {
+  const finished = matches
+    .filter((m) => m.status === "FT" && m.homeScore != null)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  if (finished.length === 0) {
+    return <EmptyState emoji="🎬" text="Match highlights will appear here after the first games finish." />;
+  }
+
+  return (
+    <div>
+      {finished.map((m) => {
+        const q = encodeURIComponent(`${m.home} vs ${m.away} World Cup 2026 highlights`);
+        const homeWin = m.homeScore > m.awayScore;
+        const awayWin = m.awayScore > m.homeScore;
+        return (
+          <div key={m.id} className="wc-card" style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: 16, marginBottom: 12 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+              <div style={{ fontSize: 19, fontWeight: 800 }}>
+                <span style={{ marginRight: 6 }}>{flag(m.home)}</span>
+                <span style={{ color: homeWin ? C.gold : C.text }}>{m.home} {m.homeScore}</span>
+                <span style={{ color: C.dim, margin: "0 8px" }}>–</span>
+                <span style={{ color: awayWin ? C.gold : C.text }}>{m.awayScore} {m.away}</span>
+                <span style={{ marginLeft: 6 }}>{flag(m.away)}</span>
+              </div>
+              <a
+                className="wc-btn"
+                href={`https://www.youtube.com/results?search_query=${q}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: 15, fontWeight: 800, color: "#fff", background: "#ff0033",
+                  borderRadius: 10, padding: "10px 16px", textDecoration: "none", whiteSpace: "nowrap",
+                }}
+              >
+                ▶ Watch highlights
+              </a>
+            </div>
+            <div style={{ fontSize: 14, color: C.dim, marginTop: 8 }}>
+              Group {m.group} · {dayHeader(m.date, tz)} · 📍 {m.venue}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function WatchTab() {
+  return (
+    <div>
+      <p style={{ fontSize: 17, color: C.dim, margin: "0 0 16px" }}>
+        Pick a broadcaster below. Links open in a new tab — availability depends on your country.
+      </p>
+      <div style={{ display: "grid", gap: 12 }}>
+        {WATCH_PROVIDERS.map((p) => (
+          <a
+            key={p.name}
+            className="wc-card"
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+              background: C.card, border: `1px solid ${C.border}`, borderRadius: 14,
+              padding: "18px 18px", textDecoration: "none", color: C.text,
+            }}
+          >
+            <span>
+              <span style={{ fontSize: 20, fontWeight: 900, display: "block" }}>📺 {p.name}</span>
+              <span style={{ fontSize: 15, color: C.dim }}>{p.note}</span>
+            </span>
+            <span style={{ fontSize: 20, color: C.green }}>→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function EmptyState({ emoji, text }) {
+  return (
+    <div style={{ textAlign: "center", padding: "48px 16px", color: C.dim }}>
+      <div style={{ fontSize: 44, marginBottom: 10 }}>{emoji}</div>
+      <p style={{ fontSize: 18, margin: 0 }}>{text}</p>
+    </div>
+  );
+}
+
+function Footer({ source }) {
+  return (
+    <footer style={{ textAlign: "center", color: C.dim, fontSize: 13, padding: "28px 0 12px", lineHeight: 1.7 }}>
+      <div>{source || "Static data · zero API tokens used"}</div>
+      <div>Built by Shammas Oliyath · fifa.shammas.in</div>
+    </footer>
+  );
+}
+
+/* ------------------------------ App -------------------------------- */
+
+export default function App() {
+  const [tab, setTab] = useState("matches");
+  const [tz, setTz] = useState("local");
+  const matches = matchesData.matches || [];
+
+  // "Refresh" just reloads the page to pick up the latest published build.
+  // There is no API call — data is baked in at build time.
+  const onRefresh = () => window.location.reload();
+
+  return (
+    <div style={{ minHeight: "100vh", background: C.bg, color: C.text, padding: "16px 16px 0" }}>
+      <GlobalStyles />
+      <div className="wc-wrap">
+        <Header lastUpdated={matchesData.lastUpdated} tz={tz} />
+        <Controls tz={tz} setTz={setTz} onRefresh={onRefresh} />
+        <Tabs tab={tab} setTab={setTab} />
+
+        {matches.length === 0 ? (
+          <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
+        ) : tab === "matches" ? (
+          <MatchesTab matches={matches} tz={tz} />
+        ) : tab === "standings" ? (
+          <StandingsTab matches={matches} />
+        ) : tab === "highlights" ? (
+          <HighlightsTab matches={matches} tz={tz} />
+        ) : (
+          <WatchTab />
+        )}
+
+        <Footer source={matchesData.source} />
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);

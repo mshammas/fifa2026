@@ -1,0 +1,31 @@
+{
+  "name": "fifa2026",
+  "version": "1.0.0",
+  "description": "FIFA World Cup 2026 Live Scores — Zero API tokens, static data from web scraping",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "fetch-scores": "node scripts/fetch-scores.mjs"
+  },
+  "keywords": [
+    "fifa",
+    "world-cup",
+    "2026",
+    "live-scores",
+    "react",
+    "vite"
+  ],
+  "author": "Shammas Oliyath",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "vite": "^8.0.16"
+  }
+}

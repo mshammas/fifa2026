@@ -1,0 +1,27 @@
+name: Fetch World Cup Scores
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Fetch and parse scores
+        run: node scripts/fetch-scores.mjs
+      
+      - name: Commit changes
+        run: |
+          git config user.name "⚽ World Cup Bot"
+          git config user.email "bot@shammas.in"
+          git add src/data/matches.json
+          git diff --cached --quiet || git commit -m "⚽ Update match scores $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
