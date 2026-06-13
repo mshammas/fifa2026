@@ -309,10 +309,15 @@ function MatchesTab({ matches, tz }) {
   const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
   const sorted = [...filtered].sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // Section the schedule by calendar day in the chosen timezone.
+  // In-progress matches (LIVE / Half Time) float to a dedicated section on top.
+  const isLive = (m) => m.status === "LIVE" || m.status === "HT";
+  const liveMatches = sorted.filter(isLive);
+
+  // Everything else stays grouped by calendar day in the chosen timezone.
   const sections = [];
   let currentKey = null;
   for (const m of sorted) {
+    if (isLive(m)) continue;
     const key = dateKey(m.date, tz);
     if (key !== currentKey) {
       currentKey = key;
@@ -344,8 +349,19 @@ function MatchesTab({ matches, tz }) {
         })}
       </div>
 
-      {sections.length === 0 && (
+      {liveMatches.length === 0 && sections.length === 0 && (
         <EmptyState emoji="📭" text="No matches to show yet." />
+      )}
+
+      {liveMatches.length > 0 && (
+        <section style={{ marginBottom: 24 }}>
+          <h2 style={{ fontSize: 19, fontWeight: 900, color: C.red, margin: "0 0 12px", display: "flex", alignItems: "center", gap: 8 }}>
+            <span className="wc-live">🔴</span> Live Now
+          </h2>
+          {liveMatches.map((m) => (
+            <MatchCard key={m.id} m={m} tz={tz} />
+          ))}
+        </section>
       )}
 
       {sections.map((sec) => (

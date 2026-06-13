@@ -76,7 +76,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "45'+2'"
+      "clock": "56'"
     },
     {
       "id": "b7",
@@ -105,6 +105,6 @@
       "clock": null
     }
   ],
-  "lastUpdated": "2026-06-13T22:55:15.536Z",
+  "lastUpdated": "2026-06-13T23:23:04.928Z",
   "source": "ESPN (live) · zero API tokens used"
 }
