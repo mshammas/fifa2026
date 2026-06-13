@@ -3,7 +3,7 @@
 
 ## How It Works
 
-1. **GitHub Action** (runs every 6 hours on schedule)
+1. **GitHub Action** (runs every 15 minutes on schedule)
    - Scrapes Wikipedia & ESPN for latest match scores
    - Parses the results into JSON
    - Commits `src/data/matches.json` back to the repo
@@ -53,7 +53,7 @@ Your site goes live at `https://mshammas.github.io/fifa2026/`.
 
 ### 4. Activate the GitHub Action
 
-The scraper (`.github/workflows/fetch-scores.yml`) runs automatically every 6 hours. On each run it:
+The scraper (`.github/workflows/fetch-scores.yml`) runs automatically every 15 minutes. On each run it:
 - Fetches latest scores from Wikipedia (+ ESPN for live status)
 - Updates and commits `src/data/matches.json`
 - That completion triggers `deploy.yml` (via `workflow_run`), rebuilding the site

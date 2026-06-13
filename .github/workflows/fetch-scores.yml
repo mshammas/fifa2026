@@ -2,7 +2,7 @@ name: Fetch World Cup Scores
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Every 6 hours
+    - cron: '*/15 * * * *'  # Every 15 minutes (GitHub may delay under load)
   workflow_dispatch:
 
 # Needed so the bot can commit the refreshed matches.json back to the repo.
