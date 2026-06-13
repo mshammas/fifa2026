@@ -302,6 +302,69 @@ function MatchCard({ m, tz }) {
   );
 }
 
+// Compact, collapsible card for finished matches: score + time when closed;
+// tap to reveal goal scorers (with minute) and venue.
+function ResultCard({ m, tz }) {
+  const [open, setOpen] = useState(false);
+  const homeWin = m.homeScore > m.awayScore;
+  const awayWin = m.awayScore > m.homeScore;
+  const goals = m.goals || [];
+  const homeGoals = goals.filter((g) => g.side === "home");
+  const awayGoals = goals.filter((g) => g.side === "away");
+  const fmtGoal = (g) => `${g.player} ${g.minute}${g.pen ? " (P)" : ""}${g.og ? " (OG)" : ""}`;
+
+  const teamLine = (team, score, win) => (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+      <span style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+        <span style={{ fontSize: 22, lineHeight: 1 }}>{flag(team)}</span>
+        <span style={{ fontSize: 17, fontWeight: win ? 900 : 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{team}</span>
+      </span>
+      <span style={{ fontSize: 22, fontWeight: 900, color: win ? C.gold : C.text }}>{score}</span>
+    </div>
+  );
+
+  return (
+    <div
+      className="wc-card"
+      role="button"
+      tabIndex={0}
+      aria-expanded={open}
+      onClick={() => setOpen((v) => !v)}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((v) => !v); } }}
+      style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "10px 14px", marginBottom: 8, cursor: "pointer" }}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+        <span style={{ fontSize: 13, fontWeight: 700, color: C.dim }}>Group {m.group} · FT</span>
+        <span style={{ fontSize: 13, color: C.dim }}>{timeLabel(m.date, tz)}</span>
+      </div>
+
+      <div style={{ display: "grid", gap: 4 }}>
+        {teamLine(m.home, m.homeScore, homeWin)}
+        {teamLine(m.away, m.awayScore, awayWin)}
+      </div>
+
+      <div style={{ textAlign: "center", fontSize: 12, color: C.dim, marginTop: 6 }}>
+        {open ? "▲ Hide details" : "▼ Tap for goals & details"}
+      </div>
+
+      {open && (
+        <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 8, paddingTop: 10, display: "grid", gap: 8 }}>
+          <div style={{ fontSize: 14, fontWeight: 800 }}>⚽ Goals</div>
+          {goals.length > 0 ? (
+            <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
+              <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeGoals.length ? homeGoals.map(fmtGoal).join(", ") : "—"}</div>
+              <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayGoals.length ? awayGoals.map(fmtGoal).join(", ") : "—"}</div>
+            </div>
+          ) : (
+            <div style={{ fontSize: 14, color: C.dim }}>Goal details unavailable for this match.</div>
+          )}
+          <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function MatchesTab({ matches, tz }) {
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
   const [groupFilter, setGroupFilter] = useState("All");
@@ -377,7 +440,7 @@ function MatchesTab({ matches, tz }) {
             <section key={sec.key} style={{ marginBottom: 18 }}>
               <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
               {sec.items.map((m) => (
-                <MatchCard key={m.id} m={m} tz={tz} />
+                <ResultCard key={m.id} m={m} tz={tz} />
               ))}
             </section>
           ))}

@@ -115,11 +115,26 @@ async function scrapeESPN() {
     } else {
       status = "NS"; // "pre" — leave scores null (ESPN reports 0-0 pre-match)
     }
+    // Goal scorers (with minute), attributed to home/away via team id.
+    const sideOf = {};
+    for (const c of comp.competitors) if (c.team?.id) sideOf[c.team.id] = c.homeAway;
+    const goals = (comp.details || [])
+      .filter((d) => d.scoringPlay && !d.shootout)
+      .map((d) => ({
+        side: sideOf[d.team?.id] || null,
+        player: d.athletesInvolved?.[0]?.shortName || d.athletesInvolved?.[0]?.displayName || "—",
+        minute: d.clock?.displayValue || "",
+        pen: !!d.penaltyKick,
+        og: !!d.ownGoal,
+      }))
+      .filter((g) => g.side);
+
     out.set(pairKey(home.team.displayName, away.team.displayName), {
       status,
       homeScore: Number.isFinite(hs) ? hs : null,
       awayScore: Number.isFinite(as) ? as : null,
       clock,
+      goals,
     });
   }
   console.log(`  ✓ ESPN: ${out.size} matches in window`);
@@ -146,8 +161,8 @@ async function scrapeWikipedia() {
 }
 
 async function main() {
-  // Always start from a complete, valid baseline (clock = live minute, if any).
-  const matches = BASELINE.map((m) => ({ ...m, clock: null }));
+  // Always start from a complete, valid baseline (clock = live minute, goals = scorers).
+  const matches = BASELINE.map((m) => ({ ...m, clock: null, goals: [] }));
 
   let espn = new Map();
   let wiki = new Map();
@@ -168,6 +183,7 @@ async function main() {
       m.awayScore = e.awayScore;
       m.status = e.status;
       m.clock = e.clock ?? null;
+      m.goals = e.goals ?? [];
       fromEspn++;
     } else if (w) {
       // ESPN didn't have a result; use Wikipedia's final if present.

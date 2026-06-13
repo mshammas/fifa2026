@@ -11,7 +11,23 @@
       "homeScore": 2,
       "awayScore": 0,
       "status": "FT",
-      "clock": null
+      "clock": null,
+      "goals": [
+        {
+          "side": "home",
+          "player": "J. Quiñones",
+          "minute": "9'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "R. Jiménez",
+          "minute": "67'",
+          "pen": false,
+          "og": false
+        }
+      ]
     },
     {
       "id": "b2",
@@ -24,7 +40,30 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "FT",
-      "clock": null
+      "clock": null,
+      "goals": [
+        {
+          "side": "away",
+          "player": "L. Krejcí",
+          "minute": "59'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "H. In-Beom",
+          "minute": "67'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "O. Hyeon-Gyu",
+          "minute": "80'",
+          "pen": false,
+          "og": false
+        }
+      ]
     },
     {
       "id": "b3",
@@ -37,7 +76,23 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "FT",
-      "clock": null
+      "clock": null,
+      "goals": [
+        {
+          "side": "away",
+          "player": "J. Lukic",
+          "minute": "21'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Larin",
+          "minute": "78'",
+          "pen": false,
+          "og": false
+        }
+      ]
     },
     {
       "id": "b4",
@@ -50,7 +105,44 @@
       "homeScore": 4,
       "awayScore": 1,
       "status": "FT",
-      "clock": null
+      "clock": null,
+      "goals": [
+        {
+          "side": "home",
+          "player": "D. Bobadilla",
+          "minute": "7'",
+          "pen": false,
+          "og": true
+        },
+        {
+          "side": "home",
+          "player": "F. Balogun",
+          "minute": "31'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "F. Balogun",
+          "minute": "45'+5'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "Maurício",
+          "minute": "73'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "G. Reyna",
+          "minute": "90'+8'",
+          "pen": false,
+          "og": false
+        }
+      ]
     },
     {
       "id": "b5",
@@ -63,7 +155,23 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "FT",
-      "clock": null
+      "clock": null,
+      "goals": [
+        {
+          "side": "away",
+          "player": "B. Embolo",
+          "minute": "17'",
+          "pen": true,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Muheim",
+          "minute": "90'+4'",
+          "pen": false,
+          "og": true
+        }
+      ]
     },
     {
       "id": "b6",
@@ -76,7 +184,23 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "56'"
+      "clock": "76'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "I. Saibari",
+          "minute": "21'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "Vinícius Júnior",
+          "minute": "32'",
+          "pen": false,
+          "og": false
+        }
+      ]
     },
     {
       "id": "b7",
@@ -89,7 +213,8 @@
       "homeScore": null,
       "awayScore": null,
       "status": "NS",
-      "clock": null
+      "clock": null,
+      "goals": []
     },
     {
       "id": "b8",
@@ -102,9 +227,10 @@
       "homeScore": null,
       "awayScore": null,
       "status": "NS",
-      "clock": null
+      "clock": null,
+      "goals": []
     }
   ],
-  "lastUpdated": "2026-06-13T23:23:04.928Z",
+  "lastUpdated": "2026-06-13T23:43:52.353Z",
   "source": "ESPN (live) · zero API tokens used"
 }
