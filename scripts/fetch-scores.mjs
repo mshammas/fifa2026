@@ -2,19 +2,21 @@
 /* ============================================================
    FIFA World Cup 2026 — score scraper (zero API tokens)
 
-   Strategy:
-   1. BASELINE below is the source of truth for STRUCTURE
-      (which matches we display, their group, venue, kickoff).
-   2. Wikipedia is scraped with cheerio for FINAL SCORES.
-      The 2026 page uses the standard ".footballbox" template:
-        .fdate "June 11, 2026 (2026-06-11)"
-        .fhome "Mexico"   .fscore "2–0"   .faway "South Africa"
-      A numeric score => Full Time; "Match 25" => not started.
-   3. ESPN's public scoreboard JSON is a best-effort overlay for
-      LIVE / Half-Time status (Wikipedia only shows finals). It is
-      wrapped in try/catch — any failure is ignored.
-   4. Everything merges onto BASELINE. If every source fails we
-      still write the baseline, so matches.json is always valid.
+   Sources, in priority order:
+   1. ESPN public scoreboard JSON (PRIMARY). Stable structured data, no key,
+      datacenter-friendly, near-real-time. Gives live in-progress scores,
+      half-time, and final scores. Queried for the date range that the
+      baseline fixtures span.
+        site.api.espn.com/.../soccer/fifa.world/scoreboard?dates=YYYYMMDD-YYYYMMDD
+      status.type.state: "pre" (not started) | "in" (live) | "post" (full time)
+   2. Wikipedia footballbox tables via cheerio (FALLBACK). Used for any
+      fixture ESPN didn't resolve (e.g. a name it spells differently, or an
+      event it omitted). Only carries FINAL scores.
+   3. BASELINE below (ULTIMATE FALLBACK) — the fixed structure (teams, group,
+      venue, kickoff) and a sane default score/status if every source fails.
+
+   The result always contains every baseline match, so matches.json is valid
+   even when both network sources are unreachable.
    ============================================================ */
 import https from "https";
 import fs from "fs";
@@ -28,7 +30,7 @@ const WIKI_URL = "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup";
 const ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard";
 
 // Baseline matches — STRUCTURE never changes (teams, group, venue, kickoff).
-// Scores/status get overwritten by the scrape when available.
+// Scores/status get overwritten by ESPN (primary) or Wikipedia (fallback).
 const BASELINE = [
   { id:"b1", date:"2026-06-11T19:00:00Z", etTime:"3:00 PM",  home:"Mexico",      away:"South Africa",        group:"A", venue:"Estadio Azteca, Mexico City",   homeScore:2,    awayScore:0,    status:"FT" },
   { id:"b2", date:"2026-06-12T02:00:00Z", etTime:"10:00 PM", home:"South Korea", away:"Czechia",             group:"A", venue:"Estadio Akron, Guadalajara",    homeScore:null, awayScore:null, status:"NS" },
@@ -42,16 +44,16 @@ const BASELINE = [
 
 // Map the various source spellings to our canonical (baseline) names.
 const NAME_MAP = {
-  "Czech Republic": "Czechia",
-  "United States": "USA",
+  "Czech Republic": "Czechia",        // Wikipedia
+  "United States": "USA",             // ESPN
   "USMNT": "USA",
   "Turkey": "Türkiye",
   "Türkiye": "Türkiye",
-  "Bosnia and Herzegovina": "Bosnia & Herzegovina",
-  "Korea Republic": "South Korea", // ESPN spelling
+  "Bosnia and Herzegovina": "Bosnia & Herzegovina", // Wikipedia
+  "Bosnia-Herzegovina": "Bosnia & Herzegovina",     // ESPN
+  "Korea Republic": "South Korea",    // ESPN (alt)
 };
 const canon = (name) => NAME_MAP[name?.trim()] ?? name?.trim() ?? "";
-// Stable key for matching a scraped team to a baseline team.
 const key = (name) => canon(name).toLowerCase();
 const pairKey = (home, away) => `${key(home)}|${key(away)}`;
 
@@ -75,116 +77,126 @@ function fetchUrl(url, asJson = false) {
   });
 }
 
-// Parse "2–0" / "2-0" / "1–1" into [home, away]; returns null for "Match 25" etc.
+// Parse "2–0" / "2-0" into [home, away]; returns null for "Match 25" etc.
 function parseScore(text) {
   const m = (text || "").replace(/\s/g, "").match(/^(\d+)[–-](\d+)/);
-  if (!m) return null;
-  return [parseInt(m[1], 10), parseInt(m[2], 10)];
+  return m ? [parseInt(m[1], 10), parseInt(m[2], 10)] : null;
 }
 
-// --- Source 1: Wikipedia (final scores, reliable) -------------------
+const ymd = (ms) => new Date(ms).toISOString().slice(0, 10).replace(/-/g, "");
+
+// --- Source 1: ESPN (PRIMARY — live + final) ------------------------
+// Returns Map<pairKey, { status, homeScore, awayScore }>.
+async function scrapeESPN() {
+  const times = BASELINE.map((m) => new Date(m.date).getTime());
+  // Widen the window by a day each side so timezone interpretation can't clip it.
+  const range = `${ymd(Math.min(...times) - 864e5)}-${ymd(Math.max(...times) + 864e5)}`;
+  console.log(`→ Fetching ESPN scoreboard (${range})…`);
+  const data = await fetchUrl(`${ESPN_URL}?dates=${range}`, true);
+  const out = new Map();
+  for (const ev of data?.events || []) {
+    const comp = ev?.competitions?.[0];
+    const home = comp?.competitors?.find((c) => c.homeAway === "home");
+    const away = comp?.competitors?.find((c) => c.homeAway === "away");
+    if (!home?.team || !away?.team) continue;
+    const t = comp.status?.type || {};
+    let status, hs = null, as = null;
+    if (t.state === "post") {
+      status = "FT";
+      hs = parseInt(home.score, 10);
+      as = parseInt(away.score, 10);
+    } else if (t.state === "in") {
+      const halftime = t.name === "STATUS_HALFTIME" || (t.shortDetail || "").trim() === "HT";
+      status = halftime ? "HT" : "LIVE";
+      hs = parseInt(home.score, 10);
+      as = parseInt(away.score, 10);
+    } else {
+      status = "NS"; // "pre" — leave scores null (ESPN reports 0-0 pre-match)
+    }
+    out.set(pairKey(home.team.displayName, away.team.displayName), {
+      status,
+      homeScore: Number.isFinite(hs) ? hs : null,
+      awayScore: Number.isFinite(as) ? as : null,
+    });
+  }
+  console.log(`  ✓ ESPN: ${out.size} matches in window`);
+  return out;
+}
+
+// --- Source 2: Wikipedia (FALLBACK — finals only) -------------------
+// Returns Map<pairKey, { status:"FT", homeScore, awayScore }>.
 async function scrapeWikipedia() {
-  console.log("→ Fetching Wikipedia…");
+  console.log("→ Fetching Wikipedia (fallback)…");
   const html = await fetchUrl(WIKI_URL);
   const $ = cheerio.load(html);
-  const results = [];
+  const out = new Map();
   $(".footballbox").each((_, el) => {
     const $b = $(el);
     const home = $b.find(".fhome").text().trim();
     const away = $b.find(".faway").text().trim();
     const score = parseScore($b.find(".fscore").text());
     if (!home || !away || !score) return; // skip placeholders / unplayed
-    const dateMatch = $b.find(".fdate").text().match(/\((\d{4}-\d{2}-\d{2})\)/);
-    results.push({
-      pair: pairKey(home, away),
-      homeScore: score[0],
-      awayScore: score[1],
-      status: "FT",
-      date: dateMatch ? dateMatch[1] : null,
-    });
+    out.set(pairKey(home, away), { status: "FT", homeScore: score[0], awayScore: score[1] });
   });
-  console.log(`  ✓ Wikipedia: parsed ${$(".footballbox").length} boxes, ${results.length} with final scores`);
-  return results;
-}
-
-// --- Source 2: ESPN (best-effort LIVE overlay) ----------------------
-async function scrapeESPN() {
-  try {
-    console.log("→ Fetching ESPN scoreboard (live overlay)…");
-    const data = await fetchUrl(ESPN_URL, true);
-    const live = [];
-    for (const ev of data?.events || []) {
-      const comp = ev?.competitions?.[0];
-      const state = comp?.status?.type?.state; // "pre" | "in" | "post"
-      if (!comp || state !== "in") continue; // we only override for in-progress games
-      const home = comp.competitors?.find((c) => c.homeAway === "home");
-      const away = comp.competitors?.find((c) => c.homeAway === "away");
-      if (!home || !away) continue;
-      const detail = (comp.status?.type?.shortDetail || "").toLowerCase();
-      live.push({
-        pair: pairKey(home.team?.displayName, away.team?.displayName),
-        homeScore: parseInt(home.score, 10),
-        awayScore: parseInt(away.score, 10),
-        status: detail.includes("half") ? "HT" : "LIVE",
-      });
-    }
-    console.log(`  ✓ ESPN: ${live.length} live match(es)`);
-    return live;
-  } catch (e) {
-    console.warn(`  ⚠ ESPN overlay skipped: ${e.message}`);
-    return [];
-  }
+  console.log(`  ✓ Wikipedia: ${out.size} finals`);
+  return out;
 }
 
 async function main() {
-  // Deep-clone baseline so we always have a complete, valid set to write.
+  // Always start from a complete, valid baseline.
   const matches = BASELINE.map((m) => ({ ...m }));
-  const byPair = new Map(matches.map((m) => [pairKey(m.home, m.away), m]));
-  let updated = 0;
-  let sources = [];
 
-  // 1) Wikipedia final scores (primary).
-  try {
-    const wiki = await scrapeWikipedia();
-    for (const r of wiki) {
-      const m = byPair.get(r.pair);
-      if (!m) continue;
-      m.homeScore = r.homeScore;
-      m.awayScore = r.awayScore;
-      m.status = r.status;
-      updated++;
+  let espn = new Map();
+  let wiki = new Map();
+  try { espn = await scrapeESPN(); }
+  catch (e) { console.warn(`  ⚠ ESPN failed, falling back: ${e.message}`); }
+  try { wiki = await scrapeWikipedia(); }
+  catch (e) { console.warn(`  ⚠ Wikipedia failed: ${e.message}`); }
+
+  let fromEspn = 0, fromWiki = 0;
+  for (const m of matches) {
+    const pk = pairKey(m.home, m.away);
+    const e = espn.get(pk);
+    const w = wiki.get(pk);
+
+    if (e && e.status !== "NS") {
+      // ESPN is the authority for anything live or finished (freshest).
+      m.homeScore = e.homeScore;
+      m.awayScore = e.awayScore;
+      m.status = e.status;
+      fromEspn++;
+    } else if (w) {
+      // ESPN didn't have a result; use Wikipedia's final if present.
+      m.homeScore = w.homeScore;
+      m.awayScore = w.awayScore;
+      m.status = w.status;
+      fromWiki++;
+    } else if (e && e.status === "NS") {
+      // Both agree the match hasn't started.
+      m.homeScore = null;
+      m.awayScore = null;
+      m.status = "NS";
     }
-    if (wiki.length) sources.push("Wikipedia");
-  } catch (e) {
-    console.warn(`  ⚠ Wikipedia scrape failed, keeping baseline: ${e.message}`);
+    // else: no source matched — keep the baseline value.
   }
 
-  // 2) ESPN live overlay (only upgrades matched in-progress games).
-  const espn = await scrapeESPN();
-  for (const r of espn) {
-    const m = byPair.get(r.pair);
-    if (!m) continue;
-    if (Number.isFinite(r.homeScore)) m.homeScore = r.homeScore;
-    if (Number.isFinite(r.awayScore)) m.awayScore = r.awayScore;
-    m.status = r.status;
-    updated++;
-  }
-  if (espn.length) sources.push("ESPN (live)");
+  const parts = [];
+  if (fromEspn) parts.push("ESPN (live)");
+  if (fromWiki) parts.push("Wikipedia (fallback)");
 
   const output = {
     matches,
     lastUpdated: new Date().toISOString(),
-    source:
-      sources.length > 0
-        ? `${sources.join(" + ")} scrape · zero API tokens used`
-        : "Baseline data (scrape unavailable) · zero API tokens used",
+    source: parts.length
+      ? `${parts.join(" + ")} · zero API tokens used`
+      : "Baseline data (sources unavailable) · zero API tokens used",
   };
 
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
   fs.writeFileSync(OUT_PATH, JSON.stringify(output, null, 2) + "\n");
 
   console.log(`\n✓ Wrote ${matches.length} matches to src/data/matches.json`);
-  console.log(`✓ Updated ${updated} score(s) from: ${sources.join(", ") || "none (baseline only)"}`);
+  console.log(`✓ Scores: ${fromEspn} from ESPN, ${fromWiki} from Wikipedia fallback`);
   console.log(`✓ Last updated: ${output.lastUpdated}`);
 }
 
