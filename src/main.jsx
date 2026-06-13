@@ -307,24 +307,30 @@ function MatchesTab({ matches, tz }) {
   const [groupFilter, setGroupFilter] = useState("All");
 
   const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
-  const sorted = [...filtered].sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // In-progress matches (LIVE / Half Time) float to a dedicated section on top.
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
-  const liveMatches = sorted.filter(isLive);
 
-  // Everything else stays grouped by calendar day in the chosen timezone.
-  const sections = [];
-  let currentKey = null;
-  for (const m of sorted) {
-    if (isLive(m)) continue;
-    const key = dateKey(m.date, tz);
-    if (key !== currentKey) {
-      currentKey = key;
-      sections.push({ key, label: dayHeader(m.date, tz), items: [] });
+  // Group a list of matches into day sections in the chosen timezone, either
+  // oldest-first (upcoming fixtures) or newest-first (finished results).
+  const daySections = (list, newestFirst) => {
+    const arr = [...list].sort((a, b) =>
+      newestFirst ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date)
+    );
+    const out = [];
+    let key = null;
+    for (const m of arr) {
+      const k = dateKey(m.date, tz);
+      if (k !== key) { key = k; out.push({ key: k, label: dayHeader(m.date, tz), items: [] }); }
+      out[out.length - 1].items.push(m);
     }
-    sections[sections.length - 1].items.push(m);
-  }
+    return out;
+  };
+
+  // Three buckets: live now, finished results (latest first), upcoming (soonest first).
+  const liveMatches = [...filtered].filter(isLive).sort((a, b) => new Date(a.date) - new Date(b.date));
+  const resultSections = daySections(filtered.filter((m) => m.status === "FT"), true);
+  const upcomingSections = daySections(filtered.filter((m) => !isLive(m) && m.status !== "FT"), false);
+  const isEmpty = !liveMatches.length && !resultSections.length && !upcomingSections.length;
 
   return (
     <div>
@@ -349,13 +355,13 @@ function MatchesTab({ matches, tz }) {
         })}
       </div>
 
-      {liveMatches.length === 0 && sections.length === 0 && (
+      {isEmpty && (
         <EmptyState emoji="📭" text="No matches to show yet." />
       )}
 
       {liveMatches.length > 0 && (
-        <section style={{ marginBottom: 24 }}>
-          <h2 style={{ fontSize: 19, fontWeight: 900, color: C.red, margin: "0 0 12px", display: "flex", alignItems: "center", gap: 8 }}>
+        <section style={{ marginBottom: 26 }}>
+          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.red, margin: "0 0 14px", display: "flex", alignItems: "center", gap: 8 }}>
             <span className="wc-live">🔴</span> Live Now
           </h2>
           {liveMatches.map((m) => (
@@ -364,16 +370,33 @@ function MatchesTab({ matches, tz }) {
         </section>
       )}
 
-      {sections.map((sec) => (
-        <section key={sec.key} style={{ marginBottom: 24 }}>
-          <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>
-            {sec.label}
-          </h2>
-          {sec.items.map((m) => (
-            <MatchCard key={m.id} m={m} tz={tz} />
+      {resultSections.length > 0 && (
+        <div style={{ marginBottom: 26 }}>
+          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.gold, margin: "0 0 14px" }}>✅ Results</h2>
+          {resultSections.map((sec) => (
+            <section key={sec.key} style={{ marginBottom: 18 }}>
+              <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
+              {sec.items.map((m) => (
+                <MatchCard key={m.id} m={m} tz={tz} />
+              ))}
+            </section>
           ))}
-        </section>
-      ))}
+        </div>
+      )}
+
+      {upcomingSections.length > 0 && (
+        <div style={{ marginBottom: 26 }}>
+          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.green, margin: "0 0 14px" }}>📅 Upcoming</h2>
+          {upcomingSections.map((sec) => (
+            <section key={sec.key} style={{ marginBottom: 18 }}>
+              <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
+              {sec.items.map((m) => (
+                <MatchCard key={m.id} m={m} tz={tz} />
+              ))}
+            </section>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
