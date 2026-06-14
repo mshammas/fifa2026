@@ -410,6 +410,45 @@ function MatchEvents({ m }) {
   );
 }
 
+function ShareButton({ m }) {
+  const [done, setDone] = useState(false);
+
+  const shareText = () => {
+    const score = m.homeScore != null ? `${m.homeScore}–${m.awayScore}` : "vs";
+    const status = m.status === "LIVE" ? `🔴 LIVE${m.clock ? ` (${m.clock})` : ""}` : m.status === "HT" ? "🟡 Half Time" : "✅ FT";
+    return `${status}: ${m.home} ${score} ${m.away}${m.group ? ` | Group ${m.group}` : ""} | FIFA World Cup 2026`;
+  };
+
+  const handleShare = async (e) => {
+    e.stopPropagation();
+    const text = shareText();
+    const url = "https://fifa.shammas.in";
+    if (navigator.share) {
+      try { await navigator.share({ title: "FIFA World Cup 2026", text, url }); return; } catch {}
+    }
+    try {
+      await navigator.clipboard.writeText(`${text}\n${url}`);
+      setDone(true);
+      setTimeout(() => setDone(false), 2000);
+    } catch {}
+  };
+
+  return (
+    <button
+      onClick={handleShare}
+      aria-label="Share match"
+      title="Share"
+      style={{
+        background: "none", border: "none", cursor: "pointer", padding: "2px 4px",
+        fontSize: 17, lineHeight: 1, color: done ? C.green : C.dim, flexShrink: 0,
+        transition: "color 0.2s",
+      }}
+    >
+      {done ? "✓" : "📤"}
+    </button>
+  );
+}
+
 // Full live-match card: score, live minute, goals/cards so far, and a watch link.
 function LiveCard({ m, tz }) {
   const hasScore = m.homeScore != null && m.awayScore != null;
@@ -418,7 +457,10 @@ function LiveCard({ m, tz }) {
     <div className="wc-card" style={{ background: C.card, border: "1px solid rgba(239,68,68,0.45)", borderRadius: 14, padding: 16, marginBottom: 12 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>Group {m.group}</span>
-        <StatusBadge status={m.status} clock={m.clock} />
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <StatusBadge status={m.status} clock={m.clock} />
+          <ShareButton m={m} />
+        </div>
       </div>
 
       <div style={{ display: "grid", gap: 8 }}>
@@ -474,7 +516,10 @@ function ResultCard({ m, tz }) {
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <span style={{ fontSize: 13, fontWeight: 700, color: C.dim }}>Group {m.group} · FT</span>
-        <span style={{ fontSize: 13, color: C.dim }}>{timeLabel(m.date, tz)}</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontSize: 13, color: C.dim }}>{timeLabel(m.date, tz)}</span>
+          <ShareButton m={m} />
+        </div>
       </div>
 
       <div style={{ display: "grid", gap: 6 }}>
