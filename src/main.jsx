@@ -286,6 +286,7 @@ function TeamRow({ team, score, winner }) {
 }
 
 function MatchCard({ m, tz }) {
+  const isUpcoming = m.status === "NS";
   const hasScore = m.homeScore != null && m.awayScore != null;
   const homeWin = hasScore && m.status === "FT" && m.homeScore > m.awayScore;
   const awayWin = hasScore && m.status === "FT" && m.awayScore > m.homeScore;
@@ -302,17 +303,27 @@ function MatchCard({ m, tz }) {
         <StatusBadge status={m.status} clock={m.clock} />
       </div>
 
-      <div style={{ display: "grid", gap: 8 }}>
-        <TeamRow team={m.home} score={hasScore ? m.homeScore : null} winner={homeWin} />
-        <TeamRow team={m.away} score={hasScore ? m.awayScore : null} winner={awayWin} />
-      </div>
+      {isUpcoming ? (
+        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+          <span style={{ fontSize: 26, lineHeight: 1 }}>{flag(m.home)}</span>
+          <span style={{ fontSize: 18, fontWeight: 800, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.home}</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: C.dim, flexShrink: 0 }}>vs</span>
+          <span style={{ fontSize: 18, fontWeight: 800, flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textAlign: "right" }}>{m.away}</span>
+          <span style={{ fontSize: 26, lineHeight: 1 }}>{flag(m.away)}</span>
+        </div>
+      ) : (
+        <div style={{ display: "grid", gap: 8 }}>
+          <TeamRow team={m.home} score={hasScore ? m.homeScore : null} winner={homeWin} />
+          <TeamRow team={m.away} score={hasScore ? m.awayScore : null} winner={awayWin} />
+        </div>
+      )}
 
       <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
         <span style={{ fontSize: 15, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
           📍 {m.venue}
         </span>
-        <span style={{ fontSize: 16, fontWeight: 800, color: m.status === "NS" ? C.green : C.dim, whiteSpace: "nowrap" }}>
-          {m.status === "NS" ? `⏰ ${timeLabel(m.date, tz)}` : timeLabel(m.date, tz)}
+        <span style={{ fontSize: 16, fontWeight: 800, color: isUpcoming ? C.green : C.dim, whiteSpace: "nowrap" }}>
+          {isUpcoming ? `⏰ ${timeLabel(m.date, tz)}` : timeLabel(m.date, tz)}
         </span>
       </div>
     </div>
