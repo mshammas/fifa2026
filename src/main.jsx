@@ -1041,15 +1041,29 @@ function TeamDetail({ team, matches, tz, onBack }) {
       <section>
         <h3 style={{ fontSize: 17, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>Fixtures &amp; Results</h3>
         {teamMatches.length === 0 && <p style={{ fontSize: 15, color: C.dim }}>No fixtures found.</p>}
-        {teamMatches.map((m) =>
-          m.status === "LIVE" || m.status === "HT" ? (
-            <LiveCard key={m.id} m={m} tz={tz} />
-          ) : m.status === "FT" ? (
-            <ResultCard key={m.id} m={m} tz={tz} />
-          ) : (
-            <MatchCard key={m.id} m={m} tz={tz} />
-          )
-        )}
+        {(() => {
+          const sections = [];
+          let curKey = null;
+          for (const m of teamMatches) {
+            const k = dateKey(m.date, tz);
+            if (k !== curKey) { curKey = k; sections.push({ key: k, label: dayHeader(m.date, tz), items: [] }); }
+            sections[sections.length - 1].items.push(m);
+          }
+          return sections.map((sec) => (
+            <div key={sec.key} style={{ marginBottom: 18 }}>
+              <p style={{ fontSize: 14, fontWeight: 800, color: C.dim, margin: "0 0 8px" }}>{sec.label}</p>
+              {sec.items.map((m) =>
+                m.status === "LIVE" || m.status === "HT" ? (
+                  <LiveCard key={m.id} m={m} tz={tz} />
+                ) : m.status === "FT" ? (
+                  <ResultCard key={m.id} m={m} tz={tz} />
+                ) : (
+                  <MatchCard key={m.id} m={m} tz={tz} />
+                )
+              )}
+            </div>
+          ));
+        })()}
       </section>
     </div>
   );
