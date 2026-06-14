@@ -302,21 +302,85 @@ function MatchCard({ m, tz }) {
   );
 }
 
+// Goals + cards breakdown for a match. Shared by live and result cards.
+// Renders nothing when there's no goal/card data yet.
+function MatchEvents({ m }) {
+  const goals = m.goals || [];
+  const cards = m.cards || [];
+  if (!goals.length && !cards.length) return null;
+  const homeGoals = goals.filter((g) => g.side === "home");
+  const awayGoals = goals.filter((g) => g.side === "away");
+  const homeCards = cards.filter((c) => c.side === "home");
+  const awayCards = cards.filter((c) => c.side === "away");
+  const fmtGoal = (g) => `${g.player} ${g.minute}${g.pen ? " (P)" : ""}${g.og ? " (OG)" : ""}`;
+  const fmtCard = (c) => `${c.type === "red" ? "🟥" : "🟨"} ${c.player} ${c.minute}`;
+  return (
+    <>
+      {goals.length > 0 && (
+        <div>
+          <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>⚽ Goals</div>
+          <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
+            <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeGoals.length ? homeGoals.map(fmtGoal).join(", ") : "—"}</div>
+            <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayGoals.length ? awayGoals.map(fmtGoal).join(", ") : "—"}</div>
+          </div>
+        </div>
+      )}
+      {cards.length > 0 && (
+        <div>
+          <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>🟨🟥 Cards</div>
+          <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
+            {homeCards.length > 0 && (
+              <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeCards.map(fmtCard).join(", ")}</div>
+            )}
+            {awayCards.length > 0 && (
+              <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayCards.map(fmtCard).join(", ")}</div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+// Full live-match card: score, live minute, goals/cards so far, and a watch link.
+function LiveCard({ m, tz }) {
+  const hasScore = m.homeScore != null && m.awayScore != null;
+  const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
+  return (
+    <div className="wc-card" style={{ background: C.card, border: "1px solid rgba(239,68,68,0.45)", borderRadius: 14, padding: 16, marginBottom: 12 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
+        <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>Group {m.group}</span>
+        <StatusBadge status={m.status} clock={m.clock} />
+      </div>
+
+      <div style={{ display: "grid", gap: 8 }}>
+        <TeamRow team={m.home} score={hasScore ? m.homeScore : null} winner={false} />
+        <TeamRow team={m.away} score={hasScore ? m.awayScore : null} winner={false} />
+      </div>
+
+      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 12, display: "grid", gap: 12 }}>
+        <MatchEvents m={m} />
+        <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
+        <a
+          className="wc-btn"
+          href={`https://www.google.com/search?q=${watchQuery}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ justifySelf: "start", fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
+        >
+          ▶ Watch Live
+        </a>
+      </div>
+    </div>
+  );
+}
+
 // Compact, collapsible card for finished matches: score + time when closed;
-// tap to reveal goal scorers (with minute) and venue.
+// tap to reveal goal scorers, cards, venue, and a highlights link.
 function ResultCard({ m, tz }) {
   const [open, setOpen] = useState(false);
   const homeWin = m.homeScore > m.awayScore;
   const awayWin = m.awayScore > m.homeScore;
-  const goals = m.goals || [];
-  const homeGoals = goals.filter((g) => g.side === "home");
-  const awayGoals = goals.filter((g) => g.side === "away");
-  const fmtGoal = (g) => `${g.player} ${g.minute}${g.pen ? " (P)" : ""}${g.og ? " (OG)" : ""}`;
-
-  const cards = m.cards || [];
-  const homeCards = cards.filter((c) => c.side === "home");
-  const awayCards = cards.filter((c) => c.side === "away");
-  const fmtCard = (c) => `${c.type === "red" ? "🟥" : "🟨"} ${c.player} ${c.minute}`;
   const hlQuery = encodeURIComponent(`${m.home} vs ${m.away} World Cup 2026 highlights`);
 
   const teamLine = (team, score, win) => (
@@ -355,34 +419,8 @@ function ResultCard({ m, tz }) {
 
       {open && (
         <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 8, paddingTop: 10, display: "grid", gap: 12 }}>
-          <div>
-            <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>⚽ Goals</div>
-            {goals.length > 0 ? (
-              <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
-                <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeGoals.length ? homeGoals.map(fmtGoal).join(", ") : "—"}</div>
-                <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayGoals.length ? awayGoals.map(fmtGoal).join(", ") : "—"}</div>
-              </div>
-            ) : (
-              <div style={{ fontSize: 14, color: C.dim }}>Goal details unavailable for this match.</div>
-            )}
-          </div>
-
-          {cards.length > 0 && (
-            <div>
-              <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>🟨🟥 Cards</div>
-              <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
-                {homeCards.length > 0 && (
-                  <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeCards.map(fmtCard).join(", ")}</div>
-                )}
-                {awayCards.length > 0 && (
-                  <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayCards.map(fmtCard).join(", ")}</div>
-                )}
-              </div>
-            </div>
-          )}
-
+          <MatchEvents m={m} />
           <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
-
           <a
             className="wc-btn"
             href={`https://www.youtube.com/results?search_query=${hlQuery}`}
@@ -462,7 +500,7 @@ function MatchesTab({ matches, tz }) {
             <span className="wc-live">🔴</span> Live Now
           </h2>
           {liveMatches.map((m) => (
-            <MatchCard key={m.id} m={m} tz={tz} />
+            <LiveCard key={m.id} m={m} tz={tz} />
           ))}
         </section>
       )}
