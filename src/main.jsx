@@ -148,44 +148,60 @@ function GlobalStyles() {
 
 /* --------------------------- components ---------------------------- */
 
-function Header({ lastUpdated, tz }) {
+// Timezone control as a compact popover button (reclaims the old full-width row).
+function TimezonePopover({ tz, setTz }) {
+  const [open, setOpen] = useState(false);
+  const current = TIMEZONES.find((t) => t.value === tz) || TIMEZONES[0];
+  const short = current.label.replace(/^\S+\s/, "");
   return (
-    <header style={{ textAlign: "center", padding: "8px 0 4px" }}>
-      <div style={{ fontSize: 40 }}>⚽</div>
-      <h1 style={{ fontSize: 30, fontWeight: 900, letterSpacing: -0.5, margin: "4px 0" }}>
-        FIFA World Cup 2026
-      </h1>
-      <p style={{ color: C.dim, fontSize: 16, margin: 0 }}>
-        Live scores · USA · Canada · Mexico
-      </p>
-      {lastUpdated && (
-        <p style={{ color: C.dim, fontSize: 14, marginTop: 6 }}>
-          Updated {fmt(lastUpdated, tz, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}
-        </p>
+    <div style={{ position: "relative", flexShrink: 0 }}>
+      <button
+        type="button"
+        className="wc-btn"
+        aria-label="Change timezone"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 700, color: C.text, background: C.card, border: `1px solid ${C.border}`, borderRadius: 999, padding: "8px 12px", cursor: "pointer", whiteSpace: "nowrap" }}
+      >
+        🕒<span className="wc-hide-sm">{short}</span>▾
+      </button>
+      {open && (
+        <>
+          <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 60 }} />
+          <div style={{ position: "absolute", top: "calc(100% + 6px)", right: 0, zIndex: 61, background: C.card2, border: `1px solid ${C.border}`, borderRadius: 12, padding: 6, width: 230, maxHeight: 320, overflowY: "auto", boxShadow: "0 12px 32px rgba(0,0,0,0.55)" }}>
+            {TIMEZONES.map((t) => {
+              const sel = t.value === tz;
+              return (
+                <button
+                  key={t.value}
+                  type="button"
+                  onClick={() => { setTz(t.value); setOpen(false); }}
+                  style={{ display: "block", width: "100%", textAlign: "left", fontSize: 15, fontWeight: sel ? 800 : 600, color: sel ? C.green : C.text, background: sel ? "rgba(34,197,94,0.12)" : "transparent", border: "none", borderRadius: 8, padding: "10px 12px", cursor: "pointer" }}
+                >
+                  {t.label}
+                </button>
+              );
+            })}
+          </div>
+        </>
       )}
-    </header>
+    </div>
   );
 }
 
-function Controls({ tz, setTz }) {
+function Header({ lastUpdated, tz, setTz }) {
   return (
-    <div style={{ display: "flex", gap: 10, alignItems: "center", margin: "16px 0" }}>
-      <label style={{ display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
-        <span style={{ fontSize: 16, color: C.dim, whiteSpace: "nowrap" }}>🕒 Show times in</span>
-        <select
-          value={tz}
-          onChange={(e) => setTz(e.target.value)}
-          style={{
-            flex: 1, fontSize: 17, fontWeight: 700, color: C.text, background: C.card,
-            border: `2px solid ${C.border}`, borderRadius: 10, padding: "12px 10px",
-          }}
-        >
-          {TIMEZONES.map((t) => (
-            <option key={t.value} value={t.value}>{t.label}</option>
-          ))}
-        </select>
-      </label>
-    </div>
+    <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "6px 0 2px" }}>
+      <div style={{ minWidth: 0 }}>
+        <h1 style={{ fontSize: 22, fontWeight: 900, letterSpacing: -0.3, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          ⚽ FIFA World Cup 2026
+        </h1>
+        <p style={{ color: C.dim, fontSize: 13, margin: "2px 0 0", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          Live scores{lastUpdated ? ` · Updated ${fmt(lastUpdated, tz, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}` : ""}
+        </p>
+      </div>
+      <TimezonePopover tz={tz} setTz={setTz} />
+    </header>
   );
 }
 
@@ -816,8 +832,7 @@ export default function App() {
     <div style={{ minHeight: "100vh", background: C.bg, color: C.text, padding: "16px 16px 0" }}>
       <GlobalStyles />
       <div className="wc-wrap">
-        <Header lastUpdated={matchesData.lastUpdated} tz={tz} />
-        <Controls tz={tz} setTz={setTz} />
+        <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} />
         <Tabs tab={tab} setTab={setTab} />
 
         {matches.length === 0 ? (
