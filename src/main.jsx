@@ -421,7 +421,7 @@ const STAT_LABELS = {
   offsides:      { label: "Offsides" },
 };
 
-function MatchStatsTable({ homeStats, awayStats }) {
+function MatchStatsTable({ homeStats, awayStats, home, away }) {
   if (!homeStats && !awayStats) return null;
   const hs = homeStats || {};
   const as = awayStats || {};
@@ -433,7 +433,20 @@ function MatchStatsTable({ homeStats, awayStats }) {
       {eventBadge("📊")}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 10 }}>Match Stats</div>
-        <div style={{ display: "grid", gap: 10 }}>
+
+        {/* Legend */}
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
+          <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
+            <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.green, flexShrink: 0, display: "inline-block" }} />
+            {flag(home)} {home}
+          </span>
+          <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
+            {away} {flag(away)}
+            <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.dim, flexShrink: 0, display: "inline-block" }} />
+          </span>
+        </div>
+
+        <div style={{ display: "grid", gap: 12 }}>
           {keys.map((k) => {
             const { label, suffix = "" } = STAT_LABELS[k];
             const hv = parseFloat(hs[k]) || 0;
@@ -442,12 +455,12 @@ function MatchStatsTable({ homeStats, awayStats }) {
             const hPct = Math.round((hv / total) * 100);
             return (
               <div key={k}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, fontWeight: 700, marginBottom: 4 }}>
-                  <span style={{ color: C.text }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
-                  <span style={{ color: C.dim }}>{label}</span>
-                  <span style={{ color: C.text }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 800, marginBottom: 5 }}>
+                  <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
+                  <span style={{ color: C.dim, fontWeight: 700, fontSize: 12 }}>{label}</span>
+                  <span style={{ color: C.dim }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
                 </div>
-                <div style={{ display: "flex", height: 5, borderRadius: 3, overflow: "hidden", background: C.border }}>
+                <div style={{ display: "flex", height: 6, borderRadius: 3, overflow: "hidden", background: C.border }}>
                   <div style={{ width: `${hPct}%`, background: C.green }} />
                   <div style={{ flex: 1, background: C.dim }} />
                 </div>
@@ -520,7 +533,7 @@ function LiveCard({ m, tz }) {
 
       <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16 }}>
         <MatchEvents m={m} />
-        <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} />
+        <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
         <VenueBlock venue={m.venue} />
         <a
           className="wc-btn"
@@ -591,7 +604,7 @@ function ResultCard({ m, tz }) {
       {open && (
         <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 10, paddingTop: 14, display: "grid", gap: 16 }}>
           <MatchEvents m={m} />
-          <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} />
+          <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
           <VenueBlock venue={m.venue} />
           <a
             className="wc-btn"
