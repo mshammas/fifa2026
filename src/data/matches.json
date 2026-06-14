@@ -609,16 +609,24 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "49'",
-      "goals": [],
+      "clock": "51'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "V. van Dijk",
+          "minute": "51'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "69.2",
-        "shotsOnTarget": "2",
-        "totalShots": "4"
+        "possessionPct": "69.7",
+        "shotsOnTarget": "3",
+        "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "30.8",
+        "possessionPct": "30.3",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
@@ -2223,6 +2231,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T21:08:27.230Z",
+  "lastUpdated": "2026-06-14T21:10:33.210Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
