@@ -320,7 +320,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "85'",
+      "clock": "90'+3'",
       "goals": [
         {
           "side": "away",
@@ -383,6 +383,6 @@
       "cards": []
     }
   ],
-  "lastUpdated": "2026-06-13T23:49:55.289Z",
+  "lastUpdated": "2026-06-14T00:14:56.160Z",
   "source": "ESPN (live) · zero API tokens used"
 }
