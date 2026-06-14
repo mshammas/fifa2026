@@ -519,7 +519,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "33'",
+      "clock": "38'",
       "goals": [
         {
           "side": "home",
@@ -534,18 +534,25 @@
           "minute": "21'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "N. Schlotterbeck",
+          "minute": "38'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "72.7",
+        "possessionPct": "70.9",
         "shotsOnTarget": "3",
-        "totalShots": "10"
+        "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "27.3",
+        "possessionPct": "29.1",
         "shotsOnTarget": "1",
-        "totalShots": "2"
+        "totalShots": "3"
       }
     },
     {
@@ -2069,6 +2076,6 @@
       "awayStats": null
     }
   ],
-  "lastUpdated": "2026-06-14T17:35:27.113Z",
+  "lastUpdated": "2026-06-14T17:40:46.676Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
