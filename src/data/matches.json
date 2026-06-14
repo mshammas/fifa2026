@@ -635,7 +635,7 @@
         {
           "side": "away",
           "player": "D. Kamada",
-          "minute": "88'",
+          "minute": "89'",
           "pen": false,
           "og": false
         }
@@ -2279,6 +2279,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T23:00:37.691Z",
+  "lastUpdated": "2026-06-14T23:02:20.128Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
