@@ -508,6 +508,19 @@ function evalPrediction(pred, m) {
   return { icon: "❌", label: "Wrong", pts: 0, color: C.red };
 }
 
+// Derive live score from goals array — more up-to-date than ESPN's score field during live matches.
+function liveScores(m) {
+  if (m.goals && m.goals.length > 0) {
+    let h = 0, a = 0;
+    for (const g of m.goals) {
+      const forHome = (g.side === "home" && !g.og) || (g.side === "away" && g.og);
+      if (forHome) h++; else a++;
+    }
+    return { h, a };
+  }
+  return { h: m.homeScore, a: m.awayScore };
+}
+
 // Side-by-side match stats bar (possession, shots, etc.) shown in expanded cards.
 const STAT_LABELS = {
   possessionPct: { label: "Possession", suffix: "%" },
@@ -677,7 +690,8 @@ function LiveMatchModal({ m, onClose }) {
     return () => clearInterval(t);
   }, []);
 
-  const hasScore = m.homeScore != null && m.awayScore != null;
+  const { h: mh, a: ma } = liveScores(m);
+  const hasScore = mh != null && ma != null;
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
 
   return (
@@ -707,7 +721,7 @@ function LiveMatchModal({ m, onClose }) {
           </div>
           <div style={{ textAlign: "center", minWidth: 80 }}>
             {hasScore
-              ? <div style={{ fontSize: 54, fontWeight: 900, letterSpacing: -2 }}>{m.homeScore}<span style={{ color: C.dim }}>–</span>{m.awayScore}</div>
+              ? <div style={{ fontSize: 54, fontWeight: 900, letterSpacing: -2 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
               : <div style={{ fontSize: 26, color: C.dim }}>vs</div>}
           </div>
           <div style={{ textAlign: "center", flex: 1 }}>
@@ -737,7 +751,8 @@ function LiveMatchModal({ m, onClose }) {
 
 // Full live-match card: score, live minute, goals/cards so far, and a watch link.
 function LiveCard({ m, tz, isFav, onOpen }) {
-  const hasScore = m.homeScore != null && m.awayScore != null;
+  const { h: hs, a: as } = liveScores(m);
+  const hasScore = hs != null && as != null;
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
   return (
     <div
@@ -758,8 +773,8 @@ function LiveCard({ m, tz, isFav, onOpen }) {
       </div>
 
       <div style={{ display: "grid", gap: 8 }}>
-        <TeamRow team={m.home} score={hasScore ? m.homeScore : null} winner={false} />
-        <TeamRow team={m.away} score={hasScore ? m.awayScore : null} winner={false} />
+        <TeamRow team={m.home} score={hasScore ? hs : null} winner={false} />
+        <TeamRow team={m.away} score={hasScore ? as : null} winner={false} />
       </div>
 
       <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16 }}>
