@@ -400,10 +400,10 @@
       "away": "Türkiye",
       "group": "D",
       "venue": "BC Place, Vancouver",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "52'",
+      "clock": "90'",
       "goals": [
         {
           "side": "home",
@@ -411,9 +411,23 @@
           "minute": "27'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Metcalfe",
+          "minute": "75'",
+          "pen": false,
+          "og": false
         }
       ],
-      "cards": []
+      "cards": [
+        {
+          "side": "away",
+          "player": "Y. Akgün",
+          "minute": "86'",
+          "type": "yellow"
+        }
+      ]
     },
     {
       "id": "e760422",
@@ -1760,6 +1774,6 @@
       "cards": []
     }
   ],
-  "lastUpdated": "2026-06-14T05:12:05.393Z",
+  "lastUpdated": "2026-06-14T05:51:18.776Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
