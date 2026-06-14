@@ -167,10 +167,10 @@ function Header({ lastUpdated, tz }) {
   );
 }
 
-function Controls({ tz, setTz, onRefresh }) {
+function Controls({ tz, setTz }) {
   return (
-    <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap", margin: "16px 0" }}>
-      <label style={{ display: "flex", alignItems: "center", gap: 8, flex: "1 1 220px" }}>
+    <div style={{ display: "flex", gap: 10, alignItems: "center", margin: "16px 0" }}>
+      <label style={{ display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
         <span style={{ fontSize: 16, color: C.dim, whiteSpace: "nowrap" }}>🕒 Show times in</span>
         <select
           value={tz}
@@ -185,17 +185,6 @@ function Controls({ tz, setTz, onRefresh }) {
           ))}
         </select>
       </label>
-      <button
-        className="wc-btn"
-        onClick={onRefresh}
-        style={{
-          fontSize: 16, fontWeight: 800, color: "#06210f", background: C.green,
-          border: "none", borderRadius: 10, padding: "12px 18px",
-        }}
-        title="Reload the page to pick up the latest published scores"
-      >
-        ↻ Refresh
-      </button>
     </div>
   );
 }
@@ -786,7 +775,7 @@ export default function App() {
       <GlobalStyles />
       <div className="wc-wrap">
         <Header lastUpdated={matchesData.lastUpdated} tz={tz} />
-        <Controls tz={tz} setTz={setTz} onRefresh={onRefresh} />
+        <Controls tz={tz} setTz={setTz} />
         <Tabs tab={tab} setTab={setTab} />
 
         {matches.length === 0 ? (
