@@ -1,14 +1,11 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Deploy when code is pushed to main…
+  # Deploy on code pushes to main. (Score updates are built & deployed by the
+  # "Fetch World Cup Scores" workflow itself, only when the data changes — so
+  # there's no workflow_run trigger here anymore.)
   push:
     branches: [main]
-  # …and after the scraper commits fresh scores (a GITHUB_TOKEN push does not
-  # fire a `push` event, so we chain off the scraper workflow finishing).
-  workflow_run:
-    workflows: ["Fetch World Cup Scores"]
-    types: [completed]
   # …and on demand from the Actions tab.
   workflow_dispatch:
 

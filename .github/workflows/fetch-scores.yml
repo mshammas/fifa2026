@@ -1,36 +1,103 @@
 name: Fetch World Cup Scores
 
 on:
+  # Backup cadence; the external pinger drives the real 5-minute beat during
+  # matches. Both are gated, so idle ticks are cheap no-ops.
   schedule:
-    - cron: '*/5 * * * *'  # Every 5 minutes (GitHub's minimum; may delay under load)
+    - cron: '*/5 * * * *'
   workflow_dispatch:
+    inputs:
+      force:
+        description: "Refresh even if no match is in progress"
+        type: boolean
+        default: false
 
-# Needed so the bot can commit the refreshed matches.json back to the repo.
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+# Serialize runs so the pinger and the backup schedule can't collide.
+concurrency:
+  group: fetch-scores
+  cancel-in-progress: false
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
 
+      # Cheap gate (uses the runner's preinstalled Node, no deps): only do real
+      # work while a match is actually in progress.
+      - name: Check for an active match
+        id: gate
+        run: node scripts/active-check.mjs
+
+      - name: Decide whether to run
+        id: go
+        run: |
+          if [ "${{ steps.gate.outputs.active }}" = "true" ] || [ "${{ github.event.inputs.force }}" = "true" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-node@v4
+        if: steps.go.outputs.run == 'true'
         with:
           node-version: '20'
           cache: 'npm'
 
-      # Install deps so the scraper can `import cheerio` (it's a devDependency).
       - name: Install dependencies
+        if: steps.go.outputs.run == 'true'
         run: npm ci
 
       - name: Fetch and parse scores
+        if: steps.go.outputs.run == 'true'
         run: npm run fetch-scores
 
       - name: Commit changes
+        id: commit
+        if: steps.go.outputs.run == 'true'
         run: |
           git config user.name "⚽ World Cup Bot"
           git config user.email "bot@shammas.in"
           git add src/data/matches.json
-          git diff --cached --quiet || git commit -m "⚽ Update match scores $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No score changes — nothing to deploy."
+          else
+            git commit -m "⚽ Update match scores $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Build + upload the site only when scores actually changed.
+      - name: Build site
+        if: steps.commit.outputs.changed == 'true'
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+        if: steps.commit.outputs.changed == 'true'
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.commit.outputs.changed == 'true'
+        with:
+          path: ./dist
+
+  deploy:
+    needs: fetch
+    if: needs.fetch.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
