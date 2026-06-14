@@ -702,8 +702,19 @@ function MatchesTab({ matches, tz }) {
 
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
 
-  // Group a list of matches into day sections in the chosen timezone, either
-  // oldest-first (upcoming fixtures) or newest-first (finished results).
+  const todayKey = dateKey(new Date().toISOString(), tz);
+
+  // Split into today / past-results / future-upcoming
+  const todayMatches = [...filtered]
+    .filter((m) => dateKey(m.date, tz) === todayKey)
+    .sort((a, b) => {
+      // Live first, then by kickoff time
+      const aLive = isLive(a) ? 0 : 1;
+      const bLive = isLive(b) ? 0 : 1;
+      if (aLive !== bLive) return aLive - bLive;
+      return new Date(a.date) - new Date(b.date);
+    });
+
   const daySections = (list, newestFirst) => {
     const arr = [...list].sort((a, b) =>
       newestFirst ? new Date(b.date) - new Date(a.date) : new Date(a.date) - new Date(b.date)
@@ -718,28 +729,38 @@ function MatchesTab({ matches, tz }) {
     return out;
   };
 
-  // Three buckets: live now, finished results (latest first), upcoming (soonest first).
-  const liveMatches = [...filtered].filter(isLive).sort((a, b) => new Date(a.date) - new Date(b.date));
-  const resultSections = daySections(filtered.filter((m) => m.status === "FT"), true);
-  const upcomingSections = daySections(filtered.filter((m) => !isLive(m) && m.status !== "FT"), false);
-  const isEmpty = !liveMatches.length && !resultSections.length && !upcomingSections.length;
+  const resultSections = daySections(
+    filtered.filter((m) => m.status === "FT" && dateKey(m.date, tz) !== todayKey), true
+  );
+  const upcomingSections = daySections(
+    filtered.filter((m) => !isLive(m) && m.status !== "FT" && dateKey(m.date, tz) !== todayKey), false
+  );
+
+  const isEmpty = !todayMatches.length && !resultSections.length && !upcomingSections.length;
+
+  const todayLabel = dayHeader(new Date().toISOString(), tz);
 
   return (
     <div>
       <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
 
-      {isEmpty && (
-        <EmptyState emoji="📭" text="No matches to show yet." />
-      )}
+      {isEmpty && <EmptyState emoji="📭" text="No matches to show yet." />}
 
-      {liveMatches.length > 0 && (
+      {todayMatches.length > 0 && (
         <section style={{ marginBottom: 26 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.red, margin: "0 0 14px", display: "flex", alignItems: "center", gap: 8 }}>
-            <span className="wc-live">🔴</span> Live Now
+          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.green, margin: "0 0 4px" }}>
+            📅 Today
           </h2>
-          {liveMatches.map((m) => (
-            <LiveCard key={m.id} m={m} tz={tz} />
-          ))}
+          <p style={{ fontSize: 14, color: C.dim, margin: "0 0 14px" }}>{todayLabel}</p>
+          {todayMatches.map((m) =>
+            isLive(m) ? (
+              <LiveCard key={m.id} m={m} tz={tz} />
+            ) : m.status === "FT" ? (
+              <ResultCard key={m.id} m={m} tz={tz} />
+            ) : (
+              <MatchCard key={m.id} m={m} tz={tz} />
+            )
+          )}
         </section>
       )}
 
@@ -759,7 +780,7 @@ function MatchesTab({ matches, tz }) {
 
       {upcomingSections.length > 0 && (
         <div style={{ marginBottom: 26 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.green, margin: "0 0 14px" }}>📅 Upcoming</h2>
+          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.dim, margin: "0 0 14px" }}>📅 Upcoming</h2>
           {upcomingSections.map((sec) => (
             <section key={sec.key} style={{ marginBottom: 18 }}>
               <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
