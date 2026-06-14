@@ -297,43 +297,83 @@ function MatchCard({ m, tz }) {
   );
 }
 
-// Goals + cards breakdown for a match. Shared by live and result cards.
-// Renders nothing when there's no goal/card data yet.
+// Circular icon badge used by the match-detail sections.
+const eventBadge = (emoji, bg) => (
+  <span style={{ width: 36, height: 36, borderRadius: "50%", background: bg || C.card2, border: `1px solid ${C.border}`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>{emoji}</span>
+);
+
+// A titled detail section (Goals / Cards) with left-aligned, scannable rows.
+// Each row: team flag · label · minute (right-aligned).
+function EventSection({ icon, iconBg, title, rows }) {
+  return (
+    <div style={{ display: "flex", gap: 12 }}>
+      {eventBadge(icon, iconBg)}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 7 }}>{title}</div>
+        <div style={{ display: "grid", gap: 8 }}>
+          {rows.map((r, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontSize: 18, width: 24, textAlign: "center", flexShrink: 0 }}>{r.flag}</span>
+              <span style={{ flex: 1, fontSize: 16, fontWeight: 600, color: r.muted ? C.dim : C.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
+              {r.minute ? <span style={{ fontSize: 15, fontWeight: 700, color: C.dim, whiteSpace: "nowrap" }}>{r.minute}</span> : null}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Venue block with a pin badge.
+function VenueBlock({ venue }) {
+  return (
+    <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+      {eventBadge("📍")}
+      <div style={{ minWidth: 0 }}>
+        <div style={{ fontSize: 18, fontWeight: 800 }}>Venue</div>
+        <div style={{ fontSize: 15, color: C.dim }}>{venue}</div>
+      </div>
+    </div>
+  );
+}
+
+// "X won by N goals" / "Draw" — null until a result exists.
+function resultSummary(m) {
+  if (m.homeScore == null || m.awayScore == null) return null;
+  const diff = Math.abs(m.homeScore - m.awayScore);
+  if (diff === 0) return { icon: "🤝", text: "Draw" };
+  const winner = m.homeScore > m.awayScore ? m.home : m.away;
+  return { icon: "🏆", text: `${winner} won by ${diff} goal${diff > 1 ? "s" : ""}` };
+}
+
+// Goals + cards breakdown (per-row flags). Renders nothing when no data yet.
 function MatchEvents({ m }) {
   const goals = m.goals || [];
   const cards = m.cards || [];
   if (!goals.length && !cards.length) return null;
-  const homeGoals = goals.filter((g) => g.side === "home");
-  const awayGoals = goals.filter((g) => g.side === "away");
-  const homeCards = cards.filter((c) => c.side === "home");
-  const awayCards = cards.filter((c) => c.side === "away");
-  const fmtGoal = (g) => `${g.player} ${g.minute}${g.pen ? " (P)" : ""}${g.og ? " (OG)" : ""}`;
-  const fmtCard = (c) => `${c.type === "red" ? "🟥" : "🟨"} ${c.player} ${c.minute}`;
+  const teamFlag = (side) => flag(side === "home" ? m.home : m.away);
+
+  const goalRows = goals.map((g) => ({
+    flag: teamFlag(g.side),
+    label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
+    minute: g.minute,
+  }));
+  for (const side of ["home", "away"]) {
+    if (!goals.some((g) => g.side === side)) {
+      goalRows.push({ flag: teamFlag(side), label: "No goals", minute: "", muted: true });
+    }
+  }
+  const cardRows = cards.map((c) => ({
+    flag: teamFlag(c.side),
+    label: c.player,
+    minute: `${c.type === "red" ? "🟥" : "🟨"} ${c.minute}`,
+  }));
+
   return (
-    <>
-      {goals.length > 0 && (
-        <div>
-          <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>⚽ Goals</div>
-          <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
-            <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeGoals.length ? homeGoals.map(fmtGoal).join(", ") : "—"}</div>
-            <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayGoals.length ? awayGoals.map(fmtGoal).join(", ") : "—"}</div>
-          </div>
-        </div>
-      )}
-      {cards.length > 0 && (
-        <div>
-          <div style={{ fontSize: 14, fontWeight: 800, marginBottom: 6 }}>🟨🟥 Cards</div>
-          <div style={{ display: "grid", gap: 6, fontSize: 15 }}>
-            {homeCards.length > 0 && (
-              <div><span style={{ marginRight: 6 }}>{flag(m.home)}</span><b>{m.home}:</b> {homeCards.map(fmtCard).join(", ")}</div>
-            )}
-            {awayCards.length > 0 && (
-              <div><span style={{ marginRight: 6 }}>{flag(m.away)}</span><b>{m.away}:</b> {awayCards.map(fmtCard).join(", ")}</div>
-            )}
-          </div>
-        </div>
-      )}
-    </>
+    <div style={{ display: "grid", gap: 16 }}>
+      {goals.length > 0 && <EventSection icon="⚽" title="Goals" rows={goalRows} />}
+      {cards.length > 0 && <EventSection icon="🟨" iconBg="rgba(251,191,36,0.15)" title="Cards" rows={cardRows} />}
+    </div>
   );
 }
 
@@ -353,15 +393,15 @@ function LiveCard({ m, tz }) {
         <TeamRow team={m.away} score={hasScore ? m.awayScore : null} winner={false} />
       </div>
 
-      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 12, display: "grid", gap: 12, textAlign: "center" }}>
+      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16 }}>
         <MatchEvents m={m} />
-        <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
+        <VenueBlock venue={m.venue} />
         <a
           className="wc-btn"
           href={`https://www.google.com/search?q=${watchQuery}`}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ justifySelf: "center", fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
+          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, boxSizing: "border-box", width: "100%", fontSize: 18, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 12, padding: "14px 16px", textDecoration: "none" }}
         >
           ▶ Watch Live
         </a>
@@ -377,14 +417,15 @@ function ResultCard({ m, tz }) {
   const homeWin = m.homeScore > m.awayScore;
   const awayWin = m.awayScore > m.homeScore;
   const hlQuery = encodeURIComponent(`${m.home} vs ${m.away} World Cup 2026 highlights`);
+  const summary = resultSummary(m);
 
   const teamLine = (team, score, win) => (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-      <span style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
-        <span style={{ fontSize: 22, lineHeight: 1 }}>{flag(team)}</span>
-        <span style={{ fontSize: 17, fontWeight: win ? 900 : 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{team}</span>
+      <span style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+        <span style={{ fontSize: 26, lineHeight: 1 }}>{flag(team)}</span>
+        <span style={{ fontSize: 19, fontWeight: win ? 900 : 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{team}</span>
       </span>
-      <span style={{ fontSize: 22, fontWeight: 900, color: win ? C.gold : C.text }}>{score}</span>
+      <span style={{ fontSize: 28, fontWeight: 900, color: win ? C.gold : C.text }}>{score}</span>
     </div>
   );
 
@@ -403,28 +444,34 @@ function ResultCard({ m, tz }) {
         <span style={{ fontSize: 13, color: C.dim }}>{timeLabel(m.date, tz)}</span>
       </div>
 
-      <div style={{ display: "grid", gap: 4 }}>
+      <div style={{ display: "grid", gap: 6 }}>
         {teamLine(m.home, m.homeScore, homeWin)}
         {teamLine(m.away, m.awayScore, awayWin)}
       </div>
+
+      {summary && (
+        <div style={{ textAlign: "center", fontSize: 14, fontWeight: 700, color: C.gold, marginTop: 8 }}>
+          {summary.icon} {summary.text}
+        </div>
+      )}
 
       <div style={{ textAlign: "center", fontSize: 12, color: C.dim, marginTop: 6 }}>
         {open ? "▲ Hide details" : "▼ Tap for goals & details"}
       </div>
 
       {open && (
-        <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 8, paddingTop: 10, display: "grid", gap: 12, textAlign: "center" }}>
+        <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 10, paddingTop: 14, display: "grid", gap: 16 }}>
           <MatchEvents m={m} />
-          <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
+          <VenueBlock venue={m.venue} />
           <a
             className="wc-btn"
             href={`https://www.youtube.com/results?search_query=${hlQuery}`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            style={{ justifySelf: "center", fontSize: 14, fontWeight: 800, color: "#fff", background: "#ff0033", borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
+            style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, boxSizing: "border-box", width: "100%", fontSize: 18, fontWeight: 800, color: "#fff", background: "#ff0033", borderRadius: 12, padding: "14px 16px", textDecoration: "none" }}
           >
-            ▶ Watch highlights
+            ▶ Watch Highlights
           </a>
         </div>
       )}
