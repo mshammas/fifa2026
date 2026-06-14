@@ -126,6 +126,15 @@ function extractMatch(ev, groupMap) {
     .map((d) => ({ side: sideOf[d.team?.id] || null, player: pname(d), minute: d.clock?.displayValue || "", type: d.redCard ? "red" : "yellow" }))
     .filter((c) => c.side);
 
+  const STAT_KEYS = ["possessionPct","totalShots","shotsOnTarget","saves","totalFouls","cornerKicks","offsides"];
+  const statsFor = (statsArr) => {
+    const out = {};
+    for (const s of statsArr || []) if (STAT_KEYS.includes(s.name)) out[s.name] = s.displayValue;
+    return Object.keys(out).length ? out : null;
+  };
+  const homeStats = statsFor(home.statistics);
+  const awayStats = statsFor(away.statistics);
+
   // Group letter only when both teams share a group (i.e. group stage).
   const hk = key(home.team.displayName);
   const ak = key(away.team.displayName);
@@ -147,6 +156,8 @@ function extractMatch(ev, groupMap) {
     clock,
     goals,
     cards,
+    homeStats,
+    awayStats,
   };
 }
 

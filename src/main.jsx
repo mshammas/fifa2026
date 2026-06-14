@@ -410,6 +410,56 @@ function MatchEvents({ m }) {
   );
 }
 
+// Side-by-side match stats bar (possession, shots, etc.) shown in expanded cards.
+const STAT_LABELS = {
+  possessionPct:  { label: "Possession", suffix: "%" },
+  totalShots:     { label: "Shots" },
+  shotsOnTarget:  { label: "Shots on Target" },
+  saves:          { label: "Saves" },
+  totalFouls:     { label: "Fouls" },
+  cornerKicks:    { label: "Corners" },
+  offsides:       { label: "Offsides" },
+};
+
+function MatchStatsTable({ homeStats, awayStats }) {
+  if (!homeStats && !awayStats) return null;
+  const hs = homeStats || {};
+  const as = awayStats || {};
+  const keys = Object.keys(STAT_LABELS).filter((k) => hs[k] != null || as[k] != null);
+  if (!keys.length) return null;
+
+  return (
+    <div style={{ display: "flex", gap: 12 }}>
+      {eventBadge("📊")}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 10 }}>Match Stats</div>
+        <div style={{ display: "grid", gap: 10 }}>
+          {keys.map((k) => {
+            const { label, suffix = "" } = STAT_LABELS[k];
+            const hv = parseFloat(hs[k]) || 0;
+            const av = parseFloat(as[k]) || 0;
+            const total = hv + av || 1;
+            const hPct = Math.round((hv / total) * 100);
+            return (
+              <div key={k}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, fontWeight: 700, marginBottom: 4 }}>
+                  <span style={{ color: C.text }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
+                  <span style={{ color: C.dim }}>{label}</span>
+                  <span style={{ color: C.text }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
+                </div>
+                <div style={{ display: "flex", height: 5, borderRadius: 3, overflow: "hidden", background: C.border }}>
+                  <div style={{ width: `${hPct}%`, background: C.green }} />
+                  <div style={{ flex: 1, background: C.dim }} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ShareButton({ m }) {
   const [done, setDone] = useState(false);
 
@@ -470,6 +520,7 @@ function LiveCard({ m, tz }) {
 
       <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16 }}>
         <MatchEvents m={m} />
+        <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} />
         <VenueBlock venue={m.venue} />
         <a
           className="wc-btn"
@@ -540,6 +591,7 @@ function ResultCard({ m, tz }) {
       {open && (
         <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 10, paddingTop: 14, display: "grid", gap: 16 }}>
           <MatchEvents m={m} />
+          <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} />
           <VenueBlock venue={m.venue} />
           <a
             className="wc-btn"
@@ -933,6 +985,58 @@ function TeamDetail({ team, matches, tz, onBack }) {
           )}
         </section>
       )}
+
+      {(() => {
+        // Aggregate scorers and cards from all this team's matches
+        const scorers = {}, yellows = {}, reds = {};
+        for (const m of teamMatches) {
+          const side = m.home === team ? "home" : "away";
+          for (const g of m.goals || []) {
+            if (g.side === side && !g.og) {
+              scorers[g.player] = (scorers[g.player] || 0) + 1;
+            }
+          }
+          for (const c of m.cards || []) {
+            if (c.side === side) {
+              if (c.type === "yellow") yellows[c.player] = (yellows[c.player] || 0) + 1;
+              else reds[c.player] = (reds[c.player] || 0) + 1;
+            }
+          }
+        }
+        const scorerRows = Object.entries(scorers).sort((a, b) => b[1] - a[1]);
+        const cardPlayers = Array.from(new Set([...Object.keys(yellows), ...Object.keys(reds)])).sort();
+        if (!scorerRows.length && !cardPlayers.length) return null;
+        return (
+          <section style={{ marginBottom: 26 }}>
+            <h3 style={{ fontSize: 17, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>Tournament Performance</h3>
+            <div style={{ display: "grid", gap: 12 }}>
+              {scorerRows.length > 0 && (
+                <EventSection
+                  icon="⚽" title="Goals Scored"
+                  rows={scorerRows.map(([player, count]) => ({
+                    flag: flag(team),
+                    label: player,
+                    minute: `${count} goal${count > 1 ? "s" : ""}`,
+                  }))}
+                />
+              )}
+              {cardPlayers.length > 0 && (
+                <EventSection
+                  icon="🟨" iconBg="rgba(251,191,36,0.15)" title="Discipline"
+                  rows={cardPlayers.map((player) => {
+                    const y = yellows[player] || 0;
+                    const r = reds[player] || 0;
+                    const parts = [];
+                    if (y) parts.push(`🟨×${y}`);
+                    if (r) parts.push(`🟥×${r}`);
+                    return { flag: flag(team), label: player, minute: parts.join(" ") };
+                  })}
+                />
+              )}
+            </div>
+          </section>
+        );
+      })()}
 
       <section>
         <h3 style={{ fontSize: 17, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>Fixtures &amp; Results</h3>
