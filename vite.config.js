@@ -8,6 +8,9 @@ export default defineConfig({
   // no client-side routing.
   base: './',
   plugins: [react()],
+  define: {
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+  },
   build: {
     outDir: 'dist',
     // Use Vite's bundled default minifier (oxc in this rolldown-vite build).

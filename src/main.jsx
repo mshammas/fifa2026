@@ -197,7 +197,12 @@ function Header({ lastUpdated, tz, setTz }) {
           ⚽ FIFA World Cup 2026
         </h1>
         <p style={{ color: C.dim, fontSize: 13, margin: "2px 0 0", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-          Live scores{lastUpdated ? ` · Updated ${fmt(lastUpdated, tz, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}` : ""}
+          {(() => {
+            const buildTime = typeof __BUILD_TIME__ !== "undefined" ? __BUILD_TIME__ : lastUpdated;
+            return buildTime
+              ? `Live scores · Fetched ${fmt(buildTime, tz, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}`
+              : "Live scores";
+          })()}
         </p>
       </div>
       <TimezonePopover tz={tz} setTz={setTz} />
