@@ -606,10 +606,10 @@
       "away": "Japan",
       "group": "F",
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "64'",
+      "clock": "67'",
       "goals": [
         {
           "side": "home",
@@ -649,7 +649,7 @@
       "awayStats": {
         "possessionPct": "30.5",
         "shotsOnTarget": "1",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -2252,6 +2252,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T21:24:22.551Z",
+  "lastUpdated": "2026-06-14T21:26:20.427Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
