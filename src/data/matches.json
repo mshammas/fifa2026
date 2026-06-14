@@ -682,7 +682,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "39'",
+      "clock": "40'",
       "goals": [],
       "cards": [
         {
@@ -696,15 +696,21 @@
           "player": "F. Kessié",
           "minute": "38'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "G. Doué",
+          "minute": "40'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "48.9",
+        "possessionPct": "47.2",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "51.1",
+        "possessionPct": "52.8",
         "shotsOnTarget": "0",
         "totalShots": "6"
       },
@@ -2292,6 +2298,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T23:42:19.741Z",
+  "lastUpdated": "2026-06-14T23:44:22.475Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
