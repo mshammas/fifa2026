@@ -1520,6 +1520,44 @@ function BracketTab({ matches, tz }) {
   );
 }
 
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
+  const timerRef = React.useRef(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 300) {
+        setVisible(true);
+        clearTimeout(timerRef.current);
+        timerRef.current = setTimeout(() => setVisible(false), 3000);
+      } else {
+        clearTimeout(timerRef.current);
+        setVisible(false);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => { window.removeEventListener("scroll", onScroll); clearTimeout(timerRef.current); };
+  }, []);
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Go to top"
+      title="Back to top"
+      style={{
+        position: "fixed", left: 18, bottom: 18, width: 46, height: 46, borderRadius: "50%",
+        border: `1px solid ${C.border}`, background: C.card2, color: C.text,
+        fontSize: 22, fontWeight: 900, cursor: "pointer", zIndex: 50, lineHeight: 1,
+        boxShadow: "0 4px 16px rgba(0,0,0,0.45)",
+        opacity: visible ? 1 : 0, pointerEvents: visible ? "auto" : "none",
+        transition: "opacity 0.3s ease",
+      }}
+    >
+      ↑
+    </button>
+  );
+}
+
 const WA_FEEDBACK_URL =
   "https://wa.me/919845158656?text=" +
   encodeURIComponent("Feedback / suggestion for fifa.shammas.in:\n\n");
@@ -1692,6 +1730,7 @@ export default function App() {
         <Footer source={matchesData.source} />
       </div>
 
+      <ScrollToTop />
       <FloatingActions onRefresh={onRefresh} />
     </div>
   );
