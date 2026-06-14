@@ -871,6 +871,11 @@ function ResultCard({ m, tz, isFav, prediction }) {
 
       {open && (
         <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 10, paddingTop: 14, display: "grid", gap: 16 }}>
+          {m.recap && (
+            <p style={{ fontSize: 14, color: C.dim, lineHeight: 1.6, margin: 0, fontStyle: "italic" }}>
+              "{m.recap}"
+            </p>
+          )}
           <MatchEvents m={m} />
           <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
           <VenueBlock venue={m.venue} />

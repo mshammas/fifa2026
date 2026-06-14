@@ -135,6 +135,9 @@ function extractMatch(ev, groupMap) {
   const homeStats = statsFor(home.statistics);
   const awayStats = statsFor(away.statistics);
 
+  const recapEntry = (comp.headlines || []).find((h) => h.type === "Recap" || h.description);
+  const recap = recapEntry?.description || null;
+
   // Group letter only when both teams share a group (i.e. group stage).
   const hk = key(home.team.displayName);
   const ak = key(away.team.displayName);
@@ -158,6 +161,7 @@ function extractMatch(ev, groupMap) {
     cards,
     homeStats,
     awayStats,
+    recap,
   };
 }
 

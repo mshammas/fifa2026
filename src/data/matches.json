@@ -74,7 +74,8 @@
         "possessionPct": "39.5",
         "shotsOnTarget": "2",
         "totalShots": "3"
-      }
+      },
+      "recap": "Mexico's misery in World Cup opening games was finally ended as they secured a 2-0 win over South Africa at the Estadio Azteca in a match featuring three red cards."
     },
     {
       "id": "e760414",
@@ -127,7 +128,8 @@
         "possessionPct": "38.5",
         "shotsOnTarget": "4",
         "totalShots": "7"
-      }
+      },
+      "recap": "South Korea rallied from 0-1 down to defeat the Czech Republic 2-1 in the second match of the FIFA World Cup 2026. "
     },
     {
       "id": "e760416",
@@ -197,7 +199,8 @@
         "possessionPct": "38.9",
         "shotsOnTarget": "3",
         "totalShots": "8"
-      }
+      },
+      "recap": "Substitute Cyle Larin scored in the 78th minute and co-host Canada earned a first point in their third World Cup appearance -- and first on home soil -- by rallying for a 1-1 draw against Bosnia-Herzegovina on Friday."
     },
     {
       "id": "e760417",
@@ -294,7 +297,8 @@
         "possessionPct": "34.7",
         "shotsOnTarget": "1",
         "totalShots": "9"
-      }
+      },
+      "recap": "The United States cruised past Paraguay to open its home World Cup campaign with a statement victory in front of a galaxy of Los Angeles stars."
     },
     {
       "id": "e760420",
@@ -352,7 +356,8 @@
         "possessionPct": "68",
         "shotsOnTarget": "7",
         "totalShots": "26"
-      }
+      },
+      "recap": "Qatar scored a last-gasp equaliser to secure their first World Cup point by snatching a draw against Switzerland on Saturday."
     },
     {
       "id": "e760419",
@@ -404,7 +409,8 @@
         "possessionPct": "48.6",
         "shotsOnTarget": "3",
         "totalShots": "14"
-      }
+      },
+      "recap": "Vinícius Júnior scored an equalizing goal in the 32nd minute, giving five-time champion Brazil a 1-1 draw against Morocco on Saturday."
     },
     {
       "id": "e760418",
@@ -461,7 +467,8 @@
         "possessionPct": "46.3",
         "shotsOnTarget": "2",
         "totalShots": "9"
-      }
+      },
+      "recap": "John McGinn deflected a shot off an opposing defender and past goalkeeper Johny Placide in the 28th minute, and Scotland defeated Haiti 1-0 in Group C of the World Cup on Saturday."
     },
     {
       "id": "e760421",
@@ -507,7 +514,8 @@
         "possessionPct": "71.6",
         "shotsOnTarget": "8",
         "totalShots": "30"
-      }
+      },
+      "recap": "Nestory Irankunda and Connor Metcalfe scored and Australia spoiled Türkiye's return to the World Cup for the first time in 24 years with a 2-0 victory on Saturday night."
     },
     {
       "id": "e760422",
@@ -518,8 +526,8 @@
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": 7,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+4'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -580,15 +588,16 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "64.9",
+        "possessionPct": "65",
         "shotsOnTarget": "12",
         "totalShots": "26"
       },
       "awayStats": {
-        "possessionPct": "35.1",
+        "possessionPct": "35",
         "shotsOnTarget": "2",
         "totalShots": "8"
-      }
+      },
+      "recap": null
     },
     {
       "id": "e760425",
@@ -604,7 +613,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760423",
@@ -620,7 +630,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760424",
@@ -636,7 +647,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760428",
@@ -652,7 +664,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760426",
@@ -668,7 +681,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760429",
@@ -684,7 +698,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760427",
@@ -700,7 +715,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760432",
@@ -716,7 +732,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760430",
@@ -732,7 +749,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760433",
@@ -748,7 +766,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760431",
@@ -764,7 +783,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760435",
@@ -780,7 +800,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760437",
@@ -796,7 +817,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760434",
@@ -812,7 +834,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760436",
@@ -828,7 +851,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760438",
@@ -844,7 +868,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760439",
@@ -860,7 +885,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760440",
@@ -876,7 +902,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760441",
@@ -892,7 +919,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760442",
@@ -908,7 +936,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760445",
@@ -924,7 +953,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760444",
@@ -940,7 +970,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760443",
@@ -956,7 +987,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760447",
@@ -972,7 +1004,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760448",
@@ -988,7 +1021,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760446",
@@ -1004,7 +1038,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760449",
@@ -1020,7 +1055,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760453",
@@ -1036,7 +1072,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760451",
@@ -1052,7 +1089,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760450",
@@ -1068,7 +1106,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760452",
@@ -1084,7 +1123,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760456",
@@ -1100,7 +1140,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760457",
@@ -1116,7 +1157,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760454",
@@ -1132,7 +1174,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760455",
@@ -1148,7 +1191,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760461",
@@ -1164,7 +1208,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760458",
@@ -1180,7 +1225,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760460",
@@ -1196,7 +1242,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760459",
@@ -1212,7 +1259,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760462",
@@ -1228,7 +1276,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760463",
@@ -1244,7 +1293,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760464",
@@ -1260,7 +1310,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760465",
@@ -1276,7 +1327,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760467",
@@ -1292,7 +1344,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760466",
@@ -1308,7 +1361,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760473",
@@ -1324,7 +1378,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760468",
@@ -1340,7 +1395,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760471",
@@ -1356,7 +1412,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760472",
@@ -1372,7 +1429,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760469",
@@ -1388,7 +1446,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760470",
@@ -1404,7 +1463,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760475",
@@ -1420,7 +1480,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760474",
@@ -1436,7 +1497,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760478",
@@ -1452,7 +1514,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760479",
@@ -1468,7 +1531,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760476",
@@ -1484,7 +1548,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760477",
@@ -1500,7 +1565,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760480",
@@ -1516,7 +1582,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760485",
@@ -1532,7 +1599,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760481",
@@ -1548,7 +1616,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760482",
@@ -1564,7 +1633,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760484",
@@ -1580,7 +1650,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760483",
@@ -1596,7 +1667,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760486",
@@ -1612,7 +1684,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760487",
@@ -1628,7 +1701,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760489",
@@ -1644,7 +1718,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760488",
@@ -1660,7 +1735,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760490",
@@ -1676,7 +1752,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760492",
@@ -1692,7 +1769,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760491",
@@ -1708,7 +1786,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760495",
@@ -1724,7 +1803,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760493",
@@ -1740,7 +1820,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760494",
@@ -1756,7 +1837,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760497",
@@ -1772,7 +1854,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760496",
@@ -1788,7 +1871,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760498",
@@ -1804,7 +1888,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760499",
@@ -1820,7 +1905,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760500",
@@ -1836,7 +1922,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760501",
@@ -1852,7 +1939,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760502",
@@ -1868,7 +1956,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760503",
@@ -1884,7 +1973,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760504",
@@ -1900,7 +1990,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760505",
@@ -1916,7 +2007,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760506",
@@ -1932,7 +2024,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760507",
@@ -1948,7 +2041,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760509",
@@ -1964,7 +2058,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760508",
@@ -1980,7 +2075,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760510",
@@ -1996,7 +2092,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760511",
@@ -2012,7 +2109,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760512",
@@ -2028,7 +2126,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760513",
@@ -2044,7 +2143,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760514",
@@ -2060,7 +2160,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760515",
@@ -2076,7 +2177,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760516",
@@ -2092,7 +2194,8 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     },
     {
       "id": "e760517",
@@ -2108,9 +2211,10 @@
       "goals": [],
       "cards": [],
       "homeStats": null,
-      "awayStats": null
+      "awayStats": null,
+      "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T18:58:26.582Z",
+  "lastUpdated": "2026-06-14T19:00:22.847Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
