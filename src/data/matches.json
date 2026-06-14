@@ -516,10 +516,10 @@
       "away": "Curaçao",
       "group": "E",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "45'+3'",
+      "clock": "45'+5'",
       "goals": [
         {
           "side": "home",
@@ -541,13 +541,20 @@
           "minute": "38'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "K. Havertz",
+          "minute": "45'+5'",
+          "pen": true,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
         "possessionPct": "70.8",
-        "shotsOnTarget": "4",
-        "totalShots": "15"
+        "shotsOnTarget": "6",
+        "totalShots": "16"
       },
       "awayStats": {
         "possessionPct": "29.2",
@@ -2076,6 +2083,6 @@
       "awayStats": null
     }
   ],
-  "lastUpdated": "2026-06-14T17:50:34.490Z",
+  "lastUpdated": "2026-06-14T17:52:23.927Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
