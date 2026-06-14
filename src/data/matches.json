@@ -400,11 +400,19 @@
       "away": "Türkiye",
       "group": "D",
       "venue": "BC Place, Vancouver",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
-      "goals": [],
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "30'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "N. Irankunda",
+          "minute": "27'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": []
     },
     {
@@ -1752,6 +1760,6 @@
       "cards": []
     }
   ],
-  "lastUpdated": "2026-06-14T03:43:19.169Z",
+  "lastUpdated": "2026-06-14T04:31:05.164Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
