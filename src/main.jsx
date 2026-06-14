@@ -131,7 +131,7 @@ function GlobalStyles() {
       button { font-family: inherit; cursor: pointer; }
       select { font-family: inherit; }
       a { color: ${C.green}; }
-      .wc-tab:hover { background: ${C.card2} !important; }
+      .wc-tab:not([aria-selected="true"]):hover { background: ${C.card2} !important; }
       .wc-card { transition: transform .12s ease, box-shadow .12s ease; }
       .wc-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
       .wc-btn:hover { filter: brightness(1.12); }
