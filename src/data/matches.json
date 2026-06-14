@@ -682,7 +682,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "37'",
+      "clock": "39'",
       "goals": [],
       "cards": [
         {
@@ -690,15 +690,21 @@
           "player": "S. Fofana",
           "minute": "28'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "F. Kessié",
+          "minute": "38'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "50",
+        "possessionPct": "48.9",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "50",
+        "possessionPct": "51.1",
         "shotsOnTarget": "0",
         "totalShots": "6"
       },
@@ -2286,6 +2292,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T23:40:33.332Z",
+  "lastUpdated": "2026-06-14T23:42:19.741Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
