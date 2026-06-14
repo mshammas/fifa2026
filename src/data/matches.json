@@ -609,7 +609,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "80'",
+      "clock": "83'",
       "goals": [
         {
           "side": "home",
@@ -639,17 +639,23 @@
           "player": "C. Summerville",
           "minute": "61'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "M. Depay",
+          "minute": "83'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "64.9",
+        "possessionPct": "62.2",
         "shotsOnTarget": "6",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "35.1",
-        "shotsOnTarget": "1",
-        "totalShots": "7"
+        "possessionPct": "37.8",
+        "shotsOnTarget": "2",
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -2252,6 +2258,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T21:40:30.619Z",
+  "lastUpdated": "2026-06-14T21:42:21.385Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
