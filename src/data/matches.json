@@ -516,10 +516,10 @@
       "away": "Curaçao",
       "group": "E",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "38'",
+      "clock": "40'",
       "goals": [
         {
           "side": "home",
@@ -545,12 +545,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "70.9",
-        "shotsOnTarget": "3",
-        "totalShots": "11"
+        "possessionPct": "70.2",
+        "shotsOnTarget": "4",
+        "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "29.1",
+        "possessionPct": "29.8",
         "shotsOnTarget": "1",
         "totalShots": "3"
       }
@@ -2076,6 +2076,6 @@
       "awayStats": null
     }
   ],
-  "lastUpdated": "2026-06-14T17:40:46.676Z",
+  "lastUpdated": "2026-06-14T17:42:30.738Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
