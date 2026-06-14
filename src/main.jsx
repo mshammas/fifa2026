@@ -243,7 +243,6 @@ function Tabs({ tab, setTab }) {
     { id: "schedule", label: "🗓️ Schedule" },
     { id: "standings", label: "📊 Standings" },
     { id: "bracket", label: "🏆 Bracket" },
-    { id: "highlights", label: "🎬 Highlights" },
     { id: "watch", label: "📺 Watch" },
   ];
   return (
@@ -973,82 +972,79 @@ function StandingsTab({ matches }) {
   );
 }
 
-function HighlightsTab({ matches, tz }) {
+function WatchTab({ matches, tz }) {
   const finished = matches
     .filter((m) => m.status === "FT" && m.homeScore != null)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  if (finished.length === 0) {
-    return <EmptyState emoji="🎬" text="Match highlights will appear here after the first games finish." />;
-  }
-
   return (
     <div>
-      {finished.map((m) => {
-        const q = encodeURIComponent(`${m.home} vs ${m.away} World Cup 2026 highlights`);
-        const homeWin = m.homeScore > m.awayScore;
-        const awayWin = m.awayScore > m.homeScore;
-        return (
-          <div key={m.id} className="wc-card" style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: 16, marginBottom: 12 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <div style={{ fontSize: 19, fontWeight: 800 }}>
-                <span style={{ marginRight: 6 }}>{flag(m.home)}</span>
-                <span style={{ color: homeWin ? C.gold : C.text }}>{m.home} {m.homeScore}</span>
-                <span style={{ color: C.dim, margin: "0 8px" }}>–</span>
-                <span style={{ color: awayWin ? C.gold : C.text }}>{m.awayScore} {m.away}</span>
-                <span style={{ marginLeft: 6 }}>{flag(m.away)}</span>
+      <section style={{ marginBottom: 30 }}>
+        <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>📡 Watch Live</h2>
+        <p style={{ fontSize: 15, color: C.dim, margin: "0 0 14px" }}>
+          Links open in a new tab — availability depends on your country.
+        </p>
+        <div style={{ display: "grid", gap: 10 }}>
+          {WATCH_PROVIDERS.map((p) => (
+            <a
+              key={p.name}
+              className="wc-card"
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                background: C.card, border: `1px solid ${C.border}`, borderRadius: 14,
+                padding: "16px 18px", textDecoration: "none", color: C.text,
+              }}
+            >
+              <span>
+                <span style={{ fontSize: 18, fontWeight: 900, display: "block" }}>📺 {p.name}</span>
+                <span style={{ fontSize: 14, color: C.dim }}>{p.note}</span>
+              </span>
+              <span style={{ fontSize: 20, color: C.green }}>→</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>🎬 Highlights</h2>
+        {finished.length === 0 ? (
+          <EmptyState emoji="🎬" text="Highlights will appear here after the first games finish." />
+        ) : (
+          finished.map((m) => {
+            const q = encodeURIComponent(`${m.home} vs ${m.away} World Cup 2026 highlights`);
+            const homeWin = m.homeScore > m.awayScore;
+            const awayWin = m.awayScore > m.homeScore;
+            return (
+              <div key={m.id} className="wc-card" style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: 16, marginBottom: 10 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                  <div style={{ fontSize: 18, fontWeight: 800 }}>
+                    <span style={{ marginRight: 6 }}>{flag(m.home)}</span>
+                    <span style={{ color: homeWin ? C.gold : C.text }}>{m.home} {m.homeScore}</span>
+                    <span style={{ color: C.dim, margin: "0 8px" }}>–</span>
+                    <span style={{ color: awayWin ? C.gold : C.text }}>{m.awayScore} {m.away}</span>
+                    <span style={{ marginLeft: 6 }}>{flag(m.away)}</span>
+                  </div>
+                  <a
+                    className="wc-btn"
+                    href={`https://www.youtube.com/results?search_query=${q}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: 14, fontWeight: 800, color: "#fff", background: "#ff0033", borderRadius: 10, padding: "9px 14px", textDecoration: "none", whiteSpace: "nowrap" }}
+                  >
+                    ▶ Highlights
+                  </a>
+                </div>
+                <div style={{ fontSize: 13, color: C.dim, marginTop: 7 }}>
+                  {m.group ? `Group ${m.group}` : "Knockout"} · {dayHeader(m.date, tz)} · 📍 {m.venue}
+                </div>
               </div>
-              <a
-                className="wc-btn"
-                href={`https://www.youtube.com/results?search_query=${q}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontSize: 15, fontWeight: 800, color: "#fff", background: "#ff0033",
-                  borderRadius: 10, padding: "10px 16px", textDecoration: "none", whiteSpace: "nowrap",
-                }}
-              >
-                ▶ Watch highlights
-              </a>
-            </div>
-            <div style={{ fontSize: 14, color: C.dim, marginTop: 8 }}>
-              Group {m.group} · {dayHeader(m.date, tz)} · 📍 {m.venue}
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function WatchTab() {
-  return (
-    <div>
-      <p style={{ fontSize: 17, color: C.dim, margin: "0 0 16px" }}>
-        Pick a broadcaster below. Links open in a new tab — availability depends on your country.
-      </p>
-      <div style={{ display: "grid", gap: 12 }}>
-        {WATCH_PROVIDERS.map((p) => (
-          <a
-            key={p.name}
-            className="wc-card"
-            href={p.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              background: C.card, border: `1px solid ${C.border}`, borderRadius: 14,
-              padding: "18px 18px", textDecoration: "none", color: C.text,
-            }}
-          >
-            <span>
-              <span style={{ fontSize: 20, fontWeight: 900, display: "block" }}>📺 {p.name}</span>
-              <span style={{ fontSize: 15, color: C.dim }}>{p.note}</span>
-            </span>
-            <span style={{ fontSize: 20, color: C.green }}>→</span>
-          </a>
-        ))}
-      </div>
+            );
+          })
+        )}
+      </section>
     </div>
   );
 }
@@ -1392,10 +1388,8 @@ export default function App() {
           <StandingsTab matches={matches} />
         ) : tab === "bracket" ? (
           <BracketTab matches={matches} tz={tz} />
-        ) : tab === "highlights" ? (
-          <HighlightsTab matches={matches} tz={tz} />
         ) : (
-          <WatchTab />
+          <WatchTab matches={matches} tz={tz} />
         )}
 
         <Footer source={matchesData.source} />
