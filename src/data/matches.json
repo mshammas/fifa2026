@@ -516,14 +516,30 @@
       "away": "Curaçao",
       "group": "E",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
-      "goals": [],
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "15'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "F. Nmecha",
+          "minute": "6'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null
+      "homeStats": {
+        "possessionPct": "75.3",
+        "shotsOnTarget": "2",
+        "totalShots": "8"
+      },
+      "awayStats": {
+        "possessionPct": "24.7",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      }
     },
     {
       "id": "e760425",
@@ -2046,6 +2062,6 @@
       "awayStats": null
     }
   ],
-  "lastUpdated": "2026-06-14T14:20:51.262Z",
+  "lastUpdated": "2026-06-14T17:18:08.577Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
