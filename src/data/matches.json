@@ -607,9 +607,9 @@
       "group": "F",
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "57'",
+      "clock": "59'",
       "goals": [
         {
           "side": "home",
@@ -617,18 +617,25 @@
           "minute": "51'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "K. Nakamura",
+          "minute": "57'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "70.9",
+        "possessionPct": "69.7",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "29.1",
-        "shotsOnTarget": "0",
-        "totalShots": "3"
+        "possessionPct": "30.3",
+        "shotsOnTarget": "1",
+        "totalShots": "4"
       },
       "recap": null
     },
@@ -2231,6 +2238,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T21:16:25.293Z",
+  "lastUpdated": "2026-06-14T21:18:20.698Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
