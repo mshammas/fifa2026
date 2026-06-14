@@ -588,16 +588,16 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "65",
+        "possessionPct": "64.7",
         "shotsOnTarget": "12",
         "totalShots": "26"
       },
       "awayStats": {
-        "possessionPct": "35",
+        "possessionPct": "35.3",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
-      "recap": null
+      "recap": "Kai Havertz scored two goals as Germany pulled away from World Cup first-timer Curaçao late in the opening half and piled on after that in a 7-1 win Sunday in a group match."
     },
     {
       "id": "e760425",
@@ -612,8 +612,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2215,6 +2223,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T19:00:22.847Z",
+  "lastUpdated": "2026-06-14T19:58:27.202Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
