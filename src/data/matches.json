@@ -608,8 +608,8 @@
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 2,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+5'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -2271,6 +2271,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T21:54:22.340Z",
+  "lastUpdated": "2026-06-14T21:56:20.443Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
