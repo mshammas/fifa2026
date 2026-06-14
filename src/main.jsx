@@ -17,6 +17,11 @@ const FLAGS = {
   Argentina: "🇦🇷", France: "🇫🇷", England: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", Spain: "🇪🇸",
   Germany: "🇩🇪", Portugal: "🇵🇹", Netherlands: "🇳🇱", Japan: "🇯🇵",
   Croatia: "🇭🇷", Belgium: "🇧🇪", Uruguay: "🇺🇾", Colombia: "🇨🇴",
+  Ecuador: "🇪🇨", "Ivory Coast": "🇨🇮", "Curaçao": "🇨🇼", Sweden: "🇸🇪",
+  Tunisia: "🇹🇳", Iran: "🇮🇷", Egypt: "🇪🇬", "New Zealand": "🇳🇿",
+  "Saudi Arabia": "🇸🇦", "Cape Verde": "🇨🇻", Norway: "🇳🇴", Senegal: "🇸🇳",
+  Iraq: "🇮🇶", Austria: "🇦🇹", Algeria: "🇩🇿", Jordan: "🇯🇴",
+  Uzbekistan: "🇺🇿", "Congo DR": "🇨🇩", Panama: "🇵🇦", Ghana: "🇬🇭",
 };
 const flag = (team) => FLAGS[team] || "⚽";
 
@@ -198,6 +203,7 @@ function Controls({ tz, setTz, onRefresh }) {
 function Tabs({ tab, setTab }) {
   const items = [
     { id: "matches", label: "📅 Matches" },
+    { id: "schedule", label: "🗓️ Schedule" },
     { id: "standings", label: "📊 Standings" },
     { id: "highlights", label: "🎬 Highlights" },
     { id: "watch", label: "📺 Watch" },
@@ -206,7 +212,7 @@ function Tabs({ tab, setTab }) {
     <div
       role="tablist"
       style={{
-        display: "flex", gap: 6, background: C.card, border: `1px solid ${C.border}`,
+        display: "flex", flexWrap: "wrap", gap: 6, background: C.card, border: `1px solid ${C.border}`,
         borderRadius: 14, padding: 6, marginBottom: 18,
       }}
     >
@@ -220,8 +226,8 @@ function Tabs({ tab, setTab }) {
             className="wc-tab"
             onClick={() => setTab(it.id)}
             style={{
-              flex: 1, fontSize: 16, fontWeight: 800, padding: "12px 6px",
-              borderRadius: 10, border: "none",
+              flex: "1 1 auto", fontSize: 15, fontWeight: 800, padding: "11px 10px",
+              borderRadius: 10, border: "none", whiteSpace: "nowrap",
               color: active ? "#06210f" : C.text,
               background: active ? C.green : "transparent",
             }}
@@ -437,6 +443,96 @@ function ResultCard({ m, tz }) {
   );
 }
 
+// Group filter chips (All + each group present in the data).
+function GroupChips({ groups, value, onChange }) {
+  return (
+    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+      {groups.map((g) => {
+        const active = value === g;
+        return (
+          <button
+            key={g}
+            className="wc-btn"
+            onClick={() => onChange(g)}
+            style={{
+              fontSize: 15, fontWeight: 800, padding: "8px 14px", borderRadius: 999,
+              border: `2px solid ${active ? C.green : C.border}`,
+              color: active ? "#06210f" : C.text,
+              background: active ? C.green : C.card,
+            }}
+          >
+            {g === "All" ? "All" : `Group ${g}`}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// One compact row in the full Schedule list (works for any status).
+function ScheduleRow({ m, tz }) {
+  const s = STATUS[m.status] || STATUS.NS;
+  const hasScore = m.homeScore != null && m.awayScore != null;
+  const teamCell = (team) => (
+    <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 16, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+      <span style={{ fontSize: 18 }}>{flag(team)}</span>
+      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>{team}</span>
+    </div>
+  );
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "8px 12px", marginBottom: 6 }}>
+      <div style={{ minWidth: 0, display: "grid", gap: 3 }}>
+        {teamCell(m.home)}
+        {teamCell(m.away)}
+      </div>
+      <div style={{ textAlign: "right", whiteSpace: "nowrap" }}>
+        {hasScore ? (
+          <div style={{ fontSize: 18, fontWeight: 900 }}>{m.homeScore}<span style={{ color: C.dim }}>–</span>{m.awayScore}</div>
+        ) : (
+          <div style={{ fontSize: 15, fontWeight: 800, color: C.green }}>{timeLabel(m.date, tz)}</div>
+        )}
+        <div className={s.live ? "wc-live" : undefined} style={{ fontSize: 11, fontWeight: 800, color: s.color, marginTop: 2 }}>
+          {s.live ? "🔴 " : ""}{m.status === "NS" ? (m.group ? `Group ${m.group}` : "Knockout") : s.label}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Full tournament schedule: every fixture, grouped by day (soonest first).
+function ScheduleTab({ matches, tz }) {
+  const groups = useMemo(
+    () => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()],
+    [matches]
+  );
+  const [groupFilter, setGroupFilter] = useState("All");
+  const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
+  const sorted = [...filtered].sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  const sections = [];
+  let cur = null;
+  for (const m of sorted) {
+    const k = dateKey(m.date, tz);
+    if (k !== cur) { cur = k; sections.push({ key: k, label: dayHeader(m.date, tz), items: [] }); }
+    sections[sections.length - 1].items.push(m);
+  }
+
+  return (
+    <div>
+      <GroupChips groups={groups} value={groupFilter} onChange={setGroupFilter} />
+      {sections.length === 0 && <EmptyState emoji="🗓️" text="No matches to show." />}
+      {sections.map((sec) => (
+        <section key={sec.key} style={{ marginBottom: 18 }}>
+          <h3 style={{ fontSize: 15, fontWeight: 800, color: C.gold, margin: "0 0 8px" }}>{sec.label}</h3>
+          {sec.items.map((m) => (
+            <ScheduleRow key={m.id} m={m} tz={tz} />
+          ))}
+        </section>
+      ))}
+    </div>
+  );
+}
+
 function MatchesTab({ matches, tz }) {
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
   const [groupFilter, setGroupFilter] = useState("All");
@@ -469,26 +565,7 @@ function MatchesTab({ matches, tz }) {
 
   return (
     <div>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-        {groups.map((g) => {
-          const active = groupFilter === g;
-          return (
-            <button
-              key={g}
-              className="wc-btn"
-              onClick={() => setGroupFilter(g)}
-              style={{
-                fontSize: 15, fontWeight: 800, padding: "8px 14px", borderRadius: 999,
-                border: `2px solid ${active ? C.green : C.border}`,
-                color: active ? "#06210f" : C.text,
-                background: active ? C.green : C.card,
-              }}
-            >
-              {g === "All" ? "All" : `Group ${g}`}
-            </button>
-          );
-        })}
-      </div>
+      <GroupChips groups={groups} value={groupFilter} onChange={setGroupFilter} />
 
       {isEmpty && (
         <EmptyState emoji="📭" text="No matches to show yet." />
@@ -716,6 +793,8 @@ export default function App() {
           <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
         ) : tab === "matches" ? (
           <MatchesTab matches={matches} tz={tz} />
+        ) : tab === "schedule" ? (
+          <ScheduleTab matches={matches} tz={tz} />
         ) : tab === "standings" ? (
           <StandingsTab matches={matches} />
         ) : tab === "highlights" ? (
@@ -726,6 +805,21 @@ export default function App() {
 
         <Footer source={matchesData.source} />
       </div>
+
+      {/* Floating quick-refresh — handy when scrolled deep into the schedule. */}
+      <button
+        onClick={onRefresh}
+        aria-label="Refresh scores"
+        title="Refresh"
+        className="wc-btn"
+        style={{
+          position: "fixed", right: 18, bottom: 18, width: 56, height: 56, borderRadius: "50%",
+          border: "none", background: C.green, color: "#06210f", fontSize: 26, fontWeight: 900,
+          boxShadow: "0 6px 22px rgba(0,0,0,0.55)", cursor: "pointer", zIndex: 50, lineHeight: 1,
+        }}
+      >
+        ↻
+      </button>
     </div>
   );
 }
