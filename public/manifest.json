@@ -1,0 +1,23 @@
+{
+  "name": "FIFA World Cup 2026 — Live Scores",
+  "short_name": "WC 2026",
+  "description": "Live FIFA World Cup 2026 scores, schedule, standings, goals & cards — auto-updating.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e0e14",
+  "theme_color": "#0e0e14",
+  "icons": [
+    {
+      "src": "./favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import matchesData from "./data/matches.json";
 
@@ -24,6 +24,32 @@ const FLAGS = {
   Uzbekistan: "🇺🇿", "Congo DR": "🇨🇩", Panama: "🇵🇦", Ghana: "🇬🇭",
 };
 const flag = (team) => FLAGS[team] || "⚽";
+
+// Shared "now" hook — updates every 30 s (enough for countdowns).
+function useNow() {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 30_000);
+    return () => clearInterval(id);
+  }, []);
+  return now;
+}
+
+// Google Calendar pre-fill URL for an upcoming fixture.
+function calendarUrl(m) {
+  const start = new Date(m.date);
+  const end = new Date(start.getTime() + 2 * 3600 * 1000);
+  const fmt = (d) => d.toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z";
+  const title = `${flag(m.home)} ${m.home} vs ${m.away} ${flag(m.away)} — FIFA World Cup 2026`;
+  const details = [m.group ? `Group ${m.group}` : "Knockout", m.venue].filter(Boolean).join(" · ");
+  return (
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    `&text=${encodeURIComponent(title)}` +
+    `&dates=${fmt(start)}/${fmt(end)}` +
+    `&details=${encodeURIComponent(details)}` +
+    `&location=${encodeURIComponent(m.venue || "")}`
+  );
+}
 
 // Timezones offered in the picker. "local" resolves to the viewer's device tz.
 const TIMEZONES = [
@@ -216,6 +242,7 @@ function Tabs({ tab, setTab }) {
     { id: "teams", label: "🏴 Teams" },
     { id: "schedule", label: "🗓️ Schedule" },
     { id: "standings", label: "📊 Standings" },
+    { id: "bracket", label: "🏆 Bracket" },
     { id: "highlights", label: "🎬 Highlights" },
     { id: "watch", label: "📺 Watch" },
   ];
@@ -318,13 +345,29 @@ function MatchCard({ m, tz }) {
         </div>
       )}
 
-      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
-        <span style={{ fontSize: 15, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-          📍 {m.venue}
-        </span>
-        <span style={{ fontSize: 16, fontWeight: 800, color: isUpcoming ? C.green : C.dim, whiteSpace: "nowrap" }}>
-          {isUpcoming ? `⏰ ${timeLabel(m.date, tz)}` : timeLabel(m.date, tz)}
-        </span>
+      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 10, display: "grid", gap: 8 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+          <span style={{ fontSize: 15, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            📍 {m.venue}
+          </span>
+          <span style={{ fontSize: 16, fontWeight: 800, color: isUpcoming ? C.green : C.dim, whiteSpace: "nowrap" }}>
+            {isUpcoming ? `⏰ ${timeLabel(m.date, tz)}` : timeLabel(m.date, tz)}
+          </span>
+        </div>
+        {isUpcoming && (
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+            <Countdown date={m.date} />
+            <a
+              href={calendarUrl(m)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              style={{ fontSize: 13, fontWeight: 800, color: C.dim, textDecoration: "none", whiteSpace: "nowrap" }}
+            >
+              📅 Add to calendar
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -622,6 +665,20 @@ function ResultCard({ m, tz }) {
   );
 }
 
+// Live countdown shown when kickoff is within 24 h.
+function Countdown({ date }) {
+  const now = useNow();
+  const diff = new Date(date).getTime() - now;
+  if (diff <= 0 || diff > 24 * 3600 * 1000) return null;
+  const h = Math.floor(diff / 3_600_000);
+  const m = Math.floor((diff % 3_600_000) / 60_000);
+  return (
+    <span style={{ fontSize: 13, fontWeight: 800, color: C.green }}>
+      ⏱ {h > 0 ? `${h}h ${m}m` : `${m}m`} to kickoff
+    </span>
+  );
+}
+
 // Group filter as a compact dropdown (saves the space of 13 wrapping chips).
 function GroupFilter({ groups, value, onChange }) {
   return (
@@ -808,6 +865,41 @@ function MatchesTab({ matches, tz }) {
   );
 }
 
+function TopScorers({ matches }) {
+  const scorers = useMemo(() => {
+    const map = {};
+    for (const m of matches) {
+      for (const g of m.goals || []) {
+        if (g.og) continue;
+        const team = g.side === "home" ? m.home : m.away;
+        const k = `${g.player}||${team}`;
+        if (!map[k]) map[k] = { player: g.player, team, goals: 0 };
+        map[k].goals++;
+      }
+    }
+    return Object.values(map).sort((a, b) => b.goals - a.goals || a.player.localeCompare(b.player));
+  }, [matches]);
+
+  if (!scorers.length) return <EmptyState emoji="⚽" text="Scorers will appear once goals are scored." />;
+
+  return (
+    <section style={{ marginBottom: 26 }}>
+      <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 10px" }}>⚽ Top Scorers</h2>
+      <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+        {scorers.map((s, i) => (
+          <div key={s.player + s.team} style={{ display: "flex", alignItems: "center", gap: 12, padding: "12px 14px", borderTop: i === 0 ? "none" : `1px solid ${C.border}`, background: i === 0 ? "rgba(251,191,36,0.1)" : "transparent" }}>
+            <span style={{ fontSize: 15, fontWeight: 900, color: C.gold, width: 22, textAlign: "center", flexShrink: 0 }}>{i + 1}</span>
+            <span style={{ fontSize: 24, flexShrink: 0 }}>{flag(s.team)}</span>
+            <span style={{ flex: 1, fontSize: 16, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.player}</span>
+            <span style={{ fontSize: 13, color: C.dim, whiteSpace: "nowrap" }}>{s.team}</span>
+            <span style={{ fontSize: 22, fontWeight: 900, color: C.gold, minWidth: 24, textAlign: "right" }}>{s.goals}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function StandingsTab({ matches }) {
   const standings = useMemo(() => computeStandings(matches), [matches]);
   const groups = Object.keys(standings);
@@ -822,47 +914,61 @@ function StandingsTab({ matches }) {
   const cell = { padding: "10px 8px", textAlign: "center", fontSize: 16, fontWeight: 700 };
   const head = { ...cell, fontSize: 13, color: C.dim, fontWeight: 800 };
 
+  // Qualification badge per rank (only definitive when all 3 matches played)
+  const qualBadge = (rank, groupRows) => {
+    const complete = groupRows.every((r) => r.P === 3);
+    if (!complete) return null;
+    if (rank <= 2) return <span title="Qualified" style={{ marginLeft: 6, fontSize: 13 }}>✅</span>;
+    if (rank === 3) return <span title="Possible (best 3rd)" style={{ marginLeft: 6, fontSize: 13 }}>🟡</span>;
+    return <span title="Eliminated" style={{ marginLeft: 6, fontSize: 13 }}>❌</span>;
+  };
+
   return (
     <div>
-      {groups.map((g) => (
-        <section key={g} style={{ marginBottom: 26 }}>
-          <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 10px" }}>Group {g}</h2>
-          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr style={{ background: C.card2 }}>
-                  <th style={{ ...head, textAlign: "left", paddingLeft: 14 }}>Team</th>
-                  <th style={head}>P</th>
-                  <th style={head} className="wc-hide-sm">W</th>
-                  <th style={head} className="wc-hide-sm">D</th>
-                  <th style={head} className="wc-hide-sm">L</th>
-                  <th style={head}>GD</th>
-                  <th style={{ ...head, color: C.green }}>Pts</th>
-                </tr>
-              </thead>
-              <tbody>
-                {standings[g].map((r, i) => (
-                  <tr key={r.team} style={{ borderTop: `1px solid ${C.border}`, background: i < 2 ? "rgba(34,197,94,0.06)" : "transparent" }}>
-                    <td style={{ ...cell, textAlign: "left", paddingLeft: 14 }}>
-                      <span style={{ marginRight: 8 }}>{flag(r.team)}</span>
-                      {r.team}
-                    </td>
-                    <td style={cell}>{r.P}</td>
-                    <td style={cell} className="wc-hide-sm">{r.W}</td>
-                    <td style={cell} className="wc-hide-sm">{r.D}</td>
-                    <td style={cell} className="wc-hide-sm">{r.L}</td>
-                    <td style={cell}>{r.GD > 0 ? `+${r.GD}` : r.GD}</td>
-                    <td style={{ ...cell, color: C.green, fontWeight: 900 }}>{r.Pts}</td>
+      {groups.map((g) => {
+        const rows = standings[g];
+        return (
+          <section key={g} style={{ marginBottom: 26 }}>
+            <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 10px" }}>Group {g}</h2>
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr style={{ background: C.card2 }}>
+                    <th style={{ ...head, textAlign: "left", paddingLeft: 14 }}>Team</th>
+                    <th style={head}>P</th>
+                    <th style={head} className="wc-hide-sm">W</th>
+                    <th style={head} className="wc-hide-sm">D</th>
+                    <th style={head} className="wc-hide-sm">L</th>
+                    <th style={head}>GD</th>
+                    <th style={{ ...head, color: C.green }}>Pts</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p style={{ fontSize: 13, color: C.dim, margin: "8px 2px 0" }}>
-            Top 2 (highlighted) advance · P=Played W=Won D=Draw L=Lost GD=Goal diff
-          </p>
-        </section>
-      ))}
+                </thead>
+                <tbody>
+                  {rows.map((r, i) => (
+                    <tr key={r.team} style={{ borderTop: `1px solid ${C.border}`, background: i < 2 ? "rgba(34,197,94,0.06)" : "transparent" }}>
+                      <td style={{ ...cell, textAlign: "left", paddingLeft: 14 }}>
+                        <span style={{ marginRight: 8 }}>{flag(r.team)}</span>
+                        {r.team}
+                        {qualBadge(i + 1, rows)}
+                      </td>
+                      <td style={cell}>{r.P}</td>
+                      <td style={cell} className="wc-hide-sm">{r.W}</td>
+                      <td style={cell} className="wc-hide-sm">{r.D}</td>
+                      <td style={cell} className="wc-hide-sm">{r.L}</td>
+                      <td style={cell}>{r.GD > 0 ? `+${r.GD}` : r.GD}</td>
+                      <td style={{ ...cell, color: C.green, fontWeight: 900 }}>{r.Pts}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p style={{ fontSize: 13, color: C.dim, margin: "8px 2px 0" }}>
+              Top 2 advance · ✅ Qualified · 🟡 Possible (best 3rd) · ❌ Eliminated
+            </p>
+          </section>
+        );
+      })}
+      <TopScorers matches={matches} />
     </div>
   );
 }
@@ -1160,6 +1266,84 @@ function TeamsTab({ matches, tz }) {
   );
 }
 
+const ROUND_DEFS = [
+  { label: "Round of 32", count: 16 },
+  { label: "Round of 16", count: 8 },
+  { label: "Quarter-finals", count: 4 },
+  { label: "Semi-finals", count: 2 },
+  { label: "3rd Place Play-off", count: 1 },
+  { label: "🏆 Final", count: 1 },
+];
+
+function BracketMatchCard({ m, tz }) {
+  const hasScore = m.homeScore != null && m.awayScore != null;
+  const homeWin = hasScore && m.status === "FT" && m.homeScore > m.awayScore;
+  const awayWin = hasScore && m.status === "FT" && m.awayScore > m.homeScore;
+  const s = STATUS[m.status] || STATUS.NS;
+  const isKnown = (name) => FLAGS[name] != null;
+
+  const teamRow = (team, score, win) => (
+    <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 12px" }}>
+      <span style={{ fontSize: 20, flexShrink: 0 }}>{flag(team)}</span>
+      <span style={{ flex: 1, fontSize: 15, fontWeight: win ? 900 : 700, color: win ? C.gold : isKnown(team) ? C.text : C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+        {team}
+      </span>
+      {hasScore && (
+        <span style={{ fontSize: 20, fontWeight: 900, color: win ? C.gold : C.text, minWidth: 20, textAlign: "right", flexShrink: 0 }}>
+          {score}
+        </span>
+      )}
+    </div>
+  );
+
+  return (
+    <div style={{ background: C.card, border: `1px solid ${s.live ? "rgba(239,68,68,0.45)" : C.border}`, borderRadius: 10, overflow: "hidden", marginBottom: 8 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "5px 12px", background: C.card2, borderBottom: `1px solid ${C.border}` }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: C.dim }}>{dayHeader(m.date, tz)} · {timeLabel(m.date, tz)}</span>
+        <span className={s.live ? "wc-live" : undefined} style={{ fontSize: 11, fontWeight: 800, color: s.color }}>
+          {s.live ? "🔴 " : ""}{s.label}{s.live && m.clock ? ` ${m.clock}` : ""}
+        </span>
+      </div>
+      <div style={{ borderBottom: `1px solid ${C.border}` }}>{teamRow(m.home, m.homeScore, homeWin)}</div>
+      {teamRow(m.away, m.awayScore, awayWin)}
+    </div>
+  );
+}
+
+function BracketTab({ matches, tz }) {
+  const knockout = useMemo(
+    () => [...matches.filter((m) => !m.group)].sort((a, b) => new Date(a.date) - new Date(b.date)),
+    [matches]
+  );
+
+  if (!knockout.length) {
+    return <EmptyState emoji="🏆" text="Knockout matches will appear here once the group stage is complete." />;
+  }
+
+  const rounds = [];
+  let offset = 0;
+  for (const { label, count } of ROUND_DEFS) {
+    const rMatches = knockout.slice(offset, offset + count);
+    if (rMatches.length) rounds.push({ label, matches: rMatches });
+    offset += count;
+  }
+
+  return (
+    <div>
+      {rounds.map(({ label, matches: rMatches }) => (
+        <section key={label} style={{ marginBottom: 28 }}>
+          <h2 style={{ fontSize: 19, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>{label}</h2>
+          <div style={{ display: "grid", gridTemplateColumns: rMatches.length >= 4 ? "repeat(auto-fill, minmax(280px, 1fr))" : "1fr", gap: 0 }}>
+            {rMatches.map((m) => (
+              <BracketMatchCard key={m.id} m={m} tz={tz} />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
 function EmptyState({ emoji, text }) {
   return (
     <div style={{ textAlign: "center", padding: "48px 16px", color: C.dim }}>
@@ -1206,6 +1390,8 @@ export default function App() {
           <ScheduleTab matches={matches} tz={tz} />
         ) : tab === "standings" ? (
           <StandingsTab matches={matches} />
+        ) : tab === "bracket" ? (
+          <BracketTab matches={matches} tz={tz} />
         ) : tab === "highlights" ? (
           <HighlightsTab matches={matches} tz={tz} />
         ) : (
