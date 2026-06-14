@@ -607,9 +607,9 @@
       "group": "F",
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "88'",
+      "clock": "90'+1'",
       "goals": [
         {
           "side": "home",
@@ -631,6 +631,13 @@
           "minute": "64'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "D. Kamada",
+          "minute": "88'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -645,17 +652,23 @@
           "player": "M. Depay",
           "minute": "83'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "M. van de Ven",
+          "minute": "90'+1'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "59.8",
+        "possessionPct": "59.7",
         "shotsOnTarget": "6",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "40.2",
-        "shotsOnTarget": "2",
-        "totalShots": "8"
+        "possessionPct": "40.3",
+        "shotsOnTarget": "3",
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -2258,6 +2271,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T21:48:20.813Z",
+  "lastUpdated": "2026-06-14T21:50:30.107Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
