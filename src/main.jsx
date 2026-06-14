@@ -208,6 +208,7 @@ function Header({ lastUpdated, tz, setTz }) {
 function Tabs({ tab, setTab }) {
   const items = [
     { id: "matches", label: "📅 Matches" },
+    { id: "teams", label: "🏴 Teams" },
     { id: "schedule", label: "🗓️ Schedule" },
     { id: "standings", label: "📊 Standings" },
     { id: "highlights", label: "🎬 Highlights" },
@@ -799,6 +800,153 @@ function WatchTab() {
   );
 }
 
+function TeamDetail({ team, matches, tz, onBack }) {
+  const teamMatches = useMemo(
+    () => [...matches.filter((m) => m.home === team || m.away === team)].sort((a, b) => new Date(a.date) - new Date(b.date)),
+    [team, matches]
+  );
+  const group = teamMatches.find((m) => m.group)?.group;
+  const standings = useMemo(() => computeStandings(matches), [matches]);
+  const groupTable = group ? (standings[group] || []) : [];
+  const anyPlayed = groupTable.some((r) => r.P > 0);
+
+  const cell = { padding: "9px 7px", textAlign: "center", fontSize: 15, fontWeight: 700 };
+  const head = { ...cell, fontSize: 12, color: C.dim, fontWeight: 800 };
+
+  return (
+    <div>
+      <button
+        onClick={onBack}
+        className="wc-btn"
+        style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 15, fontWeight: 800, color: C.text, background: C.card, border: `1px solid ${C.border}`, borderRadius: 999, padding: "9px 16px", marginBottom: 18, cursor: "pointer" }}
+      >
+        ← All Teams
+      </button>
+
+      <div style={{ textAlign: "center", padding: "8px 0 22px" }}>
+        <div style={{ fontSize: 72, lineHeight: 1.1 }}>{flag(team)}</div>
+        <h2 style={{ fontSize: 28, fontWeight: 900, margin: "10px 0 4px" }}>{team}</h2>
+        {group && <span style={{ fontSize: 15, fontWeight: 700, color: C.dim }}>Group {group}</span>}
+      </div>
+
+      {group && groupTable.length > 0 && (
+        <section style={{ marginBottom: 26 }}>
+          <h3 style={{ fontSize: 17, fontWeight: 900, color: C.gold, margin: "0 0 10px" }}>Group {group} Standings</h3>
+          {anyPlayed ? (
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr style={{ background: C.card2 }}>
+                    <th style={{ ...head, textAlign: "left", paddingLeft: 12 }}>Team</th>
+                    <th style={head}>P</th>
+                    <th style={head} className="wc-hide-sm">W</th>
+                    <th style={head} className="wc-hide-sm">D</th>
+                    <th style={head} className="wc-hide-sm">L</th>
+                    <th style={head}>GD</th>
+                    <th style={{ ...head, color: C.green }}>Pts</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {groupTable.map((r, i) => {
+                    const isMe = r.team === team;
+                    return (
+                      <tr key={r.team} style={{ borderTop: `1px solid ${C.border}`, background: isMe ? "rgba(34,197,94,0.14)" : i < 2 ? "rgba(34,197,94,0.05)" : "transparent" }}>
+                        <td style={{ ...cell, textAlign: "left", paddingLeft: 12, fontWeight: isMe ? 900 : 700, color: isMe ? C.green : C.text }}>
+                          <span style={{ marginRight: 7 }}>{flag(r.team)}</span>{r.team}
+                          {i < 2 && <span style={{ marginLeft: 7, fontSize: 11, color: C.green }}>✓ADV</span>}
+                        </td>
+                        <td style={{ ...cell, fontWeight: isMe ? 900 : 700 }}>{r.P}</td>
+                        <td style={{ ...cell }} className="wc-hide-sm">{r.W}</td>
+                        <td style={{ ...cell }} className="wc-hide-sm">{r.D}</td>
+                        <td style={{ ...cell }} className="wc-hide-sm">{r.L}</td>
+                        <td style={{ ...cell }}>{r.GD > 0 ? `+${r.GD}` : r.GD}</td>
+                        <td style={{ ...cell, color: C.green, fontWeight: 900 }}>{r.Pts}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p style={{ fontSize: 15, color: C.dim, margin: 0 }}>Standings will appear once group matches kick off.</p>
+          )}
+        </section>
+      )}
+
+      <section>
+        <h3 style={{ fontSize: 17, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>Fixtures &amp; Results</h3>
+        {teamMatches.length === 0 && <p style={{ fontSize: 15, color: C.dim }}>No fixtures found.</p>}
+        {teamMatches.map((m) =>
+          m.status === "LIVE" || m.status === "HT" ? (
+            <LiveCard key={m.id} m={m} tz={tz} />
+          ) : m.status === "FT" ? (
+            <ResultCard key={m.id} m={m} tz={tz} />
+          ) : (
+            <MatchCard key={m.id} m={m} tz={tz} />
+          )
+        )}
+      </section>
+    </div>
+  );
+}
+
+function TeamsTab({ matches, tz }) {
+  const [selectedTeam, setSelectedTeam] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const allTeams = useMemo(() => {
+    const set = new Set();
+    for (const m of matches) { set.add(m.home); set.add(m.away); }
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }, [matches]);
+
+  const filtered = search
+    ? allTeams.filter((t) => t.toLowerCase().includes(search.toLowerCase()))
+    : allTeams;
+
+  if (selectedTeam) {
+    return <TeamDetail team={selectedTeam} matches={matches} tz={tz} onBack={() => setSelectedTeam(null)} />;
+  }
+
+  return (
+    <div>
+      <input
+        type="search"
+        placeholder="Search team…"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          width: "100%", boxSizing: "border-box", fontSize: 17, fontWeight: 600,
+          color: C.text, background: C.card, border: `2px solid ${C.border}`,
+          borderRadius: 12, padding: "12px 14px", marginBottom: 16, outline: "none",
+        }}
+      />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 10 }}>
+        {filtered.map((team) => (
+          <button
+            key={team}
+            onClick={() => setSelectedTeam(team)}
+            className="wc-btn"
+            style={{
+              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+              gap: 8, padding: "16px 10px", background: C.card, border: `1px solid ${C.border}`,
+              borderRadius: 14, cursor: "pointer", color: C.text, textAlign: "center",
+            }}
+          >
+            <span style={{ fontSize: 42, lineHeight: 1 }}>{flag(team)}</span>
+            <span style={{ fontSize: 14, fontWeight: 700, lineHeight: 1.3 }}>{team}</span>
+          </button>
+        ))}
+        {filtered.length === 0 && (
+          <p style={{ gridColumn: "1/-1", textAlign: "center", color: C.dim, fontSize: 16, padding: "32px 0" }}>
+            No team found for "{search}"
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function EmptyState({ emoji, text }) {
   return (
     <div style={{ textAlign: "center", padding: "48px 16px", color: C.dim }}>
@@ -839,6 +987,8 @@ export default function App() {
           <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
         ) : tab === "matches" ? (
           <MatchesTab matches={matches} tz={tz} />
+        ) : tab === "teams" ? (
+          <TeamsTab matches={matches} tz={tz} />
         ) : tab === "schedule" ? (
           <ScheduleTab matches={matches} tz={tz} />
         ) : tab === "standings" ? (
