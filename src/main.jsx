@@ -479,29 +479,24 @@ function ResultCard({ m, tz }) {
   );
 }
 
-// Group filter chips (All + each group present in the data).
-function GroupChips({ groups, value, onChange }) {
+// Group filter as a compact dropdown (saves the space of 13 wrapping chips).
+function GroupFilter({ groups, value, onChange }) {
   return (
-    <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-      {groups.map((g) => {
-        const active = value === g;
-        return (
-          <button
-            key={g}
-            className="wc-btn"
-            onClick={() => onChange(g)}
-            style={{
-              fontSize: 15, fontWeight: 800, padding: "8px 14px", borderRadius: 999,
-              border: `2px solid ${active ? C.green : C.border}`,
-              color: active ? "#06210f" : C.text,
-              background: active ? C.green : C.card,
-            }}
-          >
-            {g === "All" ? "All" : `Group ${g}`}
-          </button>
-        );
-      })}
-    </div>
+    <label style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+      <span style={{ fontSize: 16, color: C.dim, whiteSpace: "nowrap" }}>🏆 Group</span>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        style={{
+          flex: 1, fontSize: 16, fontWeight: 700, color: C.text, background: C.card,
+          border: `2px solid ${C.border}`, borderRadius: 10, padding: "11px 12px",
+        }}
+      >
+        {groups.map((g) => (
+          <option key={g} value={g}>{g === "All" ? "All groups" : `Group ${g}`}</option>
+        ))}
+      </select>
+    </label>
   );
 }
 
@@ -555,7 +550,7 @@ function ScheduleTab({ matches, tz }) {
 
   return (
     <div>
-      <GroupChips groups={groups} value={groupFilter} onChange={setGroupFilter} />
+      <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
       {sections.length === 0 && <EmptyState emoji="🗓️" text="No matches to show." />}
       {sections.map((sec) => (
         <section key={sec.key} style={{ marginBottom: 18 }}>
@@ -601,7 +596,7 @@ function MatchesTab({ matches, tz }) {
 
   return (
     <div>
-      <GroupChips groups={groups} value={groupFilter} onChange={setGroupFilter} />
+      <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
 
       {isEmpty && (
         <EmptyState emoji="📭" text="No matches to show yet." />
