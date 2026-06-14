@@ -1046,8 +1046,10 @@ function MatchesTab({ matches, tz, favTeam, predictions, onPredict, onOpenLive }
   const isFav = (m) => !!favTeam && (m.home === favTeam || m.away === favTeam);
   const todayKey = dateKey(new Date().toISOString(), tz);
 
+  // Always include LIVE/HT matches regardless of date — a late match crossing
+  // midnight would otherwise fall through every section filter.
   const todayMatches = [...filtered]
-    .filter((m) => dateKey(m.date, tz) === todayKey)
+    .filter((m) => isLive(m) || dateKey(m.date, tz) === todayKey)
     .sort((a, b) => {
       if (isFav(a) !== isFav(b)) return isFav(a) ? -1 : 1;
       const aLive = isLive(a) ? 0 : 1;
