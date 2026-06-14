@@ -682,9 +682,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "27'",
+      "clock": "29'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "S. Fofana",
+          "minute": "28'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
         "possessionPct": "59.9",
         "shotsOnTarget": "1",
@@ -2279,6 +2286,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-14T23:30:35.106Z",
+  "lastUpdated": "2026-06-14T23:32:28.416Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
