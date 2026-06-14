@@ -319,8 +319,8 @@
       "venue": "MetLife Stadium, New Jersey",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+3'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -360,12 +360,45 @@
       "away": "Scotland",
       "group": "C",
       "venue": "Gillette Stadium, Boston",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
       "clock": null,
-      "goals": [],
-      "cards": []
+      "goals": [
+        {
+          "side": "away",
+          "player": "J. McGinn",
+          "minute": "28'",
+          "pen": false,
+          "og": false
+        }
+      ],
+      "cards": [
+        {
+          "side": "home",
+          "player": "J. Bellegarde",
+          "minute": "39'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Hickey",
+          "minute": "46'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "F. Curtis",
+          "minute": "90'+1'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "K. McLean",
+          "minute": "90'+5'",
+          "type": "yellow"
+        }
+      ]
     },
     {
       "id": "b8",
@@ -383,6 +416,6 @@
       "cards": []
     }
   ],
-  "lastUpdated": "2026-06-14T00:14:56.160Z",
+  "lastUpdated": "2026-06-14T03:30:40.131Z",
   "source": "ESPN (live) · zero API tokens used"
 }

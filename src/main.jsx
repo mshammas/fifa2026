@@ -358,7 +358,7 @@ function LiveCard({ m, tz }) {
         <TeamRow team={m.away} score={hasScore ? m.awayScore : null} winner={false} />
       </div>
 
-      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 12, display: "grid", gap: 12 }}>
+      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 12, display: "grid", gap: 12, textAlign: "center" }}>
         <MatchEvents m={m} />
         <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
         <a
@@ -366,7 +366,7 @@ function LiveCard({ m, tz }) {
           href={`https://www.google.com/search?q=${watchQuery}`}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ justifySelf: "start", fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
+          style={{ justifySelf: "center", fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
         >
           ▶ Watch Live
         </a>
@@ -418,7 +418,7 @@ function ResultCard({ m, tz }) {
       </div>
 
       {open && (
-        <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 8, paddingTop: 10, display: "grid", gap: 12 }}>
+        <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 8, paddingTop: 10, display: "grid", gap: 12, textAlign: "center" }}>
           <MatchEvents m={m} />
           <div style={{ fontSize: 14, color: C.dim }}>📍 {m.venue}</div>
           <a
@@ -427,7 +427,7 @@ function ResultCard({ m, tz }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            style={{ justifySelf: "start", fontSize: 14, fontWeight: 800, color: "#fff", background: "#ff0033", borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
+            style={{ justifySelf: "center", fontSize: 14, fontWeight: 800, color: "#fff", background: "#ff0033", borderRadius: 10, padding: "9px 14px", textDecoration: "none" }}
           >
             ▶ Watch highlights
           </a>

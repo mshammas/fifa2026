@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Original soccer-ball mark (no trademarked FIFA branding) -->
+  <circle cx="32" cy="32" r="31" fill="#0e0e14"/>
+  <circle cx="32" cy="32" r="22" fill="#ffffff" stroke="#0e0e14" stroke-width="2"/>
+  <!-- seams radiating from the centre pentagon to the ball edge -->
+  <g stroke="#0e0e14" stroke-width="2.4" stroke-linecap="round" fill="none">
+    <path d="M32 22 V11"/>
+    <path d="M41.5 28.9 L50.4 22.3"/>
+    <path d="M37.9 40.1 L44.7 47.6"/>
+    <path d="M26.1 40.1 L19.3 47.6"/>
+    <path d="M22.5 28.9 L13.6 22.3"/>
+  </g>
+  <!-- centre pentagon -->
+  <polygon points="32,22 41.5,28.9 37.9,40.1 26.1,40.1 22.5,28.9" fill="#0e0e14"/>
+</svg>
