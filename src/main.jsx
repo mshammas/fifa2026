@@ -412,13 +412,13 @@ function MatchEvents({ m }) {
 
 // Side-by-side match stats bar (possession, shots, etc.) shown in expanded cards.
 const STAT_LABELS = {
-  possessionPct:  { label: "Possession", suffix: "%" },
-  totalShots:     { label: "Shots" },
-  shotsOnTarget:  { label: "Shots on Target" },
-  saves:          { label: "Saves" },
-  totalFouls:     { label: "Fouls" },
-  cornerKicks:    { label: "Corners" },
-  offsides:       { label: "Offsides" },
+  possessionPct: { label: "Possession", suffix: "%" },
+  totalShots:    { label: "Total Shots" },
+  shotsOnTarget: { label: "Shots on Target" },
+  saves:         { label: "Saves" },
+  totalFouls:    { label: "Fouls" },
+  cornerKicks:   { label: "Corners" },
+  offsides:      { label: "Offsides" },
 };
 
 function MatchStatsTable({ homeStats, awayStats }) {

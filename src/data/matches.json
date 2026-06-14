@@ -64,7 +64,17 @@
           "minute": "90'+2'",
           "type": "red"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "60.5",
+        "shotsOnTarget": "4",
+        "totalShots": "16"
+      },
+      "awayStats": {
+        "possessionPct": "39.5",
+        "shotsOnTarget": "2",
+        "totalShots": "3"
+      }
     },
     {
       "id": "e760414",
@@ -107,7 +117,17 @@
           "minute": "90'+6'",
           "type": "yellow"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "61.5",
+        "shotsOnTarget": "6",
+        "totalShots": "15"
+      },
+      "awayStats": {
+        "possessionPct": "38.5",
+        "shotsOnTarget": "4",
+        "totalShots": "7"
+      }
     },
     {
       "id": "e760416",
@@ -167,7 +187,17 @@
           "minute": "90'+3'",
           "type": "yellow"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "61.1",
+        "shotsOnTarget": "4",
+        "totalShots": "13"
+      },
+      "awayStats": {
+        "possessionPct": "38.9",
+        "shotsOnTarget": "3",
+        "totalShots": "8"
+      }
     },
     {
       "id": "e760417",
@@ -254,7 +284,17 @@
           "minute": "90'+3'",
           "type": "yellow"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "65.3",
+        "shotsOnTarget": "6",
+        "totalShots": "16"
+      },
+      "awayStats": {
+        "possessionPct": "34.7",
+        "shotsOnTarget": "1",
+        "totalShots": "9"
+      }
     },
     {
       "id": "e760420",
@@ -302,7 +342,17 @@
           "minute": "42'",
           "type": "yellow"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "32",
+        "shotsOnTarget": "3",
+        "totalShots": "6"
+      },
+      "awayStats": {
+        "possessionPct": "68",
+        "shotsOnTarget": "7",
+        "totalShots": "26"
+      }
     },
     {
       "id": "e760419",
@@ -344,7 +394,17 @@
           "minute": "43'",
           "type": "yellow"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "51.4",
+        "shotsOnTarget": "5",
+        "totalShots": "12"
+      },
+      "awayStats": {
+        "possessionPct": "48.6",
+        "shotsOnTarget": "3",
+        "totalShots": "14"
+      }
     },
     {
       "id": "e760418",
@@ -391,7 +451,17 @@
           "minute": "90'+5'",
           "type": "yellow"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "53.7",
+        "shotsOnTarget": "2",
+        "totalShots": "15"
+      },
+      "awayStats": {
+        "possessionPct": "46.3",
+        "shotsOnTarget": "2",
+        "totalShots": "9"
+      }
     },
     {
       "id": "e760421",
@@ -427,7 +497,17 @@
           "minute": "86'",
           "type": "yellow"
         }
-      ]
+      ],
+      "homeStats": {
+        "possessionPct": "28.4",
+        "shotsOnTarget": "4",
+        "totalShots": "9"
+      },
+      "awayStats": {
+        "possessionPct": "71.6",
+        "shotsOnTarget": "8",
+        "totalShots": "30"
+      }
     },
     {
       "id": "e760422",
@@ -441,7 +521,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760425",
@@ -455,7 +537,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760423",
@@ -469,7 +553,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760424",
@@ -483,7 +569,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760428",
@@ -497,7 +585,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760426",
@@ -511,7 +601,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760429",
@@ -525,7 +617,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760427",
@@ -539,7 +633,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760432",
@@ -553,7 +649,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760430",
@@ -567,7 +665,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760433",
@@ -581,7 +681,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760431",
@@ -595,7 +697,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760435",
@@ -609,7 +713,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760437",
@@ -623,7 +729,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760434",
@@ -637,7 +745,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760436",
@@ -651,7 +761,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760438",
@@ -665,7 +777,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760439",
@@ -679,7 +793,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760440",
@@ -693,7 +809,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760441",
@@ -707,7 +825,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760442",
@@ -721,7 +841,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760445",
@@ -735,7 +857,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760444",
@@ -749,7 +873,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760443",
@@ -763,7 +889,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760447",
@@ -777,7 +905,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760448",
@@ -791,7 +921,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760446",
@@ -805,7 +937,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760449",
@@ -819,7 +953,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760453",
@@ -833,7 +969,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760451",
@@ -847,7 +985,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760450",
@@ -861,7 +1001,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760452",
@@ -875,7 +1017,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760456",
@@ -889,7 +1033,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760457",
@@ -903,7 +1049,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760454",
@@ -917,7 +1065,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760455",
@@ -931,7 +1081,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760461",
@@ -945,7 +1097,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760458",
@@ -959,7 +1113,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760460",
@@ -973,7 +1129,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760459",
@@ -987,7 +1145,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760462",
@@ -1001,7 +1161,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760463",
@@ -1015,7 +1177,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760464",
@@ -1029,7 +1193,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760465",
@@ -1043,7 +1209,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760467",
@@ -1057,7 +1225,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760466",
@@ -1071,7 +1241,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760473",
@@ -1085,7 +1257,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760468",
@@ -1099,7 +1273,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760471",
@@ -1113,7 +1289,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760472",
@@ -1127,7 +1305,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760469",
@@ -1141,7 +1321,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760470",
@@ -1155,7 +1337,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760475",
@@ -1169,7 +1353,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760474",
@@ -1183,7 +1369,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760478",
@@ -1197,7 +1385,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760479",
@@ -1211,7 +1401,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760476",
@@ -1225,7 +1417,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760477",
@@ -1239,7 +1433,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760480",
@@ -1253,7 +1449,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760485",
@@ -1267,7 +1465,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760481",
@@ -1281,7 +1481,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760482",
@@ -1295,7 +1497,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760484",
@@ -1309,7 +1513,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760483",
@@ -1323,7 +1529,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760486",
@@ -1337,7 +1545,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760487",
@@ -1351,7 +1561,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760489",
@@ -1365,7 +1577,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760488",
@@ -1379,7 +1593,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760490",
@@ -1393,7 +1609,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760492",
@@ -1407,7 +1625,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760491",
@@ -1421,7 +1641,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760495",
@@ -1435,7 +1657,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760493",
@@ -1449,7 +1673,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760494",
@@ -1463,7 +1689,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760497",
@@ -1477,7 +1705,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760496",
@@ -1491,7 +1721,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760498",
@@ -1505,7 +1737,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760499",
@@ -1519,7 +1753,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760500",
@@ -1533,7 +1769,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760501",
@@ -1547,7 +1785,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760502",
@@ -1561,7 +1801,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760503",
@@ -1575,7 +1817,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760504",
@@ -1589,7 +1833,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760505",
@@ -1603,7 +1849,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760506",
@@ -1617,7 +1865,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760507",
@@ -1631,7 +1881,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760509",
@@ -1645,7 +1897,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760508",
@@ -1659,7 +1913,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760510",
@@ -1673,7 +1929,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760511",
@@ -1687,7 +1945,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760512",
@@ -1701,7 +1961,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760513",
@@ -1715,7 +1977,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760514",
@@ -1729,7 +1993,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760515",
@@ -1743,7 +2009,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760516",
@@ -1757,7 +2025,9 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     },
     {
       "id": "e760517",
@@ -1771,9 +2041,11 @@
       "status": "NS",
       "clock": null,
       "goals": [],
-      "cards": []
+      "cards": [],
+      "homeStats": null,
+      "awayStats": null
     }
   ],
-  "lastUpdated": "2026-06-14T13:15:09.018Z",
+  "lastUpdated": "2026-06-14T14:20:51.262Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
