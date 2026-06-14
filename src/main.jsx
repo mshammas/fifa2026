@@ -669,13 +669,27 @@ function LiveMatchModal({ m, onClose }) {
     return () => clearInterval(t);
   }, []);
 
-  // Lock body scroll while open.
+  // Request native fullscreen (Android Chrome / desktop). iOS Safari silently ignores.
+  useEffect(() => {
+    const el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+    // Back-button on Android or Esc on desktop exits fullscreen → close modal.
+    const onFs = () => { if (!document.fullscreenElement) onClose(); };
+    document.addEventListener("fullscreenchange", onFs);
+    return () => {
+      // Remove listener BEFORE calling exitFullscreen so its event doesn't re-trigger onClose.
+      document.removeEventListener("fullscreenchange", onFs);
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    };
+  }, []);
+
+  // Lock body scroll (fallback for iOS where fullscreen API is unavailable).
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
   }, []);
 
-  // Escape to close.
+  // Escape to close on desktop.
   useEffect(() => {
     const fn = (e) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", fn);
