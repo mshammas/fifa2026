@@ -516,10 +516,10 @@
       "away": "Curaçao",
       "group": "E",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "46'",
+      "clock": "49'",
       "goals": [
         {
           "side": "home",
@@ -548,16 +548,23 @@
           "minute": "45'+5'",
           "pen": true,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "J. Musiala",
+          "minute": "47'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "70.4",
-        "shotsOnTarget": "6",
-        "totalShots": "16"
+        "possessionPct": "71.5",
+        "shotsOnTarget": "7",
+        "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "29.6",
+        "possessionPct": "28.5",
         "shotsOnTarget": "2",
         "totalShots": "4"
       }
@@ -2083,6 +2090,6 @@
       "awayStats": null
     }
   ],
-  "lastUpdated": "2026-06-14T18:10:41.851Z",
+  "lastUpdated": "2026-06-14T18:12:20.726Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
