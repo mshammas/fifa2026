@@ -168,6 +168,10 @@ function GlobalStyles() {
         body { font-size: 17px; }
         .wc-hide-sm { display: none !important; }
       }
+      @keyframes wcFabPop {
+        from { transform: scale(0.4) translateY(8px); opacity: 0; }
+        to   { transform: scale(1)   translateY(0);   opacity: 1; }
+      }
     `}</style>
   );
 }
@@ -1340,6 +1344,87 @@ function BracketTab({ matches, tz }) {
   );
 }
 
+const WA_FEEDBACK_URL =
+  "https://wa.me/919845158656?text=" +
+  encodeURIComponent("Feedback / suggestion for fifa.shammas.in:\n\n");
+
+function FloatingActions({ onRefresh }) {
+  const [open, setOpen] = useState(false);
+  const timerRef = React.useRef(null);
+  const firedRef = React.useRef(false);
+
+  const startPress = () => {
+    firedRef.current = false;
+    timerRef.current = setTimeout(() => {
+      firedRef.current = true;
+      setOpen(true);
+    }, 500);
+  };
+
+  const endPress = () => {
+    clearTimeout(timerRef.current);
+    if (!firedRef.current) onRefresh();
+  };
+
+  const cancelPress = () => {
+    clearTimeout(timerRef.current);
+    firedRef.current = true;
+  };
+
+  const actions = [
+    { label: "💬", title: "Send WhatsApp feedback", href: WA_FEEDBACK_URL, bg: "#25D366", color: "#fff" },
+  ];
+
+  return (
+    <>
+      {open && <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 49 }} />}
+      <div style={{ position: "fixed", right: 18, bottom: 18, zIndex: 50, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+        {open && actions.map((a) => (
+          <a
+            key={a.label}
+            href={a.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={a.title}
+            onClick={() => setOpen(false)}
+            style={{
+              width: 50, height: 50, borderRadius: "50%", background: a.bg, color: a.color,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 22, textDecoration: "none",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.45)",
+              animation: "wcFabPop 0.18s ease",
+            }}
+          >
+            {a.label}
+          </a>
+        ))}
+        <button
+          onTouchStart={startPress}
+          onTouchEnd={endPress}
+          onTouchMove={cancelPress}
+          onMouseDown={startPress}
+          onMouseUp={endPress}
+          onMouseLeave={cancelPress}
+          aria-label={open ? "Close menu" : "Refresh · hold for more"}
+          title="Tap to refresh · Hold for more options"
+          className="wc-btn"
+          style={{
+            width: 56, height: 56, borderRadius: "50%", border: "none",
+            background: open ? "#334155" : C.green,
+            color: open ? C.text : "#06210f",
+            fontSize: open ? 20 : 26, fontWeight: 900,
+            boxShadow: "0 6px 22px rgba(0,0,0,0.55)",
+            cursor: "pointer", lineHeight: 1,
+            transition: "background 0.2s, color 0.2s",
+          }}
+        >
+          {open ? "✕" : "↻"}
+        </button>
+      </div>
+    </>
+  );
+}
+
 function EmptyState({ emoji, text }) {
   return (
     <div style={{ textAlign: "center", padding: "48px 16px", color: C.dim }}>
@@ -1395,20 +1480,7 @@ export default function App() {
         <Footer source={matchesData.source} />
       </div>
 
-      {/* Floating quick-refresh — handy when scrolled deep into the schedule. */}
-      <button
-        onClick={onRefresh}
-        aria-label="Refresh scores"
-        title="Refresh"
-        className="wc-btn"
-        style={{
-          position: "fixed", right: 18, bottom: 18, width: 56, height: 56, borderRadius: "50%",
-          border: "none", background: C.green, color: "#06210f", fontSize: 26, fontWeight: 900,
-          boxShadow: "0 6px 22px rgba(0,0,0,0.55)", cursor: "pointer", zIndex: 50, lineHeight: 1,
-        }}
-      >
-        ↻
-      </button>
+      <FloatingActions onRefresh={onRefresh} />
     </div>
   );
 }
