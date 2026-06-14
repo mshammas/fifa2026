@@ -1405,6 +1405,7 @@ function FloatingActions({ onRefresh }) {
           onMouseDown={startPress}
           onMouseUp={endPress}
           onMouseLeave={cancelPress}
+          onContextMenu={(e) => e.preventDefault()}
           aria-label={open ? "Close menu" : "Refresh · hold for more"}
           title="Tap to refresh · Hold for more options"
           className="wc-btn"
@@ -1416,6 +1417,8 @@ function FloatingActions({ onRefresh }) {
             boxShadow: "0 6px 22px rgba(0,0,0,0.55)",
             cursor: "pointer", lineHeight: 1,
             transition: "background 0.2s, color 0.2s",
+            userSelect: "none", WebkitUserSelect: "none",
+            WebkitTouchCallout: "none",
           }}
         >
           {open ? "✕" : "↻"}
