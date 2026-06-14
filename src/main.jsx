@@ -386,7 +386,7 @@ function MatchCard({ m, tz, isFav, prediction, onPredict }) {
       )}
 
       <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 10, display: "grid", gap: 8 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, overflow: "hidden" }}>
           <span style={{ fontSize: 15, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1, minWidth: 0 }}>
             📍 {m.venue}
           </span>
