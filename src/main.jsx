@@ -25,6 +25,17 @@ const FLAGS = {
 };
 const flag = (team) => FLAGS[team] || "⚽";
 
+function useLocalStorage(key, init) {
+  const [val, setVal] = useState(() => {
+    try { return JSON.parse(localStorage.getItem(key)) ?? init; } catch { return init; }
+  });
+  const save = (v) => {
+    setVal(v);
+    try { localStorage.setItem(key, JSON.stringify(v)); } catch {}
+  };
+  return [val, save];
+}
+
 // Shared "now" hook — updates every 30 s (enough for countdowns).
 function useNow() {
   const [now, setNow] = useState(() => Date.now());
@@ -240,6 +251,34 @@ function Header({ lastUpdated, tz, setTz }) {
   );
 }
 
+function LiveNowBanner({ matches, onGoToMatches }) {
+  const live = matches.filter((m) => m.status === "LIVE" || m.status === "HT");
+  if (!live.length) return null;
+  const m = live[0];
+  const score = m.homeScore != null ? `${m.homeScore}–${m.awayScore}` : "";
+  const clock = m.status === "HT" ? " · HT" : m.clock ? ` · ${m.clock}` : "";
+  const extra = live.length > 1 ? ` +${live.length - 1} more` : "";
+  return (
+    <div
+      onClick={onGoToMatches}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === "Enter") onGoToMatches(); }}
+      style={{
+        background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.35)",
+        borderRadius: 10, padding: "10px 14px", marginBottom: 14,
+        cursor: "pointer", display: "flex", alignItems: "center", gap: 10,
+      }}
+    >
+      <span className="wc-live" style={{ color: "#ef4444", fontSize: 12, fontWeight: 900, flexShrink: 0 }}>🔴 LIVE</span>
+      <span style={{ flex: 1, fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+        {flag(m.home)} {m.home} {score} {m.away} {flag(m.away)}{clock}{extra}
+      </span>
+      <span style={{ fontSize: 13, color: C.dim, flexShrink: 0 }}>→</span>
+    </div>
+  );
+}
+
 function Tabs({ tab, setTab }) {
   const items = [
     { id: "matches", label: "📅 Matches" },
@@ -315,7 +354,7 @@ function TeamRow({ team, score, winner }) {
   );
 }
 
-function MatchCard({ m, tz }) {
+function MatchCard({ m, tz, isFav, prediction, onPredict }) {
   const isUpcoming = m.status === "NS";
   const hasScore = m.homeScore != null && m.awayScore != null;
   const homeWin = hasScore && m.status === "FT" && m.homeScore > m.awayScore;
@@ -324,8 +363,9 @@ function MatchCard({ m, tz }) {
     <div
       className="wc-card"
       style={{
-        background: C.card, border: `1px solid ${C.border}`, borderRadius: 14,
-        padding: 16, marginBottom: 12,
+        background: isFav ? "rgba(251,191,36,0.04)" : C.card,
+        border: isFav ? `1px solid rgba(251,191,36,0.45)` : `1px solid ${C.border}`,
+        borderRadius: 14, padding: 16, marginBottom: 12,
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
@@ -370,6 +410,9 @@ function MatchCard({ m, tz }) {
               📅 Add to calendar
             </a>
           </div>
+        )}
+        {isUpcoming && onPredict && (
+          <PredictRow matchId={m.id} home={m.home} away={m.away} prediction={prediction} onPredict={onPredict} />
         )}
       </div>
     </div>
@@ -454,6 +497,18 @@ function MatchEvents({ m }) {
       {cards.length > 0 && <EventSection icon="🟨" iconBg="rgba(251,191,36,0.15)" title="Cards" rows={cardRows} />}
     </div>
   );
+}
+
+// Evaluate a score prediction against a finished match result.
+function evalPrediction(pred, m) {
+  if (!pred || m.homeScore == null || m.awayScore == null || m.status !== "FT") return null;
+  if (pred.h === m.homeScore && pred.a === m.awayScore)
+    return { icon: "✅", label: "Perfect!", pts: 2, color: C.green };
+  const predRes = pred.h > pred.a ? 1 : pred.h < pred.a ? -1 : 0;
+  const actRes  = m.homeScore > m.awayScore ? 1 : m.homeScore < m.awayScore ? -1 : 0;
+  if (predRes === actRes)
+    return { icon: "🎯", label: "Right result", pts: 1, color: C.gold };
+  return { icon: "❌", label: "Wrong", pts: 0, color: C.red };
 }
 
 // Side-by-side match stats bar (possession, shots, etc.) shown in expanded cards.
@@ -558,12 +613,51 @@ function ShareButton({ m }) {
   );
 }
 
+// Toasts for score changes detected since last visit.
+function GoalToast({ alerts }) {
+  const [idx, setIdx] = useState(0);
+  const [show, setShow] = useState(true);
+
+  const next = () => { setShow(false); setTimeout(() => { setIdx((i) => i + 1); setShow(true); }, 240); };
+
+  useEffect(() => {
+    if (idx >= alerts.length) return;
+    const t = setTimeout(next, 4500);
+    return () => clearTimeout(t);
+  }, [idx, alerts.length]);
+
+  if (!alerts.length || idx >= alerts.length) return null;
+  const a = alerts[idx];
+
+  return (
+    <div style={{
+      position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)",
+      zIndex: 200, width: "min(360px, 92vw)",
+      background: C.card2, border: `1px solid rgba(34,197,94,0.5)`,
+      borderRadius: 14, padding: "12px 14px",
+      boxShadow: "0 8px 32px rgba(0,0,0,0.7)",
+      opacity: show ? 1 : 0, transition: "opacity 0.22s",
+      display: "flex", alignItems: "center", gap: 10,
+    }}>
+      <span style={{ fontSize: 26, flexShrink: 0 }}>⚽</span>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 11, fontWeight: 900, color: C.green, letterSpacing: 0.8, marginBottom: 2 }}>{a.headline}</div>
+        <div style={{ fontSize: 15, fontWeight: 800, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {flag(a.home)} {a.home} {a.homeScore}–{a.awayScore} {a.away} {flag(a.away)}
+        </div>
+      </div>
+      {alerts.length > 1 && <span style={{ fontSize: 12, color: C.dim, flexShrink: 0 }}>{idx + 1}/{alerts.length}</span>}
+      <button onClick={next} style={{ background: "none", border: "none", color: C.dim, fontSize: 18, cursor: "pointer", flexShrink: 0, padding: "0 2px" }}>✕</button>
+    </div>
+  );
+}
+
 // Full live-match card: score, live minute, goals/cards so far, and a watch link.
-function LiveCard({ m, tz }) {
+function LiveCard({ m, tz, isFav }) {
   const hasScore = m.homeScore != null && m.awayScore != null;
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
   return (
-    <div className="wc-card" style={{ background: C.card, border: "1px solid rgba(239,68,68,0.45)", borderRadius: 14, padding: 16, marginBottom: 12 }}>
+    <div className="wc-card" style={{ background: isFav ? "rgba(251,191,36,0.04)" : C.card, border: isFav ? "1px solid rgba(251,191,36,0.5)" : "1px solid rgba(239,68,68,0.45)", borderRadius: 14, padding: 16, marginBottom: 12 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>Group {m.group}</span>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -597,12 +691,13 @@ function LiveCard({ m, tz }) {
 
 // Compact, collapsible card for finished matches: score + time when closed;
 // tap to reveal goal scorers, cards, venue, and a highlights link.
-function ResultCard({ m, tz }) {
+function ResultCard({ m, tz, isFav, prediction }) {
   const [open, setOpen] = useState(false);
   const homeWin = m.homeScore > m.awayScore;
   const awayWin = m.awayScore > m.homeScore;
   const hlQuery = encodeURIComponent(`${m.home} vs ${m.away} World Cup 2026 highlights`);
   const summary = resultSummary(m);
+  const predResult = evalPrediction(prediction, m);
 
   const teamLine = (team, score, win) => (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
@@ -622,7 +717,7 @@ function ResultCard({ m, tz }) {
       aria-expanded={open}
       onClick={() => setOpen((v) => !v)}
       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setOpen((v) => !v); } }}
-      style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "10px 14px", marginBottom: 8, cursor: "pointer" }}
+      style={{ background: isFav ? "rgba(251,191,36,0.04)" : C.card, border: isFav ? `1px solid rgba(251,191,36,0.45)` : `1px solid ${C.border}`, borderRadius: 12, padding: "10px 14px", marginBottom: 8, cursor: "pointer" }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <span style={{ fontSize: 13, fontWeight: 700, color: C.dim }}>Group {m.group} · FT</span>
@@ -640,6 +735,12 @@ function ResultCard({ m, tz }) {
       {summary && (
         <div style={{ textAlign: "center", fontSize: 14, fontWeight: 700, color: C.gold, marginTop: 8 }}>
           {summary.icon} {summary.text}
+        </div>
+      )}
+
+      {predResult && (
+        <div style={{ textAlign: "center", fontSize: 13, fontWeight: 800, color: predResult.color, marginTop: 6 }}>
+          {predResult.icon} {predResult.label} · Your pick: {prediction.h}–{prediction.a}
         </div>
       )}
 
@@ -679,6 +780,54 @@ function Countdown({ date }) {
     <span style={{ fontSize: 13, fontWeight: 800, color: C.green }}>
       ⏱ {h > 0 ? `${h}h ${m}m` : `${m}m`} to kickoff
     </span>
+  );
+}
+
+// +/- stepper used in the score predictor.
+function Stepper({ value, onChange }) {
+  const btn = {
+    width: 30, height: 30, borderRadius: 7, border: `1px solid ${C.border}`,
+    background: C.card2, color: C.text, fontSize: 18, fontWeight: 900,
+    cursor: "pointer", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+  };
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+      <button style={btn} onClick={(e) => { e.stopPropagation(); onChange(-1); }}>−</button>
+      <span style={{ minWidth: 22, textAlign: "center", fontSize: 17, fontWeight: 900 }}>{value}</span>
+      <button style={btn} onClick={(e) => { e.stopPropagation(); onChange(1); }}>+</button>
+    </div>
+  );
+}
+
+function PredictRow({ matchId, home, away, prediction, onPredict }) {
+  const [open, setOpen] = useState(!!prediction);
+  const h = prediction?.h ?? 0;
+  const a = prediction?.a ?? 0;
+
+  if (!open) {
+    return (
+      <button
+        onClick={(e) => { e.stopPropagation(); setOpen(true); if (!prediction) onPredict(matchId, { h: 0, a: 0 }); }}
+        style={{ fontSize: 13, fontWeight: 800, color: C.dim, background: "none", border: `1px solid ${C.border}`, borderRadius: 8, padding: "5px 10px", cursor: "pointer" }}
+      >
+        🔮 Predict score
+      </button>
+    );
+  }
+
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 7, flexWrap: "wrap" }}>
+      <span style={{ fontSize: 13, fontWeight: 800, color: C.dim, flexShrink: 0 }}>🔮</span>
+      <span style={{ fontSize: 12, color: C.dim, maxWidth: 64, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{home}</span>
+      <Stepper value={h} onChange={(d) => onPredict(matchId, { h: Math.max(0, h + d), a })} />
+      <span style={{ color: C.dim, fontWeight: 700, flexShrink: 0 }}>–</span>
+      <Stepper value={a} onChange={(d) => onPredict(matchId, { h, a: Math.max(0, a + d) })} />
+      <span style={{ fontSize: 12, color: C.dim, maxWidth: 64, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{away}</span>
+      <button
+        onClick={(e) => { e.stopPropagation(); onPredict(matchId, null); setOpen(false); }}
+        style={{ marginLeft: "auto", background: "none", border: "none", color: C.dim, fontSize: 15, cursor: "pointer", padding: "0 2px" }}
+      >✕</button>
+    </div>
   );
 }
 
@@ -767,21 +916,19 @@ function ScheduleTab({ matches, tz }) {
   );
 }
 
-function MatchesTab({ matches, tz }) {
+function MatchesTab({ matches, tz, favTeam, predictions, onPredict }) {
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
   const [groupFilter, setGroupFilter] = useState("All");
 
   const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
-
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
-
+  const isFav = (m) => !!favTeam && (m.home === favTeam || m.away === favTeam);
   const todayKey = dateKey(new Date().toISOString(), tz);
 
-  // Split into today / past-results / future-upcoming
   const todayMatches = [...filtered]
     .filter((m) => dateKey(m.date, tz) === todayKey)
     .sort((a, b) => {
-      // Live first, then by kickoff time
+      if (isFav(a) !== isFav(b)) return isFav(a) ? -1 : 1;
       const aLive = isLive(a) ? 0 : 1;
       const bLive = isLive(b) ? 0 : 1;
       if (aLive !== bLive) return aLive - bLive;
@@ -799,40 +946,56 @@ function MatchesTab({ matches, tz }) {
       if (k !== key) { key = k; out.push({ key: k, label: dayHeader(m.date, tz), items: [] }); }
       out[out.length - 1].items.push(m);
     }
+    if (favTeam) {
+      for (const sec of out) sec.items.sort((a, b) => (isFav(a) ? 0 : 1) - (isFav(b) ? 0 : 1));
+    }
     return out;
   };
 
-  const resultSections = daySections(
-    filtered.filter((m) => m.status === "FT" && dateKey(m.date, tz) !== todayKey), true
-  );
-  const upcomingSections = daySections(
-    filtered.filter((m) => !isLive(m) && m.status !== "FT" && dateKey(m.date, tz) !== todayKey), false
-  );
-
+  const resultSections = daySections(filtered.filter((m) => m.status === "FT" && dateKey(m.date, tz) !== todayKey), true);
+  const upcomingSections = daySections(filtered.filter((m) => !isLive(m) && m.status !== "FT" && dateKey(m.date, tz) !== todayKey), false);
   const isEmpty = !todayMatches.length && !resultSections.length && !upcomingSections.length;
-
   const todayLabel = dayHeader(new Date().toISOString(), tz);
+
+  // Prediction tally across all matches
+  const tally = useMemo(() => {
+    let perfect = 0, right = 0, wrong = 0, pending = 0;
+    for (const m of matches) {
+      const pred = predictions[m.id];
+      if (!pred) continue;
+      const r = evalPrediction(pred, m);
+      if (!r) { pending++; continue; }
+      if (r.pts === 2) perfect++;
+      else if (r.pts === 1) right++;
+      else wrong++;
+    }
+    return { perfect, right, wrong, pending, total: perfect + right + wrong + pending };
+  }, [matches, predictions]);
 
   return (
     <div>
       <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
 
+      {tally.total > 0 && (
+        <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 18, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <span style={{ fontSize: 14, fontWeight: 900, color: C.dim }}>🔮 Predictions</span>
+          {tally.perfect > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.green }}>✅ {tally.perfect} perfect</span>}
+          {tally.right > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.gold }}>🎯 {tally.right} right</span>}
+          {tally.wrong > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.red }}>❌ {tally.wrong} wrong</span>}
+          {tally.pending > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.dim }}>⏳ {tally.pending} pending</span>}
+        </div>
+      )}
+
       {isEmpty && <EmptyState emoji="📭" text="No matches to show yet." />}
 
       {todayMatches.length > 0 && (
         <section style={{ marginBottom: 26 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.green, margin: "0 0 4px" }}>
-            📅 Today
-          </h2>
+          <h2 style={{ fontSize: 20, fontWeight: 900, color: C.green, margin: "0 0 4px" }}>📅 Today</h2>
           <p style={{ fontSize: 14, color: C.dim, margin: "0 0 14px" }}>{todayLabel}</p>
           {todayMatches.map((m) =>
-            isLive(m) ? (
-              <LiveCard key={m.id} m={m} tz={tz} />
-            ) : m.status === "FT" ? (
-              <ResultCard key={m.id} m={m} tz={tz} />
-            ) : (
-              <MatchCard key={m.id} m={m} tz={tz} />
-            )
+            isLive(m) ? <LiveCard key={m.id} m={m} tz={tz} isFav={isFav(m)} />
+            : m.status === "FT" ? <ResultCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} />
+            : <MatchCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onPredict={onPredict} />
           )}
         </section>
       )}
@@ -843,9 +1006,7 @@ function MatchesTab({ matches, tz }) {
           {resultSections.map((sec) => (
             <section key={sec.key} style={{ marginBottom: 18 }}>
               <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
-              {sec.items.map((m) => (
-                <ResultCard key={m.id} m={m} tz={tz} />
-              ))}
+              {sec.items.map((m) => <ResultCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} />)}
             </section>
           ))}
         </div>
@@ -857,9 +1018,7 @@ function MatchesTab({ matches, tz }) {
           {upcomingSections.map((sec) => (
             <section key={sec.key} style={{ marginBottom: 18 }}>
               <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
-              {sec.items.map((m) => (
-                <MatchCard key={m.id} m={m} tz={tz} />
-              ))}
+              {sec.items.map((m) => <MatchCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onPredict={onPredict} />)}
             </section>
           ))}
         </div>
@@ -1053,7 +1212,7 @@ function WatchTab({ matches, tz }) {
   );
 }
 
-function TeamDetail({ team, matches, tz, onBack }) {
+function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, predictions, onPredict }) {
   const teamMatches = useMemo(
     () => [...matches.filter((m) => m.home === team || m.away === team)].sort((a, b) => new Date(a.date) - new Date(b.date)),
     [team, matches]
@@ -1078,7 +1237,16 @@ function TeamDetail({ team, matches, tz, onBack }) {
 
       <div style={{ textAlign: "center", padding: "8px 0 22px" }}>
         <div style={{ fontSize: 72, lineHeight: 1.1 }}>{flag(team)}</div>
-        <h2 style={{ fontSize: 28, fontWeight: 900, margin: "10px 0 4px" }}>{team}</h2>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, margin: "10px 0 4px" }}>
+          <h2 style={{ fontSize: 28, fontWeight: 900, margin: 0 }}>{team}</h2>
+          <button
+            onClick={() => setFavTeam(favTeam === team ? null : team)}
+            title={favTeam === team ? "Remove favourite" : "Set as favourite team"}
+            style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", padding: 0, lineHeight: 1 }}
+          >
+            {favTeam === team ? "⭐" : "☆"}
+          </button>
+        </div>
         {group && <span style={{ fontSize: 15, fontWeight: 700, color: C.dim }}>Group {group}</span>}
       </div>
 
@@ -1196,9 +1364,9 @@ function TeamDetail({ team, matches, tz, onBack }) {
                 m.status === "LIVE" || m.status === "HT" ? (
                   <LiveCard key={m.id} m={m} tz={tz} />
                 ) : m.status === "FT" ? (
-                  <ResultCard key={m.id} m={m} tz={tz} />
+                  <ResultCard key={m.id} m={m} tz={tz} prediction={predictions?.[m.id]} />
                 ) : (
-                  <MatchCard key={m.id} m={m} tz={tz} />
+                  <MatchCard key={m.id} m={m} tz={tz} prediction={predictions?.[m.id]} onPredict={onPredict} />
                 )
               )}
             </div>
@@ -1209,22 +1377,24 @@ function TeamDetail({ team, matches, tz, onBack }) {
   );
 }
 
-function TeamsTab({ matches, tz }) {
+function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [search, setSearch] = useState("");
 
   const allTeams = useMemo(() => {
     const set = new Set();
     for (const m of matches) { set.add(m.home); set.add(m.away); }
-    return Array.from(set).sort((a, b) => a.localeCompare(b));
-  }, [matches]);
+    return Array.from(set).sort((a, b) => {
+      if (a === favTeam) return -1;
+      if (b === favTeam) return 1;
+      return a.localeCompare(b);
+    });
+  }, [matches, favTeam]);
 
-  const filtered = search
-    ? allTeams.filter((t) => t.toLowerCase().includes(search.toLowerCase()))
-    : allTeams;
+  const filtered = search ? allTeams.filter((t) => t.toLowerCase().includes(search.toLowerCase())) : allTeams;
 
   if (selectedTeam) {
-    return <TeamDetail team={selectedTeam} matches={matches} tz={tz} onBack={() => setSelectedTeam(null)} />;
+    return <TeamDetail team={selectedTeam} matches={matches} tz={tz} onBack={() => setSelectedTeam(null)} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} />;
   }
 
   return (
@@ -1241,21 +1411,27 @@ function TeamsTab({ matches, tz }) {
         }}
       />
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 10 }}>
-        {filtered.map((team) => (
-          <button
-            key={team}
-            onClick={() => setSelectedTeam(team)}
-            className="wc-btn"
-            style={{
-              display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-              gap: 8, padding: "16px 10px", background: C.card, border: `1px solid ${C.border}`,
-              borderRadius: 14, cursor: "pointer", color: C.text, textAlign: "center",
-            }}
-          >
-            <span style={{ fontSize: 42, lineHeight: 1 }}>{flag(team)}</span>
-            <span style={{ fontSize: 14, fontWeight: 700, lineHeight: 1.3 }}>{team}</span>
-          </button>
-        ))}
+        {filtered.map((team) => {
+          const starred = favTeam === team;
+          return (
+            <button
+              key={team}
+              onClick={() => setSelectedTeam(team)}
+              className="wc-btn"
+              style={{
+                position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+                gap: 8, padding: "16px 10px",
+                background: starred ? "rgba(251,191,36,0.07)" : C.card,
+                border: starred ? `1px solid rgba(251,191,36,0.5)` : `1px solid ${C.border}`,
+                borderRadius: 14, cursor: "pointer", color: C.text, textAlign: "center",
+              }}
+            >
+              {starred && <span style={{ position: "absolute", top: 6, right: 8, fontSize: 14 }}>⭐</span>}
+              <span style={{ fontSize: 42, lineHeight: 1 }}>{flag(team)}</span>
+              <span style={{ fontSize: 14, fontWeight: 700, lineHeight: 1.3 }}>{team}</span>
+            </button>
+          );
+        })}
         {filtered.length === 0 && (
           <p style={{ gridColumn: "1/-1", textAlign: "center", color: C.dim, fontSize: 16, padding: "32px 0" }}>
             No team found for "{search}"
@@ -1451,25 +1627,58 @@ function Footer({ source }) {
 export default function App() {
   const [tab, setTab] = useState("matches");
   const [tz, setTz] = useState("local");
+  const [favTeam, setFavTeam] = useLocalStorage("wc_fav_team", null);
+  const [predictions, setPredictions] = useLocalStorage("wc_predictions", {});
+  const [goalAlerts, setGoalAlerts] = useState([]);
   const matches = matchesData.matches || [];
 
-  // "Refresh" just reloads the page to pick up the latest published build.
-  // There is no API call — data is baked in at build time.
+  // Detect score changes vs the last visit and queue toasts.
+  useEffect(() => {
+    const prev = (() => { try { return JSON.parse(localStorage.getItem("wc_prev_scores")); } catch { return null; } })();
+    const current = {};
+    const alerts = [];
+    for (const m of matches) {
+      if (m.homeScore != null && m.awayScore != null) {
+        current[m.id] = { h: m.homeScore, a: m.awayScore };
+        if (prev) {
+          const p = prev[m.id];
+          if (p && (m.homeScore !== p.h || m.awayScore !== p.a)) {
+            const homeUp = m.homeScore > p.h, awayUp = m.awayScore > p.a;
+            const headline = homeUp && !awayUp ? `GOAL — ${m.home}!`
+              : !homeUp && awayUp ? `GOAL — ${m.away}!`
+              : "Score update";
+            alerts.push({ ...m, headline });
+          }
+        }
+      }
+    }
+    try { localStorage.setItem("wc_prev_scores", JSON.stringify(current)); } catch {}
+    if (alerts.length) setGoalAlerts(alerts);
+  }, []);
+
+  const onPredict = (matchId, pred) => {
+    const next = { ...predictions };
+    if (pred === null) delete next[matchId]; else next[matchId] = pred;
+    setPredictions(next);
+  };
+
   const onRefresh = () => window.location.reload();
 
   return (
     <div style={{ minHeight: "100vh", background: C.bg, color: C.text, padding: "16px 16px 0" }}>
       <GlobalStyles />
+      <GoalToast alerts={goalAlerts} />
       <div className="wc-wrap">
         <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} />
+        <LiveNowBanner matches={matches} onGoToMatches={() => setTab("matches")} />
         <Tabs tab={tab} setTab={setTab} />
 
         {matches.length === 0 ? (
           <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
         ) : tab === "matches" ? (
-          <MatchesTab matches={matches} tz={tz} />
+          <MatchesTab matches={matches} tz={tz} favTeam={favTeam} predictions={predictions} onPredict={onPredict} />
         ) : tab === "teams" ? (
-          <TeamsTab matches={matches} tz={tz} />
+          <TeamsTab matches={matches} tz={tz} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} />
         ) : tab === "schedule" ? (
           <ScheduleTab matches={matches} tz={tz} />
         ) : tab === "standings" ? (
