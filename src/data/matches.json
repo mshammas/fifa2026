@@ -841,7 +841,7 @@
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
-      "recap": "Spain frustrated by heroic Cape Verde in World Cup opener"
+      "recap": "Cape Verde pulled off the shock of the 2026 World Cup thus far as they held European champions Spain to a battling goalless draw in their Group H opener in Atlanta."
     },
     {
       "id": "e760426",
@@ -853,7 +853,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "42'",
+      "clock": "44'",
       "goals": [
         {
           "side": "away",
@@ -884,12 +884,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "58.1",
+        "possessionPct": "58.6",
         "shotsOnTarget": "0",
-        "totalShots": "5"
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "41.9",
+        "possessionPct": "41.4",
         "shotsOnTarget": "2",
         "totalShots": "2"
       },
@@ -2426,6 +2426,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T19:42:24.497Z",
+  "lastUpdated": "2026-06-15T19:44:22.864Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
