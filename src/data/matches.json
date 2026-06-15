@@ -737,10 +737,10 @@
       "away": "Tunisia",
       "group": "F",
       "venue": "Estadio BBVA, Guadalupe",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "85'",
+      "clock": "88'",
       "goals": [
         {
           "side": "home",
@@ -769,6 +769,13 @@
           "minute": "59'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Svanberg",
+          "minute": "87'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -780,12 +787,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "49.2",
+        "possessionPct": "49.1",
         "shotsOnTarget": "4",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "50.8",
+        "possessionPct": "50.9",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -2356,6 +2363,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T03:46:20.801Z",
+  "lastUpdated": "2026-06-15T03:48:23.942Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
