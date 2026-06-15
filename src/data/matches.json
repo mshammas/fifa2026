@@ -815,13 +815,20 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "15'",
+      "clock": "16'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "S. Lopes Cabral",
+          "minute": "16'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
         "possessionPct": "67.3",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "awayStats": {
         "possessionPct": "32.7",
@@ -2378,6 +2385,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T16:16:26.134Z",
+  "lastUpdated": "2026-06-15T16:18:37.181Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
