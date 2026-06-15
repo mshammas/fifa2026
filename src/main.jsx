@@ -183,6 +183,12 @@ function GlobalStyles() {
         from { transform: scale(0.4) translateY(8px); opacity: 0; }
         to   { transform: scale(1)   translateY(0);   opacity: 1; }
       }
+      @keyframes wcTicker {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .wc-ticker { animation: wcTicker 18s linear infinite; display: inline-block; }
+      .wc-ticker:hover { animation-play-state: paused; }
     `}</style>
   );
 }
@@ -237,11 +243,18 @@ function Header({ lastUpdated, tz, setTz, onSettings, notifOn }) {
         <h1 style={{ fontSize: 21, fontWeight: 900, letterSpacing: -0.3, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
           ⚽ FIFA World Cup 2026
         </h1>
-        <p style={{ color: C.dim, fontSize: 14, margin: "3px 0 0", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-          {lastUpdated
+        {(() => {
+          const text = lastUpdated
             ? `Live scores · Scores fetched ${fmt(lastUpdated, tz, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}`
-            : "Live scores"}
-        </p>
+            : "Live scores";
+          return (
+            <div style={{ overflow: "hidden", margin: "3px 0 0" }}>
+              <span className="wc-ticker" style={{ color: C.dim, fontSize: 14, whiteSpace: "nowrap" }}>
+                {text}&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
+              </span>
+            </div>
+          );
+        })()}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
         <button
