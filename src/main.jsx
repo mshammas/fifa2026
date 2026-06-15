@@ -234,7 +234,7 @@ function Header({ lastUpdated, tz, setTz, onSettings, notifOn }) {
   return (
     <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "6px 0 2px" }}>
       <div style={{ minWidth: 0 }}>
-        <h1 style={{ fontSize: 26, fontWeight: 900, letterSpacing: -0.3, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+        <h1 style={{ fontSize: 21, fontWeight: 900, letterSpacing: -0.3, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
           ⚽ FIFA World Cup 2026
         </h1>
         <p style={{ color: C.dim, fontSize: 14, margin: "3px 0 0", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
