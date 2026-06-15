@@ -898,17 +898,25 @@ function LiveCard({ m, tz, isFav, onOpen }) {
       <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16 }}>
         <MatchEvents m={m} />
         <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
-        <VenueBlock venue={m.venue} />
-        <a
-          className="wc-btn"
-          href={`https://www.google.com/search?q=${watchQuery}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, boxSizing: "border-box", width: "100%", fontSize: 18, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 12, padding: "14px 16px", textDecoration: "none" }}
-        >
-          ▶ Watch Live
-        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flex: 1, minWidth: 0 }}>
+            {eventBadge("📍")}
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 800 }}>Venue</div>
+              <div style={{ fontSize: 12, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.venue}</div>
+            </div>
+          </div>
+          <a
+            className="wc-btn"
+            href={`https://www.google.com/search?q=${watchQuery}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0, fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "10px 14px", textDecoration: "none" }}
+          >
+            ▶ Watch Live
+          </a>
+        </div>
       </div>
     </div>
   );
