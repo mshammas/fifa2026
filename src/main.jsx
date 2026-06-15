@@ -1814,8 +1814,21 @@ function PlayerProfile({ player, team, matches, onBack }) {
 
       {/* Hero */}
       <div style={{ textAlign: "center", padding: "8px 0 24px" }}>
-        <div style={{ width: 72, height: 72, borderRadius: "50%", background: C.card2, border: `2px solid ${C.border}`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 900, color: C.dim, marginBottom: 12 }}>
-          {player.jersey ?? "?"}
+        <div style={{ position: "relative", display: "inline-block", marginBottom: 12 }}>
+          <img
+            src={`https://a.espncdn.com/i/headshots/soccer/players/full/${player.id}.png`}
+            alt={player.name}
+            onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextSibling.style.display = "inline-flex"; }}
+            style={{ width: 90, height: 90, borderRadius: "50%", objectFit: "cover", objectPosition: "top", border: `2px solid ${C.border}`, display: "block" }}
+          />
+          <div style={{ width: 90, height: 90, borderRadius: "50%", background: C.card2, border: `2px solid ${C.border}`, display: "none", alignItems: "center", justifyContent: "center", fontSize: 30, fontWeight: 900, color: C.dim }}>
+            {player.jersey ?? "?"}
+          </div>
+          {player.jersey != null && (
+            <span style={{ position: "absolute", bottom: 0, right: 0, width: 26, height: 26, borderRadius: "50%", background: C.card, border: `1px solid ${C.border}`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 900, color: C.text }}>
+              {player.jersey}
+            </span>
+          )}
         </div>
         <h2 style={{ fontSize: 24, fontWeight: 900, margin: "0 0 8px" }}>{player.name}</h2>
         <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
