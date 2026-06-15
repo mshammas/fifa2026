@@ -1764,7 +1764,112 @@ function WatchTab({ matches, tz }) {
   );
 }
 
-function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, predictions, onPredict, onOpenLive }) {
+function PlayerProfile({ player, team, matches, onBack }) {
+  // Derive tournament stats from match data
+  const goals = [], cards = [], appearances = new Set();
+  for (const m of matches) {
+    const side = m.home === team ? "home" : m.away === team ? "away" : null;
+    if (!side) continue;
+    if (m.status === "FT" || m.status === "LIVE" || m.status === "HT") {
+      appearances.add(m.id);
+    }
+    for (const g of m.goals || []) {
+      if (g.side === side && g.player === player.shortName) goals.push({ ...g, m });
+    }
+    for (const c of m.cards || []) {
+      if (c.side === side && c.player === player.shortName) cards.push({ ...c, m });
+    }
+  }
+
+  const posColor = { GK: "#f59e0b", DEF: "#3b82f6", MID: "#22c55e", FWD: "#ef4444" };
+  const formatDOB = (dob) => {
+    if (!dob) return null;
+    const [y, m, d] = dob.split("-");
+    return `${d}/${m}/${y}`;
+  };
+
+  const StatBox = ({ label, value }) => (
+    <div style={{ flex: 1, background: C.card2, borderRadius: 12, padding: "14px 10px", textAlign: "center", minWidth: 0 }}>
+      <div style={{ fontSize: 26, fontWeight: 900, color: C.text }}>{value}</div>
+      <div style={{ fontSize: 11, fontWeight: 700, color: C.dim, marginTop: 3, textTransform: "uppercase", letterSpacing: 0.5 }}>{label}</div>
+    </div>
+  );
+
+  const InfoRow = ({ label, value }) => value ? (
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "11px 0", borderBottom: `1px solid ${C.border}22` }}>
+      <span style={{ fontSize: 13, color: C.dim, fontWeight: 700 }}>{label}</span>
+      <span style={{ fontSize: 14, fontWeight: 800, color: C.text }}>{value}</span>
+    </div>
+  ) : null;
+
+  return (
+    <div>
+      <button
+        onClick={onBack}
+        className="wc-btn"
+        style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 15, fontWeight: 800, color: C.text, background: C.card, border: `1px solid ${C.border}`, borderRadius: 999, padding: "9px 16px", marginBottom: 18, cursor: "pointer" }}
+      >
+        ← {team}
+      </button>
+
+      {/* Hero */}
+      <div style={{ textAlign: "center", padding: "8px 0 24px" }}>
+        <div style={{ width: 72, height: 72, borderRadius: "50%", background: C.card2, border: `2px solid ${C.border}`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 28, fontWeight: 900, color: C.dim, marginBottom: 12 }}>
+          {player.jersey ?? "?"}
+        </div>
+        <h2 style={{ fontSize: 24, fontWeight: 900, margin: "0 0 8px" }}>{player.name}</h2>
+        <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
+          {player.pos && (
+            <span style={{ background: posColor[player.pos] + "22", color: posColor[player.pos], border: `1px solid ${posColor[player.pos]}44`, borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 800 }}>
+              {player.pos}
+            </span>
+          )}
+          <span style={{ background: C.card2, color: C.dim, border: `1px solid ${C.border}`, borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 800 }}>
+            {flag(team)} {team}
+          </span>
+        </div>
+      </div>
+
+      {/* Tournament stats */}
+      <section style={{ marginBottom: 24 }}>
+        <h3 style={{ fontSize: 15, fontWeight: 900, color: C.gold, margin: "0 0 10px" }}>World Cup 2026</h3>
+        <div style={{ display: "flex", gap: 8 }}>
+          <StatBox label="Goals" value={goals.filter(g => !g.og).length} />
+          <StatBox label="Assists" value="—" />
+          <StatBox label="Yellow" value={cards.filter(c => c.type === "yellow").length || "0"} />
+          <StatBox label="Red" value={cards.filter(c => c.type === "red").length || "0"} />
+        </div>
+        {goals.length > 0 && (
+          <div style={{ marginTop: 12, display: "grid", gap: 6 }}>
+            {goals.map((g, i) => (
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "8px 12px" }}>
+                <span style={{ fontSize: 14, fontWeight: 700 }}>⚽ {g.og ? "Own Goal" : "Goal"} {g.pen ? "(pen)" : ""}</span>
+                <span style={{ fontSize: 13, color: C.dim, fontWeight: 700 }}>{g.m.home} vs {g.m.away} · {g.minute}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Bio */}
+      <section style={{ marginBottom: 24 }}>
+        <h3 style={{ fontSize: 15, fontWeight: 900, color: C.gold, margin: "0 0 10px" }}>Profile</h3>
+        <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "0 16px" }}>
+          <InfoRow label="Club" value={player.club} />
+          <InfoRow label="Nationality" value={player.citizenship || team} />
+          <InfoRow label="Date of Birth" value={formatDOB(player.dob)} />
+          <InfoRow label="Age" value={player.age ? `${player.age} years` : null} />
+          <InfoRow label="Height" value={player.height} />
+          <InfoRow label="Weight" value={player.weight} />
+          <InfoRow label="Position" value={player.pos} />
+          <InfoRow label="Jersey" value={player.jersey ? `#${player.jersey}` : null} />
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, predictions, onPredict, onOpenLive, onPlayerSelect }) {
   const teamMatches = useMemo(
     () => [...matches.filter((m) => m.home === team || m.away === team)].sort((a, b) => new Date(a.date) - new Date(b.date)),
     [team, matches]
@@ -1915,11 +2020,17 @@ function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, prediction
                       {posLabel[pos]}
                     </div>
                     {players.map((p, i) => (
-                      <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", borderTop: i === 0 ? `1px solid ${C.border}` : `1px solid ${C.border}22` }}>
+                      <button
+                        key={p.id}
+                        onClick={() => onPlayerSelect(p)}
+                        className="wc-btn"
+                        style={{ width: "100%", display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", borderTop: i === 0 ? `1px solid ${C.border}` : `1px solid ${C.border}22`, background: "none", border: "none", borderTop: i === 0 ? `1px solid ${C.border}` : `1px solid ${C.border}22`, color: C.text, cursor: "pointer", textAlign: "left" }}
+                      >
                         <span style={{ width: 24, textAlign: "center", fontSize: 13, fontWeight: 800, color: C.dim, flexShrink: 0 }}>{p.jersey ?? "—"}</span>
                         <span style={{ flex: 1, fontSize: 15, fontWeight: 700 }}>{p.name}</span>
-                        <span style={{ fontSize: 12, color: C.dim, whiteSpace: "nowrap" }}>{p.age ? `${p.age} yrs` : ""}</span>
-                      </div>
+                        {p.club && <span style={{ fontSize: 12, color: C.dim, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: 120 }}>{p.club}</span>}
+                        <span style={{ fontSize: 13, color: C.dim, flexShrink: 0 }}>›</span>
+                      </button>
                     ))}
                   </div>
                 )
@@ -1962,6 +2073,7 @@ function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, prediction
 
 function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, onOpenLive }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [search, setSearch] = useState("");
 
   const allTeams = useMemo(() => {
@@ -1976,8 +2088,12 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
 
   const filtered = search ? allTeams.filter((t) => t.toLowerCase().includes(search.toLowerCase())) : allTeams;
 
+  if (selectedPlayer && selectedTeam) {
+    return <PlayerProfile player={selectedPlayer} team={selectedTeam} matches={matches} onBack={() => setSelectedPlayer(null)} />;
+  }
+
   if (selectedTeam) {
-    return <TeamDetail team={selectedTeam} matches={matches} tz={tz} onBack={() => setSelectedTeam(null)} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={onOpenLive} />;
+    return <TeamDetail team={selectedTeam} matches={matches} tz={tz} onBack={() => setSelectedTeam(null)} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={onOpenLive} onPlayerSelect={setSelectedPlayer} />;
   }
 
   return (
