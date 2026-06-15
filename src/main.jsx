@@ -46,6 +46,16 @@ function useNow() {
   return now;
 }
 
+function useWindowWidth() {
+  const [w, setW] = useState(() => window.innerWidth);
+  useEffect(() => {
+    const fn = () => setW(window.innerWidth);
+    window.addEventListener("resize", fn);
+    return () => window.removeEventListener("resize", fn);
+  }, []);
+  return w;
+}
+
 // Google Calendar pre-fill URL for an upcoming fixture.
 function calendarUrl(m) {
   const start = new Date(m.date);
@@ -780,7 +790,6 @@ function LiveMatchModal({ m, onClose }) {
     const onFs = () => { if (!document.fullscreenElement) onClose(); };
     document.addEventListener("fullscreenchange", onFs);
     return () => {
-      // Remove listener BEFORE calling exitFullscreen so its event doesn't re-trigger onClose.
       document.removeEventListener("fullscreenchange", onFs);
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
     };
@@ -807,15 +816,44 @@ function LiveMatchModal({ m, onClose }) {
     return () => clearInterval(t);
   }, []);
 
+  const wide = useWindowWidth() >= 768;
   const { h: mh, a: ma } = liveScores(m);
   const hasScore = mh != null && ma != null;
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
 
+  const panelStyle = {
+    background: C.card, border: `1px solid ${C.border}`, borderRadius: 16,
+    padding: "20px 22px", display: "flex", flexDirection: "column",
+  };
+  const panelHead = (icon, title) => (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+      <div style={{ width: 34, height: 34, borderRadius: 10, background: "rgba(220,38,38,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, flexShrink: 0 }}>{icon}</div>
+      <span style={{ fontSize: 15, fontWeight: 900, letterSpacing: 0.5 }}>{title}</span>
+    </div>
+  );
+
+  // Goals rows extracted for the panel view.
+  const goals = m.goals || [];
+  const cards = m.cards || [];
+  const goalRows = goals.map((g) => ({
+    flag: flag(g.side === "home" ? m.home : m.away),
+    label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
+    minute: g.minute,
+  }));
+
+  // Stats rows.
+  const hs = m.homeStats || {};
+  const as = m.awayStats || {};
+  const statKeys = Object.keys(STAT_LABELS).filter((k) => hs[k] != null || as[k] != null);
+
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, display: "flex", flexDirection: "column", overflowY: "auto" }}>
+    <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, display: "flex", flexDirection: "column", overflow: "hidden" }}>
       {/* Sticky header */}
-      <div style={{ position: "sticky", top: 0, zIndex: 1, background: C.bg, borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", gap: 10 }}>
-        <StatusBadge status={m.status} clock={m.clock} />
+      <div style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", gap: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <StatusBadge status={m.status} clock={m.clock} />
+          {m.group && <span style={{ fontSize: 13, fontWeight: 700, color: C.dim }}>Group {m.group}</span>}
+        </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ fontSize: 12, fontWeight: 700, color: C.dim }}>↻ {secs}s</span>
           <ShareButton m={m} />
@@ -826,49 +864,164 @@ function LiveMatchModal({ m, onClose }) {
         </div>
       </div>
 
-      {/* Body */}
-      <div style={{ flex: 1, padding: "28px 20px 40px", maxWidth: 600, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
-        {m.group && <div style={{ textAlign: "center", fontSize: 15, fontWeight: 700, color: C.dim, marginBottom: 22 }}>Group {m.group}</div>}
+      {wide ? (
+        /* ── WIDE LAYOUT (tablet / desktop) ───────────────────────── */
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "16px 20px 20px", gap: 14, minHeight: 0 }}>
+          {/* Three-column panel row */}
+          <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, minHeight: 0 }}>
 
-        {/* Large score */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", gap: 8, marginBottom: 36 }}>
-          <div style={{ textAlign: "center", flex: 1 }}>
-            <div style={{ fontSize: 62, lineHeight: 1.1 }}>{flag(m.home)}</div>
-            <div style={{ fontSize: 17, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.home}</div>
-          </div>
-          <div style={{ textAlign: "center", minWidth: 80 }}>
-            {hasScore
-              ? <div style={{ fontSize: 54, fontWeight: 900, letterSpacing: -2 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
-              : <div style={{ fontSize: 26, color: C.dim }}>vs</div>}
-          </div>
-          <div style={{ textAlign: "center", flex: 1 }}>
-            <div style={{ fontSize: 62, lineHeight: 1.1 }}>{flag(m.away)}</div>
-            <div style={{ fontSize: 17, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.away}</div>
-          </div>
-        </div>
+            {/* Panel 1 — Score */}
+            <div style={panelStyle}>
+              {panelHead("🏆", "SCORE")}
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", width: "100%", gap: 8 }}>
+                  <div style={{ textAlign: "center", flex: 1 }}>
+                    <div style={{ fontSize: 56, lineHeight: 1.1 }}>{flag(m.home)}</div>
+                    <div style={{ fontSize: 15, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.home}</div>
+                  </div>
+                  <div style={{ textAlign: "center", minWidth: 72 }}>
+                    {hasScore
+                      ? <div style={{ fontSize: 48, fontWeight: 900, letterSpacing: -2 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
+                      : <div style={{ fontSize: 22, color: C.dim }}>vs</div>}
+                  </div>
+                  <div style={{ textAlign: "center", flex: 1 }}>
+                    <div style={{ fontSize: 56, lineHeight: 1.1 }}>{flag(m.away)}</div>
+                    <div style={{ fontSize: 15, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.away}</div>
+                  </div>
+                </div>
+                {hasScore && (
+                  <div style={{ marginTop: 22, borderTop: `1px solid ${C.border}`, paddingTop: 16, width: "100%", display: "flex", justifyContent: "space-around" }}>
+                    <span style={{ fontSize: 15, color: C.dim }}>⚽ <strong style={{ color: C.text }}>{mh}</strong></span>
+                    <span style={{ fontSize: 13, fontWeight: 800, color: C.dim }}>
+                      {m.status === "FT" ? "FULL TIME" : m.status === "HT" ? "HALF TIME" : "LIVE"}
+                    </span>
+                    <span style={{ fontSize: 15, color: C.dim }}><strong style={{ color: C.text }}>{ma}</strong> ⚽</span>
+                  </div>
+                )}
+              </div>
+            </div>
 
-        <div style={{ display: "grid", gap: 20 }}>
-          <MatchEvents m={m} />
-          <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ display: "flex", gap: 8, alignItems: "center", flex: 1, minWidth: 0 }}>
-              {eventBadge("📍")}
+            {/* Panel 2 — Goals */}
+            <div style={panelStyle}>
+              {panelHead("⚽", "GOALS")}
+              <div style={{ flex: 1, overflowY: "auto" }}>
+                {goalRows.length === 0 && cards.length === 0 ? (
+                  <div style={{ color: C.dim, fontSize: 14, textAlign: "center", marginTop: 20 }}>No events yet</div>
+                ) : (
+                  <div style={{ display: "grid", gap: 10 }}>
+                    {goalRows.map((g, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", background: "rgba(255,255,255,0.04)", borderRadius: 10 }}>
+                        <span style={{ fontSize: 20, flexShrink: 0 }}>{g.flag}</span>
+                        <span style={{ flex: 1, fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{g.label}</span>
+                        <span style={{ fontSize: 14, fontWeight: 800, color: C.dim, whiteSpace: "nowrap" }}>{g.minute}</span>
+                      </div>
+                    ))}
+                    {cards.map((c, i) => (
+                      <div key={`c${i}`} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", background: "rgba(255,255,255,0.04)", borderRadius: 10 }}>
+                        <span style={{ fontSize: 20, flexShrink: 0 }}>{flag(c.side === "home" ? m.home : m.away)}</span>
+                        <span style={{ flex: 1, fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.player}</span>
+                        <span style={{ fontSize: 14, fontWeight: 800, color: C.dim, whiteSpace: "nowrap" }}>{c.type === "red" ? "🟥" : "🟨"} {c.minute}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Panel 3 — Stats */}
+            <div style={panelStyle}>
+              {panelHead("📊", "MATCH STATS")}
+              {statKeys.length === 0 ? (
+                <div style={{ color: C.dim, fontSize: 14, textAlign: "center", marginTop: 20 }}>Stats not available yet</div>
+              ) : (
+                <div style={{ flex: 1, overflowY: "auto", display: "grid", gap: 16 }}>
+                  {statKeys.map((k) => {
+                    const { label, suffix = "" } = STAT_LABELS[k];
+                    const hv = parseFloat(hs[k]) || 0;
+                    const av = parseFloat(as[k]) || 0;
+                    const total = hv + av || 1;
+                    const hPct = Math.round((hv / total) * 100);
+                    return (
+                      <div key={k}>
+                        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15, fontWeight: 800, marginBottom: 6 }}>
+                          <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
+                          <span style={{ color: C.dim, fontWeight: 700, fontSize: 13 }}>{label}</span>
+                          <span style={{ color: "#aaa" }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
+                        </div>
+                        <div style={{ display: "flex", height: 7, borderRadius: 4, overflow: "hidden", background: C.border }}>
+                          <div style={{ width: `${hPct}%`, background: C.green, borderRadius: "4px 0 0 4px" }} />
+                          <div style={{ flex: 1, background: "#555", borderRadius: "0 4px 4px 0" }} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Bottom bar — venue + Watch Live */}
+          <div style={{ flexShrink: 0, background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "14px 20px", display: "flex", alignItems: "center", gap: 16 }}>
+            <div style={{ display: "flex", gap: 12, alignItems: "center", flex: 1, minWidth: 0 }}>
+              <div style={{ width: 38, height: 38, borderRadius: 10, background: "rgba(239,68,68,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>📍</div>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 13, fontWeight: 800 }}>Venue</div>
-                <div style={{ fontSize: 12, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.venue}</div>
+                <div style={{ fontSize: 11, fontWeight: 900, color: C.dim, letterSpacing: 1, textTransform: "uppercase" }}>Venue</div>
+                <div style={{ fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.venue}</div>
               </div>
             </div>
             <a
               href={`https://www.google.com/search?q=${watchQuery}`}
               target="_blank"
               rel="noopener noreferrer"
-              style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0, fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "10px 14px", textDecoration: "none" }}
+              style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0, fontSize: 16, fontWeight: 900, color: "#06210f", background: C.green, borderRadius: 12, padding: "12px 22px", textDecoration: "none" }}
             >
               ▶ Watch Live
             </a>
           </div>
         </div>
-      </div>
+      ) : (
+        /* ── MOBILE LAYOUT (single column scroll) ─────────────────── */
+        <div style={{ flex: 1, overflowY: "auto", padding: "28px 20px 40px", maxWidth: 600, margin: "0 auto", width: "100%", boxSizing: "border-box" }}>
+          {/* Large score */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", gap: 8, marginBottom: 36 }}>
+            <div style={{ textAlign: "center", flex: 1 }}>
+              <div style={{ fontSize: 62, lineHeight: 1.1 }}>{flag(m.home)}</div>
+              <div style={{ fontSize: 17, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.home}</div>
+            </div>
+            <div style={{ textAlign: "center", minWidth: 80 }}>
+              {hasScore
+                ? <div style={{ fontSize: 54, fontWeight: 900, letterSpacing: -2 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
+                : <div style={{ fontSize: 26, color: C.dim }}>vs</div>}
+            </div>
+            <div style={{ textAlign: "center", flex: 1 }}>
+              <div style={{ fontSize: 62, lineHeight: 1.1 }}>{flag(m.away)}</div>
+              <div style={{ fontSize: 17, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.away}</div>
+            </div>
+          </div>
+
+          <div style={{ display: "grid", gap: 20 }}>
+            <MatchEvents m={m} />
+            <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ display: "flex", gap: 8, alignItems: "center", flex: 1, minWidth: 0 }}>
+                {eventBadge("📍")}
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: 800 }}>Venue</div>
+                  <div style={{ fontSize: 12, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.venue}</div>
+                </div>
+              </div>
+              <a
+                href={`https://www.google.com/search?q=${watchQuery}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0, fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "10px 14px", textDecoration: "none" }}
+              >
+                ▶ Watch Live
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
