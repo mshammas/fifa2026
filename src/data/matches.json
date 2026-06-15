@@ -853,7 +853,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "14'",
+      "clock": "16'",
       "goals": [],
       "cards": [
         {
@@ -861,15 +861,21 @@
           "player": "M. Attia",
           "minute": "13'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "T. Castagne",
+          "minute": "14'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "36.6",
+        "possessionPct": "41.7",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "63.4",
+        "possessionPct": "58.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -2406,6 +2412,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T19:14:30.356Z",
+  "lastUpdated": "2026-06-15T19:16:28.044Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
