@@ -853,8 +853,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "16'",
-      "goals": [],
+      "clock": "20'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "E. Ashour",
+          "minute": "19'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -870,14 +878,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "41.7",
+        "possessionPct": "43.8",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "58.3",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "56.2",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -2412,6 +2420,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T19:16:28.044Z",
+  "lastUpdated": "2026-06-15T19:20:39.612Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
