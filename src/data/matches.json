@@ -679,11 +679,19 @@
       "away": "Ecuador",
       "group": "E",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "89'",
-      "goals": [],
+      "clock": "90'+2'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "A. Diallo",
+          "minute": "90'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -711,12 +719,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48.9",
-        "shotsOnTarget": "2",
-        "totalShots": "11"
+        "possessionPct": "48.8",
+        "shotsOnTarget": "3",
+        "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "51.1",
+        "possessionPct": "51.2",
         "shotsOnTarget": "1",
         "totalShots": "11"
       },
@@ -2304,6 +2312,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T00:56:25.322Z",
+  "lastUpdated": "2026-06-15T00:58:20.751Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
