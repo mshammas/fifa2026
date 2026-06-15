@@ -915,19 +915,19 @@
       "away": "Uruguay",
       "group": "H",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "44.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "55.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -2447,6 +2447,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T22:04:28.688Z",
+  "lastUpdated": "2026-06-15T22:06:42.114Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
