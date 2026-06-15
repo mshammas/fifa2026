@@ -1350,6 +1350,7 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   );
   const [groupFilter, setGroupFilter] = useState("All");
   const [dateFilter, setDateFilter] = useState("");
+  const [upcomingOnly, setUpcomingOnly] = useState(false);
 
   const todayKey = dateKey(new Date().toISOString(), tz);
   const matchDates = useMemo(
@@ -1363,7 +1364,8 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   const filtered = matches.filter(
     (m) =>
       (groupFilter === "All" || m.group === groupFilter) &&
-      (dateFilter === "" || dateKey(m.date, tz) === dateFilter)
+      (dateFilter === "" || dateKey(m.date, tz) === dateFilter) &&
+      (!upcomingOnly || m.status === "NS")
   );
   const sorted = [...filtered].sort((a, b) => new Date(a.date) - new Date(b.date));
 
@@ -1413,6 +1415,20 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
             Today
           </button>
         )}
+      </div>
+
+      <div style={{ marginBottom: 16 }}>
+        <button
+          onClick={() => setUpcomingOnly(v => !v)}
+          style={{
+            background: upcomingOnly ? "rgba(34,197,94,0.15)" : C.card,
+            border: `1px solid ${upcomingOnly ? C.green : C.border}`,
+            borderRadius: 20, padding: "8px 14px", fontSize: 13, fontWeight: 700,
+            color: upcomingOnly ? C.green : C.dim, cursor: "pointer",
+          }}
+        >
+          🗓️ Upcoming only
+        </button>
       </div>
 
       {sections.length === 0 && <EmptyState emoji="🗓️" text="No matches on this date." />}
