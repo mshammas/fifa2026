@@ -814,8 +814,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "47'",
       "goals": [],
       "cards": [
         {
@@ -2385,6 +2385,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T17:06:23.692Z",
+  "lastUpdated": "2026-06-15T17:08:25.913Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
