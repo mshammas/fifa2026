@@ -1,113 +1,108 @@
 # FIFA 2026 — World Cup Live Scores App
-⚽ Zero API tokens. Static data sourced from public web scraping. GitHub Pages + GitHub Actions.
+⚽ Zero API tokens. Static data from ESPN public API. GitHub Pages + GitHub Actions.
 
 ## Project Overview
 
 **What it does:**
-- Live FIFA World Cup 2026 match scores, schedules, standings
-- Auto-updates every 5 minutes via GitHub Action scraping ESPN/Wikipedia
-- Timezone picker for family viewing across regions
+- Live FIFA World Cup 2026 match scores, goals, cards, stats and recaps
+- Full schedule (104 matches), group standings, knockout bracket, watch/highlights links
+- Auto-updates every 5 minutes via GitHub Action scraping ESPN's public scoreboard API
+- Timezone picker (popover), browser notifications (goals/kick-off/FT/red cards), score predictor
+- Fullscreen live match view: 3-panel layout (Score | Goals | Stats) on desktop/tablet, single-column on mobile
+- Installable as PWA (service worker + manifest)
 - Zero runtime API calls, zero token usage by viewers
-- Deployed on GitHub Pages (optional custom domain `fifa.shammas.in`)
+- Deployed on GitHub Pages, custom domain `fifa.shammas.in`
 
 **Tech Stack:**
-- Frontend: React 18 + Vite, inline styles (elder-friendly UI, large fonts)
+- Frontend: React 18 + Vite, inline styles (single file `src/main.jsx`)
 - Backend: GitHub Actions (scheduled Node.js scraper)
 - Hosting: GitHub Pages (built & deployed by GitHub Actions on every push)
-- Data: Static JSON imported at build time
+- Data: Static JSON (`src/data/matches.json`) imported at build time; refreshed dynamically in the fullscreen modal via `fetch()`
 
 ## Key Files
 
-- `src/main.jsx` — React app entry point (has timezone picker, schedule, standings, watch links)
-- `src/data/matches.json` — Static match data (auto-updated by GitHub Action)
-- `scripts/fetch-scores.mjs` — Web scraper (runs on schedule, commits JSON)
-- `.github/workflows/fetch-scores.yml` — scraper Action (every 5 minutes, commits JSON)
-- `.github/workflows/deploy.yml` — builds and deploys the site to GitHub Pages
-- `vite.config.js` — Build config (`base: './'` so it works at the Pages subpath or a root domain)
-- `index.html` — HTML shell
-- `package.json` — Dependencies (React, Vite, Cheerio for scraping)
+- `src/main.jsx` — Entire React app (all components, hooks, styles in one file)
+- `src/data/matches.json` — Match data (scores, goals, cards, stats, recaps) — auto-updated by scraper
+- `scripts/fetch-scores.mjs` — ESPN scraper: fetches standings + scoreboard, builds matches.json
+- `.github/workflows/fetch-scores.yml` — Runs scraper every 5 minutes, commits JSON, triggers deploy
+- `.github/workflows/deploy.yml` — Builds with Vite and deploys to GitHub Pages
+- `vite.config.js` — `base: './'` so assets work at both root domain and Pages subpath
+- `index.html` — HTML shell with PWA meta tags and OG/Twitter cards
+- `public/sw.js` — Service worker: cache-first for assets, network-first for HTML
+- `public/manifest.json` — PWA manifest (name, icons, theme)
+- `docs/screenshots/` — App screenshots used in README.md
 
-## Getting Started (Claude Code)
+## Getting Started
 
-### Install
 ```bash
 npm install
+npm run dev          # http://localhost:5173
+npm run fetch-scores # Update src/data/matches.json from ESPN
+npm run build        # Output in dist/
 ```
 
-### Run locally
+## Architecture Notes
+
+### Data flow
+ESPN scoreboard API → `fetch-scores.mjs` → `matches.json` → Vite build → GitHub Pages bundle
+
+### Match data shape (each entry in `matches.json`)
+```json
+{
+  "id": "e123",
+  "date": "2026-06-15T19:00:00Z",
+  "home": "Sweden", "away": "Tunisia",
+  "group": "F",
+  "venue": "Estadio BBVA, Guadalupe",
+  "homeScore": 2, "awayScore": 1,
+  "status": "FT",          // NS | LIVE | HT | FT
+  "clock": "53'",          // live minute, null otherwise
+  "goals": [{ "side": "home", "player": "A. Isak", "minute": "30'", "pen": false, "og": false }],
+  "cards": [{ "side": "away", "player": "O. Rekik", "minute": "43'", "type": "yellow" }],
+  "homeStats": { "possessionPct": "54.1", "totalShots": "5", "shotsOnTarget": "3" },
+  "awayStats": { "possessionPct": "45.9", "totalShots": "3", "shotsOnTarget": "1" },
+  "recap": "Sweden held on for a 2-1 win over Tunisia..."
+}
+```
+
+### Key hooks / helpers in `src/main.jsx`
+- `useLocalStorage(key, init)` — persistent state backed by localStorage
+- `useNow()` — ticks every 30 s for countdown timers
+- `useWindowWidth()` — drives responsive layout (wide ≥ 768 px)
+- `liveScores(m)` — derives score from `goals[]` array (more up-to-date than ESPN score field during live play)
+- `refreshMatches()` — `fetch('./src/data/matches.json?t=<now>')` used by LiveMatchModal to update state without a page reload (preserves fullscreen)
+
+### Notification system
+- Reads all prefs directly from localStorage inside the score-change `useEffect` (avoids stale closure)
+- Tracks `{ h, a, status, redCards }` per match in `wc_prev_scores`
+- Fires `new Notification(title, { body, icon })` for goals, kick-off (NS→LIVE), full time (→FT), red cards
+- Respects `wc_notif_favonly` + `wc_fav_team` pref
+
+### Git push pattern (SSH multi-account)
 ```bash
-npm run dev
-# Visit http://localhost:5173
+git fetch git@github-mshammas:mshammas/fifa2026.git main
+git rebase FETCH_HEAD
+git push git@github-mshammas:mshammas/fifa2026.git HEAD:main
 ```
+The score bot commits `matches.json` frequently — always rebase before pushing to avoid conflicts.
 
-### Test the scraper
-```bash
-npm run fetch-scores
-# Updates src/data/matches.json with latest scores
-```
+## Current Status (v1.0)
 
-### Build for production
-```bash
-npm run build
-# Output in dist/
-```
-
-## Current Status
-
-- ✅ Project structure ready
-- ✅ GitHub Action workflow configured
-- ✅ Baseline matches.json in place
-- ⏳ React component needs to be ported from artifact
-- ⏳ Scraper needs full HTML parsing (cheerio library)
-- ⏳ Test locally + deploy
-
-## Next Steps
-
-1. **Port the React component** — Copy the app UI from the artifact (worldcup-2026-live.jsx in chat history) into `src/main.jsx`
-   - Remove all fetch/API calls (data comes from imported JSON)
-   - Keep timezone picker, match cards, standings, watch links
-   - Keep elder-friendly design (large fonts, high contrast)
-
-2. **Enhance the scraper** — Flesh out `scripts/fetch-scores.mjs`
-   - Use cheerio to parse Wikipedia match tables
-   - Extract home team, away team, score, status, date
-   - Merge with baseline.json structure (groups, venues, kickoff times)
-   - Test locally with `npm run fetch-scores`
-
-3. **Test locally** — `npm run dev`, verify matches load
-   - Check timezone picker works
-   - Verify standings compute from static data
-   - Test on mobile viewport (elder-friendly UX)
-
-4. **Deploy to GitHub Pages**
-   - Repo → Settings → Pages → Source: **GitHub Actions**
-   - The `deploy.yml` workflow builds (`npm run build`) and publishes `dist/`
-   - Live at `https://mshammas.github.io/fifa2026/`
-   - Optional custom domain `fifa.shammas.in`: set it in Settings → Pages and add a
-     DNS CNAME `fifa` → `mshammas.github.io`
-
-5. **Verify GitHub Actions work**
-   - Actions tab → run/check "Fetch World Cup Scores" and "Deploy to GitHub Pages"
-   - Scraper commits `src/data/matches.json`; that completion fires the deploy
-     via `workflow_run`, rebuilding the site with fresh scores
-
-## Known Limitations / To-Do
-
-- Scraper is currently a stub — needs cheerio integration
-- Wikipedia parsing may be fragile if page structure changes (fallback to baseline data)
-- Ask AI tab is removed (no API tokens; could add if needed later)
-- Manual match updates: `npm run fetch-scores` + `git push` if scraper fails
+All features complete and deployed:
+- ✅ Live scores, goals, cards, stats, recaps (ESPN)
+- ✅ Full schedule with date picker + Schedule→Matches navigation
+- ✅ Group standings with qualification legend
+- ✅ Knockout bracket
+- ✅ Watch tab (streaming links + highlights)
+- ✅ Fullscreen live match modal (3-panel wide layout, no-reload refresh)
+- ✅ Browser notifications (goals / kick-off / FT / red cards / favourite team filter)
+- ✅ Timezone popover
+- ✅ Score predictor
+- ✅ PWA (installable, offline-capable)
+- ✅ Live match ticker banner
+- ✅ Favourite team starring
+- ✅ Share button per match
 
 ## Environment Variables
 
-None needed! This is the whole point — no secrets, no tokens, no auth keys.
-
-All data is public (scraping Wikipedia), all code is visible (GitHub repo is public), all builds are free (GitHub Pages + Actions free tier).
-
-## Questions?
-
-Check the README.md for full setup instructions. Open an issue or commit to this repo and Claude Code will see it.
-
----
-
-**Created by Shammas Oliyath** · Built during World Cup 2026 tournament
+None. No secrets, no tokens, no auth keys. All data is public.
