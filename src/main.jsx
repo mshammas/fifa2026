@@ -653,9 +653,9 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
   if (!keys.length) return null;
 
   return (
-    <div style={{ display: "flex", gap: 12 }}>
+    <div style={{ display: "flex", gap: 12, width: "100%", minWidth: 0 }}>
       {eventBadge("📊")}
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
         <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 10 }}>Match Stats</div>
 
         {/* Legend */}
@@ -1067,7 +1067,7 @@ function LiveCard({ m, tz, isFav, onOpen }) {
       tabIndex={0}
       onClick={() => onOpen?.(m)}
       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onOpen?.(m); } }}
-      style={{ background: isFav ? "rgba(251,191,36,0.04)" : C.card, border: isFav ? "1px solid rgba(251,191,36,0.5)" : "1px solid rgba(239,68,68,0.45)", borderRadius: 14, padding: 16, marginBottom: 12, cursor: "pointer" }}
+      style={{ background: isFav ? "rgba(251,191,36,0.04)" : C.card, border: isFav ? "1px solid rgba(251,191,36,0.5)" : "1px solid rgba(239,68,68,0.45)", borderRadius: 14, padding: 16, marginBottom: 12, cursor: "pointer", overflow: "hidden" }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
         <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>{m.group ? `Group ${m.group}` : "Knockout"}</span>
