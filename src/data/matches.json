@@ -850,10 +850,10 @@
       "away": "Egypt",
       "group": "G",
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "66'",
+      "clock": "68'",
       "goals": [
         {
           "side": "away",
@@ -861,6 +861,13 @@
           "minute": "19'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Hany",
+          "minute": "66'",
+          "pen": false,
+          "og": true
         }
       ],
       "cards": [
@@ -884,12 +891,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "56.4",
+        "possessionPct": "56.7",
         "shotsOnTarget": "1",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "43.6",
+        "possessionPct": "43.3",
         "shotsOnTarget": "4",
         "totalShots": "11"
       },
@@ -2426,6 +2433,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T20:28:27.074Z",
+  "lastUpdated": "2026-06-15T20:30:41.690Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
