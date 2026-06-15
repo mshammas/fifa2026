@@ -917,8 +917,8 @@
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+3'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -937,14 +937,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "40.8",
+        "possessionPct": "41.3",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "59.2",
+        "possessionPct": "58.7",
         "shotsOnTarget": "2",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -2462,6 +2462,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T22:52:26.586Z",
+  "lastUpdated": "2026-06-15T22:54:26.354Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
