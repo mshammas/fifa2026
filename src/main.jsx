@@ -653,7 +653,7 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
   if (!keys.length) return null;
 
   return (
-    <div>
+    <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 16 }}>
       <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 10 }}>
         {eventBadge("📊")}
         <div style={{ fontSize: 18, fontWeight: 800 }}>Match Stats</div>
