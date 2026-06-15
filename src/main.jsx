@@ -871,35 +871,63 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
           <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, minHeight: 0 }}>
 
             {/* Panel 1 — Score */}
-            <div style={panelStyle}>
-              {panelHead("🏆", "SCORE")}
-              <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0 }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", width: "100%", gap: 8 }}>
-                  <div style={{ textAlign: "center", flex: 1 }}>
-                    <div style={{ fontSize: 56, lineHeight: 1.1 }}>{flag(m.home)}</div>
-                    <div style={{ fontSize: 15, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.home}</div>
-                  </div>
-                  <div style={{ textAlign: "center", minWidth: 72 }}>
-                    {hasScore
-                      ? <div style={{ fontSize: 48, fontWeight: 900, letterSpacing: -2 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
-                      : <div style={{ fontSize: 22, color: C.dim }}>vs</div>}
-                  </div>
-                  <div style={{ textAlign: "center", flex: 1 }}>
-                    <div style={{ fontSize: 56, lineHeight: 1.1 }}>{flag(m.away)}</div>
-                    <div style={{ fontSize: 15, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.away}</div>
+            {(() => {
+              const homeYellow = cards.filter(c => c.side === "home" && c.type === "yellow").length;
+              const homeRed    = cards.filter(c => c.side === "home" && c.type === "red").length;
+              const awayYellow = cards.filter(c => c.side === "away" && c.type === "yellow").length;
+              const awayRed    = cards.filter(c => c.side === "away" && c.type === "red").length;
+              const hasCards   = homeYellow + homeRed + awayYellow + awayRed > 0;
+              const statusLabel = m.status === "FT" ? "FULL TIME" : m.status === "HT" ? "HALF TIME" : "LIVE";
+              return (
+                <div style={panelStyle}>
+                  {panelHead("🏆", "SCORE")}
+                  <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+
+                    {/* Teams + score — main hero area */}
+                    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "space-around", gap: 8, padding: "10px 0" }}>
+                      <div style={{ textAlign: "center", flex: 1 }}>
+                        <div style={{ fontSize: 80, lineHeight: 1.05 }}>{flag(m.home)}</div>
+                        <div style={{ fontSize: 19, fontWeight: 900, marginTop: 12, lineHeight: 1.3 }}>{m.home}</div>
+                        {hasCards && (
+                          <div style={{ marginTop: 8, fontSize: 14, color: C.dim }}>
+                            {homeYellow > 0 && <span>🟨 {homeYellow} </span>}
+                            {homeRed    > 0 && <span>🟥 {homeRed}</span>}
+                            {homeYellow === 0 && homeRed === 0 && <span style={{ opacity: 0 }}>–</span>}
+                          </div>
+                        )}
+                      </div>
+
+                      <div style={{ textAlign: "center", minWidth: 90 }}>
+                        {hasScore
+                          ? <div style={{ fontSize: 68, fontWeight: 900, letterSpacing: -3, lineHeight: 1 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
+                          : <div style={{ fontSize: 28, color: C.dim, fontWeight: 700 }}>vs</div>}
+                      </div>
+
+                      <div style={{ textAlign: "center", flex: 1 }}>
+                        <div style={{ fontSize: 80, lineHeight: 1.05 }}>{flag(m.away)}</div>
+                        <div style={{ fontSize: 19, fontWeight: 900, marginTop: 12, lineHeight: 1.3 }}>{m.away}</div>
+                        {hasCards && (
+                          <div style={{ marginTop: 8, fontSize: 14, color: C.dim }}>
+                            {awayYellow > 0 && <span>🟨 {awayYellow} </span>}
+                            {awayRed    > 0 && <span>🟥 {awayRed}</span>}
+                            {awayYellow === 0 && awayRed === 0 && <span style={{ opacity: 0 }}>–</span>}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Status bar */}
+                    {hasScore && (
+                      <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 16, display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+                        <span style={{ fontSize: 17, color: C.dim }}>⚽ <strong style={{ color: C.text, fontSize: 20 }}>{mh}</strong></span>
+                        <span style={{ fontSize: 13, fontWeight: 900, letterSpacing: 1, color: C.dim }}>{statusLabel}</span>
+                        <span style={{ fontSize: 17, color: C.dim }}><strong style={{ color: C.text, fontSize: 20 }}>{ma}</strong> ⚽</span>
+                      </div>
+                    )}
                   </div>
                 </div>
-                {hasScore && (
-                  <div style={{ marginTop: 22, borderTop: `1px solid ${C.border}`, paddingTop: 16, width: "100%", display: "flex", justifyContent: "space-around" }}>
-                    <span style={{ fontSize: 15, color: C.dim }}>⚽ <strong style={{ color: C.text }}>{mh}</strong></span>
-                    <span style={{ fontSize: 13, fontWeight: 800, color: C.dim }}>
-                      {m.status === "FT" ? "FULL TIME" : m.status === "HT" ? "HALF TIME" : "LIVE"}
-                    </span>
-                    <span style={{ fontSize: 15, color: C.dim }}><strong style={{ color: C.text }}>{ma}</strong> ⚽</span>
-                  </div>
-                )}
-              </div>
-            </div>
+              );
+            })()}
 
             {/* Panel 2 — Goals */}
             <div style={panelStyle}>
