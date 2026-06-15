@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "fetch-scores": "node scripts/fetch-scores.mjs"
+    "fetch-scores": "node scripts/fetch-scores.mjs",
+    "fetch-rosters": "node scripts/fetch-rosters.mjs"
   },
   "keywords": [
     "fifa",

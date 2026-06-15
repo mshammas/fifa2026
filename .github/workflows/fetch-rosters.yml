@@ -1,0 +1,31 @@
+name: Fetch Squad Rosters
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *'   # daily at 06:00 UTC
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Fetch rosters from ESPN
+        run: node scripts/fetch-rosters.mjs
+
+      - name: Commit rosters.json if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/rosters.json
+          git diff --cached --quiet || git commit -m "🏃 Update squad rosters $(date -u '+%Y-%m-%d')"
+          git push

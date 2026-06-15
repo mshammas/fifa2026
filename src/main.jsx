@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom/client";
 import matchesData from "./data/matches.json";
+import rostersData from "./data/rosters.json";
 
 /* ============================================================
    FIFA World Cup 2026 — Live Scores (elder-friendly, zero-token)
@@ -1891,6 +1892,37 @@ function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, prediction
                     return { flag: flag(team), label: player, minute: parts.join(" ") };
                   })}
                 />
+              )}
+            </div>
+          </section>
+        );
+      })()}
+
+      {(() => {
+        const squad = rostersData.rosters?.[team];
+        if (!squad?.length) return null;
+        const byPos = { GK: [], DEF: [], MID: [], FWD: [] };
+        squad.forEach((p) => { if (byPos[p.pos]) byPos[p.pos].push(p); else byPos.FWD.push(p); });
+        const posLabel = { GK: "Goalkeepers", DEF: "Defenders", MID: "Midfielders", FWD: "Forwards" };
+        return (
+          <section style={{ marginBottom: 26 }}>
+            <h3 style={{ fontSize: 17, fontWeight: 900, color: C.gold, margin: "0 0 12px" }}>Squad</h3>
+            <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+              {Object.entries(byPos).map(([pos, players]) =>
+                players.length === 0 ? null : (
+                  <div key={pos}>
+                    <div style={{ background: C.card2, padding: "6px 14px", fontSize: 11, fontWeight: 900, color: C.dim, letterSpacing: 1, textTransform: "uppercase" }}>
+                      {posLabel[pos]}
+                    </div>
+                    {players.map((p, i) => (
+                      <div key={p.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", borderTop: i === 0 ? `1px solid ${C.border}` : `1px solid ${C.border}22` }}>
+                        <span style={{ width: 24, textAlign: "center", fontSize: 13, fontWeight: 800, color: C.dim, flexShrink: 0 }}>{p.jersey ?? "—"}</span>
+                        <span style={{ flex: 1, fontSize: 15, fontWeight: 700 }}>{p.name}</span>
+                        <span style={{ fontSize: 12, color: C.dim, whiteSpace: "nowrap" }}>{p.age ? `${p.age} yrs` : ""}</span>
+                      </div>
+                    ))}
+                  </div>
+                )
               )}
             </div>
           </section>
