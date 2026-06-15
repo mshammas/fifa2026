@@ -815,7 +815,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+1'",
+      "clock": "90'+3'",
       "goals": [],
       "cards": [
         {
@@ -823,17 +823,23 @@
           "player": "S. Lopes Cabral",
           "minute": "16'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "Pedri",
+          "minute": "90'+3'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "74.2",
+        "possessionPct": "74.1",
         "shotsOnTarget": "7",
-        "totalShots": "24"
+        "totalShots": "25"
       },
       "awayStats": {
-        "possessionPct": "25.8",
-        "shotsOnTarget": "0",
-        "totalShots": "4"
+        "possessionPct": "25.9",
+        "shotsOnTarget": "1",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -2385,6 +2391,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T17:52:35.169Z",
+  "lastUpdated": "2026-06-15T17:54:33.380Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
