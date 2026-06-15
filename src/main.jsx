@@ -873,6 +873,7 @@ function LiveCard({ m, tz, isFav, onOpen }) {
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
   return (
     <div
+      id={`match-${m.id}`}
       className="wc-card"
       role="button"
       tabIndex={0}
@@ -935,6 +936,7 @@ function ResultCard({ m, tz, isFav, prediction }) {
 
   return (
     <div
+      id={`match-${m.id}`}
       className="wc-card"
       role="button"
       tabIndex={0}
@@ -1082,9 +1084,10 @@ function GroupFilter({ groups, value, onChange }) {
 }
 
 // One compact row in the full Schedule list (works for any status).
-function ScheduleRow({ m, tz }) {
+function ScheduleRow({ m, tz, onMatchClick }) {
   const s = STATUS[m.status] || STATUS.NS;
   const hasScore = m.homeScore != null && m.awayScore != null;
+  const isClickable = m.status === "FT" || m.status === "LIVE" || m.status === "HT";
   const teamCell = (team) => (
     <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 16, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
       <span style={{ fontSize: 18 }}>{flag(team)}</span>
@@ -1092,7 +1095,13 @@ function ScheduleRow({ m, tz }) {
     </div>
   );
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "8px 12px", marginBottom: 6 }}>
+    <div
+      role={isClickable ? "button" : undefined}
+      tabIndex={isClickable ? 0 : undefined}
+      onClick={isClickable ? () => onMatchClick?.(m) : undefined}
+      onKeyDown={isClickable ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onMatchClick?.(m); } } : undefined}
+      style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: 10, alignItems: "center", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "8px 12px", marginBottom: 6, cursor: isClickable ? "pointer" : "default" }}
+    >
       <div style={{ minWidth: 0, display: "grid", gap: 3 }}>
         {teamCell(m.home)}
         {teamCell(m.away)}
@@ -1103,8 +1112,11 @@ function ScheduleRow({ m, tz }) {
         ) : (
           <div style={{ fontSize: 15, fontWeight: 800, color: C.green }}>{timeLabel(m.date, tz)}</div>
         )}
-        <div className={s.live ? "wc-live" : undefined} style={{ fontSize: 11, fontWeight: 800, color: s.color, marginTop: 2 }}>
-          {s.live ? "🔴 " : ""}{m.status === "NS" ? (m.group ? `Group ${m.group}` : "Knockout") : s.label}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 4 }}>
+          <span className={s.live ? "wc-live" : undefined} style={{ fontSize: 11, fontWeight: 800, color: s.color, marginTop: 2 }}>
+            {s.live ? "🔴 " : ""}{m.status === "NS" ? (m.group ? `Group ${m.group}` : "Knockout") : s.label}
+          </span>
+          {isClickable && <span style={{ fontSize: 11, color: C.dim, marginTop: 2 }}>→</span>}
         </div>
       </div>
     </div>
@@ -1112,7 +1124,7 @@ function ScheduleRow({ m, tz }) {
 }
 
 // Full tournament schedule: every fixture, grouped by day (soonest first).
-function ScheduleTab({ matches, tz }) {
+function ScheduleTab({ matches, tz, onMatchClick }) {
   const groups = useMemo(
     () => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()],
     [matches]
@@ -1189,7 +1201,7 @@ function ScheduleTab({ matches, tz }) {
         <section key={sec.key} style={{ marginBottom: 18 }}>
           <h3 style={{ fontSize: 15, fontWeight: 800, color: C.gold, margin: "0 0 8px" }}>{sec.label}</h3>
           {sec.items.map((m) => (
-            <ScheduleRow key={m.id} m={m} tz={tz} />
+            <ScheduleRow key={m.id} m={m} tz={tz} onMatchClick={onMatchClick} />
           ))}
         </section>
       ))}
@@ -2069,7 +2081,13 @@ export default function App() {
         ) : tab === "teams" ? (
           <TeamsTab matches={matches} tz={tz} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
         ) : tab === "schedule" ? (
-          <ScheduleTab matches={matches} tz={tz} />
+          <ScheduleTab matches={matches} tz={tz} onMatchClick={(m) => {
+            setTab("matches");
+            setTimeout(() => {
+              const el = document.getElementById(`match-${m.id}`);
+              el?.scrollIntoView({ behavior: "smooth", block: "center" });
+            }, 200);
+          }} />
         ) : tab === "standings" ? (
           <StandingsTab matches={matches} />
         ) : tab === "bracket" ? (
