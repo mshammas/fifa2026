@@ -72,6 +72,13 @@ ESPN scoreboard API → `fetch-scores.mjs` → `matches.json` → Vite build →
 - `liveScores(m)` — derives score from `goals[]` array (more up-to-date than ESPN score field during live play)
 - `refreshMatches()` — `fetch('./src/data/matches.json?t=<now>')` used by LiveMatchModal to update state without a page reload (preserves fullscreen)
 
+### CSS Grid overflow gotcha (mobile)
+Auto-sized CSS Grid columns (`grid-template-columns: none`) allow grid items to expand to their intrinsic max-content width, causing content to overflow the card boundary on mobile Safari. Fix: always use `gridTemplateColumns: "minmax(0, 1fr)"` on grids inside constrained containers (cards, modals). This sets column min=0, max=fill-available, preventing blowout. Affected grids in LiveCard:
+- The expanded section (`borderTop` div with `display: grid; gap: 16`)
+- `MatchEvents` return div (`display: grid; gap: 16`)
+
+The live card outer div also has `overflow: hidden` as a safety backstop.
+
 ### Notification system
 - Reads all prefs directly from localStorage inside the score-change `useEffect` (avoids stale closure)
 - Tracks `{ h, a, status, redCards }` per match in `wc_prev_scores`

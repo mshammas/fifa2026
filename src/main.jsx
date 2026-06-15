@@ -538,19 +538,19 @@ const eventBadge = (emoji, bg) => (
 // Each row: team flag · label · minute (right-aligned).
 function EventSection({ icon, iconBg, title, rows }) {
   return (
-    <div style={{ display: "flex", gap: 12 }}>
-      {eventBadge(icon, iconBg)}
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 7 }}>{title}</div>
-        <div style={{ display: "grid", gap: 8 }}>
-          {rows.map((r, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 18, width: 24, textAlign: "center", flexShrink: 0 }}>{r.flag}</span>
-              <span style={{ flex: 1, fontSize: 16, fontWeight: 600, color: r.muted ? C.dim : C.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
-              {r.minute ? <span style={{ fontSize: 15, fontWeight: 700, color: C.dim, whiteSpace: "nowrap" }}>{r.minute}</span> : null}
-            </div>
-          ))}
-        </div>
+    <div>
+      <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 7 }}>
+        {eventBadge(icon, iconBg)}
+        <div style={{ fontSize: 18, fontWeight: 800 }}>{title}</div>
+      </div>
+      <div style={{ display: "grid", gap: 8 }}>
+        {rows.map((r, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ fontSize: 18, width: 24, textAlign: "center", flexShrink: 0 }}>{r.flag}</span>
+            <span style={{ flex: 1, fontSize: 16, fontWeight: 600, color: r.muted ? C.dim : C.text, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.label}</span>
+            {r.minute ? <span style={{ fontSize: 15, fontWeight: 700, color: C.dim, whiteSpace: "nowrap" }}>{r.minute}</span> : null}
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -653,45 +653,45 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
   if (!keys.length) return null;
 
   return (
-    <div style={{ display: "flex", gap: 12 }}>
-      {eventBadge("📊")}
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 10 }}>Match Stats</div>
+    <div>
+      <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 10 }}>
+        {eventBadge("📊")}
+        <div style={{ fontSize: 18, fontWeight: 800 }}>Match Stats</div>
+      </div>
 
-        {/* Legend */}
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
-          <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
-            <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.green, flexShrink: 0, display: "inline-block" }} />
-            {flag(home)} {home}
-          </span>
-          <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
-            {away} {flag(away)}
-            <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.dim, flexShrink: 0, display: "inline-block" }} />
-          </span>
-        </div>
+      {/* Legend */}
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
+        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.green, flexShrink: 0, display: "inline-block" }} />
+          {flag(home)} {home}
+        </span>
+        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
+          {away} {flag(away)}
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.dim, flexShrink: 0, display: "inline-block" }} />
+        </span>
+      </div>
 
-        <div style={{ display: "grid", gap: 12 }}>
-          {keys.map((k) => {
-            const { label, suffix = "" } = STAT_LABELS[k];
-            const hv = parseFloat(hs[k]) || 0;
-            const av = parseFloat(as[k]) || 0;
-            const total = hv + av || 1;
-            const hPct = Math.round((hv / total) * 100);
-            return (
-              <div key={k}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 800, marginBottom: 5 }}>
-                  <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
-                  <span style={{ color: C.dim, fontWeight: 700, fontSize: 12 }}>{label}</span>
-                  <span style={{ color: C.dim }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
-                </div>
-                <div style={{ display: "flex", height: 6, borderRadius: 3, overflow: "hidden", background: C.border }}>
-                  <div style={{ width: `${hPct}%`, background: C.green }} />
-                  <div style={{ flex: 1, background: C.dim }} />
-                </div>
+      <div style={{ display: "grid", gap: 12 }}>
+        {keys.map((k) => {
+          const { label, suffix = "" } = STAT_LABELS[k];
+          const hv = parseFloat(hs[k]) || 0;
+          const av = parseFloat(as[k]) || 0;
+          const total = hv + av || 1;
+          const hPct = Math.round((hv / total) * 100);
+          return (
+            <div key={k}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 800, marginBottom: 5 }}>
+                <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
+                <span style={{ color: C.dim, fontWeight: 700, fontSize: 12 }}>{label}</span>
+                <span style={{ color: C.dim }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
               </div>
-            );
-          })}
-        </div>
+              <div style={{ display: "flex", height: 6, borderRadius: 3, overflow: "hidden", background: C.border }}>
+                <div style={{ width: `${hPct}%`, background: C.green }} />
+                <div style={{ flex: 1, background: C.dim }} />
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
