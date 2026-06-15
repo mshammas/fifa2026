@@ -1015,7 +1015,22 @@ function ScheduleTab({ matches, tz }) {
     [matches]
   );
   const [groupFilter, setGroupFilter] = useState("All");
-  const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
+  const [dateFilter, setDateFilter] = useState("");
+
+  const todayKey = dateKey(new Date().toISOString(), tz);
+  const matchDates = useMemo(
+    () => new Set(matches.map((m) => dateKey(m.date, tz))),
+    [matches, tz]
+  );
+  // Tournament bounds for min/max
+  const minDate = "2026-06-11";
+  const maxDate = "2026-07-19";
+
+  const filtered = matches.filter(
+    (m) =>
+      (groupFilter === "All" || m.group === groupFilter) &&
+      (dateFilter === "" || dateKey(m.date, tz) === dateFilter)
+  );
   const sorted = [...filtered].sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const sections = [];
@@ -1029,7 +1044,44 @@ function ScheduleTab({ matches, tz }) {
   return (
     <div>
       <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
-      {sections.length === 0 && <EmptyState emoji="🗓️" text="No matches to show." />}
+
+      {/* Date picker row */}
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+        <span style={{ fontSize: 14, fontWeight: 700, color: C.dim, whiteSpace: "nowrap" }}>📅 Date</span>
+        <div style={{ position: "relative", flex: 1 }}>
+          <input
+            type="date"
+            value={dateFilter}
+            min={minDate}
+            max={maxDate}
+            onChange={(e) => setDateFilter(e.target.value)}
+            style={{
+              width: "100%", boxSizing: "border-box",
+              background: C.card, color: C.text, border: `1px solid ${C.border}`,
+              borderRadius: 10, padding: "10px 12px", fontSize: 15, fontWeight: 700,
+              colorScheme: "dark", outline: "none", appearance: "none",
+            }}
+          />
+        </div>
+        {dateFilter !== "" && (
+          <button
+            onClick={() => setDateFilter("")}
+            style={{ background: "none", border: `1px solid ${C.border}`, borderRadius: 8, color: C.dim, fontSize: 13, fontWeight: 700, padding: "8px 10px", cursor: "pointer", whiteSpace: "nowrap" }}
+          >
+            ✕ Clear
+          </button>
+        )}
+        {dateFilter !== todayKey && matchDates.has(todayKey) && (
+          <button
+            onClick={() => setDateFilter(todayKey)}
+            style={{ background: "none", border: `1px solid ${C.green}`, borderRadius: 8, color: C.green, fontSize: 13, fontWeight: 700, padding: "8px 10px", cursor: "pointer", whiteSpace: "nowrap" }}
+          >
+            Today
+          </button>
+        )}
+      </div>
+
+      {sections.length === 0 && <EmptyState emoji="🗓️" text="No matches on this date." />}
       {sections.map((sec) => (
         <section key={sec.key} style={{ marginBottom: 18 }}>
           <h3 style={{ fontSize: 15, fontWeight: 800, color: C.gold, margin: "0 0 8px" }}>{sec.label}</h3>
