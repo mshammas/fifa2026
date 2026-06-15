@@ -739,8 +739,8 @@
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "45'+4'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -766,12 +766,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "57.6",
+        "possessionPct": "54.1",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "42.4",
+        "possessionPct": "45.9",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -2342,6 +2342,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T02:50:33.687Z",
+  "lastUpdated": "2026-06-15T02:52:22.664Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
