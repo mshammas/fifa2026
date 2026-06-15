@@ -230,7 +230,7 @@ function TimezonePopover({ tz, setTz }) {
   );
 }
 
-function Header({ lastUpdated, tz, setTz }) {
+function Header({ lastUpdated, tz, setTz, onSettings, notifOn }) {
   return (
     <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "6px 0 2px" }}>
       <div style={{ minWidth: 0 }}>
@@ -243,8 +243,98 @@ function Header({ lastUpdated, tz, setTz }) {
             : "Live scores"}
         </p>
       </div>
-      <TimezonePopover tz={tz} setTz={setTz} />
+      <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+        <button
+          onClick={onSettings}
+          title="Notification settings"
+          style={{ background: notifOn ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.07)", border: notifOn ? "1px solid rgba(34,197,94,0.4)" : "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: notifOn ? C.green : C.dim, fontSize: 18, padding: "6px 9px", cursor: "pointer", lineHeight: 1 }}
+        >
+          🔔
+        </button>
+        <TimezonePopover tz={tz} setTz={setTz} />
+      </div>
     </header>
+  );
+}
+
+// ─── Settings panel ───────────────────────────────────────────────────────────
+function SettingsPanel({ onClose }) {
+  const [permission, setPermission] = useState(() =>
+    typeof Notification !== "undefined" ? Notification.permission : "denied"
+  );
+  const [notifOn, setNotifOn] = useLocalStorage("wc_notif_on", false);
+  const [notifGoals, setNotifGoals] = useLocalStorage("wc_notif_goals", true);
+  const [notifKickoff, setNotifKickoff] = useLocalStorage("wc_notif_kickoff", true);
+  const [notifFT, setNotifFT] = useLocalStorage("wc_notif_ft", true);
+  const [notifCards, setNotifCards] = useLocalStorage("wc_notif_cards", false);
+  const [notifFavOnly, setNotifFavOnly] = useLocalStorage("wc_notif_favonly", false);
+
+  const toggle = async () => {
+    if (notifOn) { setNotifOn(false); return; }
+    if (typeof Notification === "undefined") { alert("Notifications not supported in this browser."); return; }
+    if (permission === "denied") { alert("Notifications are blocked. Please enable them in your browser settings, then try again."); return; }
+    const perm = await Notification.requestPermission();
+    setPermission(perm);
+    if (perm === "granted") {
+      setNotifOn(true);
+      new Notification("⚽ Notifications enabled!", { body: "You'll get updates for goals, kick-offs and more.", icon: "./apple-touch-icon.png" });
+    }
+  };
+
+  const Row = ({ label, value, onChange, disabled }) => (
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "12px 0", borderBottom: `1px solid ${C.border}` }}>
+      <span style={{ fontSize: 15, fontWeight: 700, color: disabled ? C.dim : C.text }}>{label}</span>
+      <button
+        onClick={() => !disabled && onChange(!value)}
+        style={{
+          width: 48, height: 26, borderRadius: 13, border: "none", cursor: disabled ? "default" : "pointer",
+          background: value && !disabled ? C.green : C.border,
+          position: "relative", transition: "background 0.2s", flexShrink: 0,
+        }}
+      >
+        <span style={{
+          position: "absolute", top: 3, left: value && !disabled ? 25 : 3,
+          width: 20, height: 20, borderRadius: "50%", background: "#fff",
+          transition: "left 0.2s", display: "block",
+        }} />
+      </button>
+    </div>
+  );
+
+  const blocked = permission === "denied";
+
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", flexDirection: "column", justifyContent: "flex-end" }} onClick={onClose}>
+      <div style={{ background: C.card2, borderRadius: "20px 20px 0 0", padding: "20px 20px 36px", maxHeight: "85vh", overflowY: "auto" }} onClick={(e) => e.stopPropagation()}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+          <h2 style={{ fontSize: 20, fontWeight: 900, margin: 0 }}>🔔 Notifications</h2>
+          <button onClick={onClose} style={{ background: "none", border: "none", color: C.dim, fontSize: 22, cursor: "pointer", padding: 4 }}>✕</button>
+        </div>
+
+        {blocked && (
+          <div style={{ background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.3)", borderRadius: 10, padding: "10px 14px", fontSize: 13, color: C.red, marginBottom: 16 }}>
+            Notifications are blocked in your browser. Enable them in site settings, then return here.
+          </div>
+        )}
+
+        <p style={{ fontSize: 13, color: C.dim, margin: "0 0 16px", lineHeight: 1.6 }}>
+          Notifications fire when the app is open and scores refresh. You'll be alerted for goals, kick-offs and more.
+        </p>
+
+        <Row label="Enable notifications" value={notifOn} onChange={toggle} disabled={blocked} />
+        <div style={{ paddingLeft: 8, opacity: notifOn ? 1 : 0.4, pointerEvents: notifOn ? "auto" : "none" }}>
+          <Row label="⚽ Goals" value={notifGoals} onChange={setNotifGoals} />
+          <Row label="🟢 Kick-off alerts" value={notifKickoff} onChange={setNotifKickoff} />
+          <Row label="✅ Full time" value={notifFT} onChange={setNotifFT} />
+          <Row label="🟥 Red cards" value={notifCards} onChange={setNotifCards} />
+          <Row label="⭐ Favourite team only" value={notifFavOnly} onChange={setNotifFavOnly} />
+        </div>
+
+        <p style={{ fontSize: 12, color: C.dim, marginTop: 16, lineHeight: 1.5 }}>
+          Notifications appear when a score update is fetched (every ~5 min). They only work while this tab is open.
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -1855,6 +1945,8 @@ export default function App() {
   const [predictions, setPredictions] = useLocalStorage("wc_predictions", {});
   const [goalAlerts, setGoalAlerts] = useState([]);
   const [liveModal, setLiveModal] = useState(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const [notifOn] = useLocalStorage("wc_notif_on", false);
   const matches = matchesData.matches || [];
 
   // Restore live modal after auto-reload (sessionStorage keeps the match ID).
@@ -1870,26 +1962,70 @@ export default function App() {
   const openLiveModal = (m) => { sessionStorage.setItem("wc_live_modal", m.id); setLiveModal(m); };
   const closeLiveModal = () => { sessionStorage.removeItem("wc_live_modal"); setLiveModal(null); };
 
-  // Detect score changes vs the last visit and queue toasts.
+  // Detect score changes vs the last visit and queue toasts + browser notifications.
   useEffect(() => {
     const prev = (() => { try { return JSON.parse(localStorage.getItem("wc_prev_scores")); } catch { return null; } })();
+    const notifEnabled = (() => { try { return JSON.parse(localStorage.getItem("wc_notif_on")); } catch { return false; } })();
+    const prefs = {
+      goals:   (() => { try { return JSON.parse(localStorage.getItem("wc_notif_goals"))   ?? true;  } catch { return true;  } })(),
+      kickoff: (() => { try { return JSON.parse(localStorage.getItem("wc_notif_kickoff")) ?? true;  } catch { return true;  } })(),
+      ft:      (() => { try { return JSON.parse(localStorage.getItem("wc_notif_ft"))      ?? true;  } catch { return true;  } })(),
+      cards:   (() => { try { return JSON.parse(localStorage.getItem("wc_notif_cards"))   ?? false; } catch { return false; } })(),
+      favOnly: (() => { try { return JSON.parse(localStorage.getItem("wc_notif_favonly")) ?? false; } catch { return false; } })(),
+    };
+    const favTeamStored = (() => { try { return JSON.parse(localStorage.getItem("wc_fav_team")); } catch { return null; } })();
+
+    const canNotif = notifEnabled && typeof Notification !== "undefined" && Notification.permission === "granted";
+    const sendNotif = (title, body) => {
+      if (canNotif) new Notification(title, { body, icon: "./apple-touch-icon.png", badge: "./favicon-32.png" });
+    };
+
     const current = {};
     const alerts = [];
+
     for (const m of matches) {
-      if (m.homeScore != null && m.awayScore != null) {
-        current[m.id] = { h: m.homeScore, a: m.awayScore };
-        if (prev) {
-          const p = prev[m.id];
-          if (p && (m.homeScore !== p.h || m.awayScore !== p.a)) {
-            const homeUp = m.homeScore > p.h, awayUp = m.awayScore > p.a;
-            const headline = homeUp && !awayUp ? `GOAL — ${m.home}!`
-              : !homeUp && awayUp ? `GOAL — ${m.away}!`
-              : "Score update";
-            alerts.push({ ...m, headline });
-          }
+      const redCards = (m.cards || []).filter((c) => c.type === "red").length;
+      current[m.id] = { h: m.homeScore, a: m.awayScore, status: m.status, redCards };
+
+      if (!prev) continue;
+      const p = prev[m.id];
+      if (!p) continue;
+
+      const isFav = !favTeamStored || !prefs.favOnly ||
+        m.home === favTeamStored || m.away === favTeamStored;
+      if (!isFav) continue;
+
+      const label = `${flag(m.home)} ${m.home} vs ${m.away} ${flag(m.away)}`;
+
+      // Goals
+      if (m.homeScore != null && m.awayScore != null && p.h != null) {
+        if (m.homeScore !== p.h || m.awayScore !== p.a) {
+          const homeUp = m.homeScore > p.h, awayUp = m.awayScore > p.a;
+          const headline = homeUp && !awayUp ? `GOAL — ${m.home}!`
+            : !homeUp && awayUp ? `GOAL — ${m.away}!`
+            : "Score update";
+          alerts.push({ ...m, headline });
+          if (prefs.goals) sendNotif(`⚽ ${headline}`, `${label}  ${m.homeScore}–${m.awayScore}`);
         }
       }
+
+      // Kick-off
+      if (p.status === "NS" && (m.status === "LIVE" || m.status === "HT")) {
+        if (prefs.kickoff) sendNotif(`🟢 Kick-off! ${m.home} vs ${m.away}`, label);
+      }
+
+      // Full time
+      if ((p.status === "LIVE" || p.status === "HT") && m.status === "FT") {
+        if (prefs.ft) sendNotif(`✅ Full Time: ${m.home} ${m.homeScore}–${m.awayScore} ${m.away}`, label);
+      }
+
+      // Red cards
+      if (redCards > (p.redCards || 0)) {
+        const newReds = redCards - (p.redCards || 0);
+        if (prefs.cards) sendNotif(`🟥 Red card${newReds > 1 ? "s" : ""}`, label);
+      }
     }
+
     try { localStorage.setItem("wc_prev_scores", JSON.stringify(current)); } catch {}
     if (alerts.length) setGoalAlerts(alerts);
   }, []);
@@ -1907,8 +2043,9 @@ export default function App() {
       <GlobalStyles />
       <GoalToast alerts={goalAlerts} />
       {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} />}
+      {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} />}
       <div className="wc-wrap">
-        <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} />
+        <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} onSettings={() => setShowSettings(true)} notifOn={notifOn} />
         <LiveNowBanner matches={matches} onGoToMatches={() => setTab("matches")} />
         <Tabs tab={tab} setTab={setTab} />
 
