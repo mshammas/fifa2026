@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom/client";
 import matchesData from "./data/matches.json";
 
@@ -775,12 +775,12 @@ function GoalToast({ alerts }) {
   );
 }
 
-function LiveMatchModal({ m, onClose }) {
-  // Auto-reload every 30 s so fresh scores baked into the page are picked up.
+function LiveMatchModal({ m, onClose, onRefresh }) {
+  // Fetch fresh match data every 30 s without a full page reload.
   useEffect(() => {
-    const t = setInterval(() => window.location.reload(), 30_000);
+    const t = setInterval(() => onRefresh?.(), 30_000);
     return () => clearInterval(t);
-  }, []);
+  }, [onRefresh]);
 
   // Request native fullscreen (Android Chrome / desktop). iOS Safari silently ignores.
   useEffect(() => {
@@ -2140,9 +2140,25 @@ export default function App() {
   const [liveModal, setLiveModal] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [notifOn] = useLocalStorage("wc_notif_on", false);
-  const matches = matchesData.matches || [];
+  const [matchesState, setMatchesState] = useState(matchesData);
+  const matches = matchesState.matches || [];
 
-  // Restore live modal after auto-reload (sessionStorage keeps the match ID).
+  const refreshMatches = useCallback(async () => {
+    try {
+      const res = await fetch(`./src/data/matches.json?t=${Date.now()}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      setMatchesState(data);
+      // Keep liveModal in sync with refreshed data.
+      setLiveModal((prev) => {
+        if (!prev) return prev;
+        const updated = (data.matches || []).find((m) => m.id === prev.id);
+        return updated || prev;
+      });
+    } catch { /* silently ignore network errors */ }
+  }, []);
+
+  // Restore live modal after page load (sessionStorage survives soft navigation).
   useEffect(() => {
     const savedId = sessionStorage.getItem("wc_live_modal");
     if (savedId) {
@@ -2235,7 +2251,7 @@ export default function App() {
     <div style={{ minHeight: "100vh", background: C.bg, color: C.text, padding: "16px 16px 0" }}>
       <GlobalStyles />
       <GoalToast alerts={goalAlerts} />
-      {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} />}
+      {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} />}
       {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} />}
       <div className="wc-wrap">
         <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} onSettings={() => setShowSettings(true)} notifOn={notifOn} />
