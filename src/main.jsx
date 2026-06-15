@@ -850,17 +850,24 @@ function LiveMatchModal({ m, onClose }) {
         <div style={{ display: "grid", gap: 20 }}>
           <MatchEvents m={m} />
           <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
-          <VenueBlock venue={m.venue} />
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ display: "flex", gap: 8, alignItems: "center", flex: 1, minWidth: 0 }}>
+              {eventBadge("📍")}
+              <div style={{ minWidth: 0 }}>
+                <div style={{ fontSize: 13, fontWeight: 800 }}>Venue</div>
+                <div style={{ fontSize: 12, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.venue}</div>
+              </div>
+            </div>
+            <a
+              href={`https://www.google.com/search?q=${watchQuery}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0, fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "10px 14px", textDecoration: "none" }}
+            >
+              ▶ Watch Live
+            </a>
+          </div>
         </div>
-
-        <a
-          href={`https://www.google.com/search?q=${watchQuery}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginTop: 28, width: "100%", boxSizing: "border-box", fontSize: 18, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 14, padding: "16px 20px", textDecoration: "none" }}
-        >
-          ▶ Watch Live
-        </a>
       </div>
     </div>
   );
