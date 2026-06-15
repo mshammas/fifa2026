@@ -602,7 +602,7 @@ function MatchEvents({ m }) {
   }));
 
   return (
-    <div style={{ display: "grid", gap: 16 }}>
+    <div style={{ display: "grid", gap: 16, gridTemplateColumns: "minmax(0, 1fr)" }}>
       {goals.length > 0 && <EventSection icon="⚽" title="Goals" rows={goalRows} />}
       {cards.length > 0 && <EventSection icon="🟨" iconBg="rgba(251,191,36,0.15)" title="Cards" rows={cardRows} />}
     </div>
@@ -653,9 +653,9 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
   if (!keys.length) return null;
 
   return (
-    <div style={{ display: "flex", gap: 12, width: "100%", minWidth: 0 }}>
+    <div style={{ display: "flex", gap: 12 }}>
       {eventBadge("📊")}
-      <div style={{ flex: 1, minWidth: 0, overflow: "hidden" }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 10 }}>Match Stats</div>
 
         {/* Legend */}
@@ -1083,7 +1083,7 @@ function LiveCard({ m, tz, isFav, onOpen }) {
         <TeamRow team={m.away} score={hasScore ? as : null} winner={false} />
       </div>
 
-      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16 }}>
+      <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16, gridTemplateColumns: "minmax(0, 1fr)" }}>
         <MatchEvents m={m} />
         <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
