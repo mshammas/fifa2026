@@ -1350,7 +1350,7 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   );
   const [groupFilter, setGroupFilter] = useState("All");
   const [dateFilter, setDateFilter] = useState("");
-  const [upcomingOnly, setUpcomingOnly] = useState(false);
+  const [stageFilter, setStageFilter] = useState(null);
 
   const todayKey = dateKey(new Date().toISOString(), tz);
   const matchDates = useMemo(
@@ -1361,11 +1361,21 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   const minDate = "2026-06-11";
   const maxDate = "2026-07-19";
 
+  const matchStage = (m) => {
+    if (m.status === "NS" && !m.group) {
+      const d = m.date?.slice(0, 10);
+      if (d >= "2026-07-09" && d <= "2026-07-12") return "qf";
+      if (d >= "2026-07-14" && d <= "2026-07-15") return "sf";
+      if (d >= "2026-07-19") return "final";
+    }
+    return m.status === "NS" ? "upcoming" : null;
+  };
+
   const filtered = matches.filter(
     (m) =>
       (groupFilter === "All" || m.group === groupFilter) &&
       (dateFilter === "" || dateKey(m.date, tz) === dateFilter) &&
-      (!upcomingOnly || m.status === "NS")
+      (!stageFilter || matchStage(m) === stageFilter)
   );
   const sorted = [...filtered].sort((a, b) => new Date(a.date) - new Date(b.date));
 
@@ -1417,18 +1427,29 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
         )}
       </div>
 
-      <div style={{ marginBottom: 16 }}>
-        <button
-          onClick={() => setUpcomingOnly(v => !v)}
-          style={{
-            background: upcomingOnly ? "rgba(34,197,94,0.15)" : C.card,
-            border: `1px solid ${upcomingOnly ? C.green : C.border}`,
-            borderRadius: 20, padding: "8px 14px", fontSize: 13, fontWeight: 700,
-            color: upcomingOnly ? C.green : C.dim, cursor: "pointer",
-          }}
-        >
-          🗓️ Upcoming only
-        </button>
+      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+        {[
+          { key: "upcoming", label: "Upcoming" },
+          { key: "qf",      label: "Qtr" },
+          { key: "sf",      label: "Semi" },
+          { key: "final",   label: "Final" },
+        ].map(({ key, label }) => {
+          const active = stageFilter === key;
+          return (
+            <button
+              key={key}
+              onClick={() => setStageFilter(active ? null : key)}
+              style={{
+                flex: 1, background: active ? "rgba(34,197,94,0.15)" : C.card,
+                border: `1px solid ${active ? C.green : C.border}`,
+                borderRadius: 20, padding: "8px 0", fontSize: 13, fontWeight: 700,
+                color: active ? C.green : C.dim, cursor: "pointer", whiteSpace: "nowrap",
+              }}
+            >
+              {label}
+            </button>
+          );
+        })}
       </div>
 
       {sections.length === 0 && <EmptyState emoji="🗓️" text="No matches on this date." />}
