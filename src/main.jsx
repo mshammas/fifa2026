@@ -2146,7 +2146,7 @@ function Footer({ source }) {
   return (
     <footer style={{ textAlign: "center", color: C.dim, fontSize: 13, padding: "28px 0 12px", lineHeight: 1.7 }}>
       <div>{source || "Static data · zero API tokens used"}</div>
-      <div>Built by Shammas Oliyath · fifa.shammas.in</div>
+      <div>Built by Shammas Oliyath with Claude · fifa.shammas.in</div>
       <div style={{ marginTop: 4 }}>
         Data &amp; recaps powered by{" "}
         <a href="https://www.espn.com" target="_blank" rel="noopener noreferrer" style={{ color: C.dim, textDecoration: "underline" }}>

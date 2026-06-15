@@ -246,4 +246,4 @@ fifa2026/
 
 ---
 
-**Built by [Shammas Oliyath](https://shammas.in)** · Data & recaps powered by [ESPN](https://www.espn.com) · Hosted on GitHub Pages · v1.0
+**Built by [Shammas Oliyath](https://shammas.in) with [Claude](https://claude.ai)** · Data & recaps powered by [ESPN](https://www.espn.com) · Hosted on GitHub Pages · v1.0
