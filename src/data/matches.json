@@ -918,12 +918,19 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "78'",
+      "clock": "80'",
       "goals": [
         {
           "side": "home",
           "player": "A. Al-Amri",
           "minute": "41'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "M. Araújo",
+          "minute": "80'",
           "pen": false,
           "og": false
         }
@@ -937,12 +944,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "35.5",
+        "possessionPct": "34.9",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "64.5",
+        "possessionPct": "65.1",
         "shotsOnTarget": "5",
         "totalShots": "14"
       },
@@ -2462,6 +2469,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T23:44:28.020Z",
+  "lastUpdated": "2026-06-15T23:46:26.904Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
