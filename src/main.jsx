@@ -697,6 +697,19 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
   );
 }
 
+function RecapBlock({ recap }) {
+  if (!recap) return null;
+  return (
+    <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 16 }}>
+      <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 10 }}>
+        {eventBadge("📰")}
+        <div style={{ fontSize: 18, fontWeight: 800 }}>Match Recap</div>
+      </div>
+      <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6, color: C.dim }}>{recap}</p>
+    </div>
+  );
+}
+
 function ShareButton({ m }) {
   const [done, setDone] = useState(false);
 
@@ -1006,6 +1019,15 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
               ▶ Watch Live
             </a>
           </div>
+          {m.recap && (
+            <div style={{ flexShrink: 0, background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "16px 20px" }}>
+              <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 10 }}>
+                {eventBadge("📰")}
+                <div style={{ fontSize: 16, fontWeight: 800 }}>Match Recap</div>
+              </div>
+              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: C.dim }}>{m.recap}</p>
+            </div>
+          )}
         </div>
       ) : (
         /* ── MOBILE LAYOUT (single column scroll) ─────────────────── */
@@ -1047,6 +1069,7 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
                 ▶ Watch Live
               </a>
             </div>
+            <RecapBlock recap={m.recap} />
           </div>
         </div>
       )}
