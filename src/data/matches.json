@@ -841,7 +841,7 @@
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
-      "recap": null
+      "recap": "Spain frustrated by heroic Cape Verde in World Cup opener"
     },
     {
       "id": "e760426",
@@ -856,8 +856,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2391,6 +2399,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T17:58:38.124Z",
+  "lastUpdated": "2026-06-15T18:58:28.673Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
