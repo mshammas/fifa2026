@@ -853,7 +853,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "34'",
+      "clock": "36'",
       "goals": [
         {
           "side": "away",
@@ -875,17 +875,23 @@
           "player": "T. Castagne",
           "minute": "14'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Fatouh",
+          "minute": "34'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "55.8",
+        "possessionPct": "55.6",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "44.2",
-        "shotsOnTarget": "1",
-        "totalShots": "1"
+        "possessionPct": "44.4",
+        "shotsOnTarget": "2",
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -2420,6 +2426,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T19:34:27.284Z",
+  "lastUpdated": "2026-06-15T19:36:28.625Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
