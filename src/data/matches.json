@@ -740,7 +740,7 @@
       "homeScore": 4,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "88'",
+      "clock": "90'",
       "goals": [
         {
           "side": "home",
@@ -773,7 +773,7 @@
         {
           "side": "home",
           "player": "M. Svanberg",
-          "minute": "87'",
+          "minute": "84'",
           "pen": false,
           "og": false
         }
@@ -787,12 +787,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "49.1",
-        "shotsOnTarget": "4",
-        "totalShots": "9"
+        "possessionPct": "48.6",
+        "shotsOnTarget": "5",
+        "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "50.9",
+        "possessionPct": "51.4",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -2363,6 +2363,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T03:48:23.942Z",
+  "lastUpdated": "2026-06-15T03:50:34.125Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
