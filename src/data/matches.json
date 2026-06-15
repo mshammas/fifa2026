@@ -719,12 +719,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48.3",
+        "possessionPct": "48.4",
         "shotsOnTarget": "4",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "51.7",
+        "possessionPct": "51.6",
         "shotsOnTarget": "1",
         "totalShots": "12"
       },
@@ -740,7 +740,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "53'",
+      "clock": "56'",
       "goals": [
         {
           "side": "home",
@@ -764,14 +764,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "R. Khedira",
+          "minute": "54'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "49.9",
+        "possessionPct": "50.2",
         "shotsOnTarget": "3",
-        "totalShots": "5"
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "50.1",
+        "possessionPct": "49.8",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -2342,6 +2349,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-15T03:14:27.784Z",
+  "lastUpdated": "2026-06-15T03:16:23.102Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
