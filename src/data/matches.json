@@ -1080,7 +1080,7 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "47'",
+      "clock": "46'",
       "goals": [
         {
           "side": "away",
@@ -2580,6 +2580,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T23:10:31.065Z",
+  "lastUpdated": "2026-06-16T23:12:26.379Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
