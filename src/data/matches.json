@@ -1080,7 +1080,7 @@
       "homeScore": 1,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "84'",
+      "clock": "87'",
       "goals": [
         {
           "side": "away",
@@ -1111,14 +1111,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "Z. Tahseen",
+          "minute": "86'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "40.1",
+        "possessionPct": "39.9",
         "shotsOnTarget": "1",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "59.9",
+        "possessionPct": "60.1",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
@@ -2587,6 +2594,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T23:48:28.426Z",
+  "lastUpdated": "2026-06-16T23:50:37.434Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
