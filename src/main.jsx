@@ -403,40 +403,109 @@ const TAB_ITEMS = [
   { id: "watch",     icon: "📺", label: "Watch"     },
 ];
 
+const PRIMARY_TABS = TAB_ITEMS.slice(0, 4);
+const MORE_TABS    = TAB_ITEMS.slice(4);
+
 function Tabs({ tab, setTab }) {
+  const [showMore, setShowMore] = useState(false);
+  const moreActive = MORE_TABS.some((t) => t.id === tab);
+
+  const selectTab = (id) => { setTab(id); setShowMore(false); };
+
   return (
-    <div
-      role="tablist"
-      style={{
-        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200,
-        display: "flex", background: C.card, borderTop: `1px solid ${C.border}`,
-        paddingBottom: "env(safe-area-inset-bottom, 0px)",
-      }}
-    >
-      {TAB_ITEMS.map((it) => {
-        const active = tab === it.id;
-        return (
-          <button
-            key={it.id}
-            role="tab"
-            aria-selected={active}
-            className={`wc-tab${active ? " wc-tab-active" : ""}`}
-            onClick={() => setTab(it.id)}
+    <>
+      {/* More tray */}
+      {showMore && (
+        <div
+          onClick={() => setShowMore(false)}
+          style={{ position: "fixed", inset: 0, zIndex: 195, background: "rgba(0,0,0,0.5)" }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
             style={{
-              flex: 1, display: "flex", flexDirection: "column", alignItems: "center",
-              justifyContent: "center", gap: 2, padding: "8px 2px 6px",
-              border: "none", background: "none", color: active ? C.green : C.dim,
-              fontSize: 10, fontWeight: active ? 800 : 600, cursor: "pointer",
-              borderTop: active ? `2px solid ${C.green}` : "2px solid transparent",
-              transition: "color 0.15s",
+              position: "absolute", left: 0, right: 0,
+              bottom: `calc(68px + env(safe-area-inset-bottom, 0px))`,
+              background: C.card, borderTop: `1px solid ${C.border}`,
+              borderRadius: "16px 16px 0 0", padding: "12px 0 4px",
             }}
           >
-            <span style={{ fontSize: 20, lineHeight: 1 }}>{it.icon}</span>
-            {it.label}
-          </button>
-        );
-      })}
-    </div>
+            <div style={{ fontSize: 11, fontWeight: 900, color: C.dim, letterSpacing: 1, textTransform: "uppercase", padding: "0 20px 10px" }}>More</div>
+            {MORE_TABS.map((it) => {
+              const active = tab === it.id;
+              return (
+                <button
+                  key={it.id}
+                  onClick={() => selectTab(it.id)}
+                  className="wc-btn"
+                  style={{
+                    width: "100%", display: "flex", alignItems: "center", gap: 16,
+                    padding: "14px 20px", border: "none", background: "none",
+                    color: active ? C.green : C.text, fontSize: 17, fontWeight: active ? 900 : 700,
+                    cursor: "pointer", textAlign: "left",
+                    borderLeft: active ? `3px solid ${C.green}` : "3px solid transparent",
+                  }}
+                >
+                  <span style={{ fontSize: 24 }}>{it.icon}</span>
+                  {it.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* Bottom nav */}
+      <div
+        role="tablist"
+        style={{
+          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200,
+          display: "flex", background: C.card, borderTop: `1px solid ${C.border}`,
+          paddingBottom: "env(safe-area-inset-bottom, 0px)",
+        }}
+      >
+        {PRIMARY_TABS.map((it) => {
+          const active = tab === it.id;
+          return (
+            <button
+              key={it.id}
+              role="tab"
+              aria-selected={active}
+              className={`wc-tab${active ? " wc-tab-active" : ""}`}
+              onClick={() => { setShowMore(false); setTab(it.id); }}
+              style={{
+                flex: 1, display: "flex", flexDirection: "column", alignItems: "center",
+                justifyContent: "center", gap: 2, padding: "8px 2px 6px",
+                border: "none", background: "none", color: active ? C.green : C.dim,
+                fontSize: 10, fontWeight: active ? 800 : 600, cursor: "pointer",
+                borderTop: active ? `2px solid ${C.green}` : "2px solid transparent",
+                transition: "color 0.15s",
+              }}
+            >
+              <span style={{ fontSize: 22, lineHeight: 1 }}>{it.icon}</span>
+              {it.label}
+            </button>
+          );
+        })}
+
+        {/* More button */}
+        <button
+          onClick={() => setShowMore((v) => !v)}
+          className="wc-tab"
+          style={{
+            flex: 1, display: "flex", flexDirection: "column", alignItems: "center",
+            justifyContent: "center", gap: 2, padding: "8px 2px 6px",
+            border: "none", background: "none",
+            color: moreActive || showMore ? C.green : C.dim,
+            fontSize: 10, fontWeight: moreActive || showMore ? 800 : 600, cursor: "pointer",
+            borderTop: moreActive || showMore ? `2px solid ${C.green}` : "2px solid transparent",
+            transition: "color 0.15s",
+          }}
+        >
+          <span style={{ fontSize: 22, lineHeight: 1 }}>•••</span>
+          More
+        </button>
+      </div>
+    </>
   );
 }
 
