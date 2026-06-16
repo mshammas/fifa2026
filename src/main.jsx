@@ -186,6 +186,7 @@ function GlobalStyles() {
       .wc-live { animation: wcPulse 1.4s ease-in-out infinite; }
       @keyframes wcPulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
       .wc-wrap { max-width: 860px; margin: 0 auto; }
+      .wc-sticky { position: -webkit-sticky; position: sticky; top: 0; z-index: 10; }
       @media (max-width: 640px) {
         body { font-size: 17px; }
         .wc-hide-sm { display: none !important; }
@@ -2115,7 +2116,7 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
 
   return (
     <div>
-      <div style={{ position: "sticky", top: 0, zIndex: 10, background: C.bg, paddingBottom: 12, marginBottom: 4 }}>
+      <div className="wc-sticky" style={{ background: C.bg, paddingBottom: 12, marginBottom: 4 }}>
         <input
           type="search"
           placeholder="Search team…"
