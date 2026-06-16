@@ -1077,19 +1077,19 @@
       "away": "Norway",
       "group": "I",
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "3'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "47.1",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "52.9",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -2558,6 +2558,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T22:02:27.716Z",
+  "lastUpdated": "2026-06-16T22:04:32.296Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
