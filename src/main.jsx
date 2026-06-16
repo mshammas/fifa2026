@@ -174,8 +174,8 @@ function GlobalStyles() {
   return (
     <style>{`
       :root { color-scheme: dark; }
-      html { -webkit-text-size-adjust: 100%; }
-      body { font-size: 18px; line-height: 1.5; }
+      html { -webkit-text-size-adjust: 100%; overflow-y: auto; }
+      body { font-size: 18px; line-height: 1.5; overflow: visible; }
       button { font-family: inherit; cursor: pointer; }
       select { font-family: inherit; }
       a { color: ${C.green}; }
