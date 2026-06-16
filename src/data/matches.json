@@ -1079,8 +1079,8 @@
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "45'+6'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -1106,12 +1106,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "39.2",
+        "possessionPct": "39.6",
         "shotsOnTarget": "1",
-        "totalShots": "7"
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "60.8",
+        "possessionPct": "60.4",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -2580,6 +2580,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T22:52:27.424Z",
+  "lastUpdated": "2026-06-16T22:54:26.602Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
