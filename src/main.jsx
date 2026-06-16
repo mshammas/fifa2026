@@ -190,6 +190,10 @@ function GlobalStyles() {
       .wc-wrap { max-width: 860px; margin: 0 auto; }
       .wc-ptr-spinner { animation: wcSpin 0.7s linear infinite; }
       @keyframes wcSpin { to { transform: rotate(360deg); } }
+      .wc-slide-left  { animation: wcSlideLeft  0.22s ease both; }
+      .wc-slide-right { animation: wcSlideRight 0.22s ease both; }
+      @keyframes wcSlideLeft  { from { opacity: 0; transform: translateX(32px);  } to { opacity: 1; transform: translateX(0); } }
+      @keyframes wcSlideRight { from { opacity: 0; transform: translateX(-32px); } to { opacity: 1; transform: translateX(0); } }
       @media (max-width: 640px) {
         body { font-size: 17px; }
         .wc-hide-sm { display: none !important; }
@@ -406,7 +410,7 @@ const TAB_ITEMS = [
 const PRIMARY_TABS = TAB_ITEMS.slice(0, 4);
 const MORE_TABS    = TAB_ITEMS.slice(4);
 
-function Tabs({ tab, setTab }) {
+function Tabs({ tab, setTab, hasLive }) {
   const [showMore, setShowMore] = useState(false);
   const moreActive = MORE_TABS.some((t) => t.id === tab);
 
@@ -481,7 +485,12 @@ function Tabs({ tab, setTab }) {
                 transition: "color 0.15s",
               }}
             >
-              <span style={{ fontSize: 22, lineHeight: 1 }}>{it.icon}</span>
+              <span style={{ position: "relative", fontSize: 22, lineHeight: 1 }}>
+                {it.icon}
+                {it.id === "matches" && hasLive && (
+                  <span className="wc-live" style={{ position: "absolute", top: -2, right: -4, width: 8, height: 8, borderRadius: "50%", background: C.red, display: "block" }} />
+                )}
+              </span>
               {it.label}
             </button>
           );
@@ -1305,8 +1314,10 @@ function Countdown({ date }) {
   if (diff <= 0 || diff > 24 * 3600 * 1000) return null;
   const h = Math.floor(diff / 3_600_000);
   const m = Math.floor((diff % 3_600_000) / 60_000);
+  const totalMins = h * 60 + m;
+  const color = totalMins < 10 ? C.red : totalMins < 30 ? C.gold : C.green;
   return (
-    <span style={{ fontSize: 13, fontWeight: 800, color: C.green }}>
+    <span style={{ fontSize: 13, fontWeight: 800, color }}>
       ⏱ {h > 0 ? `${h}h ${m}m` : `${m}m`} to kickoff
     </span>
   );
@@ -2706,8 +2717,21 @@ export default function App() {
 
   const onRefresh = useCallback(() => { window.location.reload(); }, []);
 
-  // Swipe left/right to change tabs
+  const hasLive = matches.some((m) => m.status === "LIVE" || m.status === "HT");
+
+  // Offline detection
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  useEffect(() => {
+    const on  = () => setIsOnline(true);
+    const off = () => setIsOnline(false);
+    window.addEventListener("online",  on);
+    window.addEventListener("offline", off);
+    return () => { window.removeEventListener("online", on); window.removeEventListener("offline", off); };
+  }, []);
+
+  // Swipe left/right to change tabs + slide direction tracking
   const tabIds = TAB_ITEMS.map((t) => t.id);
+  const [slideDir, setSlideDir] = useState("left");
   const swipeStart = React.useRef(null);
   const onSwipeTouchStart = (e) => { swipeStart.current = e.touches[0].clientX; };
   const onSwipeTouchEnd = (e) => {
@@ -2716,8 +2740,15 @@ export default function App() {
     swipeStart.current = null;
     if (Math.abs(dx) < 50) return;
     const cur = tabIds.indexOf(tab);
-    if (dx < 0 && cur < tabIds.length - 1) setTab(tabIds[cur + 1]);
-    if (dx > 0 && cur > 0) setTab(tabIds[cur - 1]);
+    if (dx < 0 && cur < tabIds.length - 1) { setSlideDir("left");  setTab(tabIds[cur + 1]); }
+    if (dx > 0 && cur > 0)                 { setSlideDir("right"); setTab(tabIds[cur - 1]); }
+  };
+
+  const changeTab = (id) => {
+    const cur = tabIds.indexOf(tab);
+    const next = tabIds.indexOf(id);
+    setSlideDir(next > cur ? "left" : "right");
+    setTab(id);
   };
 
   return (
@@ -2734,34 +2765,40 @@ export default function App() {
       {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} />}
       <div className="wc-wrap">
         <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} onSettings={() => setShowSettings(true)} notifOn={notifOn} />
-        <LiveNowBanner matches={matches} onGoToMatches={() => setTab("matches")} />
-
-        {matches.length === 0 ? (
-          <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
-        ) : tab === "matches" ? (
-          <MatchesTab matches={matches} tz={tz} favTeam={favTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
-        ) : tab === "teams" ? (
-          <TeamsTab matches={matches} tz={tz} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
-        ) : tab === "schedule" ? (
-          <ScheduleTab matches={matches} tz={tz} onMatchClick={(m) => {
-            setTab("matches");
-            setTimeout(() => {
-              const el = document.getElementById(`match-${m.id}`);
-              el?.scrollIntoView({ behavior: "smooth", block: "center" });
-            }, 200);
-          }} />
-        ) : tab === "standings" ? (
-          <StandingsTab matches={matches} />
-        ) : tab === "bracket" ? (
-          <BracketTab matches={matches} tz={tz} />
-        ) : (
-          <WatchTab matches={matches} tz={tz} />
+        {!isOnline && (
+          <div style={{ background: "#78350f", color: "#fef3c7", fontSize: 13, fontWeight: 700, textAlign: "center", padding: "8px 16px", borderRadius: 10, marginBottom: 12 }}>
+            📡 No connection — showing cached data
+          </div>
         )}
+        <LiveNowBanner matches={matches} onGoToMatches={() => changeTab("matches")} />
 
-        <Footer source={matchesData.source} />
+        <div key={tab} className={`wc-slide-${slideDir}`}>
+          {matches.length === 0 ? (
+            <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
+          ) : tab === "matches" ? (
+            <MatchesTab matches={matches} tz={tz} favTeam={favTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
+          ) : tab === "teams" ? (
+            <TeamsTab matches={matches} tz={tz} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
+          ) : tab === "schedule" ? (
+            <ScheduleTab matches={matches} tz={tz} onMatchClick={(m) => {
+              changeTab("matches");
+              setTimeout(() => {
+                const el = document.getElementById(`match-${m.id}`);
+                el?.scrollIntoView({ behavior: "smooth", block: "center" });
+              }, 200);
+            }} />
+          ) : tab === "standings" ? (
+            <StandingsTab matches={matches} />
+          ) : tab === "bracket" ? (
+            <BracketTab matches={matches} tz={tz} />
+          ) : (
+            <WatchTab matches={matches} tz={tz} />
+          )}
+          <Footer source={matchesData.source} />
+        </div>
       </div>
 
-      <Tabs tab={tab} setTab={setTab} />
+      <Tabs tab={tab} setTab={changeTab} hasLive={hasLive} />
       <ScrollToTop />
       <FloatingActions onRefresh={onRefresh} />
     </div>
