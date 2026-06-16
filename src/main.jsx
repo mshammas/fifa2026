@@ -175,7 +175,8 @@ function GlobalStyles() {
     <style>{`
       :root { color-scheme: dark; }
       html { -webkit-text-size-adjust: 100%; overflow-y: auto; }
-      body { font-size: 18px; line-height: 1.5; overflow: visible; }
+      body { font-size: 18px; line-height: 1.5; overflow: visible; padding-top: env(safe-area-inset-top, 0px); }
+      .wc-sticky { position: -webkit-sticky; position: sticky; top: 0; top: env(safe-area-inset-top, 0px); z-index: 10; }
       button { font-family: inherit; cursor: pointer; }
       select { font-family: inherit; }
       a { color: ${C.green}; }
@@ -2096,9 +2097,14 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
   useEffect(() => {
     const el = document.getElementById("wc-tablist");
     if (!el) return;
-    const ro = new ResizeObserver(() => setTabsHeight(el.offsetHeight));
+    const measure = () => {
+      const safeTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sat") || "0") ||
+        parseFloat(getComputedStyle(document.body).paddingTop) || 0;
+      setTabsHeight(el.offsetHeight + safeTop);
+    };
+    const ro = new ResizeObserver(measure);
     ro.observe(el);
-    setTabsHeight(el.offsetHeight);
+    measure();
     return () => ro.disconnect();
   }, []);
 
