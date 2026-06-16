@@ -47,6 +47,21 @@ function useNow() {
   return now;
 }
 
+function useScoreFlash(score) {
+  const [flash, setFlash] = useState(false);
+  const prev = React.useRef(score);
+  useEffect(() => {
+    if (score != null && prev.current != null && prev.current !== score) {
+      setFlash(true);
+      const t = setTimeout(() => setFlash(false), 700);
+      prev.current = score;
+      return () => clearTimeout(t);
+    }
+    prev.current = score;
+  }, [score]);
+  return flash;
+}
+
 function useWindowWidth() {
   const [w, setW] = useState(() => window.innerWidth);
   useEffect(() => {
@@ -208,6 +223,10 @@ function GlobalStyles() {
       }
       .wc-ticker { animation: wcTicker 18s linear infinite; display: inline-block; }
       .wc-ticker:hover { animation-play-state: paused; }
+      @keyframes wcScoreFlash { 0% { color: ${C.green}; transform: scale(1.35); } 100% { color: inherit; transform: scale(1); } }
+      .wc-score-flash { animation: wcScoreFlash 0.65s ease; }
+      .wc-noscroll { scrollbar-width: none; -ms-overflow-style: none; }
+      .wc-noscroll::-webkit-scrollbar { display: none; }
     `}</style>
   );
 }
@@ -256,6 +275,19 @@ function TimezonePopover({ tz, setTz }) {
 }
 
 function Header({ lastUpdated, tz, setTz, onSettings, notifOn }) {
+  const [shareDone, setShareDone] = useState(false);
+  const handleShareApp = async () => {
+    const url = "https://fifa.shammas.in";
+    const text = "Follow FIFA World Cup 2026 live — goals, scores & stats updated every 5 min.";
+    if (navigator.share) {
+      try { await navigator.share({ title: "FIFA World Cup 2026 Live", text, url }); return; } catch {}
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareDone(true);
+      setTimeout(() => setShareDone(false), 2000);
+    } catch {}
+  };
   return (
     <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "6px 0 2px" }}>
       <div style={{ minWidth: 0 }}>
@@ -276,6 +308,13 @@ function Header({ lastUpdated, tz, setTz, onSettings, notifOn }) {
         })()}
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+        <button
+          onClick={handleShareApp}
+          title={shareDone ? "Link copied!" : "Share app"}
+          style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: shareDone ? C.green : C.dim, fontSize: 18, padding: "6px 9px", cursor: "pointer", lineHeight: 1, transition: "color 0.2s" }}
+        >
+          {shareDone ? "✓" : "🔗"}
+        </button>
         <button
           onClick={onSettings}
           title="Notification settings"
@@ -373,27 +412,54 @@ function SettingsPanel({ onClose }) {
 function LiveNowBanner({ matches, onGoToMatches }) {
   const live = matches.filter((m) => m.status === "LIVE" || m.status === "HT");
   if (!live.length) return null;
-  const m = live[0];
-  const score = m.homeScore != null ? `${m.homeScore}–${m.awayScore}` : "";
-  const clock = m.status === "HT" ? " · HT" : m.clock ? ` · ${m.clock}` : "";
-  const extra = live.length > 1 ? ` +${live.length - 1} more` : "";
+
+  if (live.length === 1) {
+    const m = live[0];
+    const { h: hs, a: as } = liveScores(m);
+    const score = hs != null ? `${hs}–${as}` : "";
+    const clock = m.status === "HT" ? " · HT" : m.clock ? ` · ${m.clock}` : "";
+    return (
+      <div
+        onClick={onGoToMatches}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "Enter") onGoToMatches(); }}
+        style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "10px 14px", marginBottom: 14, cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}
+      >
+        <span className="wc-live" style={{ color: C.red, fontSize: 12, fontWeight: 900, flexShrink: 0 }}>🔴 LIVE</span>
+        <span style={{ flex: 1, fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          {flag(m.home)} {m.home} {score} {m.away} {flag(m.away)}{clock}
+        </span>
+        <span style={{ fontSize: 13, color: C.dim, flexShrink: 0 }}>→</span>
+      </div>
+    );
+  }
+
+  // 2+ live matches: scrollable chip row
   return (
-    <div
-      onClick={onGoToMatches}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => { if (e.key === "Enter") onGoToMatches(); }}
-      style={{
-        background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.35)",
-        borderRadius: 10, padding: "10px 14px", marginBottom: 14,
-        cursor: "pointer", display: "flex", alignItems: "center", gap: 10,
-      }}
-    >
-      <span className="wc-live" style={{ color: "#ef4444", fontSize: 12, fontWeight: 900, flexShrink: 0 }}>🔴 LIVE</span>
-      <span style={{ flex: 1, fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-        {flag(m.home)} {m.home} {score} {m.away} {flag(m.away)}{clock}{extra}
-      </span>
-      <span style={{ fontSize: 13, color: C.dim, flexShrink: 0 }}>→</span>
+    <div style={{ marginBottom: 14 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
+        <span className="wc-live" style={{ color: C.red, fontSize: 12, fontWeight: 900 }}>🔴 {live.length} MATCHES LIVE</span>
+      </div>
+      <div className="wc-noscroll" style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 2 }}>
+        {live.map((m) => {
+          const { h: hs, a: as } = liveScores(m);
+          const clock = m.status === "HT" ? "HT" : (m.clock || "LIVE");
+          return (
+            <button
+              key={m.id}
+              onClick={onGoToMatches}
+              className="wc-btn"
+              style={{ flex: "0 0 auto", background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.3)", borderRadius: 10, padding: "8px 12px", cursor: "pointer", color: C.text, textAlign: "center", minWidth: 130 }}
+            >
+              <div style={{ fontSize: 11, color: C.red, fontWeight: 900, marginBottom: 4 }}>{clock}</div>
+              <div style={{ fontSize: 14, fontWeight: 800, whiteSpace: "nowrap" }}>
+                {flag(m.home)} {hs ?? 0}–{as ?? 0} {flag(m.away)}
+              </div>
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -533,7 +599,7 @@ function StatusBadge({ status, clock }) {
   );
 }
 
-function TeamRow({ team, score, winner }) {
+function TeamRow({ team, score, winner, flash }) {
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
       <span style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
@@ -545,7 +611,7 @@ function TeamRow({ team, score, winner }) {
           {team}
         </span>
       </span>
-      <span style={{ fontSize: 26, fontWeight: 900, color: winner ? C.gold : C.text }}>
+      <span className={flash ? "wc-score-flash" : ""} style={{ fontSize: 26, fontWeight: 900, color: winner ? C.gold : C.text }}>
         {score == null ? "–" : score}
       </span>
     </div>
@@ -1185,6 +1251,8 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
 function LiveCard({ m, tz, isFav, onOpen, onGroupClick }) {
   const { h: hs, a: as } = liveScores(m);
   const hasScore = hs != null && as != null;
+  const homeFlash = useScoreFlash(hs);
+  const awayFlash = useScoreFlash(as);
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
   return (
     <div
@@ -1211,8 +1279,8 @@ function LiveCard({ m, tz, isFav, onOpen, onGroupClick }) {
       </div>
 
       <div style={{ display: "grid", gap: 8 }}>
-        <TeamRow team={m.home} score={hasScore ? hs : null} winner={false} />
-        <TeamRow team={m.away} score={hasScore ? as : null} winner={false} />
+        <TeamRow team={m.home} score={hasScore ? hs : null} winner={false} flash={homeFlash} />
+        <TeamRow team={m.away} score={hasScore ? as : null} winner={false} flash={awayFlash} />
       </div>
 
       <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 12, paddingTop: 14, display: "grid", gap: 16, gridTemplateColumns: "minmax(0, 1fr)" }}>
@@ -1692,6 +1760,38 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
         </div>
       )}
       <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
+      {groupFilter !== "All" && (() => {
+        const rows = (computeStandings(matches)[groupFilter] || []);
+        if (!rows.length) return null;
+        const cell = { padding: "7px 8px", textAlign: "center", fontSize: 13, fontWeight: 700 };
+        return (
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, marginBottom: 14, overflow: "hidden" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <thead>
+                <tr style={{ background: C.card2 }}>
+                  <th style={{ ...cell, textAlign: "left", paddingLeft: 12, color: C.dim, fontWeight: 800 }}>Group {groupFilter}</th>
+                  <th style={{ ...cell, color: C.dim, fontWeight: 800 }}>P</th>
+                  <th style={{ ...cell, color: C.dim, fontWeight: 800 }}>GD</th>
+                  <th style={{ ...cell, color: C.green, fontWeight: 800 }}>Pts</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((r, i) => (
+                  <tr key={r.team} style={{ borderTop: `1px solid ${C.border}`, background: i < 2 ? `${C.green}0a` : "transparent" }}>
+                    <td style={{ ...cell, textAlign: "left", paddingLeft: 12, fontWeight: 700 }}>
+                      {flag(r.team)} {r.team}
+                      {i < 2 && <span style={{ marginLeft: 6, fontSize: 10, color: C.green, fontWeight: 900, verticalAlign: "middle" }}>Q</span>}
+                    </td>
+                    <td style={cell}>{r.P}</td>
+                    <td style={{ ...cell, color: r.GD > 0 ? C.green : r.GD < 0 ? C.red : C.dim }}>{r.GD > 0 ? `+${r.GD}` : r.GD}</td>
+                    <td style={{ ...cell, fontWeight: 900, color: C.green }}>{r.Pts}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      })()}
 
       {tally.total > 0 && (
         <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 18, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
@@ -2261,6 +2361,22 @@ function TeamsTab({ matches, tz, favTeams, toggleFavTeam, predictions, onPredict
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [search, setSearch] = useState("");
+  const lpTimer = React.useRef(null);
+  const lpFired = React.useRef(false);
+
+  const startLP = (team) => {
+    lpFired.current = false;
+    lpTimer.current = setTimeout(() => {
+      lpFired.current = true;
+      toggleFavTeam(team);
+      navigator.vibrate?.(60);
+    }, 500);
+  };
+  const cancelLP = () => clearTimeout(lpTimer.current);
+  const handleClick = (e, team) => {
+    if (lpFired.current) { e.preventDefault(); return; }
+    setSelectedTeam(team);
+  };
 
   const allTeams = useMemo(() => {
     const isPlaceholder = (name) => /Group [A-Z]|Winner|Place|Loser/i.test(name);
@@ -2307,7 +2423,11 @@ function TeamsTab({ matches, tz, favTeams, toggleFavTeam, predictions, onPredict
           return (
             <button
               key={team}
-              onClick={() => setSelectedTeam(team)}
+              onClick={(e) => handleClick(e, team)}
+              onTouchStart={() => startLP(team)}
+              onTouchEnd={cancelLP}
+              onTouchMove={cancelLP}
+              onContextMenu={(e) => { e.preventDefault(); toggleFavTeam(team); }}
               className="wc-btn"
               style={{
                 position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
