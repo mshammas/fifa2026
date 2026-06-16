@@ -829,13 +829,13 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
       </div>
 
       {/* Legend */}
-      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
-        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12, gap: 8, overflow: "hidden" }}>
+        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, minWidth: 0, overflow: "hidden" }}>
           <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.green, flexShrink: 0, display: "inline-block" }} />
-          {flag(home)} {home}
+          <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{flag(home)} {home}</span>
         </span>
-        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700 }}>
-          {away} {flag(away)}
+        <span style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, minWidth: 0, overflow: "hidden", flexShrink: 0 }}>
+          <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{away} {flag(away)}</span>
           <span style={{ width: 10, height: 10, borderRadius: "50%", background: C.dim, flexShrink: 0, display: "inline-block" }} />
         </span>
       </div>
@@ -849,10 +849,10 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
           const hPct = Math.round((hv / total) * 100);
           return (
             <div key={k}>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 800, marginBottom: 5 }}>
-                <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
-                <span style={{ color: C.dim, fontWeight: 700, fontSize: 12 }}>{label}</span>
-                <span style={{ color: C.dim }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 800, marginBottom: 5, gap: 4 }}>
+                <span style={{ color: C.green, flexShrink: 0 }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
+                <span style={{ color: C.dim, fontWeight: 700, fontSize: 12, textAlign: "center", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</span>
+                <span style={{ color: C.dim, flexShrink: 0 }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
               </div>
               <div style={{ display: "flex", height: 6, borderRadius: 3, overflow: "hidden", background: C.border }}>
                 <div style={{ width: `${hPct}%`, background: C.green }} />
