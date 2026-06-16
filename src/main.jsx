@@ -1555,13 +1555,13 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   );
 }
 
-function MatchesTab({ matches, tz, favTeam, predictions, onPredict, onOpenLive }) {
+function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive }) {
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
   const [groupFilter, setGroupFilter] = useState("All");
 
   const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
-  const isFav = (m) => !!favTeam && (m.home === favTeam || m.away === favTeam);
+  const isFav = (m) => favTeams.length > 0 && (favTeams.includes(m.home) || favTeams.includes(m.away));
   const todayKey = dateKey(new Date().toISOString(), tz);
 
   // Always include LIVE/HT matches regardless of date — a late match crossing
@@ -1587,7 +1587,7 @@ function MatchesTab({ matches, tz, favTeam, predictions, onPredict, onOpenLive }
       if (k !== key) { key = k; out.push({ key: k, label: dayHeader(m.date, tz), items: [] }); }
       out[out.length - 1].items.push(m);
     }
-    if (favTeam) {
+    if (favTeams.length > 0) {
       for (const sec of out) sec.items.sort((a, b) => (isFav(a) ? 0 : 1) - (isFav(b) ? 0 : 1));
     }
     return out;
@@ -1613,39 +1613,47 @@ function MatchesTab({ matches, tz, favTeam, predictions, onPredict, onOpenLive }
     return { perfect, right, wrong, pending, total: perfect + right + wrong + pending };
   }, [matches, predictions]);
 
-  // Fav team spotlight: live first, else next upcoming, else last result
-  const favMatch = favTeam ? (
-    matches.find((m) => (m.home === favTeam || m.away === favTeam) && (m.status === "LIVE" || m.status === "HT")) ||
-    matches.filter((m) => (m.home === favTeam || m.away === favTeam) && m.status === "NS").sort((a, b) => new Date(a.date) - new Date(b.date))[0] ||
-    matches.filter((m) => (m.home === favTeam || m.away === favTeam) && m.status === "FT").sort((a, b) => new Date(b.date) - new Date(a.date))[0]
-  ) : null;
+  // Fav team spotlight cards: live first, else next upcoming, else last result
+  const favSpotlights = favTeams.map((favTeam) => ({
+    team: favTeam,
+    match:
+      matches.find((m) => (m.home === favTeam || m.away === favTeam) && (m.status === "LIVE" || m.status === "HT")) ||
+      matches.filter((m) => (m.home === favTeam || m.away === favTeam) && m.status === "NS").sort((a, b) => new Date(a.date) - new Date(b.date))[0] ||
+      matches.filter((m) => (m.home === favTeam || m.away === favTeam) && m.status === "FT").sort((a, b) => new Date(b.date) - new Date(a.date))[0] ||
+      null,
+  }));
 
   return (
     <div>
-      {favMatch && (() => {
-        const isLiveMatch = favMatch.status === "LIVE" || favMatch.status === "HT";
-        const isUpcoming = favMatch.status === "NS";
-        return (
-          <div style={{ background: `linear-gradient(135deg, ${C.gold}18, ${C.card})`, border: `1px solid ${C.gold}55`, borderRadius: 14, padding: "14px 16px", marginBottom: 18 }}>
-            <div style={{ fontSize: 11, fontWeight: 900, color: C.gold, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
-              ⭐ Your Team · {flag(favTeam)} {favTeam}
-            </div>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
-              <span style={{ fontWeight: 800, fontSize: 15 }}>{flag(favMatch.home)} {favMatch.home}</span>
-              <span style={{ fontWeight: 900, fontSize: 17, color: isLiveMatch ? C.red : C.text, minWidth: 48, textAlign: "center" }}>
-                {isUpcoming ? "vs" : `${favMatch.homeScore ?? 0}–${favMatch.awayScore ?? 0}`}
-              </span>
-              <span style={{ fontWeight: 800, fontSize: 15, textAlign: "right" }}>{favMatch.away} {flag(favMatch.away)}</span>
-            </div>
-            <div style={{ fontSize: 12, color: C.dim, marginTop: 8, display: "flex", gap: 12 }}>
-              {isLiveMatch && <span style={{ color: C.red, fontWeight: 800 }}>🔴 LIVE {favMatch.clock}</span>}
-              {isUpcoming && <span>⏰ {fmt(favMatch.date, tz, { weekday: "short", month: "short", day: "numeric" })} · {timeLabel(favMatch.date, tz)}</span>}
-              {favMatch.status === "FT" && <span>FT</span>}
-              {favMatch.venue && <span>📍 {favMatch.venue.split(",")[0]}</span>}
-            </div>
-          </div>
-        );
-      })()}
+      {favSpotlights.length > 0 && (
+        <div style={{ marginBottom: 18, display: "flex", flexDirection: "column", gap: 10 }}>
+          {favSpotlights.map(({ team, match: favMatch }) => {
+            if (!favMatch) return null;
+            const isLiveMatch = favMatch.status === "LIVE" || favMatch.status === "HT";
+            const isUpcoming = favMatch.status === "NS";
+            return (
+              <div key={team} style={{ background: `linear-gradient(135deg, ${C.gold}18, ${C.card})`, border: `1px solid ${C.gold}55`, borderRadius: 14, padding: "14px 16px" }}>
+                <div style={{ fontSize: 11, fontWeight: 900, color: C.gold, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
+                  ⭐ {flag(team)} {team}
+                </div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+                  <span style={{ fontWeight: 800, fontSize: 15 }}>{flag(favMatch.home)} {favMatch.home}</span>
+                  <span style={{ fontWeight: 900, fontSize: 17, color: isLiveMatch ? C.red : C.text, minWidth: 48, textAlign: "center" }}>
+                    {isUpcoming ? "vs" : `${favMatch.homeScore ?? 0}–${favMatch.awayScore ?? 0}`}
+                  </span>
+                  <span style={{ fontWeight: 800, fontSize: 15, textAlign: "right" }}>{favMatch.away} {flag(favMatch.away)}</span>
+                </div>
+                <div style={{ fontSize: 12, color: C.dim, marginTop: 8, display: "flex", gap: 12 }}>
+                  {isLiveMatch && <span style={{ color: C.red, fontWeight: 800 }}>🔴 LIVE {favMatch.clock}</span>}
+                  {isUpcoming && <span>⏰ {fmt(favMatch.date, tz, { weekday: "short", month: "short", day: "numeric" })} · {timeLabel(favMatch.date, tz)}</span>}
+                  {favMatch.status === "FT" && <span>FT</span>}
+                  {favMatch.venue && <span>📍 {favMatch.venue.split(",")[0]}</span>}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
 
       {tally.total > 0 && (
@@ -2002,7 +2010,9 @@ function PlayerProfile({ player, team, matches, onBack }) {
   );
 }
 
-function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, predictions, onPredict, onOpenLive, onPlayerSelect }) {
+const FAV_MAX = 3;
+
+function TeamDetail({ team, matches, tz, onBack, favTeams, toggleFavTeam, predictions, onPredict, onOpenLive, onPlayerSelect }) {
   const teamMatches = useMemo(
     () => [...matches.filter((m) => m.home === team || m.away === team)].sort((a, b) => new Date(a.date) - new Date(b.date)),
     [team, matches]
@@ -2029,13 +2039,19 @@ function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, prediction
         <div style={{ fontSize: 72, lineHeight: 1.1 }}>{flag(team)}</div>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, margin: "10px 0 4px" }}>
           <h2 style={{ fontSize: 28, fontWeight: 900, margin: 0 }}>{team}</h2>
-          <button
-            onClick={() => setFavTeam(favTeam === team ? null : team)}
-            title={favTeam === team ? "Remove favourite" : "Set as favourite team"}
-            style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", padding: 0, lineHeight: 1 }}
-          >
-            {favTeam === team ? "⭐" : "☆"}
-          </button>
+          {(() => {
+            const isStarred = favTeams.includes(team);
+            const atCap = !isStarred && favTeams.length >= FAV_MAX;
+            return (
+              <button
+                onClick={() => !atCap && toggleFavTeam(team)}
+                title={isStarred ? "Remove from favourites" : atCap ? `Max ${FAV_MAX} favourites — remove one first` : "Add to favourites"}
+                style={{ background: "none", border: "none", fontSize: 24, cursor: atCap ? "not-allowed" : "pointer", padding: 0, lineHeight: 1, opacity: atCap ? 0.35 : 1 }}
+              >
+                {isStarred ? "⭐" : "☆"}
+              </button>
+            );
+          })()}
         </div>
         {group && <span style={{ fontSize: 15, fontWeight: 700, color: C.dim }}>Group {group}</span>}
       </div>
@@ -2204,7 +2220,7 @@ function TeamDetail({ team, matches, tz, onBack, favTeam, setFavTeam, prediction
   );
 }
 
-function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, onOpenLive }) {
+function TeamsTab({ matches, tz, favTeams, toggleFavTeam, predictions, onPredict, onOpenLive }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [search, setSearch] = useState("");
@@ -2217,11 +2233,11 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
       if (!isPlaceholder(m.away)) set.add(m.away);
     }
     return Array.from(set).sort((a, b) => {
-      if (a === favTeam) return -1;
-      if (b === favTeam) return 1;
+      const aFav = favTeams.includes(a), bFav = favTeams.includes(b);
+      if (aFav !== bFav) return aFav ? -1 : 1;
       return a.localeCompare(b);
     });
-  }, [matches, favTeam]);
+  }, [matches, favTeams]);
 
   const filtered = search ? allTeams.filter((t) => t.toLowerCase().includes(search.toLowerCase())) : allTeams;
 
@@ -2230,7 +2246,7 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
   }
 
   if (selectedTeam) {
-    return <TeamDetail team={selectedTeam} matches={matches} tz={tz} onBack={() => setSelectedTeam(null)} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={onOpenLive} onPlayerSelect={setSelectedPlayer} />;
+    return <TeamDetail team={selectedTeam} matches={matches} tz={tz} onBack={() => setSelectedTeam(null)} favTeams={favTeams} toggleFavTeam={toggleFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={onOpenLive} onPlayerSelect={setSelectedPlayer} />;
   }
 
   return (
@@ -2250,7 +2266,7 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 10 }}>
         {filtered.map((team) => {
-          const starred = favTeam === team;
+          const starred = favTeams.includes(team);
           return (
             <button
               key={team}
@@ -2604,7 +2620,12 @@ function Onboarding() {
 export default function App() {
   const [tab, setTab] = useState("matches");
   const [tz, setTz] = useState("local");
-  const [favTeam, setFavTeam] = useLocalStorage("wc_fav_team", null);
+  const [favTeams, setFavTeams] = useLocalStorage("wc_fav_teams", []);
+  const toggleFavTeam = (team) => {
+    const arr = Array.isArray(favTeams) ? favTeams : [];
+    if (arr.includes(team)) setFavTeams(arr.filter((t) => t !== team));
+    else if (arr.length < FAV_MAX) setFavTeams([...arr, team]);
+  };
   const [predictions, setPredictions] = useLocalStorage("wc_predictions", {});
   const [goalAlerts, setGoalAlerts] = useState([]);
   const [liveModal, setLiveModal] = useState(null);
@@ -2652,7 +2673,7 @@ export default function App() {
       cards:   (() => { try { return JSON.parse(localStorage.getItem("wc_notif_cards"))   ?? false; } catch { return false; } })(),
       favOnly: (() => { try { return JSON.parse(localStorage.getItem("wc_notif_favonly")) ?? false; } catch { return false; } })(),
     };
-    const favTeamStored = (() => { try { return JSON.parse(localStorage.getItem("wc_fav_team")); } catch { return null; } })();
+    const favTeamsStored = (() => { try { return JSON.parse(localStorage.getItem("wc_fav_teams")) ?? []; } catch { return []; } })();
 
     const canNotif = notifEnabled && typeof Notification !== "undefined" && Notification.permission === "granted";
     const sendNotif = (title, body) => {
@@ -2670,8 +2691,8 @@ export default function App() {
       const p = prev[m.id];
       if (!p) continue;
 
-      const isFav = !favTeamStored || !prefs.favOnly ||
-        m.home === favTeamStored || m.away === favTeamStored;
+      const isFav = favTeamsStored.length === 0 || !prefs.favOnly ||
+        favTeamsStored.includes(m.home) || favTeamsStored.includes(m.away);
       if (!isFav) continue;
 
       const label = `${flag(m.home)} ${m.home} vs ${m.away} ${flag(m.away)}`;
@@ -2776,9 +2797,9 @@ export default function App() {
           {matches.length === 0 ? (
             <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
           ) : tab === "matches" ? (
-            <MatchesTab matches={matches} tz={tz} favTeam={favTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
+            <MatchesTab matches={matches} tz={tz} favTeams={favTeams} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
           ) : tab === "teams" ? (
-            <TeamsTab matches={matches} tz={tz} favTeam={favTeam} setFavTeam={setFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
+            <TeamsTab matches={matches} tz={tz} favTeams={favTeams} toggleFavTeam={toggleFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
           ) : tab === "schedule" ? (
             <ScheduleTab matches={matches} tz={tz} onMatchClick={(m) => {
               changeTab("matches");
