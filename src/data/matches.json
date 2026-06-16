@@ -1023,10 +1023,10 @@
       "away": "Senegal",
       "group": "I",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'+6'",
+      "clock": "90'+7'",
       "goals": [
         {
           "side": "home",
@@ -1048,13 +1048,20 @@
           "minute": "90'+5'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "K. Mbappé",
+          "minute": "90'+6'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
         "possessionPct": "54.2",
-        "shotsOnTarget": "7",
-        "totalShots": "10"
+        "shotsOnTarget": "8",
+        "totalShots": "11"
       },
       "awayStats": {
         "possessionPct": "45.8",
@@ -1076,8 +1083,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2543,6 +2558,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T21:00:47.344Z",
+  "lastUpdated": "2026-06-16T21:02:30.772Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
