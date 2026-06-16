@@ -175,19 +175,21 @@ function GlobalStyles() {
     <style>{`
       :root { color-scheme: dark; }
       html { -webkit-text-size-adjust: 100%; overflow-y: auto; }
-      body { font-size: 18px; line-height: 1.5; overflow: visible; padding-top: env(safe-area-inset-top, 0px); }
+      body { font-size: 18px; line-height: 1.5; overflow: visible; padding-top: env(safe-area-inset-top, 0px); padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
       .wc-sticky { position: -webkit-sticky; position: sticky; top: 0; top: env(safe-area-inset-top, 0px); z-index: 10; }
       button { font-family: inherit; cursor: pointer; }
       select { font-family: inherit; }
       a { color: ${C.green}; }
-      .wc-tab:not([aria-selected="true"]):hover { background: ${C.card2} !important; }
+      .wc-tab-active { color: ${C.green} !important; }
+      .wc-tab:not(.wc-tab-active):hover { opacity: 0.75; }
       .wc-card { transition: transform .12s ease, box-shadow .12s ease; }
       .wc-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
       .wc-btn:hover { filter: brightness(1.12); }
       .wc-live { animation: wcPulse 1.4s ease-in-out infinite; }
       @keyframes wcPulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
       .wc-wrap { max-width: 860px; margin: 0 auto; }
-      .wc-sticky { position: -webkit-sticky; position: sticky; top: 0; z-index: 10; }
+      .wc-ptr-spinner { animation: wcSpin 0.7s linear infinite; }
+      @keyframes wcSpin { to { transform: rotate(360deg); } }
       @media (max-width: 640px) {
         body { font-size: 17px; }
         .wc-hide-sm { display: none !important; }
@@ -392,41 +394,44 @@ function LiveNowBanner({ matches, onGoToMatches }) {
   );
 }
 
+const TAB_ITEMS = [
+  { id: "matches",   icon: "📅", label: "Matches"   },
+  { id: "teams",     icon: "🏴", label: "Teams"     },
+  { id: "schedule",  icon: "🗓️", label: "Schedule"  },
+  { id: "standings", icon: "📊", label: "Standings" },
+  { id: "bracket",   icon: "🏆", label: "Bracket"   },
+  { id: "watch",     icon: "📺", label: "Watch"     },
+];
+
 function Tabs({ tab, setTab }) {
-  const items = [
-    { id: "matches", label: "📅 Matches" },
-    { id: "teams", label: "🏴 Teams" },
-    { id: "schedule", label: "🗓️ Schedule" },
-    { id: "standings", label: "📊 Standings" },
-    { id: "bracket", label: "🏆 Bracket" },
-    { id: "watch", label: "📺 Watch" },
-  ];
   return (
     <div
       role="tablist"
-      id="wc-tablist"
-      className="wc-sticky"
       style={{
-        display: "flex", flexWrap: "wrap", gap: 6, background: C.card, border: `1px solid ${C.border}`,
-        borderRadius: 14, padding: 6, marginBottom: 18,
+        position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 200,
+        display: "flex", background: C.card, borderTop: `1px solid ${C.border}`,
+        paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
-      {items.map((it) => {
+      {TAB_ITEMS.map((it) => {
         const active = tab === it.id;
         return (
           <button
             key={it.id}
             role="tab"
             aria-selected={active}
-            className="wc-tab"
+            className={`wc-tab${active ? " wc-tab-active" : ""}`}
             onClick={() => setTab(it.id)}
             style={{
-              flex: "1 1 auto", fontSize: 15, fontWeight: 800, padding: "11px 10px",
-              borderRadius: 10, border: "none", whiteSpace: "nowrap",
-              color: active ? "#06210f" : C.text,
-              background: active ? C.green : "transparent",
+              flex: 1, display: "flex", flexDirection: "column", alignItems: "center",
+              justifyContent: "center", gap: 2, padding: "8px 2px 6px",
+              border: "none", background: "none", color: active ? C.green : C.dim,
+              fontSize: 10, fontWeight: active ? 800 : 600, cursor: "pointer",
+              borderTop: active ? `2px solid ${C.green}` : "2px solid transparent",
+              transition: "color 0.15s",
             }}
           >
+            <span style={{ fontSize: 20, lineHeight: 1 }}>{it.icon}</span>
             {it.label}
           </button>
         );
@@ -1528,8 +1533,39 @@ function MatchesTab({ matches, tz, favTeam, predictions, onPredict, onOpenLive }
     return { perfect, right, wrong, pending, total: perfect + right + wrong + pending };
   }, [matches, predictions]);
 
+  // Fav team spotlight: live first, else next upcoming, else last result
+  const favMatch = favTeam ? (
+    matches.find((m) => (m.home === favTeam || m.away === favTeam) && (m.status === "LIVE" || m.status === "HT")) ||
+    matches.filter((m) => (m.home === favTeam || m.away === favTeam) && m.status === "NS").sort((a, b) => new Date(a.date) - new Date(b.date))[0] ||
+    matches.filter((m) => (m.home === favTeam || m.away === favTeam) && m.status === "FT").sort((a, b) => new Date(b.date) - new Date(a.date))[0]
+  ) : null;
+
   return (
     <div>
+      {favMatch && (() => {
+        const isLiveMatch = favMatch.status === "LIVE" || favMatch.status === "HT";
+        const isUpcoming = favMatch.status === "NS";
+        return (
+          <div style={{ background: `linear-gradient(135deg, ${C.gold}18, ${C.card})`, border: `1px solid ${C.gold}55`, borderRadius: 14, padding: "14px 16px", marginBottom: 18 }}>
+            <div style={{ fontSize: 11, fontWeight: 900, color: C.gold, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
+              ⭐ Your Team · {flag(favTeam)} {favTeam}
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
+              <span style={{ fontWeight: 800, fontSize: 15 }}>{flag(favMatch.home)} {favMatch.home}</span>
+              <span style={{ fontWeight: 900, fontSize: 17, color: isLiveMatch ? C.red : C.text, minWidth: 48, textAlign: "center" }}>
+                {isUpcoming ? "vs" : `${favMatch.homeScore ?? 0}–${favMatch.awayScore ?? 0}`}
+              </span>
+              <span style={{ fontWeight: 800, fontSize: 15, textAlign: "right" }}>{favMatch.away} {flag(favMatch.away)}</span>
+            </div>
+            <div style={{ fontSize: 12, color: C.dim, marginTop: 8, display: "flex", gap: 12 }}>
+              {isLiveMatch && <span style={{ color: C.red, fontWeight: 800 }}>🔴 LIVE {favMatch.clock}</span>}
+              {isUpcoming && <span>⏰ {timeLabel(favMatch.date, tz)}</span>}
+              {favMatch.status === "FT" && <span>FT</span>}
+              {favMatch.venue && <span>📍 {favMatch.venue.split(",")[0]}</span>}
+            </div>
+          </div>
+        );
+      })()}
       <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
 
       {tally.total > 0 && (
@@ -2092,21 +2128,6 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [search, setSearch] = useState("");
-  const [tabsHeight, setTabsHeight] = useState(0);
-
-  useEffect(() => {
-    const el = document.getElementById("wc-tablist");
-    if (!el) return;
-    const measure = () => {
-      const safeTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--sat") || "0") ||
-        parseFloat(getComputedStyle(document.body).paddingTop) || 0;
-      setTabsHeight(el.offsetHeight + safeTop);
-    };
-    const ro = new ResizeObserver(measure);
-    ro.observe(el);
-    measure();
-    return () => ro.disconnect();
-  }, []);
 
   const allTeams = useMemo(() => {
     const isPlaceholder = (name) => /Group [A-Z]|Winner|Place|Loser/i.test(name);
@@ -2134,7 +2155,7 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
 
   return (
     <div>
-      <div className="wc-sticky" style={{ top: tabsHeight, background: C.bg, paddingBottom: 12, marginBottom: 4 }}>
+      <div className="wc-sticky" style={{ background: C.bg, paddingBottom: 12, marginBottom: 4 }}>
         <input
           type="search"
           placeholder="Search team…"
@@ -2403,6 +2424,101 @@ function Footer({ source }) {
   );
 }
 
+/* ── Pull-to-refresh ─────────────────────────────────────────────── */
+function PullToRefresh({ onRefresh }) {
+  const [pullY, setPullY] = useState(0);
+  const [refreshing, setRefreshing] = useState(false);
+  const startY = React.useRef(null);
+  const THRESHOLD = 72;
+
+  useEffect(() => {
+    const onTouchStart = (e) => {
+      if (window.scrollY === 0) startY.current = e.touches[0].clientY;
+    };
+    const onTouchMove = (e) => {
+      if (startY.current === null) return;
+      const delta = e.touches[0].clientY - startY.current;
+      if (delta > 0 && window.scrollY === 0) {
+        setPullY(Math.min(delta * 0.45, THRESHOLD + 16));
+      }
+    };
+    const onTouchEnd = async () => {
+      if (pullY >= THRESHOLD && !refreshing) {
+        setRefreshing(true);
+        setPullY(THRESHOLD);
+        await onRefresh();
+        setTimeout(() => { setRefreshing(false); setPullY(0); }, 600);
+      } else {
+        setPullY(0);
+      }
+      startY.current = null;
+    };
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [pullY, refreshing, onRefresh]);
+
+  if (pullY === 0 && !refreshing) return null;
+  const ready = pullY >= THRESHOLD;
+  return (
+    <div style={{
+      position: "fixed", top: `calc(env(safe-area-inset-top, 0px) + 8px)`, left: "50%",
+      transform: `translateX(-50%) translateY(${pullY}px)`, zIndex: 300,
+      width: 40, height: 40, borderRadius: "50%",
+      background: C.card, border: `1px solid ${C.border}`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontSize: 20, boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
+      transition: refreshing ? "none" : "transform 0.05s",
+    }}>
+      <span className={refreshing ? "wc-ptr-spinner" : ""} style={{ display: "inline-block", opacity: ready || refreshing ? 1 : 0.4 }}>
+        {refreshing ? "↻" : ready ? "↑" : "↓"}
+      </span>
+    </div>
+  );
+}
+
+/* ── Onboarding hints ────────────────────────────────────────────── */
+const HINTS = [
+  { emoji: "⛶",  title: "Fullscreen match view",   body: "Tap any live or completed match card to open the full stats, goals, and recap." },
+  { emoji: "↓",  title: "Pull down to refresh",     body: "Pull down from the top of any page to get the latest scores instantly." },
+  { emoji: "🔔", title: "Get goal notifications",   body: "Tap the 🔔 bell to enable push alerts for goals, kick-offs, and full time." },
+  { emoji: "🏴", title: "Explore player profiles",  body: "Go to Teams → pick a squad → tap any player to see their tournament stats." },
+];
+
+function Onboarding() {
+  const [step, setStep] = useLocalStorage("wc_onboarded", 0);
+  if (step >= HINTS.length) return null;
+  const h = HINTS[step];
+  const isLast = step === HINTS.length - 1;
+  return (
+    <div style={{ position: "fixed", inset: 0, zIndex: 500, background: "rgba(0,0,0,0.7)", display: "flex", alignItems: "flex-end", justifyContent: "center", padding: "0 16px" }}>
+      <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: "20px 20px 0 0", padding: "28px 24px", paddingBottom: `calc(24px + env(safe-area-inset-bottom, 0px))`, width: "100%", maxWidth: 500, textAlign: "center" }}>
+        <div style={{ fontSize: 48, marginBottom: 12 }}>{h.emoji}</div>
+        <h3 style={{ fontSize: 20, fontWeight: 900, margin: "0 0 10px" }}>{h.title}</h3>
+        <p style={{ fontSize: 15, color: C.dim, margin: "0 0 24px", lineHeight: 1.6 }}>{h.body}</p>
+        <div style={{ display: "flex", gap: 8, justifyContent: "center", marginBottom: 20 }}>
+          {HINTS.map((_, i) => (
+            <div key={i} style={{ width: 8, height: 8, borderRadius: "50%", background: i === step ? C.green : C.border }} />
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: 10 }}>
+          <button onClick={() => setStep(HINTS.length)} className="wc-btn" style={{ flex: 1, padding: "13px", borderRadius: 12, border: `1px solid ${C.border}`, background: "none", color: C.dim, fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
+            Skip all
+          </button>
+          <button onClick={() => setStep(step + 1)} className="wc-btn" style={{ flex: 2, padding: "13px", borderRadius: 12, border: "none", background: C.green, color: "#06210f", fontSize: 15, fontWeight: 900, cursor: "pointer" }}>
+            {isLast ? "Let's go! ⚽" : "Next →"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------ App -------------------------------- */
 
 export default function App() {
@@ -2519,18 +2635,37 @@ export default function App() {
     setPredictions(next);
   };
 
-  const onRefresh = () => window.location.reload();
+  const onRefresh = useCallback(() => { window.location.reload(); }, []);
+
+  // Swipe left/right to change tabs
+  const tabIds = TAB_ITEMS.map((t) => t.id);
+  const swipeStart = React.useRef(null);
+  const onSwipeTouchStart = (e) => { swipeStart.current = e.touches[0].clientX; };
+  const onSwipeTouchEnd = (e) => {
+    if (swipeStart.current === null) return;
+    const dx = e.changedTouches[0].clientX - swipeStart.current;
+    swipeStart.current = null;
+    if (Math.abs(dx) < 50) return;
+    const cur = tabIds.indexOf(tab);
+    if (dx < 0 && cur < tabIds.length - 1) setTab(tabIds[cur + 1]);
+    if (dx > 0 && cur > 0) setTab(tabIds[cur - 1]);
+  };
 
   return (
-    <div style={{ minHeight: "100vh", background: C.bg, color: C.text, padding: "16px 16px 0" }}>
+    <div
+      style={{ minHeight: "100vh", background: C.bg, color: C.text, padding: "16px 16px 0" }}
+      onTouchStart={onSwipeTouchStart}
+      onTouchEnd={onSwipeTouchEnd}
+    >
       <GlobalStyles />
       <GoalToast alerts={goalAlerts} />
+      <PullToRefresh onRefresh={refreshMatches} />
+      <Onboarding />
       {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} />}
       {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} />}
       <div className="wc-wrap">
         <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} onSettings={() => setShowSettings(true)} notifOn={notifOn} />
         <LiveNowBanner matches={matches} onGoToMatches={() => setTab("matches")} />
-        <Tabs tab={tab} setTab={setTab} />
 
         {matches.length === 0 ? (
           <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
@@ -2557,6 +2692,7 @@ export default function App() {
         <Footer source={matchesData.source} />
       </div>
 
+      <Tabs tab={tab} setTab={setTab} />
       <ScrollToTop />
       <FloatingActions onRefresh={onRefresh} />
     </div>
