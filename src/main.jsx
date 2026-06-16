@@ -552,11 +552,15 @@ function TeamRow({ team, score, winner }) {
   );
 }
 
-function MatchCard({ m, tz, isFav, prediction, onPredict }) {
+function MatchCard({ m, tz, isFav, prediction, onPredict, onGroupClick }) {
+  const now = useNow();
   const isUpcoming = m.status === "NS";
   const hasScore = m.homeScore != null && m.awayScore != null;
   const homeWin = hasScore && m.status === "FT" && m.homeScore > m.awayScore;
   const awayWin = hasScore && m.status === "FT" && m.awayScore > m.homeScore;
+  const msToKickoff = new Date(m.date).getTime() - now;
+  const minsToKickoff = Math.floor(msToKickoff / 60_000);
+  const isImminent = isUpcoming && msToKickoff > 0 && minsToKickoff < 30;
   return (
     <div
       className="wc-card"
@@ -567,7 +571,12 @@ function MatchCard({ m, tz, isFav, prediction, onPredict }) {
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-        <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>Group {m.group}</span>
+        <span
+          onClick={onGroupClick && m.group ? (e) => { e.stopPropagation(); onGroupClick(m.group); } : undefined}
+          style={{ fontSize: 14, fontWeight: 700, color: onGroupClick && m.group ? C.green : C.dim, cursor: onGroupClick && m.group ? "pointer" : "default" }}
+        >
+          {m.group ? `Group ${m.group}` : "Knockout"}
+        </span>
         <StatusBadge status={m.status} clock={m.clock} />
       </div>
 
@@ -591,9 +600,15 @@ function MatchCard({ m, tz, isFav, prediction, onPredict }) {
           <span style={{ fontSize: 15, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1, minWidth: 0 }}>
             📍 {m.venue}
           </span>
-          <span style={{ fontSize: 16, fontWeight: 800, color: isUpcoming ? C.green : C.dim, whiteSpace: "nowrap", flexShrink: 0 }}>
-            {isUpcoming ? `⏰ ${timeLabel(m.date, tz)}` : timeLabel(m.date, tz)}
-          </span>
+          {isImminent ? (
+            <span style={{ fontSize: 14, fontWeight: 900, color: minsToKickoff < 10 ? C.red : C.gold, whiteSpace: "nowrap", flexShrink: 0 }}>
+              ⚡ Kicks off in {minsToKickoff}m
+            </span>
+          ) : (
+            <span style={{ fontSize: 16, fontWeight: 800, color: isUpcoming ? C.green : C.dim, whiteSpace: "nowrap", flexShrink: 0 }}>
+              {isUpcoming ? `⏰ ${timeLabel(m.date, tz)}` : timeLabel(m.date, tz)}
+            </span>
+          )}
         </div>
         {isUpcoming && (
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8 }}>
@@ -846,6 +861,7 @@ function GoalToast({ alerts }) {
 
   useEffect(() => {
     if (idx >= alerts.length) return;
+    navigator.vibrate?.(200);
     const t = setTimeout(next, 4500);
     return () => clearTimeout(t);
   }, [idx, alerts.length]);
@@ -1166,7 +1182,7 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
 }
 
 // Full live-match card: score, live minute, goals/cards so far, and a watch link.
-function LiveCard({ m, tz, isFav, onOpen }) {
+function LiveCard({ m, tz, isFav, onOpen, onGroupClick }) {
   const { h: hs, a: as } = liveScores(m);
   const hasScore = hs != null && as != null;
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
@@ -1181,7 +1197,12 @@ function LiveCard({ m, tz, isFav, onOpen }) {
       style={{ background: isFav ? "rgba(251,191,36,0.04)" : C.card, border: isFav ? "1px solid rgba(251,191,36,0.5)" : "1px solid rgba(239,68,68,0.45)", borderRadius: 14, padding: 16, marginBottom: 12, cursor: "pointer", overflow: "hidden" }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-        <span style={{ fontSize: 14, fontWeight: 700, color: C.dim }}>{m.group ? `Group ${m.group}` : "Knockout"}</span>
+        <span
+          onClick={onGroupClick && m.group ? (e) => { e.stopPropagation(); onGroupClick(m.group); } : undefined}
+          style={{ fontSize: 14, fontWeight: 700, color: onGroupClick && m.group ? C.green : C.dim, cursor: onGroupClick && m.group ? "pointer" : "default" }}
+        >
+          {m.group ? `Group ${m.group}` : "Knockout"}
+        </span>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <StatusBadge status={m.status} clock={m.clock} />
           <span style={{ fontSize: 12, color: C.dim }}>⛶ Full screen</span>
@@ -1223,7 +1244,7 @@ function LiveCard({ m, tz, isFav, onOpen }) {
 
 // Compact, collapsible card for finished matches: score + time when closed;
 // tap to reveal goal scorers, cards, venue, and a highlights link.
-function ResultCard({ m, tz, isFav, prediction }) {
+function ResultCard({ m, tz, isFav, prediction, onGroupClick }) {
   const [open, setOpen] = useState(false);
   const homeWin = m.homeScore > m.awayScore;
   const awayWin = m.awayScore > m.homeScore;
@@ -1253,7 +1274,12 @@ function ResultCard({ m, tz, isFav, prediction }) {
       style={{ background: isFav ? "rgba(251,191,36,0.04)" : C.card, border: isFav ? `1px solid rgba(251,191,36,0.45)` : `1px solid ${C.border}`, borderRadius: 12, padding: "10px 14px", marginBottom: 8, cursor: "pointer" }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-        <span style={{ fontSize: 13, fontWeight: 700, color: C.dim }}>Group {m.group} · FT</span>
+        <span
+          onClick={onGroupClick && m.group ? (e) => { e.stopPropagation(); onGroupClick(m.group); } : undefined}
+          style={{ fontSize: 13, fontWeight: 700, color: onGroupClick && m.group ? C.green : C.dim, cursor: onGroupClick && m.group ? "pointer" : "default" }}
+        >
+          {m.group ? `Group ${m.group}` : "Knockout"} · FT
+        </span>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 13, color: C.dim }}>{timeLabel(m.date, tz)}</span>
           <ShareButton m={m} />
@@ -1555,9 +1581,9 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   );
 }
 
-function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive }) {
+function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive, onGoToTeams, onGoToStandings }) {
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
-  const [groupFilter, setGroupFilter] = useState("All");
+  const [groupFilter, setGroupFilter] = useLocalStorage("wc_group_filter", "All");
 
   const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
@@ -1625,6 +1651,17 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive 
 
   return (
     <div>
+      {favTeams.length === 0 && (
+        <button
+          onClick={onGoToTeams}
+          style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", background: `${C.gold}0d`, border: `1px dashed ${C.gold}55`, borderRadius: 12, padding: "12px 14px", marginBottom: 14, cursor: "pointer", color: C.text, textAlign: "left" }}
+        >
+          <span style={{ fontSize: 20 }}>⭐</span>
+          <span style={{ flex: 1, fontSize: 14, fontWeight: 700 }}>Follow a team to see their matches here</span>
+          <span style={{ fontSize: 13, color: C.gold, fontWeight: 800, whiteSpace: "nowrap" }}>Teams →</span>
+        </button>
+      )}
+
       {favSpotlights.length > 0 && (
         <div style={{ marginBottom: 18, display: "flex", flexDirection: "column", gap: 10 }}>
           {favSpotlights.map(({ team, match: favMatch }) => {
@@ -1673,9 +1710,9 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive 
           <h2 style={{ fontSize: 20, fontWeight: 900, color: C.green, margin: "0 0 4px" }}>📅 Today</h2>
           <p style={{ fontSize: 14, color: C.dim, margin: "0 0 14px" }}>{todayLabel}</p>
           {todayMatches.map((m) =>
-            isLive(m) ? <LiveCard key={m.id} m={m} tz={tz} isFav={isFav(m)} onOpen={onOpenLive} />
-            : m.status === "FT" ? <ResultCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} />
-            : <MatchCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onPredict={onPredict} />
+            isLive(m) ? <LiveCard key={m.id} m={m} tz={tz} isFav={isFav(m)} onOpen={onOpenLive} onGroupClick={onGoToStandings} />
+            : m.status === "FT" ? <ResultCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onGroupClick={onGoToStandings} />
+            : <MatchCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onPredict={onPredict} onGroupClick={onGoToStandings} />
           )}
         </section>
       )}
@@ -1686,7 +1723,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive 
           {resultSections.map((sec) => (
             <section key={sec.key} style={{ marginBottom: 18 }}>
               <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
-              {sec.items.map((m) => <ResultCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} />)}
+              {sec.items.map((m) => <ResultCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onGroupClick={onGoToStandings} />)}
             </section>
           ))}
         </div>
@@ -1698,7 +1735,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive 
           {upcomingSections.map((sec) => (
             <section key={sec.key} style={{ marginBottom: 18 }}>
               <h3 style={{ fontSize: 15, fontWeight: 800, color: C.dim, margin: "0 0 10px" }}>{sec.label}</h3>
-              {sec.items.map((m) => <MatchCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onPredict={onPredict} />)}
+              {sec.items.map((m) => <MatchCard key={m.id} m={m} tz={tz} isFav={isFav(m)} prediction={predictions[m.id]} onPredict={onPredict} onGroupClick={onGoToStandings} />)}
             </section>
           ))}
         </div>
@@ -2615,6 +2652,22 @@ function Onboarding() {
   );
 }
 
+function InstallPrompt() {
+  const [dismissed, setDismissed] = useLocalStorage("wc_install_dismissed", false);
+  if (dismissed) return null;
+  const isInstalled = window.matchMedia?.("(display-mode: standalone)").matches || !!navigator.standalone;
+  if (isInstalled) return null;
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  if (!isMobile) return null;
+  return (
+    <div style={{ background: "#1e293b", border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 12, display: "flex", alignItems: "center", gap: 10 }}>
+      <span style={{ fontSize: 22, flexShrink: 0 }}>📲</span>
+      <span style={{ flex: 1, fontSize: 13, fontWeight: 700, lineHeight: 1.4 }}>Add to home screen for live alerts & offline access</span>
+      <button onClick={() => setDismissed(true)} style={{ background: "none", border: "none", color: C.dim, fontSize: 18, cursor: "pointer", flexShrink: 0, padding: "0 4px" }}>✕</button>
+    </div>
+  );
+}
+
 /* ------------------------------ App -------------------------------- */
 
 export default function App() {
@@ -2791,13 +2844,14 @@ export default function App() {
             📡 No connection — showing cached data
           </div>
         )}
+        <InstallPrompt />
         <LiveNowBanner matches={matches} onGoToMatches={() => changeTab("matches")} />
 
         <div key={tab} className={`wc-slide-${slideDir}`}>
           {matches.length === 0 ? (
             <EmptyState emoji="📭" text="No match data found. Run the scraper to populate scores." />
           ) : tab === "matches" ? (
-            <MatchesTab matches={matches} tz={tz} favTeams={favTeams} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
+            <MatchesTab matches={matches} tz={tz} favTeams={favTeams} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} onGoToTeams={() => changeTab("teams")} onGoToStandings={() => changeTab("standings")} />
           ) : tab === "teams" ? (
             <TeamsTab matches={matches} tz={tz} favTeams={favTeams} toggleFavTeam={toggleFavTeam} predictions={predictions} onPredict={onPredict} onOpenLive={openLiveModal} />
           ) : tab === "schedule" ? (
