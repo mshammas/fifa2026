@@ -289,40 +289,40 @@ function Header({ lastUpdated, tz, setTz, onSettings, notifOn }) {
     } catch {}
   };
   return (
-    <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "6px 0 2px" }}>
-      <div style={{ minWidth: 0 }}>
-        <h1 style={{ fontSize: 21, fontWeight: 900, letterSpacing: -0.3, margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-          ⚽ FIFA World Cup 2026
-        </h1>
+    <header style={{ padding: "6px 0 4px" }}>
+      <h1 style={{ fontSize: 21, fontWeight: 900, letterSpacing: -0.3, margin: "0 0 5px", whiteSpace: "nowrap" }}>
+        ⚽ FIFA World Cup 2026
+      </h1>
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         {(() => {
           const text = lastUpdated
             ? `Live scores · Scores fetched ${fmt(lastUpdated, tz, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}`
             : "Live scores";
           return (
-            <div style={{ overflow: "hidden", margin: "3px 0 0" }}>
-              <span className="wc-ticker" style={{ color: C.dim, fontSize: 14, whiteSpace: "nowrap" }}>
+            <div style={{ overflow: "hidden", flex: 1, minWidth: 0 }}>
+              <span className="wc-ticker" style={{ color: C.dim, fontSize: 13, whiteSpace: "nowrap" }}>
                 {text}&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;
               </span>
             </div>
           );
         })()}
-      </div>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-        <button
-          onClick={handleShareApp}
-          title={shareDone ? "Link copied!" : "Share app"}
-          style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: shareDone ? C.green : C.dim, fontSize: 18, padding: "6px 9px", cursor: "pointer", lineHeight: 1, transition: "color 0.2s" }}
-        >
-          {shareDone ? "✓" : "🔗"}
-        </button>
-        <button
-          onClick={onSettings}
-          title="Notification settings"
-          style={{ background: notifOn ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.07)", border: notifOn ? "1px solid rgba(34,197,94,0.4)" : "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: notifOn ? C.green : C.dim, fontSize: 18, padding: "6px 9px", cursor: "pointer", lineHeight: 1 }}
-        >
-          🔔
-        </button>
-        <TimezonePopover tz={tz} setTz={setTz} />
+        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+          <button
+            onClick={handleShareApp}
+            title={shareDone ? "Link copied!" : "Share app"}
+            style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: shareDone ? C.green : C.dim, fontSize: 16, padding: "5px 8px", cursor: "pointer", lineHeight: 1, transition: "color 0.2s" }}
+          >
+            {shareDone ? "✓" : "🔗"}
+          </button>
+          <button
+            onClick={onSettings}
+            title="Notification settings"
+            style={{ background: notifOn ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.07)", border: notifOn ? "1px solid rgba(34,197,94,0.4)" : "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: notifOn ? C.green : C.dim, fontSize: 16, padding: "5px 8px", cursor: "pointer", lineHeight: 1 }}
+          >
+            🔔
+          </button>
+          <TimezonePopover tz={tz} setTz={setTz} />
+        </div>
       </div>
     </header>
   );
