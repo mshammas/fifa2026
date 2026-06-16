@@ -2305,7 +2305,7 @@ function ScrollToTop() {
       style={{
         position: "fixed", left: 18, bottom: "calc(68px + env(safe-area-inset-bottom, 0px) + 12px)", width: 46, height: 46, borderRadius: "50%",
         border: `1px solid ${C.border}`, background: C.card2, color: C.text,
-        fontSize: 22, fontWeight: 900, cursor: "pointer", zIndex: 50, lineHeight: 1,
+        fontSize: 22, fontWeight: 900, cursor: "pointer", zIndex: 210, lineHeight: 1,
         boxShadow: "0 4px 16px rgba(0,0,0,0.45)",
         opacity: visible ? 1 : 0, pointerEvents: visible ? "auto" : "none",
         transition: "opacity 0.3s ease",
@@ -2349,8 +2349,8 @@ function FloatingActions({ onRefresh }) {
 
   return (
     <>
-      {open && <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 49 }} />}
-      <div style={{ position: "fixed", right: 18, bottom: "calc(68px + env(safe-area-inset-bottom, 0px) + 12px)", zIndex: 50, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+      {open && <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 209 }} />}
+      <div style={{ position: "fixed", right: 18, bottom: "calc(68px + env(safe-area-inset-bottom, 0px) + 12px)", zIndex: 210, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
         {open && actions.map((a) => (
           <a
             key={a.label}
