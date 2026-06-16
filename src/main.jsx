@@ -1559,7 +1559,7 @@ function MatchesTab({ matches, tz, favTeam, predictions, onPredict, onOpenLive }
             </div>
             <div style={{ fontSize: 12, color: C.dim, marginTop: 8, display: "flex", gap: 12 }}>
               {isLiveMatch && <span style={{ color: C.red, fontWeight: 800 }}>🔴 LIVE {favMatch.clock}</span>}
-              {isUpcoming && <span>⏰ {timeLabel(favMatch.date, tz)}</span>}
+              {isUpcoming && <span>⏰ {fmt(favMatch.date, tz, { weekday: "short", month: "short", day: "numeric" })} · {timeLabel(favMatch.date, tz)}</span>}
               {favMatch.status === "FT" && <span>FT</span>}
               {favMatch.venue && <span>📍 {favMatch.venue.split(",")[0]}</span>}
             </div>
