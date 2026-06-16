@@ -1023,10 +1023,10 @@
       "away": "Senegal",
       "group": "I",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "81'",
+      "clock": "84'",
       "goals": [
         {
           "side": "home",
@@ -1034,16 +1034,23 @@
           "minute": "66'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "B. Barcola",
+          "minute": "82'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "54.8",
-        "shotsOnTarget": "5",
-        "totalShots": "8"
+        "possessionPct": "54.7",
+        "shotsOnTarget": "6",
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "45.2",
+        "possessionPct": "45.3",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -2529,6 +2536,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T20:46:30.503Z",
+  "lastUpdated": "2026-06-16T20:48:32.960Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
