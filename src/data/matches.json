@@ -963,9 +963,9 @@
       "group": "G",
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "54'",
+      "clock": "55'",
       "goals": [
         {
           "side": "away",
@@ -980,18 +980,25 @@
           "minute": "32'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "E. Just",
+          "minute": "54'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "47.8",
+        "possessionPct": "46.8",
         "shotsOnTarget": "2",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "52.2",
-        "shotsOnTarget": "5",
-        "totalShots": "10"
+        "possessionPct": "53.2",
+        "shotsOnTarget": "6",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -2492,6 +2499,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T02:22:26.136Z",
+  "lastUpdated": "2026-06-16T02:24:20.283Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
