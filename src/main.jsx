@@ -403,6 +403,7 @@ function Tabs({ tab, setTab }) {
   return (
     <div
       role="tablist"
+      id="wc-tablist"
       className="wc-sticky"
       style={{
         display: "flex", flexWrap: "wrap", gap: 6, background: C.card, border: `1px solid ${C.border}`,
@@ -2090,6 +2091,16 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
   const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [search, setSearch] = useState("");
+  const [tabsHeight, setTabsHeight] = useState(0);
+
+  useEffect(() => {
+    const el = document.getElementById("wc-tablist");
+    if (!el) return;
+    const ro = new ResizeObserver(() => setTabsHeight(el.offsetHeight));
+    ro.observe(el);
+    setTabsHeight(el.offsetHeight);
+    return () => ro.disconnect();
+  }, []);
 
   const allTeams = useMemo(() => {
     const isPlaceholder = (name) => /Group [A-Z]|Winner|Place|Loser/i.test(name);
@@ -2117,7 +2128,7 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
 
   return (
     <div>
-      <div className="wc-sticky" style={{ background: C.bg, paddingBottom: 12, marginBottom: 4 }}>
+      <div className="wc-sticky" style={{ top: tabsHeight, background: C.bg, paddingBottom: 12, marginBottom: 4 }}>
         <input
           type="search"
           placeholder="Search team…"
