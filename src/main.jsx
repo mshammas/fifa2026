@@ -2090,8 +2090,12 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
   const [search, setSearch] = useState("");
 
   const allTeams = useMemo(() => {
+    const isPlaceholder = (name) => /Group [A-Z]|Winner|Place|Loser/i.test(name);
     const set = new Set();
-    for (const m of matches) { set.add(m.home); set.add(m.away); }
+    for (const m of matches) {
+      if (!isPlaceholder(m.home)) set.add(m.home);
+      if (!isPlaceholder(m.away)) set.add(m.away);
+    }
     return Array.from(set).sort((a, b) => {
       if (a === favTeam) return -1;
       if (b === favTeam) return 1;

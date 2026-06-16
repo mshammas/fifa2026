@@ -5,6 +5,8 @@
    Fetches all 48 team rosters from ESPN's public API and writes
    src/data/rosters.json.  Run once before the tournament or
    whenever squads change (injuries, late call-ups).
+
+   Per-player club is fetched from ESPN's web API (one call each).
    ============================================================ */
 import https from "https";
 import fs from "fs";
@@ -14,8 +16,9 @@ import { fileURLToPath } from "url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = path.join(__dirname, "../src/data/rosters.json");
 
-const ESPN_TEAMS = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams";
+const ESPN_TEAMS  = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams";
 const ESPN_ROSTER = (id) => `https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams/${id}/roster`;
+const ESPN_PLAYER = (id) => `https://site.web.api.espn.com/apis/common/v3/sports/soccer/fifa.world/athletes/${id}`;
 
 const NAME_MAP = {
   "Bosnia-Herzegovina": "Bosnia & Herzegovina",
@@ -31,12 +34,23 @@ function fetchJson(url) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location)
         return resolve(fetchJson(res.headers.location));
       if (res.statusCode !== 200)
-        return reject(new Error(`HTTP ${res.statusCode} for ${url}`));
+        return reject(new Error(`HTTP ${res.statusCode}`));
       let raw = "";
       res.on("data", (c) => (raw += c));
       res.on("end", () => resolve(JSON.parse(raw)));
     }).on("error", reject);
   });
+}
+
+const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function fetchClub(playerId) {
+  try {
+    const data = await fetchJson(ESPN_PLAYER(playerId));
+    return data.athlete?.team?.displayName ?? null;
+  } catch {
+    return null;
+  }
 }
 
 async function main() {
@@ -49,41 +63,53 @@ async function main() {
   console.log(`  Found ${espnTeams.length} teams`);
 
   const rosters = {};
-  let ok = 0, fail = 0;
+  let teamOk = 0, teamFail = 0;
 
   for (const { id, name } of espnTeams) {
     try {
       const data = await fetchJson(ESPN_ROSTER(id));
-      rosters[name] = (data.athletes || []).map((a) => ({
-        id: a.id,
-        name: a.displayName,
-        shortName: a.shortName,
-        jersey: a.jersey != null ? Number(a.jersey) : null,
-        pos: POS_MAP[a.position?.abbreviation] ?? a.position?.abbreviation ?? null,
-        age: a.age ?? null,
-        dob: a.dateOfBirth?.slice(0, 10) ?? null,
-        height: a.displayHeight ?? null,
-        weight: a.displayWeight ?? null,
-      })).sort((a, b) => {
+      const athletes = data.athletes || [];
+
+      // Fetch club for each player (with small delay to avoid rate limits)
+      const players = [];
+      for (const a of athletes) {
+        const club = await fetchClub(a.id);
+        await delay(80);
+        players.push({
+          id: a.id,
+          name: a.displayName,
+          shortName: a.shortName,
+          jersey: a.jersey != null ? Number(a.jersey) : null,
+          pos: POS_MAP[a.position?.abbreviation] ?? a.position?.abbreviation ?? null,
+          age: a.age ?? null,
+          dob: a.dateOfBirth?.slice(0, 10) ?? null,
+          height: a.displayHeight ?? null,
+          weight: a.displayWeight ?? null,
+          club: club ?? null,
+        });
+      }
+
+      players.sort((a, b) => {
         const posOrder = { GK: 0, DEF: 1, MID: 2, FWD: 3 };
         const pa = posOrder[a.pos] ?? 9, pb = posOrder[b.pos] ?? 9;
         if (pa !== pb) return pa - pb;
         return (a.jersey ?? 99) - (b.jersey ?? 99);
       });
-      console.log(`  ✓ ${name} — ${rosters[name].length} players`);
-      ok++;
+
+      rosters[name] = players;
+      console.log(`  ✓ ${name} — ${players.length} players`);
+      teamOk++;
     } catch (e) {
       console.warn(`  ✗ ${name}: ${e.message}`);
-      fail++;
+      teamFail++;
     }
-    // Small delay to be polite to ESPN
-    await new Promise((r) => setTimeout(r, 120));
+    await delay(100);
   }
 
   const out = { lastUpdated: new Date().toISOString(), rosters };
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
   fs.writeFileSync(OUT_PATH, JSON.stringify(out, null, 2));
-  console.log(`\n✅ Wrote ${OUT_PATH} (${ok} teams, ${fail} failed)`);
+  console.log(`\n✅ Wrote ${OUT_PATH} (${teamOk} teams, ${teamFail} failed)`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
