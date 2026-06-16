@@ -822,7 +822,7 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
   if (!keys.length) return null;
 
   return (
-    <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 16 }}>
+    <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 16, overflow: "hidden" }}>
       <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 10 }}>
         {eventBadge("📊")}
         <div style={{ fontSize: 18, fontWeight: 800 }}>Match Stats</div>
@@ -840,7 +840,7 @@ function MatchStatsTable({ homeStats, awayStats, home, away }) {
         </span>
       </div>
 
-      <div style={{ display: "grid", gap: 12 }}>
+      <div style={{ display: "grid", gap: 12, gridTemplateColumns: "minmax(0, 1fr)" }}>
         {keys.map((k) => {
           const { label, suffix = "" } = STAT_LABELS[k];
           const hv = parseFloat(hs[k]) || 0;
@@ -1219,7 +1219,7 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
             </div>
           </div>
 
-          <div style={{ display: "grid", gap: 20 }}>
+          <div style={{ display: "grid", gap: 20, gridTemplateColumns: "minmax(0, 1fr)" }}>
             <MatchEvents m={m} />
             <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
