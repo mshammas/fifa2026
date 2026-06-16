@@ -1080,7 +1080,7 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "75'",
+      "clock": "77'",
       "goals": [
         {
           "side": "away",
@@ -1102,16 +1102,23 @@
           "minute": "43'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "L. Østigard",
+          "minute": "76'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "41.1",
+        "possessionPct": "39.6",
         "shotsOnTarget": "1",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "58.9",
+        "possessionPct": "60.4",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -2580,6 +2587,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T23:38:27.641Z",
+  "lastUpdated": "2026-06-16T23:40:30.291Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
