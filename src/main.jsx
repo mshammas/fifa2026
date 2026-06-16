@@ -174,8 +174,8 @@ function GlobalStyles() {
   return (
     <style>{`
       :root { color-scheme: dark; }
-      html { -webkit-text-size-adjust: 100%; overflow-y: auto; }
-      body { font-size: 18px; line-height: 1.5; overflow: visible; padding-top: env(safe-area-inset-top, 0px); padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+      html { -webkit-text-size-adjust: 100%; overflow-y: auto; overscroll-behavior-y: none; }
+      body { font-size: 18px; line-height: 1.5; overflow: visible; overscroll-behavior-y: none; padding-top: env(safe-area-inset-top, 0px); padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
       .wc-sticky { position: -webkit-sticky; position: sticky; top: 0; top: env(safe-area-inset-top, 0px); z-index: 10; }
       button { font-family: inherit; cursor: pointer; }
       select { font-family: inherit; }
@@ -2433,12 +2433,12 @@ function PullToRefresh({ onRefresh }) {
 
   useEffect(() => {
     const onTouchStart = (e) => {
-      if (window.scrollY === 0) startY.current = e.touches[0].clientY;
+      if (window.scrollY <= 5) startY.current = e.touches[0].clientY;
     };
     const onTouchMove = (e) => {
       if (startY.current === null) return;
       const delta = e.touches[0].clientY - startY.current;
-      if (delta > 0 && window.scrollY === 0) {
+      if (delta > 0 && window.scrollY <= 5) {
         setPullY(Math.min(delta * 0.45, THRESHOLD + 16));
       }
     };
