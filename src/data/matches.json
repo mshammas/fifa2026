@@ -1078,9 +1078,9 @@
       "group": "I",
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "43'",
+      "clock": "45'",
       "goals": [
         {
           "side": "away",
@@ -1095,18 +1095,25 @@
           "minute": "39'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "E. Haaland",
+          "minute": "43'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "37",
+        "possessionPct": "37.8",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "63",
-        "shotsOnTarget": "1",
-        "totalShots": "5"
+        "possessionPct": "62.2",
+        "shotsOnTarget": "3",
+        "totalShots": "7"
       },
       "recap": null
     },
@@ -2573,6 +2580,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T22:44:26.748Z",
+  "lastUpdated": "2026-06-16T22:46:27.026Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
