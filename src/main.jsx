@@ -2111,17 +2111,19 @@ function TeamsTab({ matches, tz, favTeam, setFavTeam, predictions, onPredict, on
 
   return (
     <div>
-      <input
-        type="search"
-        placeholder="Search team…"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{
-          width: "100%", boxSizing: "border-box", fontSize: 17, fontWeight: 600,
-          color: C.text, background: C.card, border: `2px solid ${C.border}`,
-          borderRadius: 12, padding: "12px 14px", marginBottom: 16, outline: "none",
-        }}
-      />
+      <div style={{ position: "sticky", top: 0, zIndex: 10, background: C.bg, paddingBottom: 12, marginBottom: 4 }}>
+        <input
+          type="search"
+          placeholder="Search team…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            width: "100%", boxSizing: "border-box", fontSize: 17, fontWeight: 600,
+            color: C.text, background: C.card, border: `2px solid ${C.border}`,
+            borderRadius: 12, padding: "12px 14px", outline: "none",
+          }}
+        />
+      </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: 10 }}>
         {filtered.map((team) => {
           const starred = favTeam === team;
