@@ -1026,16 +1026,24 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "63'",
-      "goals": [],
+      "clock": "66'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "K. Mbappé",
+          "minute": "66'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "54.9",
+        "possessionPct": "55",
         "shotsOnTarget": "2",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "45.1",
+        "possessionPct": "45",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -2521,6 +2529,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T20:28:29.677Z",
+  "lastUpdated": "2026-06-16T20:30:41.854Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
