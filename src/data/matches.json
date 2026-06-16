@@ -962,10 +962,10 @@
       "away": "New Zealand",
       "group": "G",
       "venue": "SoFi Stadium, Inglewood, California",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "30'",
+      "clock": "33'",
       "goals": [
         {
           "side": "away",
@@ -973,16 +973,23 @@
           "minute": "7'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "R. Rezaeian",
+          "minute": "32'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "48.7",
-        "shotsOnTarget": "1",
-        "totalShots": "4"
+        "possessionPct": "51.6",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "51.3",
+        "possessionPct": "48.4",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -2485,6 +2492,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T01:36:23.803Z",
+  "lastUpdated": "2026-06-16T01:38:25.124Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
