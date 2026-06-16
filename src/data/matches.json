@@ -858,7 +858,7 @@
         {
           "side": "away",
           "player": "E. Ashour",
-          "minute": "19'",
+          "minute": "20'",
           "pen": false,
           "og": false
         },
@@ -951,9 +951,9 @@
       "awayStats": {
         "possessionPct": "66.8",
         "shotsOnTarget": "10",
-        "totalShots": "28"
+        "totalShots": "27"
       },
-      "recap": null
+      "recap": "Maxi Araújo rescued a point for Uruguay to deny Saudi Arabia another famous World Cup win as the sides drew 1-1 in Miami."
     },
     {
       "id": "e760427",
@@ -2477,6 +2477,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T00:06:31.068Z",
+  "lastUpdated": "2026-06-16T00:58:24.769Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
