@@ -2435,6 +2435,7 @@ function TeamsTab({ matches, tz, favTeams, toggleFavTeam, predictions, onPredict
                 background: starred ? "rgba(251,191,36,0.07)" : C.card,
                 border: starred ? `1px solid rgba(251,191,36,0.5)` : `1px solid ${C.border}`,
                 borderRadius: 14, cursor: "pointer", color: C.text, textAlign: "center",
+                userSelect: "none", WebkitUserSelect: "none", WebkitTouchCallout: "none",
               }}
             >
               {starred && <span style={{ position: "absolute", top: 6, right: 8, fontSize: 14 }}>⭐</span>}
