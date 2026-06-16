@@ -403,6 +403,7 @@ function Tabs({ tab, setTab }) {
   return (
     <div
       role="tablist"
+      className="wc-sticky"
       style={{
         display: "flex", flexWrap: "wrap", gap: 6, background: C.card, border: `1px solid ${C.border}`,
         borderRadius: 14, padding: 6, marginBottom: 18,
