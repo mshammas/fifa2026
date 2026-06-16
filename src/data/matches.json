@@ -965,7 +965,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "88'",
+      "clock": "90'",
       "goals": [
         {
           "side": "away",
@@ -996,14 +996,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "E. Hajsafi",
+          "minute": "89'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "46.9",
-        "shotsOnTarget": "3",
-        "totalShots": "15"
+        "possessionPct": "47.3",
+        "shotsOnTarget": "4",
+        "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "53.1",
+        "possessionPct": "52.7",
         "shotsOnTarget": "7",
         "totalShots": "13"
       },
@@ -2506,6 +2513,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T02:56:25.311Z",
+  "lastUpdated": "2026-06-16T02:58:24.896Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
