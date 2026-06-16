@@ -1005,16 +1005,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48.3",
+        "possessionPct": "48.5",
         "shotsOnTarget": "4",
         "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "51.7",
+        "possessionPct": "51.5",
         "shotsOnTarget": "8",
         "totalShots": "14"
       },
-      "recap": null
+      "recap": "Ramin Rezaeian and Mohammad Mohebbi scored for Iran, with Eli Just grabbing a brace for New Zealand."
     },
     {
       "id": "e760432",
@@ -1029,8 +1029,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2513,6 +2521,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-16T03:06:27.753Z",
+  "lastUpdated": "2026-06-16T18:58:37.239Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
