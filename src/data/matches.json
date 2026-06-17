@@ -1192,14 +1192,14 @@
       "away": "Jordan",
       "group": "J",
       "venue": "Levi's Stadium, Santa Clara, California",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -2639,6 +2639,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T04:02:28.017Z",
+  "lastUpdated": "2026-06-17T04:04:21.742Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
