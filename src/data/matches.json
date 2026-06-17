@@ -1320,8 +1320,8 @@
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 4,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+4'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -1368,14 +1368,14 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "52.4",
+        "possessionPct": "51.7",
         "shotsOnTarget": "11",
-        "totalShots": "21"
+        "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "47.6",
+        "possessionPct": "48.3",
         "shotsOnTarget": "5",
-        "totalShots": "8"
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -1392,8 +1392,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2774,6 +2782,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T22:02:24.952Z",
+  "lastUpdated": "2026-06-17T22:04:20.434Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
