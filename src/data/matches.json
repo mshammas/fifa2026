@@ -826,7 +826,7 @@
         },
         {
           "side": "home",
-          "player": "Pedri",
+          "player": "Pedri ",
           "minute": "90'+3'",
           "type": "yellow"
         }
@@ -1235,16 +1235,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "63.3",
+        "possessionPct": "63.2",
         "shotsOnTarget": "4",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "36.7",
+        "possessionPct": "36.8",
         "shotsOnTarget": "4",
         "totalShots": "11"
       },
-      "recap": null
+      "recap": "Austria won a World Cup game for the first time in 36 years with a 3-1 victory Tuesday over a Jordan team making their debut at the global showpiece.\n\n\n"
     },
     {
       "id": "e760435",
@@ -1259,8 +1259,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2675,6 +2683,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T06:10:30.038Z",
+  "lastUpdated": "2026-06-17T16:58:22.697Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
