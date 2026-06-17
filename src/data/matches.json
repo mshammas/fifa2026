@@ -1321,7 +1321,7 @@
       "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "84'",
+      "clock": "86'",
       "goals": [
         {
           "side": "home",
@@ -1357,18 +1357,25 @@
           "minute": "47'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Rashford",
+          "minute": "85'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "52.8",
+        "possessionPct": "52.5",
         "shotsOnTarget": "10",
         "totalShots": "20"
       },
       "awayStats": {
-        "possessionPct": "47.2",
-        "shotsOnTarget": "4",
-        "totalShots": "7"
+        "possessionPct": "47.5",
+        "shotsOnTarget": "5",
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -2767,6 +2774,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T21:48:22.214Z",
+  "lastUpdated": "2026-06-17T21:50:32.332Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
