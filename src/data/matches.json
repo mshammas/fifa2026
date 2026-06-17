@@ -1386,21 +1386,21 @@
       "away": "Panama",
       "group": "L",
       "venue": "BMO Field, Toronto",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "100",
+        "possessionPct": "26.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "73.5",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -2782,6 +2782,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T23:02:20.734Z",
+  "lastUpdated": "2026-06-17T23:04:22.111Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
