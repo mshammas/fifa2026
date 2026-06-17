@@ -1183,7 +1183,7 @@
         "shotsOnTarget": "1",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "Lionel Messi equalled Miroslav Klose's record of 16 World Cup goals."
     },
     {
       "id": "e760431",
@@ -2639,6 +2639,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T03:58:23.380Z",
+  "lastUpdated": "2026-06-17T04:00:49.245Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
