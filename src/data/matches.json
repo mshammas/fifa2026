@@ -1256,7 +1256,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "86'",
+      "clock": "88'",
       "goals": [
         {
           "side": "home",
@@ -1285,17 +1285,23 @@
           "player": "C. Mbemba",
           "minute": "32'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "N. Semedo",
+          "minute": "88'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "76.4",
+        "possessionPct": "76.9",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "23.6",
+        "possessionPct": "23.1",
         "shotsOnTarget": "2",
-        "totalShots": "9"
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -2711,6 +2717,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T18:50:39.340Z",
+  "lastUpdated": "2026-06-17T18:52:26.276Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
