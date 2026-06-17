@@ -1256,7 +1256,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "13'",
       "goals": [
         {
           "side": "home",
@@ -1266,16 +1266,23 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "B. Silva",
+          "minute": "13'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "86.9",
+        "possessionPct": "78.9",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "13.1",
+        "possessionPct": "21.1",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -2691,6 +2698,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T17:12:28.410Z",
+  "lastUpdated": "2026-06-17T17:15:30.638Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
