@@ -1318,10 +1318,10 @@
       "away": "Croatia",
       "group": "L",
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "48'",
       "goals": [
         {
           "side": "home",
@@ -1350,16 +1350,23 @@
           "minute": "45'+5'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "J. Bellingham",
+          "minute": "47'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "48.4",
-        "shotsOnTarget": "2",
-        "totalShots": "9"
+        "possessionPct": "50.5",
+        "shotsOnTarget": "3",
+        "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "51.6",
+        "possessionPct": "49.5",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
@@ -2760,6 +2767,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T21:10:35.317Z",
+  "lastUpdated": "2026-06-17T21:12:30.767Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
