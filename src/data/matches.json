@@ -1318,10 +1318,10 @@
       "away": "Croatia",
       "group": "L",
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "41'",
+      "clock": "44'",
       "goals": [
         {
           "side": "home",
@@ -1336,16 +1336,23 @@
           "minute": "36'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "H. Kane",
+          "minute": "42'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "52.3",
-        "shotsOnTarget": "1",
-        "totalShots": "7"
+        "possessionPct": "52.4",
+        "shotsOnTarget": "2",
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "47.7",
+        "possessionPct": "47.6",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -2746,6 +2753,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T20:42:37.830Z",
+  "lastUpdated": "2026-06-17T20:44:23.764Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
