@@ -1059,12 +1059,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "53.7",
+        "possessionPct": "53.4",
         "shotsOnTarget": "8",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "46.3",
+        "possessionPct": "46.6",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
@@ -1134,9 +1134,9 @@
       "awayStats": {
         "possessionPct": "61.3",
         "shotsOnTarget": "5",
-        "totalShots": "13"
+        "totalShots": "12"
       },
-      "recap": null
+      "recap": "Erling Haaland scored his first World Cup goals with a brace as Norway started their campaign with a 4-1 win over Iraq in Boston."
     },
     {
       "id": "e760433",
@@ -2609,6 +2609,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T00:02:25.254Z",
+  "lastUpdated": "2026-06-17T00:58:24.882Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
