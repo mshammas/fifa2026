@@ -1254,14 +1254,21 @@
       "group": "K",
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": 1,
-      "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+3'",
+      "awayScore": 1,
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
           "player": "J. Neves",
           "minute": "6'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "Y. Wissa",
+          "minute": "45'+5'",
           "pen": false,
           "og": false
         }
@@ -1281,14 +1288,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "80.3",
+        "possessionPct": "79.7",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "19.7",
-        "shotsOnTarget": "1",
-        "totalShots": "4"
+        "possessionPct": "20.3",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "recap": null
     },
@@ -2704,6 +2711,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T17:52:25.681Z",
+  "lastUpdated": "2026-06-17T17:54:28.764Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
