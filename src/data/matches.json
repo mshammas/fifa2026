@@ -1148,7 +1148,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "58'",
+      "clock": "60'",
       "goals": [
         {
           "side": "home",
@@ -1156,16 +1156,23 @@
           "minute": "17'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "L. Messi",
+          "minute": "60'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "51.3",
+        "possessionPct": "51.6",
         "shotsOnTarget": "2",
-        "totalShots": "6"
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "48.7",
+        "possessionPct": "48.4",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -2617,6 +2624,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T02:22:29.456Z",
+  "lastUpdated": "2026-06-17T02:24:24.150Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
