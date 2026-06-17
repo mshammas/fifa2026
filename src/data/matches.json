@@ -1193,9 +1193,9 @@
       "group": "J",
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "49'",
+      "clock": "51'",
       "goals": [
         {
           "side": "home",
@@ -1203,18 +1203,25 @@
           "minute": "20'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Olwan",
+          "minute": "50'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "63.7",
+        "possessionPct": "63.4",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "36.3",
-        "shotsOnTarget": "3",
-        "totalShots": "8"
+        "possessionPct": "36.6",
+        "shotsOnTarget": "4",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -2647,6 +2654,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T05:14:22.481Z",
+  "lastUpdated": "2026-06-17T05:16:20.197Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
