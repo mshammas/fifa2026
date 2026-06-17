@@ -1192,10 +1192,10 @@
       "away": "Jordan",
       "group": "J",
       "venue": "Levi's Stadium, Santa Clara, California",
-      "homeScore": 2,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "70'",
+      "clock": "72'",
       "goals": [
         {
           "side": "home",
@@ -1210,20 +1210,13 @@
           "minute": "50'",
           "pen": false,
           "og": false
-        },
-        {
-          "side": "home",
-          "player": "M. Arnautovic",
-          "minute": "67'",
-          "pen": false,
-          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
         "possessionPct": "65.6",
-        "shotsOnTarget": "3",
-        "totalShots": "10"
+        "shotsOnTarget": "2",
+        "totalShots": "9"
       },
       "awayStats": {
         "possessionPct": "34.4",
@@ -2661,6 +2654,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T05:36:20.046Z",
+  "lastUpdated": "2026-06-17T05:38:28.965Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
