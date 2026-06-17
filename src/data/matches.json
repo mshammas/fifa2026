@@ -1183,7 +1183,7 @@
         "shotsOnTarget": "1",
         "totalShots": "7"
       },
-      "recap": "Lionel Messi equalled Miroslav Klose's record of 16 World Cup goals."
+      "recap": "Lionel Messi equalled Miroslav Klose's record of 16 World Cup goals with a hat-trick as Argentina began their title defence with a 3-0 win over Algeria in Kansas City."
     },
     {
       "id": "e760431",
@@ -1195,16 +1195,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "10'",
+      "clock": "13'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "79.1",
+        "possessionPct": "78.5",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "20.9",
+        "possessionPct": "21.5",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -2639,6 +2639,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T04:14:23.230Z",
+  "lastUpdated": "2026-06-17T04:16:31.777Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
