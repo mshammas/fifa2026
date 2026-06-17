@@ -1309,7 +1309,7 @@
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
-      "recap": null
+      "recap": "Cristiano Ronaldo and his Portugal teammates could only manage a 1-1 draw with Congo DR on Wednesday in their opening World Cup match."
     },
     {
       "id": "e760437",
@@ -1324,8 +1324,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2723,6 +2731,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T19:00:42.343Z",
+  "lastUpdated": "2026-06-17T19:58:26.620Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
