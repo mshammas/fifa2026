@@ -1253,14 +1253,14 @@
       "away": "Congo DR",
       "group": "K",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "3'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -2683,6 +2683,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T16:58:22.697Z",
+  "lastUpdated": "2026-06-17T17:05:05.513Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
