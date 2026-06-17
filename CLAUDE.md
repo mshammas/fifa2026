@@ -66,9 +66,10 @@ ESPN scoreboard API → `fetch-scores.mjs` → `matches.json` → Vite build →
 ```
 
 ### Key hooks / helpers in `src/main.jsx`
-- `useLocalStorage(key, init)` — persistent state backed by localStorage
+- `useLocalStorage(key, init)` — persistent state backed by localStorage; does NOT support functional updates (pass direct value)
 - `useNow()` — ticks every 30 s for countdown timers
 - `useWindowWidth()` — drives responsive layout (wide ≥ 768 px)
+- `useScoreFlash(score)` — detects score changes via `useRef`, returns `true` for 700 ms; used by `TeamRow` to apply `.wc-score-flash` CSS animation class
 - `liveScores(m)` — derives score from `goals[]` array (more up-to-date than ESPN score field during live play)
 - `refreshMatches()` — `fetch('./src/data/matches.json?t=<now>')` used by LiveMatchModal to update state without a page reload (preserves fullscreen)
 
@@ -83,7 +84,24 @@ The live card outer div also has `overflow: hidden` as a safety backstop.
 - Reads all prefs directly from localStorage inside the score-change `useEffect` (avoids stale closure)
 - Tracks `{ h, a, status, redCards }` per match in `wc_prev_scores`
 - Fires `new Notification(title, { body, icon })` for goals, kick-off (NS→LIVE), full time (→FT), red cards
-- Respects `wc_notif_favonly` + `wc_fav_team` pref
+- Respects `wc_notif_favonly` + `wc_fav_teams` pref (array — reads `JSON.parse(localStorage.getItem("wc_fav_teams")) ?? []`)
+
+### Favourite teams
+- Stored as an array in `wc_fav_teams` (localStorage key). Max 3 teams (`FAV_MAX = 3`).
+- Old key `wc_fav_team` (single string) is gone — no migration code, users lose the single saved fav.
+- `toggleFavTeam(team)` in `App`: removes if already present, adds if array length < FAV_MAX.
+- Long-press (500 ms) on a team card in `TeamsTab` toggles the fav. `lpFired` ref prevents `onClick` from also firing. `onContextMenu` handles desktop right-click equivalent. `userSelect: "none"` / `WebkitUserSelect: "none"` / `WebkitTouchCallout: "none"` suppress OS text selection.
+
+### GlobalStyles CSS additions
+```css
+@keyframes wcScoreFlash { 0% { color: #22c55e; transform: scale(1.35); } 100% { color: inherit; transform: scale(1); } }
+.wc-score-flash { animation: wcScoreFlash 0.65s ease; }
+.wc-noscroll { scrollbar-width: none; -ms-overflow-style: none; }
+.wc-noscroll::-webkit-scrollbar { display: none; }
+```
+
+### Fullscreen modal vertical centering (mobile)
+The mobile `LiveMatchModal` scroll container uses `display: flex; flexDirection: column` and the inner content wrapper uses `margin: auto` — this centers when content fits and gracefully allows scrolling when content is taller than the viewport.
 
 ### Git push pattern (SSH multi-account)
 ```bash
@@ -93,7 +111,7 @@ git push git@github-mshammas:mshammas/fifa2026.git HEAD:main
 ```
 The score bot commits `matches.json` frequently — always rebase before pushing to avoid conflicts.
 
-## Current Status (v1.0)
+## Current Status (v1.1)
 
 All features complete and deployed:
 - ✅ Live scores, goals, cards, stats, recaps (ESPN)
@@ -101,14 +119,20 @@ All features complete and deployed:
 - ✅ Group standings with qualification legend
 - ✅ Knockout bracket
 - ✅ Watch tab (streaming links + highlights)
-- ✅ Fullscreen live match modal (3-panel wide layout, no-reload refresh)
+- ✅ Fullscreen live match modal (3-panel wide layout, no-reload refresh; vertically centred on mobile)
 - ✅ Browser notifications (goals / kick-off / FT / red cards / favourite team filter)
 - ✅ Timezone popover
 - ✅ Score predictor
-- ✅ PWA (installable, offline-capable)
-- ✅ Live match ticker banner
-- ✅ Favourite team starring
-- ✅ Share button per match
+- ✅ PWA (installable, offline-capable) — `InstallPrompt` banner shown on mobile when not already installed
+- ✅ Live match ticker banner (scrolling horizontal chip row when 2+ live matches)
+- ✅ Multiple favourite teams (up to 3) — long-press to star/unstar; star icon in Teams tab
+- ✅ Share button per match + share-app button (🔗) in header
+- ✅ Score pulse animation on goal (`useScoreFlash` + `.wc-score-flash`)
+- ✅ Imminent kickoff countdown (⚡ shown when < 30 min to kickoff)
+- ✅ Inline group standings in Matches tab when a single group is filtered
+- ✅ Group filter persisted across sessions (`wc_group_filter` in localStorage)
+- ✅ Fav-team nudge banner in Matches tab when no favs set
+- ✅ Haptic feedback on long-press (navigator.vibrate)
 
 ## Environment Variables
 
