@@ -1256,7 +1256,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "29'",
+      "clock": "33'",
       "goals": [
         {
           "side": "home",
@@ -1272,15 +1272,21 @@
           "player": "B. Silva",
           "minute": "13'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "C. Mbemba",
+          "minute": "32'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "81.2",
+        "possessionPct": "79.6",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "18.8",
+        "possessionPct": "20.4",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -2698,6 +2704,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T17:34:33.469Z",
+  "lastUpdated": "2026-06-17T17:38:18.821Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
