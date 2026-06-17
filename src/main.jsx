@@ -958,74 +958,6 @@ function GoalToast({ alerts }) {
   );
 }
 
-function getCommentaryConfig() {
-  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-  const lang = (navigator.language || "").toLowerCase();
-  if (["Europe/London", "Europe/Jersey", "Europe/Guernsey", "Europe/Isle_of_Man"].includes(tz))
-    return { label: "BBC Radio 5 Live", streamUrl: "https://stream.live.vc.bbcmedia.co.uk/bbc_radio_five_live", canEmbed: true, linkUrl: "https://www.bbc.co.uk/sounds/play/live:bbc_radio_five_live" };
-  if (tz === "Europe/Dublin")
-    return { label: "RTÉ Radio 1", canEmbed: false, linkUrl: "https://www.rte.ie/radio/radio1/" };
-  if (tz.startsWith("Australia/") || tz === "Pacific/Auckland")
-    return { label: "ABC Sport Radio", canEmbed: false, linkUrl: "https://www.abc.net.au/sport/" };
-  if (lang === "en-ca" || lang === "fr-ca")
-    return { label: "TSN Radio", canEmbed: false, linkUrl: "https://www.tsn.ca/radio" };
-  if (lang.startsWith("es"))
-    return tz.startsWith("Europe/Madrid")
-      ? { label: "RTVE Radio Nacional", canEmbed: false, linkUrl: "https://www.rtve.es/radio/radio-nacional/" }
-      : { label: "TUDN Radio", canEmbed: false, linkUrl: "https://www.tudn.com/" };
-  if (lang.startsWith("fr"))
-    return { label: "RFI Sport", canEmbed: false, linkUrl: "https://www.rfi.fr/fr/sports/" };
-  if (lang.startsWith("de"))
-    return { label: "ARD Radio", canEmbed: false, linkUrl: "https://www.ard.de/radio" };
-  if (lang.startsWith("pt"))
-    return { label: "RTP Rádio", canEmbed: false, linkUrl: "https://www.rtp.pt/play/direto/rtp1" };
-  return { label: "ESPN Radio", canEmbed: false, linkUrl: "https://www.espn.com/espnradio/" };
-}
-
-function CommentaryBlock({ m }) {
-  const [playing, setPlaying] = useState(false);
-  const [embedFailed, setEmbedFailed] = useState(false);
-  const audioRef = React.useRef(null);
-  const config = React.useMemo(() => getCommentaryConfig(), []);
-  if (m.status !== "LIVE" && m.status !== "HT") return null;
-  const showEmbed = config.canEmbed && !embedFailed;
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (playing) { audio.pause(); } else { audio.play().catch(() => setEmbedFailed(true)); }
-  };
-  return (
-    <div style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${C.border}`, borderRadius: 12, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12 }}>
-      <div style={{ width: 36, height: 36, borderRadius: 10, background: playing ? "rgba(239,68,68,0.12)" : "rgba(34,197,94,0.12)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0, transition: "background 0.3s" }}>
-        {playing ? "🔴" : "🎙"}
-      </div>
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 13, fontWeight: 800 }}>Live Commentary</div>
-        <div style={{ fontSize: 11, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{config.label}</div>
-      </div>
-      {showEmbed ? (
-        <>
-          <audio ref={audioRef} src={config.streamUrl} preload="none"
-            onError={() => setEmbedFailed(true)}
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
-            onEnded={() => setPlaying(false)}
-          />
-          <button onClick={togglePlay}
-            style={{ flexShrink: 0, background: playing ? C.red : C.green, color: playing ? "#fff" : "#06210f", border: "none", borderRadius: 10, padding: "9px 16px", fontSize: 13, fontWeight: 900, cursor: "pointer" }}>
-            {playing ? "⏸ Pause" : "▶ Play"}
-          </button>
-        </>
-      ) : (
-        <a href={config.linkUrl} target="_blank" rel="noopener noreferrer"
-          style={{ flexShrink: 0, background: "rgba(255,255,255,0.08)", color: C.text, borderRadius: 10, padding: "9px 16px", fontSize: 13, fontWeight: 900, textDecoration: "none", whiteSpace: "nowrap" }}>
-          Listen →
-        </a>
-      )}
-    </div>
-  );
-}
-
 function LiveMatchModal({ m, onClose, onRefresh }) {
   // Fetch fresh match data every 30 s without a full page reload.
   useEffect(() => {
@@ -1239,8 +1171,6 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
             </div>
           </div>
 
-          <CommentaryBlock m={m} />
-
           {/* Bottom bar — venue + Watch Live */}
           <div style={{ flexShrink: 0, background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "14px 20px", display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "center", flex: 1, minWidth: 0 }}>
@@ -1293,7 +1223,6 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
           <div style={{ display: "grid", gap: 20, gridTemplateColumns: "minmax(0, 1fr)" }}>
             <MatchEvents m={m} />
             <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
-            <CommentaryBlock m={m} />
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <div style={{ display: "flex", gap: 8, alignItems: "center", flex: 1, minWidth: 0 }}>
                 {eventBadge("📍")}
