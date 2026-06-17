@@ -1319,9 +1319,9 @@
       "group": "L",
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 2,
-      "awayScore": 1,
-      "status": "LIVE",
-      "clock": "45'+5'",
+      "awayScore": 2,
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -1343,18 +1343,25 @@
           "minute": "42'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "P. Musa",
+          "minute": "45'+5'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "50.2",
+        "possessionPct": "48.3",
         "shotsOnTarget": "2",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "49.8",
-        "shotsOnTarget": "1",
-        "totalShots": "3"
+        "possessionPct": "51.7",
+        "shotsOnTarget": "2",
+        "totalShots": "4"
       },
       "recap": null
     },
@@ -2753,6 +2760,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-17T20:50:34.840Z",
+  "lastUpdated": "2026-06-17T20:52:30.466Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
