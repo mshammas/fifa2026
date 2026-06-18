@@ -1564,10 +1564,10 @@
       "away": "Bosnia & Herzegovina",
       "group": "B",
       "venue": "SoFi Stadium, Inglewood, California",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+7'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -1595,6 +1595,13 @@
           "player": "E. Mahmic",
           "minute": "90'+3'",
           "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "G. Xhaka",
+          "minute": "90'+7'",
+          "pen": true,
           "og": false
         }
       ],
@@ -1625,12 +1632,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "62.1",
-        "shotsOnTarget": "6",
-        "totalShots": "12"
+        "possessionPct": "62.3",
+        "shotsOnTarget": "7",
+        "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "37.9",
+        "possessionPct": "37.7",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
@@ -2963,6 +2970,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T20:56:24.627Z",
+  "lastUpdated": "2026-06-18T20:58:23.637Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
