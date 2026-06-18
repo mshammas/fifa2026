@@ -1653,7 +1653,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "50'",
+      "clock": "52'",
       "goals": [
         {
           "side": "home",
@@ -1689,15 +1689,21 @@
           "player": "H. Ahmed",
           "minute": "33'",
           "type": "red"
+        },
+        {
+          "side": "away",
+          "player": "A. Madibo",
+          "minute": "51'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "71.3",
+        "possessionPct": "71.7",
         "shotsOnTarget": "8",
-        "totalShots": "15"
+        "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "28.7",
+        "possessionPct": "28.3",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3013,6 +3019,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T23:12:26.032Z",
+  "lastUpdated": "2026-06-18T23:14:23.176Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
