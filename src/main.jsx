@@ -773,6 +773,93 @@ function resultSummary(m) {
   return { icon: "🏆", text: `${winner} won by ${diff} goal${diff > 1 ? "s" : ""}` };
 }
 
+// Visual timeline bar: home events above, away events below, HT tick at 45'.
+function GoalTimeline({ m }) {
+  const goals = m.goals || [];
+  const cards = m.cards || [];
+  const allEvents = [
+    ...goals.map(g => ({ ...g, kind: "goal" })),
+    ...cards.map(c => ({ ...c, kind: "card" })),
+  ];
+  if (!allEvents.length) return null;
+
+  function parseMin(str) {
+    const match = str && str.match(/(\d+)(?:\+(\d+))?/);
+    if (!match) return null;
+    return parseInt(match[1]) + (match[2] ? parseInt(match[2]) : 0);
+  }
+
+  const mins = allEvents.map(e => parseMin(e.minute)).filter(n => n != null);
+  const rawMax = Math.max(90, ...mins);
+  const barMax = rawMax > 90 ? Math.ceil(rawMax / 5) * 5 + 2 : 90;
+  const isET = barMax > 90;
+
+  const toLeft = (str) => {
+    const n = parseMin(str);
+    if (n == null) return "0%";
+    return `${Math.min((n / barMax) * 100, 99)}%`;
+  };
+
+  const evEmoji = (e) => e.kind === "goal" ? "⚽" : e.type === "red" ? "🟥" : "🟨";
+  const dotColor = (e) => {
+    if (e.kind === "goal") return e.side === "home" ? C.green : C.red;
+    return e.type === "red" ? C.red : "#fbbf24";
+  };
+
+  const homeEvents = allEvents.filter(e => e.side === "home");
+  const awayEvents = allEvents.filter(e => e.side === "away");
+
+  const MarkerCol = ({ events, above }) =>
+    events.map((e, i) => (
+      <div key={i} style={{
+        position: "absolute", left: toLeft(e.minute), transform: "translateX(-50%)",
+        [above ? "bottom" : "top"]: 0,
+        display: "flex", flexDirection: above ? "column-reverse" : "column",
+        alignItems: "center", gap: 1,
+      }}>
+        <span style={{ fontSize: 10, color: C.dim, fontWeight: 700, lineHeight: 1, whiteSpace: "nowrap" }}>{e.minute}</span>
+        <span style={{ fontSize: 14, lineHeight: 1 }}>{evEmoji(e)}</span>
+      </div>
+    ));
+
+  return (
+    <div style={{ padding: "4px 0 2px" }}>
+      {/* Team label + home events above */}
+      <div style={{ position: "relative", height: 34, marginBottom: 3 }}>
+        <span style={{ position: "absolute", left: 0, bottom: 0, fontSize: 10, fontWeight: 800, color: C.dim, letterSpacing: 0.3, whiteSpace: "nowrap", maxWidth: "35%", overflow: "hidden", textOverflow: "ellipsis" }}>{m.home}</span>
+        <MarkerCol events={homeEvents} above={true} />
+      </div>
+
+      {/* The bar */}
+      <div style={{ position: "relative", height: 5, background: C.border, borderRadius: 99 }}>
+        <div style={{ position: "absolute", left: `${(45 / barMax) * 100}%`, top: -5, bottom: -5, width: 1, background: C.dim, opacity: 0.5 }} />
+        {isET && <div style={{ position: "absolute", left: `${(90 / barMax) * 100}%`, top: -5, bottom: -5, width: 1, background: C.dim, opacity: 0.5 }} />}
+        {allEvents.map((e, i) => (
+          <div key={i} style={{
+            position: "absolute", left: toLeft(e.minute), top: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 9, height: 9, borderRadius: "50%",
+            background: dotColor(e), border: `1.5px solid ${C.bg}`,
+          }} />
+        ))}
+      </div>
+
+      {/* Away events below + team label */}
+      <div style={{ position: "relative", height: 34, marginTop: 3 }}>
+        <span style={{ position: "absolute", left: 0, top: 0, fontSize: 10, fontWeight: 800, color: C.dim, letterSpacing: 0.3, whiteSpace: "nowrap", maxWidth: "35%", overflow: "hidden", textOverflow: "ellipsis" }}>{m.away}</span>
+        <MarkerCol events={awayEvents} above={false} />
+      </div>
+
+      {/* Minute labels */}
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, fontWeight: 700, color: C.dim, opacity: 0.6 }}>
+        <span>0'</span>
+        {isET ? <><span>45' HT</span><span>90' ET</span></> : <span>45' HT</span>}
+        <span>{barMax}'</span>
+      </div>
+    </div>
+  );
+}
+
 // Goals + cards breakdown (per-row flags). Renders nothing when no data yet.
 function MatchEvents({ m }) {
   const goals = m.goals || [];
@@ -798,6 +885,7 @@ function MatchEvents({ m }) {
 
   return (
     <div style={{ display: "grid", gap: 16, gridTemplateColumns: "minmax(0, 1fr)" }}>
+      <GoalTimeline m={m} />
       {goals.length > 0 && <EventSection icon="⚽" title="Goals" rows={goalRows} />}
       {cards.length > 0 && <EventSection icon="🟨" iconBg="rgba(251,191,36,0.15)" title="Cards" rows={cardRows} />}
     </div>
@@ -1146,6 +1234,7 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
                   <div style={{ color: C.dim, fontSize: 14, textAlign: "center", marginTop: 20 }}>No events yet</div>
                 ) : (
                   <div style={{ display: "grid", gap: 10 }}>
+                    <GoalTimeline m={m} />
                     {goalRows.map((g, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", background: "rgba(255,255,255,0.04)", borderRadius: 10 }}>
                         <span style={{ fontSize: 20, flexShrink: 0 }}>{g.flag}</span>
