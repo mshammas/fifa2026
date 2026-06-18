@@ -1653,7 +1653,7 @@
       "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "31'",
+      "clock": "32'",
       "goals": [
         {
           "side": "home",
@@ -1676,15 +1676,21 @@
           "player": "D. Cornelius",
           "minute": "9'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "H. Ahmed",
+          "minute": "32'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "67.4",
+        "possessionPct": "66.1",
         "shotsOnTarget": "4",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "32.6",
+        "possessionPct": "33.9",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3000,6 +3006,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T22:32:23.646Z",
+  "lastUpdated": "2026-06-18T22:34:25.029Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
