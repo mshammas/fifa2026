@@ -2172,7 +2172,6 @@ function PlayerProfile({ player, team, matches, onBack }) {
   );
 }
 
-const FAV_MAX = 3;
 
 function TeamDetail({ team, matches, tz, onBack, favTeams, toggleFavTeam, predictions, onPredict, onOpenLive, onPlayerSelect }) {
   const teamMatches = useMemo(
@@ -2203,12 +2202,11 @@ function TeamDetail({ team, matches, tz, onBack, favTeams, toggleFavTeam, predic
           <h2 style={{ fontSize: 28, fontWeight: 900, margin: 0 }}>{team}</h2>
           {(() => {
             const isStarred = favTeams.includes(team);
-            const atCap = !isStarred && favTeams.length >= FAV_MAX;
             return (
               <button
-                onClick={() => !atCap && toggleFavTeam(team)}
-                title={isStarred ? "Remove from favourites" : atCap ? `Max ${FAV_MAX} favourites — remove one first` : "Add to favourites"}
-                style={{ background: "none", border: "none", fontSize: 24, cursor: atCap ? "not-allowed" : "pointer", padding: 0, lineHeight: 1, opacity: atCap ? 0.35 : 1 }}
+                onClick={() => toggleFavTeam(team)}
+                title={isStarred ? "Remove from favourites" : "Add to favourites"}
+                style={{ background: "none", border: "none", fontSize: 24, cursor: "pointer", padding: 0, lineHeight: 1 }}
               >
                 {isStarred ? "⭐" : "☆"}
               </button>
@@ -2823,7 +2821,7 @@ export default function App() {
   const toggleFavTeam = (team) => {
     const arr = Array.isArray(favTeams) ? favTeams : [];
     if (arr.includes(team)) setFavTeams(arr.filter((t) => t !== team));
-    else if (arr.length < FAV_MAX) setFavTeams([...arr, team]);
+    else setFavTeams([...arr, team]);
   };
   const [predictions, setPredictions] = useLocalStorage("wc_predictions", {});
   const [goalAlerts, setGoalAlerts] = useState([]);
