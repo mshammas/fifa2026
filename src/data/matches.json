@@ -1650,10 +1650,10 @@
       "away": "Qatar",
       "group": "B",
       "venue": "BC Place, Vancouver",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "29'",
+      "clock": "31'",
       "goals": [
         {
           "side": "home",
@@ -1679,12 +1679,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "67.9",
-        "shotsOnTarget": "3",
-        "totalShots": "5"
+        "possessionPct": "67.4",
+        "shotsOnTarget": "4",
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "32.1",
+        "possessionPct": "32.6",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3000,6 +3000,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T22:30:36.809Z",
+  "lastUpdated": "2026-06-18T22:32:23.646Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
