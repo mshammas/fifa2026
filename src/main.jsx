@@ -852,7 +852,7 @@ function resultSummary(m) {
 }
 
 // Visual timeline bar: home events above, away events below, HT tick at 45'.
-function GoalTimeline({ m }) {
+function GoalTimeline({ m, playheadMin }) {
   const goals = m.goals || [];
   const cards = m.cards || [];
   const allEvents = [
@@ -918,8 +918,19 @@ function GoalTimeline({ m }) {
             transform: "translate(-50%, -50%)",
             width: 9, height: 9, borderRadius: "50%",
             background: dotColor(e), border: `1.5px solid ${C.bg}`,
+            opacity: playheadMin != null && parseEventMin(e.minute) > playheadMin ? 0.2 : 1,
+            transition: "opacity 0.1s",
           }} />
         ))}
+        {playheadMin != null && playheadMin >= 0 && (
+          <div style={{
+            position: "absolute", left: `${Math.min((playheadMin / barMax) * 100, 100)}%`,
+            top: -10, bottom: -10, width: 2, borderRadius: 1,
+            background: "#fff", opacity: 0.9,
+            boxShadow: "0 0 6px rgba(255,255,255,0.6)",
+            transition: "left 0.04s linear", zIndex: 2,
+          }} />
+        )}
       </div>
 
       {/* Away events below + team label */}
@@ -933,6 +944,136 @@ function GoalTimeline({ m }) {
         <span>0'</span>
         {isET ? <><span>45' HT</span><span>90' ET</span></> : <span>45' HT</span>}
         <span>{barMax}'</span>
+      </div>
+    </div>
+  );
+}
+
+// Animated minute-by-minute replay of a finished match.
+function TimeMachineReplay({ m }) {
+  const [phase, setPhase] = useState("idle"); // idle | playing | done
+  const [playMin, setPlayMin] = useState(-1);
+  const intRef = React.useRef(null);
+
+  const allEvents = useMemo(() => {
+    return [
+      ...(m.goals || []).map(g => ({ ...g, kind: "goal", min: parseEventMin(g.minute) })),
+      ...(m.cards || []).map(c => ({ ...c, kind: "card", min: parseEventMin(c.minute) })),
+    ].filter(e => e.min != null).sort((a, b) => a.min - b.min);
+  }, [m]);
+
+  const maxMin = allEvents.length > 0 ? Math.max(90, ...allEvents.map(e => e.min)) : 90;
+
+  const scoreAtMin = useMemo(() => {
+    let h = 0, a = 0;
+    for (const g of m.goals || []) {
+      const min = parseEventMin(g.minute);
+      if (min != null && min <= playMin) {
+        const forHome = (g.side === "home" && !g.og) || (g.side === "away" && g.og);
+        if (forHome) h++; else a++;
+      }
+    }
+    return { h, a };
+  }, [playMin, m.goals]);
+
+  const recentEvent = [...allEvents].reverse().find(e => e.min <= playMin);
+
+  const start = () => {
+    clearInterval(intRef.current);
+    setPhase("playing");
+    setPlayMin(0);
+    intRef.current = setInterval(() => {
+      setPlayMin(prev => {
+        const next = prev + 1;
+        if (next > maxMin + 1) {
+          clearInterval(intRef.current);
+          setPhase("done");
+          return maxMin;
+        }
+        return next;
+      });
+    }, 38);
+  };
+
+  const reset = () => {
+    clearInterval(intRef.current);
+    setPhase("idle");
+    setPlayMin(-1);
+  };
+
+  useEffect(() => () => clearInterval(intRef.current), []);
+
+  if (allEvents.length === 0) return null;
+
+  const showing = phase !== "idle";
+
+  return (
+    <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 14 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+        <span style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(251,191,36,0.12)", border: `1px solid ${C.border}`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 17, flexShrink: 0 }}>⏪</span>
+        <span style={{ fontSize: 17, fontWeight: 800 }}>Time Machine</span>
+        {showing && (
+          <span style={{ marginLeft: "auto", fontSize: 22, fontWeight: 900, letterSpacing: -1 }}>
+            {flag(m.home)} <span style={{ color: scoreAtMin.h > 0 ? C.text : C.dim }}>{scoreAtMin.h}</span>
+            <span style={{ color: C.dim, margin: "0 2px" }}>–</span>
+            <span style={{ color: scoreAtMin.a > 0 ? C.text : C.dim }}>{scoreAtMin.a}</span> {flag(m.away)}
+          </span>
+        )}
+      </div>
+
+      {showing && (
+        <div style={{ marginBottom: 10 }}>
+          <GoalTimeline m={m} playheadMin={playMin} />
+        </div>
+      )}
+
+      {recentEvent && phase === "playing" && (
+        <div style={{
+          background: recentEvent.kind === "goal" ? "rgba(34,197,94,0.1)" : "rgba(239,68,68,0.08)",
+          border: `1px solid ${recentEvent.kind === "goal" ? "rgba(34,197,94,0.3)" : "rgba(239,68,68,0.25)"}`,
+          borderRadius: 10, padding: "8px 14px", marginBottom: 10,
+          fontSize: 14, fontWeight: 700, display: "flex", alignItems: "center", gap: 8,
+          animation: "wcScoreFlash 0.5s ease",
+        }}>
+          <span>{recentEvent.kind === "goal" ? "⚽" : recentEvent.type === "red" ? "🟥" : "🟨"}</span>
+          <span style={{ flex: 1 }}>{recentEvent.player}{recentEvent.kind === "goal" && recentEvent.pen ? " (pen)" : ""}</span>
+          <span style={{ color: C.dim, fontSize: 13 }}>{recentEvent.side === "home" ? m.home : m.away} · {recentEvent.minute}</span>
+        </div>
+      )}
+
+      {phase === "idle" && (
+        <p style={{ fontSize: 13, color: C.dim, margin: "0 0 10px", lineHeight: 1.5 }}>
+          Watch the match unfold minute by minute — score updates as each event happened.
+        </p>
+      )}
+
+      {phase === "done" && (
+        <div style={{ fontSize: 14, fontWeight: 800, color: C.gold, textAlign: "center", marginBottom: 10 }}>
+          ✅ Full Time · {m.home} {m.homeScore}–{m.awayScore} {m.away}
+        </div>
+      )}
+
+      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        {phase !== "playing" ? (
+          <button
+            onClick={phase === "done" ? reset : start}
+            style={{ flex: 1, padding: "10px 16px", borderRadius: 10, border: "none", background: phase === "done" ? C.card2 : C.gold, color: phase === "done" ? C.text : "#06210f", fontSize: 15, fontWeight: 900, cursor: "pointer" }}
+          >
+            {phase === "done" ? "↺ Replay again" : "▶ Replay match"}
+          </button>
+        ) : (
+          <button
+            onClick={reset}
+            style={{ flex: 1, padding: "10px 16px", borderRadius: 10, border: `1px solid ${C.border}`, background: "none", color: C.dim, fontSize: 15, fontWeight: 700, cursor: "pointer" }}
+          >
+            ■ Stop
+          </button>
+        )}
+        {showing && (
+          <span style={{ fontSize: 13, color: C.dim, fontWeight: 800, whiteSpace: "nowrap", minWidth: 32, textAlign: "right" }}>
+            {playMin}'
+          </span>
+        )}
       </div>
     </div>
   );
@@ -983,6 +1124,13 @@ function evalPrediction(pred, m) {
   if (predRes === actRes)
     return { icon: "🎯", label: "Right result", pts: 1, color: C.gold };
   return { icon: "❌", label: "Wrong", pts: 0, color: C.red };
+}
+
+// Parse a minute string like "45'", "90+3'" → integer.
+function parseEventMin(str) {
+  const m = str && str.match(/(\d+)(?:\+(\d+))?/);
+  if (!m) return null;
+  return parseInt(m[1]) + (m[2] ? parseInt(m[2]) : 0);
 }
 
 // Derive live score from goals array — more up-to-date than ESPN's score field during live matches.
@@ -1074,8 +1222,84 @@ function RecapBlock({ recap }) {
   );
 }
 
+async function shareMatchAsImage(m) {
+  const W = 600, H = 340;
+  const canvas = document.createElement("canvas");
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext("2d");
+
+  // Background
+  ctx.fillStyle = "#0e0e14";
+  ctx.beginPath();
+  if (ctx.roundRect) { ctx.roundRect(0, 0, W, H, 24); } else { ctx.rect(0, 0, W, H); }
+  ctx.fill();
+
+  // Green top bar
+  ctx.fillStyle = "#22c55e";
+  ctx.fillRect(0, 0, W, 5);
+
+  // Title
+  ctx.font = "bold 14px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#9aa0b4";
+  ctx.textAlign = "center";
+  ctx.fillText("⚽  FIFA WORLD CUP 2026" + (m.group ? `  ·  GROUP ${m.group}` : ""), W / 2, 38);
+
+  // Flags
+  ctx.font = "70px serif";
+  ctx.fillStyle = "#fff";
+  ctx.fillText(flag(m.home), 145, 138);
+  ctx.fillText(flag(m.away), W - 145, 138);
+
+  // Team names
+  ctx.font = "bold 19px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#ffffff";
+  ctx.fillText(m.home, 145, 165, 230);
+  ctx.fillText(m.away, W - 145, 165, 230);
+
+  // Score
+  const homeWin = m.homeScore > m.awayScore, awayWin = m.awayScore > m.homeScore;
+  ctx.font = "bold 78px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = homeWin ? "#fbbf24" : "#fff";
+  ctx.textAlign = "right";
+  ctx.fillText(m.homeScore ?? "–", W / 2 - 14, 152);
+  ctx.font = "bold 40px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#2a2a38";
+  ctx.textAlign = "center";
+  ctx.fillText("–", W / 2, 142);
+  ctx.font = "bold 78px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = awayWin ? "#fbbf24" : "#fff";
+  ctx.textAlign = "left";
+  ctx.fillText(m.awayScore ?? "–", W / 2 + 14, 152);
+
+  // Status
+  ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = m.status === "LIVE" ? "#ef4444" : "#94a3b8";
+  ctx.textAlign = "center";
+  ctx.fillText(m.status === "FT" ? "FULL TIME" : m.status === "LIVE" ? `LIVE ${m.clock || ""}` : m.status === "HT" ? "HALF TIME" : "", W / 2, 174);
+
+  // Scorers
+  const hGoals = (m.goals || []).filter(g => g.side === "home" && !g.og).map(g => `${g.player} ${g.minute}`);
+  const aGoals = (m.goals || []).filter(g => g.side === "away" && !g.og).map(g => `${g.player} ${g.minute}`);
+  ctx.font = "13px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#9aa0b4";
+  hGoals.forEach((t, i) => { ctx.textAlign = "left";  ctx.fillText(t, 24, 210 + i * 20, 240); });
+  aGoals.forEach((t, i) => { ctx.textAlign = "right"; ctx.fillText(t, W - 24, 210 + i * 20, 240); });
+
+  // Divider
+  ctx.strokeStyle = "#2a2a38"; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(24, 296); ctx.lineTo(W - 24, 296); ctx.stroke();
+
+  // URL
+  ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#22c55e"; ctx.textAlign = "center";
+  ctx.fillText("fifa.shammas.in", W / 2, 320);
+
+  return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+}
+
 function ShareButton({ m }) {
   const [done, setDone] = useState(false);
+  const [imgDone, setImgDone] = useState(false);
 
   const shareText = () => {
     const score = m.homeScore != null ? `${m.homeScore}–${m.awayScore}` : "vs";
@@ -1097,19 +1321,47 @@ function ShareButton({ m }) {
     } catch {}
   };
 
+  const handleShareImage = async (e) => {
+    e.stopPropagation();
+    try {
+      const blob = await shareMatchAsImage(m);
+      const file = new File([blob], `${m.home}-vs-${m.away}.png`, { type: "image/png" });
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], title: "FIFA World Cup 2026" });
+      } else {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url; a.download = `${m.home}-vs-${m.away}.png`;
+        a.click(); URL.revokeObjectURL(url);
+        setImgDone(true);
+        setTimeout(() => setImgDone(false), 2000);
+      }
+    } catch {}
+  };
+
+  const isResult = m.status === "FT" && m.homeScore != null;
+
   return (
-    <button
-      onClick={handleShare}
-      aria-label="Share match"
-      title="Share"
-      style={{
-        background: "none", border: "none", cursor: "pointer", padding: "2px 4px",
-        fontSize: 17, lineHeight: 1, color: done ? C.green : C.dim, flexShrink: 0,
-        transition: "color 0.2s",
-      }}
-    >
-      {done ? "✓" : "📤"}
-    </button>
+    <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+      {isResult && (
+        <button
+          onClick={handleShareImage}
+          aria-label="Save as image"
+          title="Save result as image"
+          style={{ background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontSize: 16, lineHeight: 1, color: imgDone ? C.green : C.dim, flexShrink: 0, transition: "color 0.2s" }}
+        >
+          {imgDone ? "✓" : "📸"}
+        </button>
+      )}
+      <button
+        onClick={handleShare}
+        aria-label="Share match"
+        title="Share"
+        style={{ background: "none", border: "none", cursor: "pointer", padding: "2px 4px", fontSize: 17, lineHeight: 1, color: done ? C.green : C.dim, flexShrink: 0, transition: "color 0.2s" }}
+      >
+        {done ? "✓" : "📤"}
+      </button>
+    </div>
   );
 }
 
@@ -1591,6 +1843,7 @@ function ResultCard({ m, tz, isFav, prediction, onGroupClick, onPlayerClick }) {
             </p>
           )}
           <MatchEvents m={m} onPlayerClick={onPlayerClick} />
+          <TimeMachineReplay m={m} />
           <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
           <VenueBlock venue={m.venue} />
           <a
@@ -3049,6 +3302,104 @@ function InstallPrompt() {
   );
 }
 
+/* ── "What did I miss?" ──────────────────────────────────────────── */
+function WhatDidIMiss({ summary, onDismiss, onOpenLive, tz }) {
+  if (!summary) return null;
+  const { newResults, newGoals, liveNow } = summary;
+  const total = newResults.length + newGoals.length;
+  if (total === 0 && liveNow.length === 0) return null;
+
+  return (
+    <div
+      style={{ position: "fixed", inset: 0, zIndex: 350, display: "flex", alignItems: "flex-end", background: "rgba(0,0,0,0.6)" }}
+      onClick={onDismiss}
+    >
+      <div
+        onClick={e => e.stopPropagation()}
+        style={{ background: C.card2, borderRadius: "20px 20px 0 0", padding: "22px 20px 36px", width: "100%", maxWidth: 600, margin: "0 auto", boxSizing: "border-box", maxHeight: "75vh", overflowY: "auto" }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
+          <div>
+            <h2 style={{ fontSize: 20, fontWeight: 900, margin: 0 }}>⏰ While you were away</h2>
+            {total > 0 && <p style={{ fontSize: 13, color: C.dim, margin: "4px 0 0" }}>{total} update{total !== 1 ? "s" : ""} since your last visit</p>}
+          </div>
+          <button onClick={onDismiss} style={{ background: "none", border: "none", color: C.dim, fontSize: 22, cursor: "pointer", padding: 4 }}>✕</button>
+        </div>
+
+        {liveNow.length > 0 && (
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 11, fontWeight: 900, color: C.red, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>🔴 Live now</div>
+            {liveNow.map(m => {
+              const { h, a } = liveScores(m);
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => { onDismiss(); onOpenLive(m); }}
+                  style={{ width: "100%", display: "flex", alignItems: "center", gap: 12, background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.3)", borderRadius: 10, padding: "10px 14px", marginBottom: 6, cursor: "pointer", color: C.text, textAlign: "left" }}
+                >
+                  <span style={{ fontSize: 18 }}>{flag(m.home)}</span>
+                  <span style={{ flex: 1, fontSize: 15, fontWeight: 800 }}>{m.home} {h ?? 0}–{a ?? 0} {m.away}</span>
+                  <span style={{ fontSize: 18 }}>{flag(m.away)}</span>
+                  <span style={{ fontSize: 12, color: C.red, fontWeight: 900 }}>{m.clock || "LIVE"} →</span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {newResults.length > 0 && (
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 11, fontWeight: 900, color: C.gold, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>✅ Full-time results</div>
+            {newResults.map(m => {
+              const homeWin = m.homeScore > m.awayScore, awayWin = m.awayScore > m.homeScore;
+              return (
+                <div key={m.id} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 6 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontSize: 16 }}>{flag(m.home)}</span>
+                    <span style={{ fontWeight: homeWin ? 900 : 700, fontSize: 15, color: homeWin ? C.gold : C.text }}>{m.home}</span>
+                    <span style={{ fontWeight: 900, fontSize: 18, margin: "0 4px" }}>{m.homeScore}<span style={{ color: C.dim }}>–</span>{m.awayScore}</span>
+                    <span style={{ fontWeight: awayWin ? 900 : 700, fontSize: 15, color: awayWin ? C.gold : C.text }}>{m.away}</span>
+                    <span style={{ fontSize: 16 }}>{flag(m.away)}</span>
+                  </div>
+                  {m.group && <div style={{ fontSize: 12, color: C.dim, marginTop: 4 }}>Group {m.group} · {fmt(m.date, tz, { month: "short", day: "numeric" })}</div>}
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {newGoals.length > 0 && (
+          <div style={{ marginBottom: 14 }}>
+            <div style={{ fontSize: 11, fontWeight: 900, color: C.green, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>⚽ Score updates</div>
+            {newGoals.map(({ m, homeChange, awayChange }) => (
+              <div key={m.id} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 6 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <span style={{ fontSize: 16 }}>{flag(m.home)}</span>
+                  <span style={{ fontWeight: 700, fontSize: 15 }}>{m.home}</span>
+                  <span style={{ fontWeight: 900, fontSize: 18, margin: "0 4px" }}>{m.homeScore}<span style={{ color: C.dim }}>–</span>{m.awayScore}</span>
+                  <span style={{ fontWeight: 700, fontSize: 15 }}>{m.away}</span>
+                  <span style={{ fontSize: 16 }}>{flag(m.away)}</span>
+                </div>
+                <div style={{ fontSize: 12, color: C.green, marginTop: 4, fontWeight: 700 }}>
+                  {homeChange > 0 && `+${homeChange} for ${m.home}`}{homeChange > 0 && awayChange > 0 && ", "}
+                  {awayChange > 0 && `+${awayChange} for ${m.away}`}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <button
+          onClick={onDismiss}
+          style={{ width: "100%", padding: "13px", borderRadius: 12, border: "none", background: C.green, color: "#06210f", fontSize: 16, fontWeight: 900, cursor: "pointer" }}
+        >
+          Got it ✓
+        </button>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------ App -------------------------------- */
 
 export default function App() {
@@ -3068,6 +3419,7 @@ export default function App() {
   const [fontScale, setFontScale] = useLocalStorage("wc_font_scale", 1);
   const [spotlightPlayer, setSpotlightPlayer] = useState(null);
   const openSpotlight = (name, team) => setSpotlightPlayer({ name, team });
+  const [missedSummary, setMissedSummary] = useState(null);
   const [matchesState, setMatchesState] = useState(matchesData);
   const matches = matchesState.matches || [];
 
@@ -3098,6 +3450,31 @@ export default function App() {
 
   const openLiveModal = (m) => { sessionStorage.setItem("wc_live_modal", m.id); setLiveModal(m); };
   const closeLiveModal = () => { sessionStorage.removeItem("wc_live_modal"); setLiveModal(null); };
+
+  // Compute "what did I miss" on mount when user returns after ≥3 min away.
+  useEffect(() => {
+    const lastVisit = parseInt(localStorage.getItem("wc_last_visit_ts") || "0");
+    localStorage.setItem("wc_last_visit_ts", String(Date.now()));
+    const wasAway = Date.now() - lastVisit > 3 * 60 * 1000;
+    if (!wasAway || !lastVisit) return;
+    const prev = (() => { try { return JSON.parse(localStorage.getItem("wc_prev_scores")); } catch { return null; } })();
+    if (!prev) return;
+    const newResults = [], newGoals = [];
+    for (const m of matches) {
+      const p = prev[m.id];
+      if (!p) continue;
+      if (m.status === "FT" && p.status !== "FT") {
+        newResults.push(m);
+      } else if (m.homeScore != null && p.h != null) {
+        const hd = m.homeScore - (p.h || 0), ad = m.awayScore - (p.a || 0);
+        if (hd > 0 || ad > 0) newGoals.push({ m, homeChange: hd, awayChange: ad });
+      }
+    }
+    const liveNow = matches.filter(m => m.status === "LIVE" || m.status === "HT");
+    if (newResults.length || newGoals.length || liveNow.length) {
+      setMissedSummary({ newResults, newGoals, liveNow });
+    }
+  }, []);
 
   // Deep-link: ?match=<id> opens that match's modal on load.
   useEffect(() => {
@@ -3232,6 +3609,7 @@ export default function App() {
       {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} onPlayerClick={openSpotlight} />}
       {spotlightPlayer && <PlayerSpotlight player={spotlightPlayer} matches={matches} onClose={() => setSpotlightPlayer(null)} />}
       {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} fontScale={fontScale} setFontScale={setFontScale} />}
+      <WhatDidIMiss summary={missedSummary} onDismiss={() => setMissedSummary(null)} onOpenLive={openLiveModal} tz={tz} />
       <div className="wc-wrap">
         <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} onSettings={() => setShowSettings(true)} notifOn={notifOn} />
         {!isOnline && (

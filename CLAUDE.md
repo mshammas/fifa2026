@@ -148,6 +148,9 @@ All features complete and deployed:
 - ✅ Player Spotlight — tap any goal/card row to open a bottom-sheet with the player's tournament stats (goals, pens, OG, cards) and per-match timeline; managed at App level (`spotlightPlayer` state, `openSpotlight` callback), threaded through LiveMatchModal → MatchEvents → EventSection
 - ✅ Deep link to match — `ShareButton` generates `https://fifa.shammas.in?match=<id>`; App reads `?match=` param on load, opens LiveMatchModal for that match, then clears the URL via `history.replaceState`
 - ✅ Search by team name — search input in Matches tab above group filter; filters matches by `home`/`away` containing the search term; hides group filter row when active; shows result count; group filter is bypassed (not combined) when searching
+- ✅ "What did I miss?" — bottom-sheet on return visits (≥3 min away); shows FT results, score changes, and live-now matches since last visit; dismissed with "Got it ✓"; uses `wc_last_visit_ts` localStorage key
+- ✅ Share-as-image (📸) — canvas-rendered 600×340 match card (flags, score, scorers, URL) as PNG; appears on FT cards; `navigator.share` with file on mobile, download fallback on desktop
+- ✅ Time Machine — animated minute-by-minute replay inside expanded ResultCard; playhead sweeps GoalTimeline at 38ms/min; score counter updates as goal minutes are crossed; "▶ Replay match" / "■ Stop" / "↺ Replay again" states
 
 ### Font size floor (accessibility / elderly-friendly)
 Minimum font sizes enforced across the app so it remains readable for elderly users:
@@ -168,6 +171,27 @@ Do not regress these when adding new UI elements — check against this list.
 - `MatchEvents` accepts `onPlayerClick(name, team)` and wires it into goal + card rows.
 - All card-level components (`LiveCard`, `MatchCard`, `ResultCard`, `LiveMatchModal`) propagate `onPlayerClick` down to `MatchEvents`.
 - `App` manages `spotlightPlayer` state and renders `<PlayerSpotlight>` conditionally.
+
+### "What did I miss?" (`WhatDidIMiss`)
+- Rendered in `App` above all other overlays (zIndex 350).
+- On mount: reads `wc_last_visit_ts`, if diff > 3 min reads `wc_prev_scores`, diffs against current matches for new FT results and score changes.
+- Shows three sections: 🔴 Live Now (tappable → opens LiveMatchModal), ✅ Full-time results, ⚽ Score updates.
+- Dismissed by backdrop tap, ✕ button, or "Got it ✓" — sets `missedSummary` state to null in App.
+- Does not show if user is a first-time visitor (no `wc_last_visit_ts` yet) or returned within 3 min.
+
+### Share-as-image (`shareMatchAsImage`)
+- Pure Canvas API — no external dependencies.
+- Draws 600×340 dark card: green top bar, team flags (emoji), score, FT status, scorers, `fifa.shammas.in` footer.
+- `roundRect` used for background (Chrome 105+/Safari 16+/FF 112+ — fallback to plain `rect` if unavailable).
+- Exported as PNG blob. Mobile: `navigator.share({ files })` if `canShare` supports files; Desktop: URL.createObjectURL + anchor download.
+- 📸 button rendered only on FT matches (not live/upcoming) inside `ShareButton`.
+
+### Time Machine (`TimeMachineReplay`)
+- Rendered inside `ResultCard` expanded section, between `MatchEvents` and `MatchStatsTable`.
+- `phase`: `idle` → `playing` → `done`. `playMin` state drives both GoalTimeline playhead and score counter.
+- `GoalTimeline` accepts optional `playheadMin` prop: renders a white sweeping line; event dots fade to 0.2 opacity if they haven't been reached yet.
+- `parseEventMin` is a top-level helper (extracted from `GoalTimeline` where it was previously inlined as `parseMin`).
+- Speed: 38ms per simulated minute → ~3.4s for a 90-min match, ~4s for ET.
 
 ### Deep link (`?match=<id>`)
 - `ShareButton` copies `https://fifa.shammas.in?match=${m.id}` to clipboard (falls back to `navigator.share`).
