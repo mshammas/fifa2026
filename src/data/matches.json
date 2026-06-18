@@ -1507,8 +1507,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+2'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -1533,14 +1533,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "37.9",
+        "possessionPct": "37",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "62.1",
+        "possessionPct": "63",
         "shotsOnTarget": "0",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -2888,6 +2888,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T16:48:21.803Z",
+  "lastUpdated": "2026-06-18T16:50:29.575Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
