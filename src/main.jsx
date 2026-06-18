@@ -978,7 +978,8 @@ function TimeMachineReplay({ m }) {
 
   const recentEvent = [...allEvents].reverse().find(e => e.min <= playMin);
 
-  const start = () => {
+  const start = (e) => {
+    e?.stopPropagation();
     clearInterval(intRef.current);
     setPhase("playing");
     setPlayMin(0);
@@ -995,7 +996,8 @@ function TimeMachineReplay({ m }) {
     }, 38);
   };
 
-  const reset = () => {
+  const reset = (e) => {
+    e?.stopPropagation();
     clearInterval(intRef.current);
     setPhase("idle");
     setPlayMin(-1);
@@ -1008,7 +1010,7 @@ function TimeMachineReplay({ m }) {
   const showing = phase !== "idle";
 
   return (
-    <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 14 }}>
+    <div onClick={e => e.stopPropagation()} style={{ borderTop: `1px solid ${C.border}`, paddingTop: 14 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
         <span style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(251,191,36,0.12)", border: `1px solid ${C.border}`, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 17, flexShrink: 0 }}>⏪</span>
         <span style={{ fontSize: 17, fontWeight: 800 }}>Time Machine</span>
