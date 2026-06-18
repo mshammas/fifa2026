@@ -3650,7 +3650,7 @@ export default function App() {
 
       <Tabs tab={tab} setTab={changeTab} hasLive={hasLive} />
       <ScrollToTop />
-      <FloatingActions onRefresh={onRefresh} />
+      <FloatingActions onRefresh={refreshMatches} />
     </div>
   );
 }
