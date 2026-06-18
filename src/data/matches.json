@@ -1389,7 +1389,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+8'",
+      "clock": "90'+10'",
       "goals": [
         {
           "side": "home",
@@ -1411,17 +1411,23 @@
           "player": "C. Blackman",
           "minute": "72'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "C. Harvey",
+          "minute": "90'+9'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "38.2",
+        "possessionPct": "38.1",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "61.8",
+        "possessionPct": "61.9",
         "shotsOnTarget": "3",
-        "totalShots": "10"
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -1438,8 +1444,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2803,6 +2817,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T01:00:43.149Z",
+  "lastUpdated": "2026-06-18T01:02:26.841Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
