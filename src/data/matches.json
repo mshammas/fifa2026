@@ -1567,7 +1567,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "59'",
+      "clock": "61'",
       "goals": [],
       "cards": [
         {
@@ -1575,15 +1575,21 @@
           "player": "A. Dedic",
           "minute": "59'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "E. Dzeko",
+          "minute": "61'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "65.6",
+        "possessionPct": "64.1",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "34.4",
+        "possessionPct": "35.9",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -2916,6 +2922,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T20:18:24.950Z",
+  "lastUpdated": "2026-06-18T20:20:28.554Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
