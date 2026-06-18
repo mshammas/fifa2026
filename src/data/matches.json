@@ -1508,7 +1508,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "31'",
+      "clock": "34'",
       "goals": [
         {
           "side": "home",
@@ -1518,16 +1518,23 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "T. Mokoena",
+          "minute": "33'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "39.8",
+        "possessionPct": "42.7",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "60.2",
+        "possessionPct": "57.3",
         "shotsOnTarget": "0",
-        "totalShots": "2"
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -2875,6 +2882,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T16:32:27.218Z",
+  "lastUpdated": "2026-06-18T16:34:27.498Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
