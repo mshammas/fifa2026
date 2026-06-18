@@ -1420,16 +1420,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "38.2",
+        "possessionPct": "38.1",
         "shotsOnTarget": "2",
-        "totalShots": "7"
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "61.8",
+        "possessionPct": "61.9",
         "shotsOnTarget": "4",
-        "totalShots": "12"
+        "totalShots": "11"
       },
-      "recap": null
+      "recap": "Caleb Yirenkyi scored in the fifth minute of second-half stoppage time as Ghana beat Panama 1-0 on Wednesday in the teams' World Cup opener."
     },
     {
       "id": "e760436",
@@ -2817,6 +2817,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T01:04:26.503Z",
+  "lastUpdated": "2026-06-18T01:58:22.436Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
