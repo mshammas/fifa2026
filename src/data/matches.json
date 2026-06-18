@@ -1564,11 +1564,19 @@
       "away": "Bosnia & Herzegovina",
       "group": "B",
       "venue": "SoFi Stadium, Inglewood, California",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "73'",
-      "goals": [],
+      "clock": "75'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "J. Manzambi",
+          "minute": "74'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -1590,12 +1598,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "61.2",
-        "shotsOnTarget": "3",
-        "totalShots": "8"
+        "possessionPct": "60.3",
+        "shotsOnTarget": "4",
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "38.8",
+        "possessionPct": "39.7",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
@@ -2928,6 +2936,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T20:32:28.308Z",
+  "lastUpdated": "2026-06-18T20:34:27.438Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
