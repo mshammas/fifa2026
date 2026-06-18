@@ -1468,9 +1468,9 @@ function PredictRow({ matchId, home, away, prediction, onPredict }) {
 }
 
 // Group filter as a compact dropdown (saves the space of 13 wrapping chips).
-function GroupFilter({ groups, value, onChange }) {
+function GroupFilter({ groups, value, onChange, noMargin }) {
   return (
-    <label style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+    <label style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: noMargin ? 0 : 16 }}>
       <span style={{ fontSize: 16, color: C.dim, whiteSpace: "nowrap" }}>🏆 Group</span>
       <select
         value={value}
@@ -1654,10 +1654,14 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
 function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive, onGoToTeams, onGoToStandings }) {
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
   const [groupFilter, setGroupFilter] = useLocalStorage("wc_group_filter", "All");
+  const [favOnly, setFavOnly] = useLocalStorage("wc_favonly_filter", false);
 
-  const filtered = matches.filter((m) => groupFilter === "All" || m.group === groupFilter);
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
   const isFav = (m) => favTeams.length > 0 && (favTeams.includes(m.home) || favTeams.includes(m.away));
+  const filtered = matches.filter((m) =>
+    (groupFilter === "All" || m.group === groupFilter) &&
+    (!favOnly || isFav(m))
+  );
   const todayKey = dateKey(new Date().toISOString(), tz);
 
   // Always include LIVE/HT matches regardless of date — a late match crossing
@@ -1761,7 +1765,26 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
           })}
         </div>
       )}
-      <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} />
+      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+        <div style={{ flex: 1 }}>
+          <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} noMargin />
+        </div>
+        {favTeams.length > 0 && (
+          <button
+            onClick={() => setFavOnly(!favOnly)}
+            title={favOnly ? "Show all matches" : "Show favourite teams only"}
+            style={{
+              display: "flex", alignItems: "center", gap: 5, padding: "11px 13px",
+              background: favOnly ? `${C.gold}22` : C.card,
+              border: `2px solid ${favOnly ? C.gold : C.border}`,
+              borderRadius: 10, cursor: "pointer", color: favOnly ? C.gold : C.dim,
+              fontSize: 14, fontWeight: 800, whiteSpace: "nowrap", flexShrink: 0,
+            }}
+          >
+            ⭐ Favs
+          </button>
+        )}
+      </div>
       {groupFilter !== "All" && (() => {
         const rows = (computeStandings(matches)[groupFilter] || []);
         if (!rows.length) return null;
