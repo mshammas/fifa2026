@@ -1505,10 +1505,10 @@
       "away": "South Africa",
       "group": "A",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "6'",
+      "clock": "8'",
       "goals": [
         {
           "side": "home",
@@ -1520,12 +1520,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "60",
-        "shotsOnTarget": "0",
-        "totalShots": "2"
+        "possessionPct": "43.7",
+        "shotsOnTarget": "1",
+        "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "40",
+        "possessionPct": "56.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -2875,6 +2875,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T16:06:35.481Z",
+  "lastUpdated": "2026-06-18T16:08:25.087Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
