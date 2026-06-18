@@ -1439,9 +1439,9 @@
       "group": "K",
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 1,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
-      "clock": "90'+4'",
+      "clock": "90'+10'",
       "goals": [
         {
           "side": "away",
@@ -1463,6 +1463,13 @@
           "minute": "65'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "J. Campaz",
+          "minute": "90'+9'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -1480,14 +1487,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "36.3",
+        "possessionPct": "38",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "63.7",
-        "shotsOnTarget": "3",
-        "totalShots": "14"
+        "possessionPct": "62",
+        "shotsOnTarget": "4",
+        "totalShots": "15"
       },
       "recap": null
     },
@@ -2852,6 +2859,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T03:58:32.268Z",
+  "lastUpdated": "2026-06-18T04:00:41.436Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
