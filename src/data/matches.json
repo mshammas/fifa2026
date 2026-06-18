@@ -1496,7 +1496,7 @@
         "shotsOnTarget": "4",
         "totalShots": "15"
       },
-      "recap": null
+      "recap": "Second-half goals from Luis Díaz and Jáminton Campaz gave Colombia a 3-1 victory over debutants Uzbekistan. "
     },
     {
       "id": "e760438",
@@ -1511,8 +1511,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2859,6 +2867,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T04:04:23.234Z",
+  "lastUpdated": "2026-06-18T15:58:30.990Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
