@@ -1652,8 +1652,8 @@
       "venue": "BC Place, Vancouver",
       "homeScore": 3,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+6'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -3013,6 +3013,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T22:52:23.488Z",
+  "lastUpdated": "2026-06-18T22:54:25.271Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
