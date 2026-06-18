@@ -1641,7 +1641,7 @@
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
-      "recap": null
+      "recap": "Substitute Johan Manzambi scored his first World Cup goal on an outstanding volley in the 74th minute, and Switzerland erupted late for a 4-1 victory over Bosnia-Herzegovina on Thursday to take control of its group."
     },
     {
       "id": "e760440",
@@ -1656,8 +1656,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2970,6 +2978,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T20:58:23.637Z",
+  "lastUpdated": "2026-06-18T21:58:23.510Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
