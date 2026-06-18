@@ -546,7 +546,7 @@ function Tabs({ tab, setTab, hasLive }) {
                 flex: 1, display: "flex", flexDirection: "column", alignItems: "center",
                 justifyContent: "center", gap: 2, padding: "8px 2px 6px",
                 border: "none", background: "none", color: active ? C.green : C.dim,
-                fontSize: 10, fontWeight: active ? 800 : 600, cursor: "pointer",
+                fontSize: 12, fontWeight: active ? 800 : 600, cursor: "pointer",
                 borderTop: active ? `2px solid ${C.green}` : "2px solid transparent",
                 transition: "color 0.15s",
               }}
@@ -571,7 +571,7 @@ function Tabs({ tab, setTab, hasLive }) {
             justifyContent: "center", gap: 2, padding: "8px 2px 6px",
             border: "none", background: "none",
             color: moreActive || showMore ? C.green : C.dim,
-            fontSize: 10, fontWeight: moreActive || showMore ? 800 : 600, cursor: "pointer",
+            fontSize: 12, fontWeight: moreActive || showMore ? 800 : 600, cursor: "pointer",
             borderTop: moreActive || showMore ? `2px solid ${C.green}` : "2px solid transparent",
             transition: "color 0.15s",
           }}
@@ -590,7 +590,7 @@ function StatusBadge({ status, clock }) {
     <span
       className={s.live ? "wc-live" : undefined}
       style={{
-        fontSize: 13, fontWeight: 800, letterSpacing: 0.5, color: s.color,
+        fontSize: 14, fontWeight: 800, letterSpacing: 0.5, color: s.color,
         background: s.bg, borderRadius: 999, padding: "4px 10px", whiteSpace: "nowrap",
       }}
     >
@@ -1035,7 +1035,7 @@ function LiveMatchModal({ m, onClose, onRefresh }) {
       <div style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", gap: 10 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <StatusBadge status={m.status} clock={m.clock} />
-          {m.group && <span style={{ fontSize: 13, fontWeight: 700, color: C.dim }}>Group {m.group}</span>}
+          {m.group && <span style={{ fontSize: 15, fontWeight: 700, color: C.dim }}>Group {m.group}</span>}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ fontSize: 12, fontWeight: 700, color: C.dim }}>↻ {secs}s</span>
@@ -1346,12 +1346,12 @@ function ResultCard({ m, tz, isFav, prediction, onGroupClick }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
         <span
           onClick={onGroupClick && m.group ? (e) => { e.stopPropagation(); onGroupClick(m.group); } : undefined}
-          style={{ fontSize: 13, fontWeight: 700, color: onGroupClick && m.group ? C.green : C.dim, cursor: onGroupClick && m.group ? "pointer" : "default" }}
+          style={{ fontSize: 15, fontWeight: 700, color: onGroupClick && m.group ? C.green : C.dim, cursor: onGroupClick && m.group ? "pointer" : "default" }}
         >
           {m.group ? `Group ${m.group}` : "Knockout"} · FT
         </span>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ fontSize: 13, color: C.dim }}>{timeLabel(m.date, tz)}</span>
+          <span style={{ fontSize: 15, color: C.dim }}>{timeLabel(m.date, tz)}</span>
           <ShareButton m={m} />
         </div>
       </div>
@@ -1368,12 +1368,12 @@ function ResultCard({ m, tz, isFav, prediction, onGroupClick }) {
       )}
 
       {predResult && (
-        <div style={{ textAlign: "center", fontSize: 13, fontWeight: 800, color: predResult.color, marginTop: 6 }}>
+        <div style={{ textAlign: "center", fontSize: 15, fontWeight: 800, color: predResult.color, marginTop: 6 }}>
           {predResult.icon} {predResult.label} · Your pick: {prediction.h}–{prediction.a}
         </div>
       )}
 
-      <div style={{ textAlign: "center", fontSize: 12, color: C.dim, marginTop: 6 }}>
+      <div style={{ textAlign: "center", fontSize: 14, color: C.dim, marginTop: 6 }}>
         {open ? "▲ Hide details" : "▼ Tap for goals & details"}
       </div>
 
@@ -1413,7 +1413,7 @@ function Countdown({ date }) {
   const totalMins = h * 60 + m;
   const color = totalMins < 10 ? C.red : totalMins < 30 ? C.gold : C.green;
   return (
-    <span style={{ fontSize: 13, fontWeight: 800, color }}>
+    <span style={{ fontSize: 15, fontWeight: 800, color }}>
       ⏱ {h > 0 ? `${h}h ${m}m` : `${m}m`} to kickoff
     </span>
   );
@@ -1444,7 +1444,7 @@ function PredictRow({ matchId, home, away, prediction, onPredict }) {
     return (
       <button
         onClick={(e) => { e.stopPropagation(); setOpen(true); if (!prediction) onPredict(matchId, { h: 0, a: 0 }); }}
-        style={{ fontSize: 13, fontWeight: 800, color: C.dim, background: "none", border: `1px solid ${C.border}`, borderRadius: 8, padding: "5px 10px", cursor: "pointer" }}
+        style={{ fontSize: 15, fontWeight: 800, color: C.dim, background: "none", border: `1px solid ${C.border}`, borderRadius: 8, padding: "5px 10px", cursor: "pointer" }}
       >
         🔮 Predict score
       </button>
@@ -1453,12 +1453,12 @@ function PredictRow({ matchId, home, away, prediction, onPredict }) {
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 7, flexWrap: "wrap" }}>
-      <span style={{ fontSize: 13, fontWeight: 800, color: C.dim, flexShrink: 0 }}>🔮</span>
-      <span style={{ fontSize: 12, color: C.dim, maxWidth: 64, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{home}</span>
+      <span style={{ fontSize: 15, fontWeight: 800, color: C.dim, flexShrink: 0 }}>🔮</span>
+      <span style={{ fontSize: 14, color: C.dim, maxWidth: 72, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{home}</span>
       <Stepper value={h} onChange={(d) => onPredict(matchId, { h: Math.max(0, h + d), a })} />
       <span style={{ color: C.dim, fontWeight: 700, flexShrink: 0 }}>–</span>
       <Stepper value={a} onChange={(d) => onPredict(matchId, { h, a: Math.max(0, a + d) })} />
-      <span style={{ fontSize: 12, color: C.dim, maxWidth: 64, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{away}</span>
+      <span style={{ fontSize: 14, color: C.dim, maxWidth: 72, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{away}</span>
       <button
         onClick={(e) => { e.stopPropagation(); onPredict(matchId, null); setOpen(false); }}
         style={{ marginLeft: "auto", background: "none", border: "none", color: C.dim, fontSize: 15, cursor: "pointer", padding: "0 2px" }}
@@ -1518,10 +1518,10 @@ function ScheduleRow({ m, tz, onMatchClick }) {
           <div style={{ fontSize: 15, fontWeight: 800, color: C.green }}>{timeLabel(m.date, tz)}</div>
         )}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 4 }}>
-          <span className={s.live ? "wc-live" : undefined} style={{ fontSize: 11, fontWeight: 800, color: s.color, marginTop: 2 }}>
+          <span className={s.live ? "wc-live" : undefined} style={{ fontSize: 13, fontWeight: 800, color: s.color, marginTop: 2 }}>
             {s.live ? "🔴 " : ""}{m.status === "NS" ? (m.group ? `Group ${m.group}` : "Knockout") : s.label}
           </span>
-          {isClickable && <span style={{ fontSize: 11, color: C.dim, marginTop: 2 }}>→</span>}
+          {isClickable && <span style={{ fontSize: 13, color: C.dim, marginTop: 2 }}>→</span>}
         </div>
       </div>
     </div>
@@ -1744,7 +1744,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
             const isUpcoming = favMatch.status === "NS";
             return (
               <div key={team} style={{ background: `linear-gradient(135deg, ${C.gold}18, ${C.card})`, border: `1px solid ${C.gold}55`, borderRadius: 14, padding: "14px 16px" }}>
-                <div style={{ fontSize: 11, fontWeight: 900, color: C.gold, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
+                <div style={{ fontSize: 13, fontWeight: 900, color: C.gold, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>
                   ⭐ {flag(team)} {team}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}>
@@ -1754,7 +1754,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
                   </span>
                   <span style={{ fontWeight: 800, fontSize: 15, textAlign: "right" }}>{favMatch.away} {flag(favMatch.away)}</span>
                 </div>
-                <div style={{ fontSize: 12, color: C.dim, marginTop: 8, display: "flex", gap: 12 }}>
+                <div style={{ fontSize: 14, color: C.dim, marginTop: 8, display: "flex", gap: 12 }}>
                   {isLiveMatch && <span style={{ color: C.red, fontWeight: 800 }}>🔴 LIVE {favMatch.clock}</span>}
                   {isUpcoming && <span>⏰ {fmt(favMatch.date, tz, { weekday: "short", month: "short", day: "numeric" })} · {timeLabel(favMatch.date, tz)}</span>}
                   {favMatch.status === "FT" && <span>FT</span>}
@@ -1788,7 +1788,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
       {groupFilter !== "All" && (() => {
         const rows = (computeStandings(matches)[groupFilter] || []);
         if (!rows.length) return null;
-        const cell = { padding: "7px 8px", textAlign: "center", fontSize: 13, fontWeight: 700 };
+        const cell = { padding: "7px 8px", textAlign: "center", fontSize: 15, fontWeight: 700 };
         return (
           <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, marginBottom: 14, overflow: "hidden" }}>
             <table style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -1821,10 +1821,10 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
       {tally.total > 0 && (
         <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 18, display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
           <span style={{ fontSize: 14, fontWeight: 900, color: C.dim }}>🔮 Predictions</span>
-          {tally.perfect > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.green }}>✅ {tally.perfect} perfect</span>}
-          {tally.right > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.gold }}>🎯 {tally.right} right</span>}
-          {tally.wrong > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.red }}>❌ {tally.wrong} wrong</span>}
-          {tally.pending > 0 && <span style={{ fontSize: 13, fontWeight: 800, color: C.dim }}>⏳ {tally.pending} pending</span>}
+          {tally.perfect > 0 && <span style={{ fontSize: 15, fontWeight: 800, color: C.green }}>✅ {tally.perfect} perfect</span>}
+          {tally.right > 0 && <span style={{ fontSize: 15, fontWeight: 800, color: C.gold }}>🎯 {tally.right} right</span>}
+          {tally.wrong > 0 && <span style={{ fontSize: 15, fontWeight: 800, color: C.red }}>❌ {tally.wrong} wrong</span>}
+          {tally.pending > 0 && <span style={{ fontSize: 15, fontWeight: 800, color: C.dim }}>⏳ {tally.pending} pending</span>}
         </div>
       )}
 
