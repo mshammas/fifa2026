@@ -993,7 +993,7 @@ function TimeMachineReplay({ m }) {
         }
         return next;
       });
-    }, 38);
+    }, 100);
   };
 
   const reset = (e) => {
