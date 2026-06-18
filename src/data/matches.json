@@ -1565,9 +1565,9 @@
       "group": "B",
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 3,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+5'",
       "goals": [
         {
           "side": "home",
@@ -1587,6 +1587,13 @@
           "side": "home",
           "player": "J. Manzambi",
           "minute": "90'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "E. Mahmic",
+          "minute": "90'+3'",
           "pen": false,
           "og": false
         }
@@ -1618,14 +1625,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "61.7",
+        "possessionPct": "61.8",
         "shotsOnTarget": "6",
         "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "38.3",
-        "shotsOnTarget": "2",
-        "totalShots": "4"
+        "possessionPct": "38.2",
+        "shotsOnTarget": "3",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -2956,6 +2963,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T20:52:22.165Z",
+  "lastUpdated": "2026-06-18T20:54:27.760Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
