@@ -1388,8 +1388,8 @@
       "venue": "BMO Field, Toronto",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+10'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -1420,14 +1420,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "38.1",
+        "possessionPct": "38.2",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "61.9",
-        "shotsOnTarget": "3",
-        "totalShots": "11"
+        "possessionPct": "61.8",
+        "shotsOnTarget": "4",
+        "totalShots": "12"
       },
       "recap": null
     },
@@ -2817,6 +2817,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T01:02:26.841Z",
+  "lastUpdated": "2026-06-18T01:04:26.503Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
