@@ -1653,7 +1653,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "53'",
+      "clock": "56'",
       "goals": [
         {
           "side": "home",
@@ -1693,8 +1693,8 @@
         {
           "side": "away",
           "player": "A. Madibo",
-          "minute": "51'",
-          "type": "yellow"
+          "minute": "53'",
+          "type": "red"
         }
       ],
       "homeStats": {
@@ -3019,6 +3019,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T23:16:26.266Z",
+  "lastUpdated": "2026-06-18T23:18:24.460Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
