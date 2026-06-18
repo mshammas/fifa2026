@@ -87,10 +87,15 @@ The live card outer div also has `overflow: hidden` as a safety backstop.
 - Respects `wc_notif_favonly` + `wc_fav_teams` pref (array — reads `JSON.parse(localStorage.getItem("wc_fav_teams")) ?? []`)
 
 ### Favourite teams
-- Stored as an array in `wc_fav_teams` (localStorage key). Max 3 teams (`FAV_MAX = 3`).
+- Stored as an array in `wc_fav_teams` (localStorage key). No cap — users can star as many teams as they like.
 - Old key `wc_fav_team` (single string) is gone — no migration code, users lose the single saved fav.
-- `toggleFavTeam(team)` in `App`: removes if already present, adds if array length < FAV_MAX.
+- `toggleFavTeam(team)` in `App`: removes if already present, otherwise appends.
 - Long-press (500 ms) on a team card in `TeamsTab` toggles the fav. `lpFired` ref prevents `onClick` from also firing. `onContextMenu` handles desktop right-click equivalent. `userSelect: "none"` / `WebkitUserSelect: "none"` / `WebkitTouchCallout: "none"` suppress OS text selection.
+
+### Favourites-only filter
+- "⭐ Favs" toggle pill sits beside the Group filter in `MatchesTab`. Only rendered when `favTeams.length > 0`.
+- State: `const [favOnly, setFavOnly] = useLocalStorage("wc_favonly_filter", false)`.
+- Filters `matches` so only those where `home` or `away` is in `favTeams` are shown; combined with the group filter (both conditions must pass).
 
 ### GlobalStyles CSS additions
 ```css
@@ -128,7 +133,8 @@ All features complete and deployed:
 - ✅ Score predictor
 - ✅ PWA (installable, offline-capable) — `InstallPrompt` banner shown on mobile when not already installed
 - ✅ Live match ticker banner (scrolling horizontal chip row when 2+ live matches)
-- ✅ Multiple favourite teams (up to 3) — long-press to star/unstar; star icon in Teams tab
+- ✅ Unlimited favourite teams — long-press to star/unstar; star icon in Teams tab
+- ✅ Favourites-only filter ("⭐ Favs" pill beside Group filter in Matches tab; persisted in `wc_favonly_filter`)
 - ✅ Share button per match + share-app button (🔗) in header
 - ✅ Score pulse animation on goal (`useScoreFlash` + `.wc-score-flash`)
 - ✅ Imminent kickoff countdown (⚡ shown when < 30 min to kickoff)
@@ -136,6 +142,24 @@ All features complete and deployed:
 - ✅ Group filter persisted across sessions (`wc_group_filter` in localStorage)
 - ✅ Fav-team nudge banner in Matches tab when no favs set
 - ✅ Haptic feedback on long-press (navigator.vibrate)
+
+### Font size floor (accessibility / elderly-friendly)
+Minimum font sizes enforced across the app so it remains readable for elderly users:
+- Nav tab labels: 12px
+- Match card metadata (group, status, time): 15px
+- Status badge pill: 14px
+- Schedule row status label: 13px
+- Fav spotlight header / detail row: 13px / 14px
+- Prediction UI and tally: 14–15px
+- Standings table cells: 15px
+Do not regress these when adding new UI elements — check against this list.
+
+## Keeping CLAUDE.md Up to Date
+
+**After every session that changes behaviour, add a rule:** update this file before the final push so the next session starts with accurate context. Specifically update:
+- Architecture Notes when a new hook, helper, or localStorage key is introduced
+- Current Status when a feature is added or removed
+- Any section whose documented behaviour no longer matches the code
 
 ## Environment Variables
 
