@@ -1650,11 +1650,19 @@
       "away": "Qatar",
       "group": "B",
       "venue": "BC Place, Vancouver",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "15'",
-      "goals": [],
+      "clock": "19'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "C. Larin",
+          "minute": "16'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -1664,12 +1672,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "69.1",
-        "shotsOnTarget": "1",
-        "totalShots": "1"
+        "possessionPct": "71.2",
+        "shotsOnTarget": "3",
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "30.9",
+        "possessionPct": "28.8",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -2985,6 +2993,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T22:18:26.335Z",
+  "lastUpdated": "2026-06-18T22:20:29.477Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
