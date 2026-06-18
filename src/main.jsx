@@ -185,11 +185,11 @@ const C = {
   text: "#ffffff", dim: "#9aa0b4", green: "#22c55e", red: "#ef4444", gold: "#fbbf24",
 };
 
-function GlobalStyles() {
+function GlobalStyles({ fontScale = 1 }) {
   return (
     <style>{`
       :root { color-scheme: dark; }
-      html { -webkit-text-size-adjust: 100%; overflow-y: auto; overscroll-behavior-y: none; }
+      html { -webkit-text-size-adjust: 100%; overflow-y: auto; overscroll-behavior-y: none; zoom: ${fontScale}; }
       body { font-size: 18px; line-height: 1.5; overflow: visible; overscroll-behavior-y: none; padding-top: env(safe-area-inset-top, 0px); padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
       .wc-sticky { position: -webkit-sticky; position: sticky; top: 0; top: env(safe-area-inset-top, 0px); z-index: 10; }
       button { font-family: inherit; cursor: pointer; }
@@ -329,7 +329,7 @@ function Header({ lastUpdated, tz, setTz, onSettings, notifOn }) {
 }
 
 // ─── Settings panel ───────────────────────────────────────────────────────────
-function SettingsPanel({ onClose }) {
+function SettingsPanel({ onClose, fontScale, setFontScale }) {
   const [permission, setPermission] = useState(() =>
     typeof Notification !== "undefined" ? Notification.permission : "denied"
   );
@@ -378,9 +378,35 @@ function SettingsPanel({ onClose }) {
     <div style={{ position: "fixed", inset: 0, zIndex: 300, display: "flex", flexDirection: "column", justifyContent: "flex-end" }} onClick={onClose}>
       <div style={{ background: C.card2, borderRadius: "20px 20px 0 0", padding: "20px 20px 36px", maxHeight: "85vh", overflowY: "auto" }} onClick={(e) => e.stopPropagation()}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-          <h2 style={{ fontSize: 20, fontWeight: 900, margin: 0 }}>🔔 Notifications</h2>
+          <h2 style={{ fontSize: 20, fontWeight: 900, margin: 0 }}>⚙️ Settings</h2>
           <button onClick={onClose} style={{ background: "none", border: "none", color: C.dim, fontSize: 22, cursor: "pointer", padding: 4 }}>✕</button>
         </div>
+
+        <div style={{ marginBottom: 24 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: C.dim, letterSpacing: 0.8, textTransform: "uppercase", marginBottom: 12 }}>Text Size</div>
+          <div style={{ display: "flex", gap: 10 }}>
+            {[{ scale: 1, label: "A", sub: "Normal" }, { scale: 1.25, label: "A+", sub: "Large" }, { scale: 1.5, label: "A++", sub: "Huge" }].map(({ scale, label, sub }) => {
+              const active = fontScale === scale;
+              return (
+                <button
+                  key={scale}
+                  onClick={() => setFontScale(scale)}
+                  style={{
+                    flex: 1, padding: "12px 8px", borderRadius: 12, border: `2px solid ${active ? C.green : C.border}`,
+                    background: active ? "rgba(34,197,94,0.12)" : C.card,
+                    color: active ? C.green : C.text, cursor: "pointer", display: "flex", flexDirection: "column",
+                    alignItems: "center", gap: 4, transition: "border-color 0.15s, background 0.15s",
+                  }}
+                >
+                  <span style={{ fontSize: scale * 18, fontWeight: 900, lineHeight: 1 }}>{label}</span>
+                  <span style={{ fontSize: 11, color: active ? C.green : C.dim, fontWeight: 600 }}>{sub}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <h3 style={{ fontSize: 17, fontWeight: 900, margin: "0 0 16px" }}>🔔 Notifications</h3>
 
         {blocked && (
           <div style={{ background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.3)", borderRadius: 10, padding: "10px 14px", fontSize: 13, color: C.red, marginBottom: 16 }}>
@@ -2828,6 +2854,7 @@ export default function App() {
   const [liveModal, setLiveModal] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [notifOn] = useLocalStorage("wc_notif_on", false);
+  const [fontScale, setFontScale] = useLocalStorage("wc_font_scale", 1);
   const [matchesState, setMatchesState] = useState(matchesData);
   const matches = matchesState.matches || [];
 
@@ -2975,12 +3002,12 @@ export default function App() {
       onTouchStart={onSwipeTouchStart}
       onTouchEnd={onSwipeTouchEnd}
     >
-      <GlobalStyles />
+      <GlobalStyles fontScale={fontScale} />
       <GoalToast alerts={goalAlerts} />
       <PullToRefresh onRefresh={refreshMatches} />
       <Onboarding />
       {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} />}
-      {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} />}
+      {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} fontScale={fontScale} setFontScale={setFontScale} />}
       <div className="wc-wrap">
         <Header lastUpdated={matchesData.lastUpdated} tz={tz} setTz={setTz} onSettings={() => setShowSettings(true)} notifOn={notifOn} />
         {!isOnline && (

@@ -142,6 +142,7 @@ All features complete and deployed:
 - ✅ Group filter persisted across sessions (`wc_group_filter` in localStorage)
 - ✅ Fav-team nudge banner in Matches tab when no favs set
 - ✅ Haptic feedback on long-press (navigator.vibrate)
+- ✅ Text size slider — A / A+ / A++ (Normal/Large/Huge) in Settings panel; persisted in `wc_font_scale`; applied via CSS `zoom` on `html` element so all inline px sizes scale uniformly
 
 ### Font size floor (accessibility / elderly-friendly)
 Minimum font sizes enforced across the app so it remains readable for elderly users:
@@ -153,6 +154,12 @@ Minimum font sizes enforced across the app so it remains readable for elderly us
 - Prediction UI and tally: 14–15px
 - Standings table cells: 15px
 Do not regress these when adding new UI elements — check against this list.
+
+### Text size scaling (`wc_font_scale`)
+- Values: `1` (Normal), `1.25` (Large), `1.5` (Huge). Default: `1`.
+- Applied as `zoom: ${fontScale}` on the `html` element inside `GlobalStyles`.
+- `zoom` is the right approach here because all font sizes are inline px — using `font-size` on `:root` would only affect `rem` units. `zoom` scales everything uniformly (text, padding, borders, icons). Browser support: Chrome, Safari, Firefox 126+.
+- `GlobalStyles` takes a `fontScale` prop; `App` reads `wc_font_scale` and passes it down. `SettingsPanel` receives `fontScale` + `setFontScale`.
 
 ## Keeping CLAUDE.md Up to Date
 
