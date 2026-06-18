@@ -1420,12 +1420,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "37.9",
+        "possessionPct": "38",
         "shotsOnTarget": "2",
-        "totalShots": "8"
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "62.1",
+        "possessionPct": "62",
         "shotsOnTarget": "4",
         "totalShots": "11"
       },
@@ -1555,7 +1555,7 @@
         "shotsOnTarget": "4",
         "totalShots": "17"
       },
-      "recap": null
+      "recap": "A late penalty from Teboho Mokoena secured South Africa a 1-1 draw with the Czechia in Atalanta, which keeps alive both sides' hopes of qualification from Group A."
     },
     {
       "id": "e760439",
@@ -1570,8 +1570,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2901,6 +2909,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T18:00:41.468Z",
+  "lastUpdated": "2026-06-18T18:58:22.925Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
