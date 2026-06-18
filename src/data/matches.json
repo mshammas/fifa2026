@@ -1441,7 +1441,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "32'",
+      "clock": "34'",
       "goals": [],
       "cards": [
         {
@@ -1449,17 +1449,23 @@
           "player": "J. Mojica",
           "minute": "7'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "A. Khusanov",
+          "minute": "34'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "30.3",
+        "possessionPct": "28.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "69.7",
-        "shotsOnTarget": "0",
-        "totalShots": "1"
+        "possessionPct": "71.4",
+        "shotsOnTarget": "1",
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -2824,6 +2830,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T02:32:21.369Z",
+  "lastUpdated": "2026-06-18T02:34:27.088Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
