@@ -143,6 +143,11 @@ All features complete and deployed:
 - ✅ Fav-team nudge banner in Matches tab when no favs set
 - ✅ Haptic feedback on long-press (navigator.vibrate)
 - ✅ Text size slider — A / A+ / A++ (Normal/Large/Huge) in Settings panel; persisted in `wc_font_scale`; applied via CSS `zoom` on `html` element so all inline px sizes scale uniformly
+- ✅ Goal timeline bar — horizontal bar in MatchEvents and LiveMatchModal Goals panel; home events above, away below; HT tick at 45'; colored dots (green=goal, yellow/red=card); extended past 90' for ET goals
+- ✅ Live banner click → opens fullscreen modal — clicking any chip in `LiveNowBanner` calls `onOpenLive(m)` directly instead of just switching tabs
+- ✅ Player Spotlight — tap any goal/card row to open a bottom-sheet with the player's tournament stats (goals, pens, OG, cards) and per-match timeline; managed at App level (`spotlightPlayer` state, `openSpotlight` callback), threaded through LiveMatchModal → MatchEvents → EventSection
+- ✅ Deep link to match — `ShareButton` generates `https://fifa.shammas.in?match=<id>`; App reads `?match=` param on load, opens LiveMatchModal for that match, then clears the URL via `history.replaceState`
+- ✅ Search by team name — search input in Matches tab above group filter; filters matches by `home`/`away` containing the search term; hides group filter row when active; shows result count; group filter is bypassed (not combined) when searching
 
 ### Font size floor (accessibility / elderly-friendly)
 Minimum font sizes enforced across the app so it remains readable for elderly users:
@@ -154,6 +159,25 @@ Minimum font sizes enforced across the app so it remains readable for elderly us
 - Prediction UI and tally: 14–15px
 - Standings table cells: 15px
 Do not regress these when adding new UI elements — check against this list.
+
+### Player Spotlight
+- `PlayerSpotlight({ player, matches, onClose })` — bottom-sheet modal (zIndex 400) overlaying whatever is currently on screen.
+- `player` = `{ name, team }`. Aggregates all goals/cards for that player across `matches`.
+- `StatBox` shows Goals / Pens / OG / 🟨 / 🟥 — only non-zero values rendered.
+- `EventSection` rows accept optional `onRowClick` — renders a `›` chevron and pointer cursor when set.
+- `MatchEvents` accepts `onPlayerClick(name, team)` and wires it into goal + card rows.
+- All card-level components (`LiveCard`, `MatchCard`, `ResultCard`, `LiveMatchModal`) propagate `onPlayerClick` down to `MatchEvents`.
+- `App` manages `spotlightPlayer` state and renders `<PlayerSpotlight>` conditionally.
+
+### Deep link (`?match=<id>`)
+- `ShareButton` copies `https://fifa.shammas.in?match=${m.id}` to clipboard (falls back to `navigator.share`).
+- On load, `App` reads `URLSearchParams` for `match`, finds the match in `matches`, calls `openLiveModal`, then wipes the param with `history.replaceState` so refreshing or sharing from within doesn't chain params.
+
+### Search in MatchesTab
+- `search` state (`useState("")`) — not persisted (resets on navigation).
+- When `search` is non-empty: group filter row is hidden (`{!search && ...}`), fav-only filter still applies, result count shown below input.
+- When `search` is empty: group filter and favs-only row are shown as normal.
+- Searching bypasses the group filter entirely (the two are mutually exclusive modes).
 
 ### Text size scaling (`wc_font_scale`)
 - Values: `1` (Normal), `1.25` (Large), `1.5` (Huge). Default: `1`.
