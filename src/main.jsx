@@ -1367,6 +1367,89 @@ function ShareButton({ m }) {
   );
 }
 
+// Synthesised crowd audio via Web Audio API — no external files.
+// enabled: bool (user toggle), isLive: bool, goalCount: number
+function useCrowdAudio(enabled, isLive, goalCount) {
+  const ctxRef  = React.useRef(null);
+  const gainRef = React.useRef(null);
+  const prevGoals = React.useRef(goalCount);
+
+  useEffect(() => {
+    if (!enabled || !isLive) {
+      if (ctxRef.current) { ctxRef.current.close().catch(() => {}); ctxRef.current = null; gainRef.current = null; }
+      return;
+    }
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+
+    const ctx = new AudioCtx();
+    ctxRef.current = ctx;
+
+    // 3-second looping white-noise buffer
+    const sr = ctx.sampleRate;
+    const buf = ctx.createBuffer(1, sr * 3, sr);
+    const ch = buf.getChannelData(0);
+    for (let i = 0; i < ch.length; i++) ch[i] = Math.random() * 2 - 1;
+
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.loop = true;
+
+    // Band-pass → crowd vocal frequency range
+    const bp = ctx.createBiquadFilter();
+    bp.type = "bandpass";
+    bp.frequency.value = 380;
+    bp.Q.value = 0.7;
+
+    // Low-pass to soften harshness
+    const lp = ctx.createBiquadFilter();
+    lp.type = "lowpass";
+    lp.frequency.value = 1800;
+
+    // Master gain
+    const gain = ctx.createGain();
+    gain.gain.value = 0.11;
+    gainRef.current = gain;
+
+    // Slow LFO — simulates chanting swell (0.35 Hz ≈ crowd rhythm)
+    const lfo = ctx.createOscillator();
+    lfo.frequency.value = 0.35;
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 0.032;
+    lfo.connect(lfoGain);
+    lfoGain.connect(gain.gain);
+    lfo.start();
+
+    src.connect(bp);
+    bp.connect(lp);
+    lp.connect(gain);
+    gain.connect(ctx.destination);
+    src.start();
+    ctx.resume().catch(() => {});
+
+    return () => {
+      try { src.stop(); lfo.stop(); } catch {}
+      ctx.close().catch(() => {});
+      ctxRef.current = null;
+      gainRef.current = null;
+    };
+  }, [enabled, isLive]);
+
+  // GOAL! — spike gain then settle back down
+  useEffect(() => {
+    const isNewGoal = goalCount > prevGoals.current;
+    prevGoals.current = goalCount;
+    if (!isNewGoal || !gainRef.current || !ctxRef.current) return;
+    const gain = gainRef.current;
+    const ctx  = ctxRef.current;
+    const now  = ctx.currentTime;
+    gain.gain.cancelScheduledValues(now);
+    gain.gain.setValueAtTime(gain.gain.value, now);
+    gain.gain.linearRampToValueAtTime(1.0, now + 0.3);   // roar peak
+    gain.gain.exponentialRampToValueAtTime(0.15, now + 6); // fade back
+  }, [goalCount]);
+}
+
 // Toasts for score changes detected since last visit.
 function GoalToast({ alerts }) {
   const [idx, setIdx] = useState(0);
@@ -1448,6 +1531,11 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
     return () => clearInterval(t);
   }, []);
 
+  // Crowd audio
+  const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
+  const isLive = m.status === "LIVE" || m.status === "HT";
+  useCrowdAudio(crowdOn, isLive, (m.goals || []).length);
+
   const wide = useWindowWidth() >= 768;
   const { h: mh, a: ma } = liveScores(m);
   const hasScore = mh != null && ma != null;
@@ -1488,6 +1576,13 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ fontSize: 12, fontWeight: 700, color: C.dim }}>↻ {secs}s</span>
+          <button
+            onClick={() => setCrowdOn(!crowdOn)}
+            title={crowdOn ? "Mute crowd audio" : "Enable crowd audio"}
+            style={{ background: crowdOn ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.07)", border: crowdOn ? "1px solid rgba(34,197,94,0.4)" : `1px solid ${C.border}`, borderRadius: 8, color: crowdOn ? C.green : C.dim, fontSize: 16, padding: "5px 8px", cursor: "pointer", lineHeight: 1 }}
+          >
+            {crowdOn ? "🔊" : "🔇"}
+          </button>
           <ShareButton m={m} />
           <button
             onClick={onClose}
