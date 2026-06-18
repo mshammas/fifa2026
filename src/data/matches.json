@@ -1653,7 +1653,7 @@
       "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'",
+      "clock": "90'+1'",
       "goals": [
         {
           "side": "home",
@@ -1689,6 +1689,13 @@
           "minute": "75'",
           "pen": false,
           "og": true
+        },
+        {
+          "side": "home",
+          "player": "J. David",
+          "minute": "90'+2'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -1718,12 +1725,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "77.7",
+        "possessionPct": "77.6",
         "shotsOnTarget": "9",
         "totalShots": "27"
       },
       "awayStats": {
-        "possessionPct": "22.3",
+        "possessionPct": "22.4",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3039,6 +3046,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T23:52:22.923Z",
+  "lastUpdated": "2026-06-18T23:54:27.676Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
