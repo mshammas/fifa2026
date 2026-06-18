@@ -1439,9 +1439,9 @@
       "group": "K",
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "64'",
+      "clock": "69'",
       "goals": [
         {
           "side": "away",
@@ -1454,6 +1454,13 @@
           "side": "home",
           "player": "A. Fayzullaev",
           "minute": "60'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "L. Díaz",
+          "minute": "65'",
           "pen": false,
           "og": false
         }
@@ -1473,14 +1480,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "32.4",
+        "possessionPct": "32.2",
         "shotsOnTarget": "2",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "67.6",
-        "shotsOnTarget": "2",
-        "totalShots": "7"
+        "possessionPct": "67.8",
+        "shotsOnTarget": "3",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -2845,6 +2852,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T03:28:25.581Z",
+  "lastUpdated": "2026-06-18T03:30:34.428Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
