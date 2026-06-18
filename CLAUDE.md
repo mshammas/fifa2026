@@ -103,6 +103,9 @@ The live card outer div also has `overflow: hidden` as a safety backstop.
 ### Fullscreen modal vertical centering (mobile)
 The mobile `LiveMatchModal` scroll container uses `display: flex; flexDirection: column` and the inner content wrapper uses `margin: auto` — this centers when content fits and gracefully allows scrolling when content is taller than the viewport.
 
+### Live audio commentary (attempted, removed)
+Tried embedding live radio commentary (BBC Radio 5 Live stream for UK, link buttons for other regions). Removed because broadcaster deep-link URLs return 404s or redirect unpredictably — not worth the maintenance. Do not re-add unless a stable, embeddable, cross-origin stream source is confirmed working first.
+
 ### Git push pattern (SSH multi-account)
 ```bash
 git fetch git@github-mshammas:mshammas/fifa2026.git main
