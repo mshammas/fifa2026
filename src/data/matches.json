@@ -1650,10 +1650,10 @@
       "away": "Qatar",
       "group": "B",
       "venue": "BC Place, Vancouver",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "74'",
+      "clock": "76'",
       "goals": [
         {
           "side": "home",
@@ -1682,6 +1682,13 @@
           "minute": "64'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Manai",
+          "minute": "75'",
+          "pen": false,
+          "og": true
         }
       ],
       "cards": [
@@ -1711,12 +1718,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "74.6",
+        "possessionPct": "75",
         "shotsOnTarget": "9",
-        "totalShots": "17"
+        "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "25.4",
+        "possessionPct": "25",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3032,6 +3039,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T23:36:21.310Z",
+  "lastUpdated": "2026-06-18T23:38:20.708Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
