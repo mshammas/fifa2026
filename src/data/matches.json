@@ -1653,7 +1653,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "60'",
+      "clock": "62'",
       "goals": [
         {
           "side": "home",
@@ -1695,15 +1695,21 @@
           "player": "A. Madibo",
           "minute": "53'",
           "type": "red"
+        },
+        {
+          "side": "away",
+          "player": "A. Fathy",
+          "minute": "62'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "72.1",
+        "possessionPct": "73.4",
         "shotsOnTarget": "8",
         "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "27.9",
+        "possessionPct": "26.6",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3019,6 +3025,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T23:22:24.033Z",
+  "lastUpdated": "2026-06-18T23:24:23.305Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
