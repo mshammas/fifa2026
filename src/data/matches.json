@@ -1508,13 +1508,20 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "80'",
+      "clock": "83'",
       "goals": [
         {
           "side": "home",
           "player": "M. Sadílek",
           "minute": "6'",
           "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "T. Mokoena",
+          "minute": "83'",
+          "pen": true,
           "og": false
         }
       ],
@@ -1539,14 +1546,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "38.1",
+        "possessionPct": "37.5",
         "shotsOnTarget": "3",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "61.9",
+        "possessionPct": "62.5",
         "shotsOnTarget": "1",
-        "totalShots": "10"
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -2894,6 +2901,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T17:42:26.156Z",
+  "lastUpdated": "2026-06-18T17:44:24.473Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
