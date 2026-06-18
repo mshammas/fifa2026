@@ -1441,16 +1441,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "6'",
+      "clock": "8'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "J. Mojica",
+          "minute": "7'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "18.2",
+        "possessionPct": "17",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "81.8",
+        "possessionPct": "83",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -2817,6 +2824,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T02:06:22.502Z",
+  "lastUpdated": "2026-06-18T02:08:20.854Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
