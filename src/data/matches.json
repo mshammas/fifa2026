@@ -1650,10 +1650,10 @@
       "away": "Qatar",
       "group": "B",
       "venue": "BC Place, Vancouver",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "62'",
+      "clock": "64'",
       "goals": [
         {
           "side": "home",
@@ -1673,6 +1673,13 @@
           "side": "home",
           "player": "J. David",
           "minute": "45'+3'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "N. Saliba",
+          "minute": "64'",
           "pen": false,
           "og": false
         }
@@ -1704,12 +1711,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "73.4",
-        "shotsOnTarget": "8",
-        "totalShots": "16"
+        "possessionPct": "73.5",
+        "shotsOnTarget": "9",
+        "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "26.6",
+        "possessionPct": "26.5",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3025,6 +3032,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T23:24:23.305Z",
+  "lastUpdated": "2026-06-18T23:26:20.796Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
