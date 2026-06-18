@@ -435,7 +435,7 @@ function SettingsPanel({ onClose, fontScale, setFontScale }) {
   );
 }
 
-function LiveNowBanner({ matches, onGoToMatches }) {
+function LiveNowBanner({ matches, onGoToMatches, onOpenLive }) {
   const live = matches.filter((m) => m.status === "LIVE" || m.status === "HT");
   if (!live.length) return null;
 
@@ -446,10 +446,10 @@ function LiveNowBanner({ matches, onGoToMatches }) {
     const clock = m.status === "HT" ? " · HT" : m.clock ? ` · ${m.clock}` : "";
     return (
       <div
-        onClick={onGoToMatches}
+        onClick={() => onOpenLive(m)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => { if (e.key === "Enter") onGoToMatches(); }}
+        onKeyDown={(e) => { if (e.key === "Enter") onOpenLive(m); }}
         style={{ background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.35)", borderRadius: 10, padding: "10px 14px", marginBottom: 14, cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}
       >
         <span className="wc-live" style={{ color: C.red, fontSize: 12, fontWeight: 900, flexShrink: 0 }}>🔴 LIVE</span>
@@ -461,7 +461,7 @@ function LiveNowBanner({ matches, onGoToMatches }) {
     );
   }
 
-  // 2+ live matches: scrollable chip row
+  // 2+ live matches: scrollable chip row — each chip opens its own match modal
   return (
     <div style={{ marginBottom: 14 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
@@ -474,7 +474,7 @@ function LiveNowBanner({ matches, onGoToMatches }) {
           return (
             <button
               key={m.id}
-              onClick={onGoToMatches}
+              onClick={() => onOpenLive(m)}
               className="wc-btn"
               style={{ flex: "0 0 auto", background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.3)", borderRadius: 10, padding: "8px 12px", cursor: "pointer", color: C.text, textAlign: "center", minWidth: 130 }}
             >
@@ -3105,7 +3105,7 @@ export default function App() {
           </div>
         )}
         <InstallPrompt />
-        <LiveNowBanner matches={matches} onGoToMatches={() => changeTab("matches")} />
+        <LiveNowBanner matches={matches} onGoToMatches={() => changeTab("matches")} onOpenLive={openLiveModal} />
 
         <div key={tab} className={`wc-slide-${slideDir}`}>
           {matches.length === 0 ? (
