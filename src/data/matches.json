@@ -1508,7 +1508,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "74'",
+      "clock": "79'",
       "goals": [
         {
           "side": "home",
@@ -1530,17 +1530,23 @@
           "player": "T. Mbatha",
           "minute": "40'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "L. Krejcí",
+          "minute": "75'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "38.6",
+        "possessionPct": "38.7",
         "shotsOnTarget": "3",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "61.4",
+        "possessionPct": "61.3",
         "shotsOnTarget": "1",
-        "totalShots": "9"
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -2888,6 +2894,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T17:38:25.684Z",
+  "lastUpdated": "2026-06-18T17:40:30.103Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
