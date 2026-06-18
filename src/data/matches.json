@@ -1440,8 +1440,8 @@
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 1,
       "awayScore": 3,
-      "status": "LIVE",
-      "clock": "90'+11'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -1489,7 +1489,7 @@
       "homeStats": {
         "possessionPct": "38.6",
         "shotsOnTarget": "2",
-        "totalShots": "7"
+        "totalShots": "8"
       },
       "awayStats": {
         "possessionPct": "61.4",
@@ -2859,6 +2859,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T04:02:21.095Z",
+  "lastUpdated": "2026-06-18T04:04:23.234Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
