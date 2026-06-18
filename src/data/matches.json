@@ -1388,8 +1388,8 @@
       "venue": "BMO Field, Toronto",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "46'",
       "goals": [],
       "cards": [
         {
@@ -2789,6 +2789,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-18T00:06:28.156Z",
+  "lastUpdated": "2026-06-18T00:08:20.656Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
