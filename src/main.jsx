@@ -227,6 +227,11 @@ function GlobalStyles({ fontScale = 1 }) {
       .wc-score-flash { animation: wcScoreFlash 0.65s ease; }
       .wc-noscroll { scrollbar-width: none; -ms-overflow-style: none; }
       .wc-noscroll::-webkit-scrollbar { display: none; }
+      @keyframes wcUpcomingPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); border-color: ${C.border}; }
+        50% { box-shadow: 0 0 0 5px rgba(34,197,94,0.25); border-color: ${C.green}; }
+      }
+      .wc-upcoming-pulse { animation: wcUpcomingPulse 1.8s ease-in-out infinite; }
     `}</style>
   );
 }
@@ -2464,6 +2469,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
   const [groupFilter, setGroupFilter] = useLocalStorage("wc_group_filter", "All");
   const [favOnly, setFavOnly] = useLocalStorage("wc_favonly_filter", false);
   const [upcomingOnly, setUpcomingOnly] = useLocalStorage("wc_upcoming_filter", false);
+  const [upcomingSeen, setUpcomingSeen] = useLocalStorage("wc_upcoming_seen", false);
   const [showUpcomingTip, setShowUpcomingTip] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -2644,7 +2650,8 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
               </div>
             )}
             <button
-              onClick={() => setUpcomingOnly(!upcomingOnly)}
+              onClick={() => { setUpcomingOnly(!upcomingOnly); setUpcomingSeen(true); }}
+              className={!upcomingSeen && !upcomingOnly ? "wc-upcoming-pulse" : undefined}
               style={{
                 display: "flex", alignItems: "center", gap: 5, padding: "11px 13px",
                 background: upcomingOnly ? "rgba(34,197,94,0.1)" : C.card,
