@@ -1321,16 +1321,17 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.textAlign = "center";
   ctx.fillText("⚽  FIFA WORLD CUP 2026" + (m.group ? `  ·  GROUP ${m.group}` : "  ·  KNOCKOUT"), W / 2, 28);
 
-  // Teams + VS as one centered row: home right-aligned | VS | away left-aligned
+  // Each team centered in its own half — textAlign "center" + maxWidth gives a hard
+  // layout boundary that works even when iOS reports wrong emoji advance widths.
+  // home right edge ≤ W*0.30 + 100 = 280;  away left edge ≥ W*0.70 - 100 = 320;
+  // VS at 300 always sits in a safe 20px gap on each side.
   ctx.font = "bold 26px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#ffffff";
-  ctx.textAlign = "right";
-  ctx.fillText(flag(m.home) + "  " + m.home, W / 2 - 52, 72, 220);
-  ctx.textAlign = "left";
-  ctx.fillText(flag(m.away) + "  " + m.away, W / 2 + 52, 72, 220);
+  ctx.textAlign = "center";
+  ctx.fillText(flag(m.home) + "  " + m.home, W * 0.30, 72, 200);
+  ctx.fillText(flag(m.away) + "  " + m.away, W * 0.70, 72, 200);
   ctx.font = "bold 14px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#3a3a50";
-  ctx.textAlign = "center";
   ctx.fillText("vs", W / 2, 72);
 
   // Venue
