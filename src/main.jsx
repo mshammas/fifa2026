@@ -1369,7 +1369,7 @@ function ShareButton({ m }) {
 
 // Synthesised crowd audio via Web Audio API — no external files.
 // enabled: bool (user toggle), isLive: bool, goalCount: number
-function useCrowdAudio(enabled, isLive, goalCount, yellowCount, redCount, status, shotsOnTarget) {
+function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer, redCount, lastRedPlayer, status, shotsOnTarget) {
   const ambientRef  = React.useRef(null);
   const prevGoals   = React.useRef(goalCount);
   const prevYellow  = React.useRef(yellowCount);
@@ -1426,7 +1426,13 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, redCount, status
     const isNew = yellowCount > prevYellow.current;
     prevYellow.current = yellowCount;
     if (!isNew || !enabled) return;
-    announce(pick([
+    const p = lastYellowPlayer;
+    announce(pick(p ? [
+      `Yellow card for ${p}! A stern warning from the official.`,
+      `${p} is booked! The referee reaches into his pocket.`,
+      `Caution for ${p}! He will need to be very careful for the rest of this game.`,
+      `The referee shows a yellow card to ${p}!`,
+    ] : [
       "Yellow card! A stern warning from the official.",
       "Caution! The referee reaches into his pocket.",
       "Booked! That player will need to be careful for the rest of this game.",
@@ -1439,7 +1445,13 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, redCount, status
     const isNew = redCount > prevRed.current;
     prevRed.current = redCount;
     if (!isNew || !enabled) return;
-    announce(pick([
+    const p = lastRedPlayer;
+    announce(pick(p ? [
+      `Oh! ${p} is off! A red card! Down to ten men!`,
+      `${p} has been sent off! The referee has no hesitation — red card!`,
+      `Dismissed! ${p} is given a red card and his afternoon is over!`,
+      `Straight red for ${p}! He cannot believe it!`,
+    ] : [
       "Oh! A red card! He's off! Down to ten men!",
       "Off he goes! The referee has no hesitation — red card!",
       "Dismissed! That is a red card and his afternoon is over!",
@@ -1572,10 +1584,14 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
   const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
   const isLive = m.status === "LIVE" || m.status === "HT";
   const goalCount     = (m.goals || []).length;
-  const yellowCount   = (m.cards || []).filter(c => c.type === "yellow").length;
-  const redCount      = (m.cards || []).filter(c => c.type === "red").length;
+  const yellowCards   = (m.cards || []).filter(c => c.type === "yellow");
+  const redCards      = (m.cards || []).filter(c => c.type === "red");
+  const yellowCount   = yellowCards.length;
+  const redCount      = redCards.length;
+  const lastYellowPlayer = yellowCards[yellowCards.length - 1]?.player ?? null;
+  const lastRedPlayer    = redCards[redCards.length - 1]?.player ?? null;
   const shotsOnTarget = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
-  useCrowdAudio(crowdOn, isLive, goalCount, yellowCount, redCount, m.status, shotsOnTarget);
+  useCrowdAudio(crowdOn, isLive, goalCount, yellowCount, lastYellowPlayer, redCount, lastRedPlayer, m.status, shotsOnTarget);
 
   const wide = useWindowWidth() >= 768;
   const { h: mh, a: ma } = liveScores(m);
