@@ -1300,7 +1300,7 @@ async function shareMatchAsImage(m) {
 }
 
 async function shareUpcomingMatchAsImage(m) {
-  const W = 600, H = 500;
+  const W = 600, H = 372;
   const canvas = document.createElement("canvas");
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -1356,7 +1356,7 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.textAlign = "center";
   ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 192);
 
-  // Timezone grid — 2 columns × 6 rows
+  // Timezone grid — 4 columns × 3 rows
   const zones = [
     { label: "New York",    tz: "America/New_York" },
     { label: "Los Angeles", tz: "America/Los_Angeles" },
@@ -1377,31 +1377,32 @@ async function shareUpcomingMatchAsImage(m) {
     hour: "numeric", minute: "2-digit", hour12: true,
   }).format(new Date(m.date));
 
-  const colX = [30, W / 2 + 18];
-  const rowY0 = 212, rowH = 40;
+  const cols = 4;
+  const colW = (W - 32) / cols;
+  const rowY0 = 208, rowH = 42;
 
   for (let i = 0; i < zones.length; i++) {
     const z = zones[i];
-    const x = colX[i % 2];
-    const y = rowY0 + Math.floor(i / 2) * rowH;
+    const x = 16 + (i % cols) * colW;
+    const y = rowY0 + Math.floor(i / cols) * rowH;
     ctx.textAlign = "left";
-    ctx.font = "bold 12px system-ui,-apple-system,sans-serif";
+    ctx.font = "bold 11px system-ui,-apple-system,sans-serif";
     ctx.fillStyle = "#9aa0b4";
     ctx.fillText(z.label.toUpperCase(), x, y);
-    ctx.font = "bold 17px system-ui,-apple-system,sans-serif";
+    ctx.font = "bold 14px system-ui,-apple-system,sans-serif";
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(fmtKickoff(z.tz), x, y + 19, 240);
+    ctx.fillText(fmtKickoff(z.tz), x, y + 17, colW - 6);
   }
 
   // Divider
   ctx.strokeStyle = "#2a2a38";
-  ctx.beginPath(); ctx.moveTo(24, 448); ctx.lineTo(W - 24, 448); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 340); ctx.lineTo(W - 24, 340); ctx.stroke();
 
   // URL
   ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("fifa.shammas.in", W / 2, 478);
+  ctx.fillText("fifa.shammas.in", W / 2, 360);
 
   return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
 }
