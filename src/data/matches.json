@@ -1789,19 +1789,27 @@
       "away": "Australia",
       "group": "D",
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "10'",
-      "goals": [],
+      "clock": "12'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "C. Burgess",
+          "minute": "11'",
+          "pen": false,
+          "og": true
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "77.9",
+        "possessionPct": "81",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "22.1",
+        "possessionPct": "19",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -3083,6 +3091,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-19T19:10:28.820Z",
+  "lastUpdated": "2026-06-19T19:12:24.316Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
