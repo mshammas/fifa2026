@@ -1299,6 +1299,109 @@ async function shareMatchAsImage(m) {
   return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
 }
 
+async function shareUpcomingMatchAsImage(m) {
+  const W = 600, H = 420;
+  const canvas = document.createElement("canvas");
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext("2d");
+
+  // Background
+  ctx.fillStyle = "#0e0e14";
+  ctx.beginPath();
+  if (ctx.roundRect) { ctx.roundRect(0, 0, W, H, 24); } else { ctx.rect(0, 0, W, H); }
+  ctx.fill();
+
+  // Green top bar
+  ctx.fillStyle = "#22c55e";
+  ctx.fillRect(0, 0, W, 5);
+
+  // Title
+  ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#9aa0b4";
+  ctx.textAlign = "center";
+  ctx.fillText("⚽  FIFA WORLD CUP 2026" + (m.group ? `  ·  GROUP ${m.group}` : "  ·  KNOCKOUT"), W / 2, 36);
+
+  // Flags
+  ctx.font = "62px serif";
+  ctx.fillStyle = "#fff";
+  ctx.textAlign = "center";
+  ctx.fillText(flag(m.home), 128, 108);
+  ctx.fillText(flag(m.away), W - 128, 108);
+
+  // Team names
+  ctx.font = "bold 18px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#ffffff";
+  ctx.fillText(m.home, 128, 136, 210);
+  ctx.fillText(m.away, W - 128, 136, 210);
+
+  // VS
+  ctx.font = "bold 20px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#3a3a50";
+  ctx.fillText("VS", W / 2, 112);
+
+  // Venue
+  if (m.venue) {
+    ctx.font = "12px system-ui,-apple-system,sans-serif";
+    ctx.fillStyle = "#9aa0b4";
+    ctx.fillText(m.venue, W / 2, 158, W - 40);
+  }
+
+  // Divider
+  ctx.strokeStyle = "#2a2a38"; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(24, 172); ctx.lineTo(W - 24, 172); ctx.stroke();
+
+  // Kick-off times header
+  ctx.font = "bold 11px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#22c55e";
+  ctx.textAlign = "center";
+  ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 192);
+
+  // Timezone grid — 2 columns × 4 rows
+  const zones = [
+    { label: "New York",    tz: "America/New_York" },
+    { label: "Los Angeles", tz: "America/Los_Angeles" },
+    { label: "London",      tz: "Europe/London" },
+    { label: "Paris",       tz: "Europe/Paris" },
+    { label: "Dubai",       tz: "Asia/Dubai" },
+    { label: "Singapore",   tz: "Asia/Singapore" },
+    { label: "Tokyo",       tz: "Asia/Tokyo" },
+    { label: "Sydney",      tz: "Australia/Sydney" },
+  ];
+
+  const fmtKickoff = (tz) => new Intl.DateTimeFormat("en-US", {
+    timeZone: tz, month: "short", day: "numeric",
+    hour: "numeric", minute: "2-digit", hour12: true,
+  }).format(new Date(m.date));
+
+  const colX = [30, W / 2 + 18];
+  const rowY0 = 212, rowH = 36;
+
+  for (let i = 0; i < zones.length; i++) {
+    const z = zones[i];
+    const x = colX[i % 2];
+    const y = rowY0 + Math.floor(i / 2) * rowH;
+    ctx.textAlign = "left";
+    ctx.font = "bold 10px system-ui,-apple-system,sans-serif";
+    ctx.fillStyle = "#9aa0b4";
+    ctx.fillText(z.label.toUpperCase(), x, y);
+    ctx.font = "bold 15px system-ui,-apple-system,sans-serif";
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText(fmtKickoff(z.tz), x, y + 17, 240);
+  }
+
+  // Divider
+  ctx.strokeStyle = "#2a2a38";
+  ctx.beginPath(); ctx.moveTo(24, 360); ctx.lineTo(W - 24, 360); ctx.stroke();
+
+  // URL
+  ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#22c55e";
+  ctx.textAlign = "center";
+  ctx.fillText("fifa.shammas.in", W / 2, 390);
+
+  return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+}
+
 function ShareButton({ m }) {
   const [done, setDone] = useState(false);
   const [imgDone, setImgDone] = useState(false);
@@ -2165,6 +2268,26 @@ function ScheduleRow({ m, tz, onMatchClick }) {
   const s = STATUS[m.status] || STATUS.NS;
   const hasScore = m.homeScore != null && m.awayScore != null;
   const isClickable = m.status === "FT" || m.status === "LIVE" || m.status === "HT";
+  const [shareDone, setShareDone] = useState(false);
+
+  const handleShareUpcoming = async (e) => {
+    e.stopPropagation();
+    try {
+      const blob = await shareUpcomingMatchAsImage(m);
+      const file = new File([blob], `${m.home}-vs-${m.away}-kickoff.png`, { type: "image/png" });
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], title: `${m.home} vs ${m.away} · FIFA World Cup 2026` });
+      } else {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url; a.download = `${m.home}-vs-${m.away}-kickoff.png`;
+        a.click(); URL.revokeObjectURL(url);
+        setShareDone(true);
+        setTimeout(() => setShareDone(false), 2000);
+      }
+    } catch {}
+  };
+
   const teamCell = (team) => (
     <div style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 16, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
       <span style={{ fontSize: 18 }}>{flag(team)}</span>
@@ -2194,6 +2317,16 @@ function ScheduleRow({ m, tz, onMatchClick }) {
             {s.live ? "🔴 " : ""}{m.status === "NS" ? (m.group ? `Group ${m.group}` : "Knockout") : s.label}
           </span>
           {isClickable && <span style={{ fontSize: 13, color: C.dim, marginTop: 2 }}>→</span>}
+          {m.status === "NS" && (
+            <button
+              onClick={handleShareUpcoming}
+              title="Share kick-off times"
+              aria-label="Share kick-off times"
+              style={{ background: "none", border: "none", cursor: "pointer", padding: "2px 0 2px 4px", fontSize: 15, lineHeight: 1, color: shareDone ? C.green : C.dim, flexShrink: 0, transition: "color 0.2s" }}
+            >
+              {shareDone ? "✓" : "📅"}
+            </button>
+          )}
         </div>
       </div>
     </div>
