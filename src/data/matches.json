@@ -1743,10 +1743,10 @@
       "away": "South Korea",
       "group": "A",
       "venue": "Estadio Akron, Guadalajara",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "52'",
       "goals": [
         {
           "side": "home",
@@ -1765,12 +1765,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48",
-        "shotsOnTarget": "1",
-        "totalShots": "4"
+        "possessionPct": "48.1",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "52",
+        "possessionPct": "51.9",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3069,6 +3069,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-19T02:10:28.240Z",
+  "lastUpdated": "2026-06-19T02:12:21.570Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
