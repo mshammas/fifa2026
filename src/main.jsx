@@ -1395,11 +1395,18 @@ function useCrowdAudio(enabled, isLive, goalCount) {
     };
   }, [enabled, isLive]);
 
-  // GOAL! — play cheer clip
+  // GOAL! — announce + play cheer clip
   useEffect(() => {
     const isNewGoal = goalCount > prevGoals.current;
     prevGoals.current = goalCount;
     if (!isNewGoal) return;
+    if (window.speechSynthesis) {
+      const utt = new SpeechSynthesisUtterance("It's a goal!");
+      utt.rate = 0.9;
+      utt.pitch = 1.2;
+      utt.volume = 1;
+      window.speechSynthesis.speak(utt);
+    }
     const cheer = new Audio("./sounds/goal-cheer.mp3");
     cheer.volume = 0.7;
     cheerRef.current = cheer;
