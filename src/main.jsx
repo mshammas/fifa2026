@@ -2328,7 +2328,7 @@ function ScheduleRow({ m, tz, onMatchClick }) {
               aria-label="Share kick-off times"
               style={{ background: shareDone ? "rgba(34,197,94,0.12)" : "rgba(34,197,94,0.08)", border: `1px solid ${shareDone ? C.green : "rgba(34,197,94,0.35)"}`, borderRadius: 8, cursor: "pointer", padding: "3px 7px", fontSize: 16, lineHeight: 1, color: shareDone ? C.green : "rgba(34,197,94,0.8)", flexShrink: 0, transition: "color 0.2s, border-color 0.2s" }}
             >
-              {shareDone ? "✓" : "📅"}
+              {shareDone ? "✓" : "📤"}
             </button>
           )}
         </div>
