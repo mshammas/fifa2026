@@ -2610,13 +2610,14 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
         <div style={{ marginBottom: 16 }}>
           <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} noMargin />
           {(favTeams.length > 0 || true) && (
-            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+            <div style={{ display: "flex", gap: 8, marginTop: 8, width: "100%" }}>
               {favTeams.length > 0 && (
                 <button
                   onClick={() => setFavOnly(!favOnly)}
                   title={favOnly ? "Show all matches" : "Show favourite teams only"}
                   style={{
-                    display: "flex", alignItems: "center", gap: 5, padding: "8px 13px",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: 5, padding: "8px 13px",
+                    flex: 1,
                     background: favOnly ? `${C.gold}22` : C.card,
                     border: `2px solid ${favOnly ? C.gold : C.border}`,
                     borderRadius: 10, cursor: "pointer", color: favOnly ? C.gold : C.dim,
@@ -2626,7 +2627,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
                   ⭐ Favourites
                 </button>
               )}
-              <div style={{ position: "relative" }}
+              <div style={{ position: "relative", flex: 1 }}
                 onMouseEnter={() => setShowUpcomingTip(true)}
                 onMouseLeave={() => setShowUpcomingTip(false)}
               >
@@ -2653,7 +2654,8 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
                   onClick={() => { setUpcomingOnly(!upcomingOnly); setUpcomingSeen(true); }}
                   className={!upcomingSeen && !upcomingOnly ? "wc-upcoming-pulse" : undefined}
                   style={{
-                    display: "flex", alignItems: "center", gap: 5, padding: "8px 13px",
+                    display: "flex", alignItems: "center", justifyContent: "center", gap: 5, padding: "8px 13px",
+                    width: "100%",
                     background: upcomingOnly ? "rgba(34,197,94,0.1)" : C.card,
                     border: `2px solid ${upcomingOnly ? C.green : C.border}`,
                     borderRadius: 10, cursor: "pointer", color: upcomingOnly ? C.green : C.dim,
