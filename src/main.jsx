@@ -2479,7 +2479,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
   const filtered = matches.filter((m) =>
     (searchTerm ? (m.home.toLowerCase().includes(searchTerm) || m.away.toLowerCase().includes(searchTerm)) : (groupFilter === "All" || m.group === groupFilter)) &&
     (!favOnly || isFav(m)) &&
-    (!upcomingOnly || m.status === "NS")
+    (!upcomingOnly || m.status === "NS" || isLive(m))
   );
   const todayKey = dateKey(new Date().toISOString(), tz);
 
