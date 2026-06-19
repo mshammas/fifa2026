@@ -1300,7 +1300,7 @@ async function shareMatchAsImage(m) {
 }
 
 async function shareUpcomingMatchAsImage(m) {
-  const W = 600, H = 318;
+  const W = 600, H = 328;
   const canvas = document.createElement("canvas");
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -1321,35 +1321,38 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.textAlign = "center";
   ctx.fillText("⚽  FIFA WORLD CUP 2026" + (m.group ? `  ·  GROUP ${m.group}` : "  ·  KNOCKOUT"), W / 2, 28);
 
-  // Each team centered in its own half — textAlign "center" + maxWidth gives a hard
-  // layout boundary that works even when iOS reports wrong emoji advance widths.
-  // home right edge ≤ W*0.30 + 100 = 280;  away left edge ≥ W*0.70 - 100 = 320;
-  // VS at 300 always sits in a safe 20px gap on each side.
-  ctx.font = "bold 26px system-ui,-apple-system,sans-serif";
-  ctx.fillStyle = "#ffffff";
+  // Flags and names drawn on separate lines so iOS emoji advance-width quirks
+  // cannot affect the name centering. Flag row is purely decorative.
   ctx.textAlign = "center";
-  ctx.fillText(flag(m.home) + "  " + m.home, W * 0.30, 72, 200);
-  ctx.fillText(flag(m.away) + "  " + m.away, W * 0.70, 72, 200);
-  ctx.font = "bold 14px system-ui,-apple-system,sans-serif";
+  ctx.font = "28px system-ui,-apple-system,sans-serif";
+  ctx.fillStyle = "#ffffff";
+  ctx.fillText(flag(m.home), W * 0.25, 60);
+  ctx.fillText(flag(m.away), W * 0.75, 60);
+
+  ctx.font = "bold 24px system-ui,-apple-system,sans-serif";
+  ctx.fillText(m.home, W * 0.25, 86, 220);
+  ctx.fillText(m.away, W * 0.75, 86, 220);
+
+  ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#3a3a50";
-  ctx.fillText("vs", W / 2, 72);
+  ctx.fillText("vs", W / 2, 75);
 
   // Venue
   if (m.venue) {
     ctx.font = "12px system-ui,-apple-system,sans-serif";
     ctx.fillStyle = "#9aa0b4";
-    ctx.fillText(m.venue, W / 2, 96, W - 40);
+    ctx.fillText(m.venue, W / 2, 106, W - 40);
   }
 
   // Divider
   ctx.strokeStyle = "#2a2a38"; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(24, 110); ctx.lineTo(W - 24, 110); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 120); ctx.lineTo(W - 24, 120); ctx.stroke();
 
   // Kick-off times header
   ctx.font = "bold 11px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 130);
+  ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 140);
 
   // Timezone grid — 4 columns × 3 rows
   const zones = [
@@ -1374,7 +1377,7 @@ async function shareUpcomingMatchAsImage(m) {
 
   const cols = 4;
   const colW = (W - 32) / cols;
-  const rowY0 = 148, rowH = 42;
+  const rowY0 = 158, rowH = 42;
 
   for (let i = 0; i < zones.length; i++) {
     const z = zones[i];
@@ -1391,13 +1394,13 @@ async function shareUpcomingMatchAsImage(m) {
 
   // Divider
   ctx.strokeStyle = "#2a2a38";
-  ctx.beginPath(); ctx.moveTo(24, 284); ctx.lineTo(W - 24, 284); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 294); ctx.lineTo(W - 24, 294); ctx.stroke();
 
   // URL
   ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("fifa.shammas.in", W / 2, 304);
+  ctx.fillText("fifa.shammas.in", W / 2, 312);
 
   return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
 }
