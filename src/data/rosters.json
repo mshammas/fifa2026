@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-18T10:06:23.094Z",
+  "lastUpdated": "2026-06-19T10:13:30.929Z",
   "rosters": {
     "Algeria": [
       {
@@ -3678,7 +3678,7 @@
         "shortName": "A. Kramaric",
         "jersey": 9,
         "pos": "FWD",
-        "age": 34,
+        "age": 35,
         "dob": "1991-06-19",
         "height": "5' 10\"",
         "weight": "161 lbs",
@@ -4668,7 +4668,7 @@
         "shortName": "N. Angulo",
         "jersey": 20,
         "pos": "FWD",
-        "age": 22,
+        "age": 23,
         "dob": "2003-06-19",
         "height": "6' 0\"",
         "weight": "150 lbs",
@@ -9886,7 +9886,7 @@
         "shortName": "J. Rodríguez",
         "jersey": 7,
         "pos": "MID",
-        "age": 27,
+        "age": 28,
         "dob": "1998-06-19",
         "height": "5' 11\"",
         "weight": "170 lbs",
@@ -10454,7 +10454,7 @@
         "shortName": "N. Mendes",
         "jersey": 25,
         "pos": "DEF",
-        "age": 23,
+        "age": 24,
         "dob": "2002-06-19",
         "height": "5' 11\"",
         "weight": "152 lbs",
@@ -11580,7 +11580,7 @@
         "dob": "1995-08-10",
         "height": "6' 1\"",
         "weight": "163 lbs",
-        "club": "Heart of Midlothian"
+        "club": "Rangers"
       },
       {
         "id": "368045",
@@ -13570,7 +13570,7 @@
         "shortName": "D. Bronn",
         "jersey": 6,
         "pos": "DEF",
-        "age": 30,
+        "age": 31,
         "dob": "1995-06-19",
         "height": "6' 1\"",
         "weight": "163 lbs",
