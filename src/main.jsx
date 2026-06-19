@@ -1325,10 +1325,10 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.font = "bold 26px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#ffffff";
   ctx.textAlign = "right";
-  ctx.fillText(flag(m.home) + "  " + m.home, W / 2 - 28, 72, 240);
+  ctx.fillText(flag(m.home) + "  " + m.home, W / 2 - 52, 72, 220);
   ctx.textAlign = "left";
-  ctx.fillText(flag(m.away) + "  " + m.away, W / 2 + 28, 72, 240);
-  ctx.font = "bold 17px system-ui,-apple-system,sans-serif";
+  ctx.fillText(flag(m.away) + "  " + m.away, W / 2 + 52, 72, 220);
+  ctx.font = "bold 14px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#3a3a50";
   ctx.textAlign = "center";
   ctx.fillText("vs", W / 2, 72);
