@@ -1792,7 +1792,7 @@
       "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "86'",
+      "clock": "88'",
       "goals": [
         {
           "side": "home",
@@ -1827,17 +1827,29 @@
           "player": "A. Robinson",
           "minute": "56'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "F. Balogun",
+          "minute": "89'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "H. Souttar",
+          "minute": "89'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "63.5",
+        "possessionPct": "63.1",
         "shotsOnTarget": "2",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "36.5",
+        "possessionPct": "36.9",
         "shotsOnTarget": "2",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -3117,6 +3129,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-19T20:52:21.277Z",
+  "lastUpdated": "2026-06-19T20:54:22.330Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
