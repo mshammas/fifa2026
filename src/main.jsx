@@ -2463,6 +2463,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
   const [groupFilter, setGroupFilter] = useLocalStorage("wc_group_filter", "All");
   const [favOnly, setFavOnly] = useLocalStorage("wc_favonly_filter", false);
+  const [upcomingOnly, setUpcomingOnly] = useLocalStorage("wc_upcoming_filter", false);
   const [search, setSearch] = useState("");
 
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
@@ -2470,7 +2471,8 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
   const searchTerm = search.trim().toLowerCase();
   const filtered = matches.filter((m) =>
     (searchTerm ? (m.home.toLowerCase().includes(searchTerm) || m.away.toLowerCase().includes(searchTerm)) : (groupFilter === "All" || m.group === groupFilter)) &&
-    (!favOnly || isFav(m))
+    (!favOnly || isFav(m)) &&
+    (!upcomingOnly || m.status === "NS")
   );
   const todayKey = dateKey(new Date().toISOString(), tz);
 
@@ -2617,6 +2619,19 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
               ⭐ Favs
             </button>
           )}
+          <button
+            onClick={() => setUpcomingOnly(!upcomingOnly)}
+            title={upcomingOnly ? "Show all matches" : "Show upcoming matches only"}
+            style={{
+              display: "flex", alignItems: "center", gap: 5, padding: "11px 13px",
+              background: upcomingOnly ? "rgba(34,197,94,0.1)" : C.card,
+              border: `2px solid ${upcomingOnly ? C.green : C.border}`,
+              borderRadius: 10, cursor: "pointer", color: upcomingOnly ? C.green : C.dim,
+              fontSize: 14, fontWeight: 800, whiteSpace: "nowrap", flexShrink: 0,
+            }}
+          >
+            📅 Upcoming
+          </button>
         </div>
       )}
       {search && (
