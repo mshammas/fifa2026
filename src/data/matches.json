@@ -1792,7 +1792,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "32'",
+      "clock": "34'",
       "goals": [
         {
           "side": "home",
@@ -1808,15 +1808,21 @@
           "player": "J. Bos",
           "minute": "16'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Circati",
+          "minute": "32'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "67.4",
+        "possessionPct": "68.5",
         "shotsOnTarget": "0",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "32.6",
+        "possessionPct": "31.5",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -3098,6 +3104,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-19T19:32:21.976Z",
+  "lastUpdated": "2026-06-19T19:34:26.911Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
