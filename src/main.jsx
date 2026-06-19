@@ -1370,7 +1370,8 @@ function ShareButton({ m }) {
 // Synthesised crowd audio via Web Audio API — no external files.
 // enabled: bool (user toggle), isLive: bool, goalCount: number
 function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget) {
-  const ambientRef  = React.useRef(null);
+  const ambientRef  = React.useRef(null); // AudioBufferSourceNode
+  const ctxRef      = React.useRef(null); // AudioContext
   const prevGoals   = React.useRef(goalCount);
   const prevYellow  = React.useRef(yellowCount);
   const prevRed     = React.useRef(redCount);
@@ -1387,22 +1388,40 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
     window.speechSynthesis.speak(utt);
   };
 
-  // Ambient crowd noise
+  // Ambient crowd noise — Web Audio API for gapless looping
   useEffect(() => {
-    if (!enabled || !isLive) {
-      if (ambientRef.current) {
-        ambientRef.current.pause();
-        ambientRef.current.currentTime = 0;
-        ambientRef.current = null;
-      }
-      return;
-    }
-    const audio = new Audio("./sounds/crowd-ambient.mp3");
-    audio.loop   = true;
-    audio.volume = 0.35;
-    ambientRef.current = audio;
-    audio.play().catch(() => {});
-    return () => { audio.pause(); ambientRef.current = null; };
+    const stop = () => {
+      try { ambientRef.current?.stop(); } catch (_) {}
+      ambientRef.current = null;
+      ctxRef.current?.close();
+      ctxRef.current = null;
+    };
+    if (!enabled || !isLive) { stop(); return; }
+
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    ctxRef.current = ctx;
+
+    fetch("./sounds/crowd-ambient.mp3")
+      .then(r => r.arrayBuffer())
+      .then(buf => ctx.decodeAudioData(buf))
+      .then(decoded => {
+        if (ctxRef.current !== ctx) return; // unmounted before decode finished
+        const gain = ctx.createGain();
+        gain.gain.value = 0.35;
+        gain.connect(ctx.destination);
+
+        const src = ctx.createBufferSource();
+        src.buffer    = decoded;
+        src.loop      = true;
+        src.loopStart = 0.85; // skip leading silence
+        src.loopEnd   = 23.0; // loop within full-volume section
+        src.connect(gain);
+        src.start(0, 0.85);   // begin playback at the same offset
+        ambientRef.current = src;
+      })
+      .catch(() => {});
+
+    return stop;
   }, [enabled, isLive]);
 
   // GOAL!
