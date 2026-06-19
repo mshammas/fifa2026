@@ -1789,10 +1789,10 @@
       "away": "Australia",
       "group": "D",
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "45'",
+      "clock": "45'+3'",
       "goals": [
         {
           "side": "home",
@@ -1800,6 +1800,13 @@
           "minute": "11'",
           "pen": false,
           "og": true
+        },
+        {
+          "side": "home",
+          "player": "A. Freeman",
+          "minute": "43'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -1817,12 +1824,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "71.3",
-        "shotsOnTarget": "0",
-        "totalShots": "7"
+        "possessionPct": "70.8",
+        "shotsOnTarget": "1",
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "28.7",
+        "possessionPct": "29.2",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -3104,6 +3111,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-19T19:46:25.419Z",
+  "lastUpdated": "2026-06-19T19:48:23.732Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
