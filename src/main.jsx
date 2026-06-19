@@ -1369,7 +1369,7 @@ function ShareButton({ m }) {
 
 // Synthesised crowd audio via Web Audio API — no external files.
 // enabled: bool (user toggle), isLive: bool, goalCount: number
-function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget) {
+function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget, home, away, homeScore, awayScore) {
   const ambientRef  = React.useRef(null); // AudioBufferSourceNode
   const ctxRef      = React.useRef(null); // AudioContext
   const prevGoals   = React.useRef(goalCount);
@@ -1516,6 +1516,41 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
       "He shoots! The keeper watches it all the way!",
     ]));
   }, [shotsOnTarget, enabled]);
+
+  // Periodic score update every 3 minutes
+  useEffect(() => {
+    if (!enabled || !isLive) return;
+    const t = setInterval(() => {
+      const h = homeScore ?? 0;
+      const a = awayScore ?? 0;
+      let line;
+      if (h === a) {
+        line = h === 0
+          ? pick([
+              `Still goalless here between ${home} and ${away}.`,
+              `No score yet as ${home} face ${away}.`,
+              `${home} and ${away} still locked at nil-nil.`,
+            ])
+          : pick([
+              `It's level here — ${h} goals apiece between ${home} and ${away}.`,
+              `${home} and ${away} are all square at ${h} each.`,
+              `A level game! ${h}-${h} the score between ${home} and ${away}.`,
+            ]);
+      } else {
+        const [leader, trailer, lScore, tScore] = h > a
+          ? [home, away, h, a]
+          : [away, home, a, h];
+        line = pick([
+          `${leader} lead ${trailer} by ${lScore} goals to ${tScore}.`,
+          `It's ${lScore}-${tScore} here, ${leader} in front against ${trailer}.`,
+          `${leader} are ahead! ${lScore}-${tScore} the score as things stand.`,
+          `The scoreline reads ${lScore}-${tScore} in favour of ${leader}.`,
+        ]);
+      }
+      announce(line);
+    }, 180_000);
+    return () => clearInterval(t);
+  }, [enabled, isLive, home, away, homeScore, awayScore]);
 }
 
 // Toasts for score changes detected since last visit.
@@ -1614,10 +1649,11 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
   const lastRedPlayer    = lastRedCard?.player ?? null;
   const lastRedTeam      = lastRedCard ? (lastRedCard.side === "home" ? m.home : m.away) : null;
   const shotsOnTarget = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
-  useCrowdAudio(crowdOn, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget);
+  const { h: liveH, a: liveA } = liveScores(m);
+  useCrowdAudio(crowdOn, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
 
   const wide = useWindowWidth() >= 768;
-  const { h: mh, a: ma } = liveScores(m);
+  const mh = liveH; const ma = liveA;
   const hasScore = mh != null && ma != null;
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
 
