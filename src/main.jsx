@@ -2326,7 +2326,7 @@ function ScheduleRow({ m, tz, onMatchClick }) {
               onClick={handleShareUpcoming}
               title="Share kick-off times"
               aria-label="Share kick-off times"
-              style={{ background: "none", border: "none", cursor: "pointer", padding: "2px 0 2px 4px", fontSize: 15, lineHeight: 1, color: shareDone ? C.green : C.dim, flexShrink: 0, transition: "color 0.2s" }}
+              style={{ background: shareDone ? "rgba(34,197,94,0.12)" : "rgba(34,197,94,0.08)", border: `1px solid ${shareDone ? C.green : "rgba(34,197,94,0.35)"}`, borderRadius: 8, cursor: "pointer", padding: "3px 7px", fontSize: 16, lineHeight: 1, color: shareDone ? C.green : "rgba(34,197,94,0.8)", flexShrink: 0, transition: "color 0.2s, border-color 0.2s" }}
             >
               {shareDone ? "✓" : "📅"}
             </button>
