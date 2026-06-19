@@ -1369,11 +1369,25 @@ function ShareButton({ m }) {
 
 // Synthesised crowd audio via Web Audio API — no external files.
 // enabled: bool (user toggle), isLive: bool, goalCount: number
-function useCrowdAudio(enabled, isLive, goalCount) {
-  const ambientRef = React.useRef(null);
-  const cheerRef   = React.useRef(null);
-  const prevGoals  = React.useRef(goalCount);
+function useCrowdAudio(enabled, isLive, goalCount, yellowCount, redCount, status, shotsOnTarget) {
+  const ambientRef  = React.useRef(null);
+  const prevGoals   = React.useRef(goalCount);
+  const prevYellow  = React.useRef(yellowCount);
+  const prevRed     = React.useRef(redCount);
+  const prevStatus  = React.useRef(status);
+  const prevShots   = React.useRef(shotsOnTarget);
 
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+  const announce = (text, { rate = 0.9, pitch = 1.0 } = {}) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.rate = rate; utt.pitch = pitch; utt.volume = 1;
+    window.speechSynthesis.speak(utt);
+  };
+
+  // Ambient crowd noise
   useEffect(() => {
     if (!enabled || !isLive) {
       if (ambientRef.current) {
@@ -1388,30 +1402,89 @@ function useCrowdAudio(enabled, isLive, goalCount) {
     audio.volume = 0.35;
     ambientRef.current = audio;
     audio.play().catch(() => {});
-
-    return () => {
-      audio.pause();
-      ambientRef.current = null;
-    };
+    return () => { audio.pause(); ambientRef.current = null; };
   }, [enabled, isLive]);
 
-  // GOAL! — announce + play cheer clip
+  // GOAL!
   useEffect(() => {
-    const isNewGoal = goalCount > prevGoals.current;
+    const isNew = goalCount > prevGoals.current;
     prevGoals.current = goalCount;
-    if (!isNewGoal) return;
-    if (window.speechSynthesis) {
-      const utt = new SpeechSynthesisUtterance("It's a goal!");
-      utt.rate = 0.9;
-      utt.pitch = 1.2;
-      utt.volume = 1;
-      window.speechSynthesis.speak(utt);
-    }
+    if (!isNew || !enabled) return;
+    announce(pick([
+      "It's a goal! What a moment!",
+      "GOAL! The crowd goes absolutely wild!",
+      "What a finish! It's in the back of the net!",
+      "He's scored! An absolutely stunning goal!",
+    ]), { rate: 0.85, pitch: 1.2 });
     const cheer = new Audio("./sounds/goal-cheer.mp3");
     cheer.volume = 0.7;
-    cheerRef.current = cheer;
     cheer.play().catch(() => {});
-  }, [goalCount]);
+  }, [goalCount, enabled]);
+
+  // Yellow card
+  useEffect(() => {
+    const isNew = yellowCount > prevYellow.current;
+    prevYellow.current = yellowCount;
+    if (!isNew || !enabled) return;
+    announce(pick([
+      "Yellow card! A stern warning from the official.",
+      "Caution! The referee reaches into his pocket.",
+      "Booked! That player will need to be careful for the rest of this game.",
+      "The referee has shown a yellow card!",
+    ]));
+  }, [yellowCount, enabled]);
+
+  // Red card
+  useEffect(() => {
+    const isNew = redCount > prevRed.current;
+    prevRed.current = redCount;
+    if (!isNew || !enabled) return;
+    announce(pick([
+      "Oh! A red card! He's off! Down to ten men!",
+      "Off he goes! The referee has no hesitation — red card!",
+      "Dismissed! That is a red card and his afternoon is over!",
+      "Sent off! That is a straight red and he cannot believe it!",
+    ]), { rate: 0.88, pitch: 1.1 });
+  }, [redCount, enabled]);
+
+  // Status changes — kick-off, half-time, full-time
+  useEffect(() => {
+    const prev = prevStatus.current;
+    prevStatus.current = status;
+    if (prev === status || !enabled) return;
+    if (status === "LIVE" && prev === "NS") {
+      announce(pick([
+        "And we are underway! The referee blows his whistle to kick off!",
+        "Kick off! The match is underway — let's go!",
+        "And we're off! The game has begun!",
+      ]));
+    } else if (status === "HT") {
+      announce(pick([
+        "That's the half-time whistle! Both sides head to the dressing rooms.",
+        "Half time! The referee brings the first half to a close.",
+        "And it's half time! The players head down the tunnel.",
+      ]));
+    } else if (status === "FT") {
+      announce(pick([
+        "That's full time! The final whistle has blown!",
+        "Full time! What an incredible match of football!",
+        "And there it is — the final whistle! The game is over!",
+      ]));
+    }
+  }, [status, enabled]);
+
+  // Shot on target
+  useEffect(() => {
+    const isNew = shotsOnTarget > prevShots.current;
+    prevShots.current = shotsOnTarget;
+    if (!isNew || !enabled) return;
+    announce(pick([
+      "Shot on target! The goalkeeper is forced into action!",
+      "Testing the keeper! A fine effort from the attacking side!",
+      "A shot on goal! The keeper will have to deal with that one!",
+      "He shoots! The keeper watches it all the way!",
+    ]));
+  }, [shotsOnTarget, enabled]);
 }
 
 // Toasts for score changes detected since last visit.
@@ -1498,7 +1571,11 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
   // Crowd audio
   const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
   const isLive = m.status === "LIVE" || m.status === "HT";
-  useCrowdAudio(crowdOn, isLive, (m.goals || []).length);
+  const goalCount     = (m.goals || []).length;
+  const yellowCount   = (m.cards || []).filter(c => c.type === "yellow").length;
+  const redCount      = (m.cards || []).filter(c => c.type === "red").length;
+  const shotsOnTarget = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
+  useCrowdAudio(crowdOn, isLive, goalCount, yellowCount, redCount, m.status, shotsOnTarget);
 
   const wide = useWindowWidth() >= 768;
   const { h: mh, a: ma } = liveScores(m);
