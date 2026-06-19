@@ -1334,10 +1334,10 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.font = "58px serif";
   ctx.fillStyle = "#fff";
   ctx.textAlign = "right";
-  ctx.fillText(flag(m.away), W - 24, 108);
+  ctx.fillText(flag(m.away), W - 60, 108);
   ctx.font = "bold 19px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#ffffff";
-  ctx.fillText(m.away, W - 24, 136, 220);
+  ctx.fillText(m.away, W - 60, 136, 220);
 
   // VS
   ctx.font = "bold 20px system-ui,-apple-system,sans-serif";
