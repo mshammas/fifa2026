@@ -3837,6 +3837,14 @@ export default function App() {
     } catch { /* silently ignore network errors */ }
   }, []);
 
+  // Auto-refresh every 30 s when there are live matches and the modal isn't open.
+  useEffect(() => {
+    const hasLive = matches.some((m) => m.status === "LIVE" || m.status === "HT");
+    if (!hasLive || liveModal) return;
+    const t = setInterval(refreshMatches, 30_000);
+    return () => clearInterval(t);
+  }, [matches, liveModal, refreshMatches]);
+
   // Restore live modal after page load (sessionStorage survives soft navigation).
   useEffect(() => {
     const savedId = sessionStorage.getItem("wc_live_modal");
