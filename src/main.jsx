@@ -742,7 +742,7 @@ function EventSection({ icon, iconBg, title, rows }) {
         {rows.map((r, i) => (
           <div
             key={i}
-            onClick={r.onRowClick || undefined}
+            onClick={r.onRowClick ? (e) => { e.stopPropagation(); r.onRowClick(); } : undefined}
             style={{ display: "flex", alignItems: "center", gap: 10, cursor: r.onRowClick ? "pointer" : "default", borderRadius: 8, padding: r.onRowClick ? "2px 4px" : 0, margin: r.onRowClick ? "0 -4px" : 0, transition: "background 0.12s" }}
             onMouseEnter={r.onRowClick ? (e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; } : undefined}
             onMouseLeave={r.onRowClick ? (e) => { e.currentTarget.style.background = ""; } : undefined}
