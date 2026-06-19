@@ -1300,7 +1300,7 @@ async function shareMatchAsImage(m) {
 }
 
 async function shareUpcomingMatchAsImage(m) {
-  const W = 600, H = 452;
+  const W = 600, H = 484;
   const canvas = document.createElement("canvas");
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -1356,10 +1356,12 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.textAlign = "center";
   ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 192);
 
-  // Timezone grid — 2 columns × 5 rows
+  // Timezone grid — 2 columns × 6 rows
   const zones = [
     { label: "New York",    tz: "America/New_York" },
     { label: "Los Angeles", tz: "America/Los_Angeles" },
+    { label: "Toronto",     tz: "America/Toronto" },
+    { label: "Minnesota",   tz: "America/Chicago" },
     { label: "London",      tz: "Europe/London" },
     { label: "Paris",       tz: "Europe/Paris" },
     { label: "Dubai",       tz: "Asia/Dubai" },
@@ -1393,13 +1395,13 @@ async function shareUpcomingMatchAsImage(m) {
 
   // Divider
   ctx.strokeStyle = "#2a2a38";
-  ctx.beginPath(); ctx.moveTo(24, 392); ctx.lineTo(W - 24, 392); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 424); ctx.lineTo(W - 24, 424); ctx.stroke();
 
   // URL
   ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("fifa.shammas.in", W / 2, 422);
+  ctx.fillText("fifa.shammas.in", W / 2, 454);
 
   return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
 }
