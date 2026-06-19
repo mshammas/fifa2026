@@ -1300,7 +1300,7 @@ async function shareMatchAsImage(m) {
 }
 
 async function shareUpcomingMatchAsImage(m) {
-  const W = 600, H = 420;
+  const W = 600, H = 452;
   const canvas = document.createElement("canvas");
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -1356,16 +1356,18 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.textAlign = "center";
   ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 192);
 
-  // Timezone grid — 2 columns × 4 rows
+  // Timezone grid — 2 columns × 5 rows
   const zones = [
     { label: "New York",    tz: "America/New_York" },
     { label: "Los Angeles", tz: "America/Los_Angeles" },
     { label: "London",      tz: "Europe/London" },
     { label: "Paris",       tz: "Europe/Paris" },
     { label: "Dubai",       tz: "Asia/Dubai" },
+    { label: "India",       tz: "Asia/Kolkata" },
     { label: "Singapore",   tz: "Asia/Singapore" },
     { label: "Tokyo",       tz: "Asia/Tokyo" },
     { label: "Sydney",      tz: "Australia/Sydney" },
+    { label: "New Zealand", tz: "Pacific/Auckland" },
   ];
 
   const fmtKickoff = (tz) => new Intl.DateTimeFormat("en-US", {
@@ -1391,13 +1393,13 @@ async function shareUpcomingMatchAsImage(m) {
 
   // Divider
   ctx.strokeStyle = "#2a2a38";
-  ctx.beginPath(); ctx.moveTo(24, 360); ctx.lineTo(W - 24, 360); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 392); ctx.lineTo(W - 24, 392); ctx.stroke();
 
   // URL
   ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("fifa.shammas.in", W / 2, 390);
+  ctx.fillText("fifa.shammas.in", W / 2, 422);
 
   return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
 }
