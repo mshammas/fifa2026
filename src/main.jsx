@@ -1094,14 +1094,16 @@ function MatchEvents({ m, onPlayerClick }) {
   const teamFlag = (side) => flag(side === "home" ? m.home : m.away);
   const teamName = (side) => side === "home" ? m.home : m.away;
 
+  // For OGs, credit the goal to the beneficiary side (opposite of scorer's side).
+  const dispSide = (g) => g.og ? (g.side === "home" ? "away" : "home") : g.side;
   const goalRows = goals.map((g) => ({
-    flag: teamFlag(g.side),
+    flag: teamFlag(dispSide(g)),
     label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
     minute: g.minute,
     onRowClick: onPlayerClick ? () => onPlayerClick(g.player, teamName(g.side)) : null,
   }));
   for (const side of ["home", "away"]) {
-    if (!goals.some((g) => g.side === side)) {
+    if (!goals.some((g) => dispSide(g) === side)) {
       goalRows.push({ flag: teamFlag(side), label: "No goals", minute: "", muted: true });
     }
   }
@@ -1782,11 +1784,10 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
   // Goals rows extracted for the panel view.
   const goals = m.goals || [];
   const cards = m.cards || [];
-  const goalRows = goals.map((g) => ({
-    flag: flag(g.side === "home" ? m.home : m.away),
-    label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
-    minute: g.minute,
-  }));
+  const goalRows = goals.map((g) => {
+    const side = g.og ? (g.side === "home" ? "away" : "home") : g.side;
+    return { flag: flag(side === "home" ? m.home : m.away), label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""), minute: g.minute };
+  });
 
   // Stats rows.
   const hs = m.homeStats || {};
