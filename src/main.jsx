@@ -2607,62 +2607,64 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
       </div>
 
       {!search && (
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-          <div style={{ flex: 1 }}>
-            <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} noMargin />
-          </div>
-          {favTeams.length > 0 && (
-            <button
-              onClick={() => setFavOnly(!favOnly)}
-              title={favOnly ? "Show all matches" : "Show favourite teams only"}
-              style={{
-                display: "flex", alignItems: "center", gap: 5, padding: "11px 13px",
-                background: favOnly ? `${C.gold}22` : C.card,
-                border: `2px solid ${favOnly ? C.gold : C.border}`,
-                borderRadius: 10, cursor: "pointer", color: favOnly ? C.gold : C.dim,
-                fontSize: 14, fontWeight: 800, whiteSpace: "nowrap", flexShrink: 0,
-              }}
-            >
-              ⭐ Favs
-            </button>
-          )}
-          <div style={{ position: "relative", flexShrink: 0 }}
-            onMouseEnter={() => setShowUpcomingTip(true)}
-            onMouseLeave={() => setShowUpcomingTip(false)}
-          >
-            {showUpcomingTip && (
-              <div style={{
-                position: "absolute", bottom: "calc(100% + 8px)", left: "50%",
-                transform: "translateX(-50%)",
-                background: C.card2, border: `1px solid ${C.border}`,
-                borderRadius: 8, padding: "6px 10px",
-                fontSize: 12, fontWeight: 600, color: C.text,
-                whiteSpace: "nowrap", pointerEvents: "none",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.5)", zIndex: 10,
-              }}>
-                Show only matches yet to kick off
-                <div style={{
-                  position: "absolute", top: "100%", left: "50%",
-                  transform: "translateX(-50%)",
-                  borderWidth: "5px 5px 0", borderStyle: "solid",
-                  borderColor: `${C.border} transparent transparent`,
-                }} />
+        <div style={{ marginBottom: 16 }}>
+          <GroupFilter groups={groups} value={groupFilter} onChange={setGroupFilter} noMargin />
+          {(favTeams.length > 0 || true) && (
+            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+              {favTeams.length > 0 && (
+                <button
+                  onClick={() => setFavOnly(!favOnly)}
+                  title={favOnly ? "Show all matches" : "Show favourite teams only"}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 5, padding: "8px 13px",
+                    background: favOnly ? `${C.gold}22` : C.card,
+                    border: `2px solid ${favOnly ? C.gold : C.border}`,
+                    borderRadius: 10, cursor: "pointer", color: favOnly ? C.gold : C.dim,
+                    fontSize: 14, fontWeight: 800, whiteSpace: "nowrap",
+                  }}
+                >
+                  ⭐ Favs
+                </button>
+              )}
+              <div style={{ position: "relative" }}
+                onMouseEnter={() => setShowUpcomingTip(true)}
+                onMouseLeave={() => setShowUpcomingTip(false)}
+              >
+                {showUpcomingTip && (
+                  <div style={{
+                    position: "absolute", bottom: "calc(100% + 8px)", left: "50%",
+                    transform: "translateX(-50%)",
+                    background: C.card2, border: `1px solid ${C.border}`,
+                    borderRadius: 8, padding: "6px 10px",
+                    fontSize: 12, fontWeight: 600, color: C.text,
+                    whiteSpace: "nowrap", pointerEvents: "none",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.5)", zIndex: 10,
+                  }}>
+                    Show only matches yet to kick off
+                    <div style={{
+                      position: "absolute", top: "100%", left: "50%",
+                      transform: "translateX(-50%)",
+                      borderWidth: "5px 5px 0", borderStyle: "solid",
+                      borderColor: `${C.border} transparent transparent`,
+                    }} />
+                  </div>
+                )}
+                <button
+                  onClick={() => { setUpcomingOnly(!upcomingOnly); setUpcomingSeen(true); }}
+                  className={!upcomingSeen && !upcomingOnly ? "wc-upcoming-pulse" : undefined}
+                  style={{
+                    display: "flex", alignItems: "center", gap: 5, padding: "8px 13px",
+                    background: upcomingOnly ? "rgba(34,197,94,0.1)" : C.card,
+                    border: `2px solid ${upcomingOnly ? C.green : C.border}`,
+                    borderRadius: 10, cursor: "pointer", color: upcomingOnly ? C.green : C.dim,
+                    fontSize: 14, fontWeight: 800, whiteSpace: "nowrap",
+                  }}
+                >
+                  📅 Upcoming
+                </button>
               </div>
-            )}
-            <button
-              onClick={() => { setUpcomingOnly(!upcomingOnly); setUpcomingSeen(true); }}
-              className={!upcomingSeen && !upcomingOnly ? "wc-upcoming-pulse" : undefined}
-              style={{
-                display: "flex", alignItems: "center", gap: 5, padding: "11px 13px",
-                background: upcomingOnly ? "rgba(34,197,94,0.1)" : C.card,
-                border: `2px solid ${upcomingOnly ? C.green : C.border}`,
-                borderRadius: 10, cursor: "pointer", color: upcomingOnly ? C.green : C.dim,
-                fontSize: 14, fontWeight: 800, whiteSpace: "nowrap",
-              }}
-            >
-              📅 Upcoming
-            </button>
-          </div>
+            </div>
+          )}
         </div>
       )}
       {search && (
