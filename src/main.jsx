@@ -1321,17 +1321,17 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.textAlign = "center";
   ctx.fillText("⚽  FIFA WORLD CUP 2026" + (m.group ? `  ·  GROUP ${m.group}` : "  ·  KNOCKOUT"), W / 2, 36);
 
-  // Each team rendered as one string (flag + name) so they can never be misaligned
-  ctx.textAlign = "center";
+  // Teams + VS as one centered row: home right-aligned | VS | away left-aligned
   ctx.font = "bold 26px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#ffffff";
-  ctx.fillText(flag(m.home) + "  " + m.home, W * 0.25, 122, 245);
-  ctx.fillText(flag(m.away) + "  " + m.away, W * 0.75, 122, 245);
-
-  // VS
-  ctx.font = "bold 20px system-ui,-apple-system,sans-serif";
+  ctx.textAlign = "right";
+  ctx.fillText(flag(m.home) + "  " + m.home, W / 2 - 28, 122, 240);
+  ctx.textAlign = "left";
+  ctx.fillText(flag(m.away) + "  " + m.away, W / 2 + 28, 122, 240);
+  ctx.font = "bold 17px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#3a3a50";
-  ctx.fillText("VS", W / 2, 122);
+  ctx.textAlign = "center";
+  ctx.fillText("vs", W / 2, 122);
 
   // Venue
   if (m.venue) {
