@@ -1300,7 +1300,7 @@ async function shareMatchAsImage(m) {
 }
 
 async function shareUpcomingMatchAsImage(m) {
-  const W = 600, H = 484;
+  const W = 600, H = 500;
   const canvas = document.createElement("canvas");
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -1378,30 +1378,30 @@ async function shareUpcomingMatchAsImage(m) {
   }).format(new Date(m.date));
 
   const colX = [30, W / 2 + 18];
-  const rowY0 = 212, rowH = 36;
+  const rowY0 = 212, rowH = 40;
 
   for (let i = 0; i < zones.length; i++) {
     const z = zones[i];
     const x = colX[i % 2];
     const y = rowY0 + Math.floor(i / 2) * rowH;
     ctx.textAlign = "left";
-    ctx.font = "bold 10px system-ui,-apple-system,sans-serif";
+    ctx.font = "bold 12px system-ui,-apple-system,sans-serif";
     ctx.fillStyle = "#9aa0b4";
     ctx.fillText(z.label.toUpperCase(), x, y);
-    ctx.font = "bold 15px system-ui,-apple-system,sans-serif";
+    ctx.font = "bold 17px system-ui,-apple-system,sans-serif";
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(fmtKickoff(z.tz), x, y + 17, 240);
+    ctx.fillText(fmtKickoff(z.tz), x, y + 19, 240);
   }
 
   // Divider
   ctx.strokeStyle = "#2a2a38";
-  ctx.beginPath(); ctx.moveTo(24, 424); ctx.lineTo(W - 24, 424); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 448); ctx.lineTo(W - 24, 448); ctx.stroke();
 
   // URL
   ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("fifa.shammas.in", W / 2, 454);
+  ctx.fillText("fifa.shammas.in", W / 2, 478);
 
   return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
 }
