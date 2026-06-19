@@ -2464,13 +2464,6 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
   const [groupFilter, setGroupFilter] = useLocalStorage("wc_group_filter", "All");
   const [favOnly, setFavOnly] = useLocalStorage("wc_favonly_filter", false);
   const [upcomingOnly, setUpcomingOnly] = useLocalStorage("wc_upcoming_filter", false);
-  const [showUpcomingTip, setShowUpcomingTip] = useState(false);
-  const upcomingTipTimer = React.useRef(null);
-  const showUpcomingTipFor = (ms) => {
-    clearTimeout(upcomingTipTimer.current);
-    setShowUpcomingTip(true);
-    if (ms) upcomingTipTimer.current = setTimeout(() => setShowUpcomingTip(false), ms);
-  };
   const [search, setSearch] = useState("");
 
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
@@ -2626,44 +2619,18 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
               ⭐ Favs
             </button>
           )}
-          <div style={{ position: "relative", flexShrink: 0 }}
-            onMouseEnter={() => showUpcomingTipFor(0)}
-            onMouseLeave={() => { clearTimeout(upcomingTipTimer.current); setShowUpcomingTip(false); }}
-            onTouchStart={() => showUpcomingTipFor(2500)}
+          <button
+            onClick={() => setUpcomingOnly(!upcomingOnly)}
+            style={{
+              display: "flex", alignItems: "center", gap: 5, padding: "11px 13px",
+              background: upcomingOnly ? "rgba(34,197,94,0.1)" : C.card,
+              border: `2px solid ${upcomingOnly ? C.green : C.border}`,
+              borderRadius: 10, cursor: "pointer", color: upcomingOnly ? C.green : C.dim,
+              fontSize: 14, fontWeight: 800, whiteSpace: "nowrap", flexShrink: 0,
+            }}
           >
-            {showUpcomingTip && (
-              <div style={{
-                position: "absolute", bottom: "calc(100% + 8px)", left: "50%",
-                transform: "translateX(-50%)",
-                background: C.card2, border: `1px solid ${C.border}`,
-                borderRadius: 8, padding: "6px 10px",
-                fontSize: 12, fontWeight: 600, color: C.text,
-                whiteSpace: "nowrap", pointerEvents: "none",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
-                zIndex: 10,
-              }}>
-                Show only matches yet to kick off
-                <div style={{
-                  position: "absolute", top: "100%", left: "50%",
-                  transform: "translateX(-50%)",
-                  borderWidth: "5px 5px 0", borderStyle: "solid",
-                  borderColor: `${C.border} transparent transparent`,
-                }} />
-              </div>
-            )}
-            <button
-              onClick={() => setUpcomingOnly(!upcomingOnly)}
-              style={{
-                display: "flex", alignItems: "center", gap: 5, padding: "11px 13px",
-                background: upcomingOnly ? "rgba(34,197,94,0.1)" : C.card,
-                border: `2px solid ${upcomingOnly ? C.green : C.border}`,
-                borderRadius: 10, cursor: "pointer", color: upcomingOnly ? C.green : C.dim,
-                fontSize: 14, fontWeight: 800, whiteSpace: "nowrap",
-              }}
-            >
-              📅 Upcoming
-            </button>
-          </div>
+            📅 Upcoming
+          </button>
         </div>
       )}
       {search && (
