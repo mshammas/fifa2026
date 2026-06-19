@@ -1094,10 +1094,11 @@ function MatchEvents({ m, onPlayerClick }) {
   const teamFlag = (side) => flag(side === "home" ? m.home : m.away);
   const teamName = (side) => side === "home" ? m.home : m.away;
 
-  // For OGs, credit the goal to the beneficiary side (opposite of scorer's side).
+  // dispSide: which team the goal counts FOR (OG flips to beneficiary).
+  // Flag always shows the scorer's own team so it's clear who put it in.
   const dispSide = (g) => g.og ? (g.side === "home" ? "away" : "home") : g.side;
   const goalRows = goals.map((g) => ({
-    flag: teamFlag(dispSide(g)),
+    flag: teamFlag(g.side),
     label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
     minute: g.minute,
     onRowClick: onPlayerClick ? () => onPlayerClick(g.player, teamName(g.side)) : null,
@@ -1784,10 +1785,11 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
   // Goals rows extracted for the panel view.
   const goals = m.goals || [];
   const cards = m.cards || [];
-  const goalRows = goals.map((g) => {
-    const side = g.og ? (g.side === "home" ? "away" : "home") : g.side;
-    return { flag: flag(side === "home" ? m.home : m.away), label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""), minute: g.minute };
-  });
+  const goalRows = goals.map((g) => ({
+    flag: flag(g.side === "home" ? m.home : m.away),
+    label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
+    minute: g.minute,
+  }));
 
   // Stats rows.
   const hs = m.homeStats || {};
