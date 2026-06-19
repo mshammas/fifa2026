@@ -1792,7 +1792,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "16'",
+      "clock": "17'",
       "goals": [
         {
           "side": "home",
@@ -1802,14 +1802,21 @@
           "og": true
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "J. Bos",
+          "minute": "16'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "74.7",
+        "possessionPct": "72.9",
         "shotsOnTarget": "0",
-        "totalShots": "3"
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "25.3",
+        "possessionPct": "27.1",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -3091,6 +3098,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-19T19:16:22.920Z",
+  "lastUpdated": "2026-06-19T19:18:21.932Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
