@@ -1780,7 +1780,7 @@
         "shotsOnTarget": "2",
         "totalShots": "9"
       },
-      "recap": null
+      "recap": "A Luis Romo goal saw Mexico beat South Korea 1-0"
     },
     {
       "id": "e760442",
@@ -1795,8 +1795,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2635,7 +2643,7 @@
     {
       "id": "e760491",
       "date": "2026-07-01T01:00Z",
-      "home": "Group A Winner",
+      "home": "Mexico",
       "away": "Third Place Group C/E/F/H/I",
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
@@ -3075,6 +3083,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-19T02:58:23.553Z",
+  "lastUpdated": "2026-06-19T18:58:24.825Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
