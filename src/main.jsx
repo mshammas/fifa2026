@@ -974,7 +974,7 @@ function TimeMachineReplay({ m }) {
     for (const g of m.goals || []) {
       const min = parseEventMin(g.minute);
       if (min != null && min <= playMin) {
-        const forHome = g.side === "home";
+        const forHome = (g.side === "home" && !g.og) || (g.side === "away" && g.og);
         if (forHome) h++; else a++;
       }
     }
@@ -1094,16 +1094,17 @@ function MatchEvents({ m, onPlayerClick }) {
   const teamFlag = (side) => flag(side === "home" ? m.home : m.away);
   const teamName = (side) => side === "home" ? m.home : m.away;
 
-  // ESPN side = beneficiary. For OGs the scorer is on the opposite side.
-  const scorerSide = (g) => g.og ? (g.side === "home" ? "away" : "home") : g.side;
+  // ESPN side = player's team. OG by away player counts for home (and vice versa).
+  // Flag shows the player's own team. "No goals" checks the beneficiary side.
+  const beneficiarySide = (g) => g.og ? (g.side === "home" ? "away" : "home") : g.side;
   const goalRows = goals.map((g) => ({
-    flag: teamFlag(scorerSide(g)),
+    flag: teamFlag(g.side),
     label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
     minute: g.minute,
-    onRowClick: onPlayerClick ? () => onPlayerClick(g.player, teamName(scorerSide(g))) : null,
+    onRowClick: onPlayerClick ? () => onPlayerClick(g.player, teamName(g.side)) : null,
   }));
   for (const side of ["home", "away"]) {
-    if (!goals.some((g) => g.side === side)) {
+    if (!goals.some((g) => beneficiarySide(g) === side)) {
       goalRows.push({ flag: teamFlag(side), label: "No goals", minute: "", muted: true });
     }
   }
@@ -1784,10 +1785,11 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
   // Goals rows extracted for the panel view.
   const goals = m.goals || [];
   const cards = m.cards || [];
-  const goalRows = goals.map((g) => {
-    const scorerSide = g.og ? (g.side === "home" ? "away" : "home") : g.side;
-    return { flag: flag(scorerSide === "home" ? m.home : m.away), label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""), minute: g.minute };
-  });
+  const goalRows = goals.map((g) => ({
+    flag: flag(g.side === "home" ? m.home : m.away),
+    label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""),
+    minute: g.minute,
+  }));
 
   // Stats rows.
   const hs = m.homeStats || {};
