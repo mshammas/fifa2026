@@ -2623,7 +2623,7 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
                     fontSize: 14, fontWeight: 800, whiteSpace: "nowrap",
                   }}
                 >
-                  ⭐ Favs
+                  ⭐ Favourites
                 </button>
               )}
               <div style={{ position: "relative" }}
