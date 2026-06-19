@@ -2465,6 +2465,12 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
   const [favOnly, setFavOnly] = useLocalStorage("wc_favonly_filter", false);
   const [upcomingOnly, setUpcomingOnly] = useLocalStorage("wc_upcoming_filter", false);
   const [showUpcomingTip, setShowUpcomingTip] = useState(false);
+  const upcomingTipTimer = React.useRef(null);
+  const showUpcomingTipFor = (ms) => {
+    clearTimeout(upcomingTipTimer.current);
+    setShowUpcomingTip(true);
+    if (ms) upcomingTipTimer.current = setTimeout(() => setShowUpcomingTip(false), ms);
+  };
   const [search, setSearch] = useState("");
 
   const isLive = (m) => m.status === "LIVE" || m.status === "HT";
@@ -2621,8 +2627,9 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
             </button>
           )}
           <div style={{ position: "relative", flexShrink: 0 }}
-            onMouseEnter={() => setShowUpcomingTip(true)}
-            onMouseLeave={() => setShowUpcomingTip(false)}
+            onMouseEnter={() => showUpcomingTipFor(0)}
+            onMouseLeave={() => { clearTimeout(upcomingTipTimer.current); setShowUpcomingTip(false); }}
+            onTouchStart={() => showUpcomingTipFor(2500)}
           >
             {showUpcomingTip && (
               <div style={{
