@@ -1300,7 +1300,7 @@ async function shareMatchAsImage(m) {
 }
 
 async function shareUpcomingMatchAsImage(m) {
-  const W = 600, H = 362;
+  const W = 600, H = 318;
   const canvas = document.createElement("canvas");
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d");
@@ -1319,36 +1319,36 @@ async function shareUpcomingMatchAsImage(m) {
   ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#9aa0b4";
   ctx.textAlign = "center";
-  ctx.fillText("⚽  FIFA WORLD CUP 2026" + (m.group ? `  ·  GROUP ${m.group}` : "  ·  KNOCKOUT"), W / 2, 36);
+  ctx.fillText("⚽  FIFA WORLD CUP 2026" + (m.group ? `  ·  GROUP ${m.group}` : "  ·  KNOCKOUT"), W / 2, 28);
 
   // Teams + VS as one centered row: home right-aligned | VS | away left-aligned
   ctx.font = "bold 26px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#ffffff";
   ctx.textAlign = "right";
-  ctx.fillText(flag(m.home) + "  " + m.home, W / 2 - 28, 122, 240);
+  ctx.fillText(flag(m.home) + "  " + m.home, W / 2 - 28, 72, 240);
   ctx.textAlign = "left";
-  ctx.fillText(flag(m.away) + "  " + m.away, W / 2 + 28, 122, 240);
+  ctx.fillText(flag(m.away) + "  " + m.away, W / 2 + 28, 72, 240);
   ctx.font = "bold 17px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#3a3a50";
   ctx.textAlign = "center";
-  ctx.fillText("vs", W / 2, 122);
+  ctx.fillText("vs", W / 2, 72);
 
   // Venue
   if (m.venue) {
     ctx.font = "12px system-ui,-apple-system,sans-serif";
     ctx.fillStyle = "#9aa0b4";
-    ctx.fillText(m.venue, W / 2, 148, W - 40);
+    ctx.fillText(m.venue, W / 2, 96, W - 40);
   }
 
   // Divider
   ctx.strokeStyle = "#2a2a38"; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(24, 162); ctx.lineTo(W - 24, 162); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 110); ctx.lineTo(W - 24, 110); ctx.stroke();
 
   // Kick-off times header
   ctx.font = "bold 11px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 182);
+  ctx.fillText("🕐  KICK-OFF TIMES AROUND THE WORLD", W / 2, 130);
 
   // Timezone grid — 4 columns × 3 rows
   const zones = [
@@ -1373,7 +1373,7 @@ async function shareUpcomingMatchAsImage(m) {
 
   const cols = 4;
   const colW = (W - 32) / cols;
-  const rowY0 = 198, rowH = 42;
+  const rowY0 = 148, rowH = 42;
 
   for (let i = 0; i < zones.length; i++) {
     const z = zones[i];
@@ -1390,13 +1390,13 @@ async function shareUpcomingMatchAsImage(m) {
 
   // Divider
   ctx.strokeStyle = "#2a2a38";
-  ctx.beginPath(); ctx.moveTo(24, 330); ctx.lineTo(W - 24, 330); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(24, 284); ctx.lineTo(W - 24, 284); ctx.stroke();
 
   // URL
   ctx.font = "bold 13px system-ui,-apple-system,sans-serif";
   ctx.fillStyle = "#22c55e";
   ctx.textAlign = "center";
-  ctx.fillText("fifa.shammas.in", W / 2, 352);
+  ctx.fillText("fifa.shammas.in", W / 2, 304);
 
   return new Promise(resolve => canvas.toBlob(resolve, "image/png"));
 }
