@@ -1921,7 +1921,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "67'",
+      "clock": "68'",
       "goals": [
         {
           "side": "home",
@@ -1961,19 +1961,19 @@
         {
           "side": "home",
           "player": "D. Santos",
-          "minute": "66'",
+          "minute": "65'",
           "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "59",
+        "possessionPct": "59.9",
         "shotsOnTarget": "5",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "41",
+        "possessionPct": "40.1",
         "shotsOnTarget": "1",
-        "totalShots": "3"
+        "totalShots": "4"
       },
       "recap": null
     },
@@ -3227,6 +3227,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T02:02:20.777Z",
+  "lastUpdated": "2026-06-20T02:04:25.924Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
