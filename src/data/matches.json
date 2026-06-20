@@ -1920,8 +1920,8 @@
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
       "homeScore": 3,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+3'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -1972,14 +1972,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "57.1",
+        "possessionPct": "56.5",
         "shotsOnTarget": "5",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "42.9",
-        "shotsOnTarget": "2",
-        "totalShots": "6"
+        "possessionPct": "43.5",
+        "shotsOnTarget": "3",
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -3233,6 +3233,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T02:30:37.980Z",
+  "lastUpdated": "2026-06-20T02:32:20.162Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
