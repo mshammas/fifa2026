@@ -1921,14 +1921,14 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "25'",
+      "clock": "28'",
       "goals": [
         {
           "side": "home",
-          "player": "—",
+          "player": "M. Cunha",
           "minute": "23'",
           "pen": false,
-          "og": true
+          "og": false
         }
       ],
       "cards": [
@@ -1940,12 +1940,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "63.6",
+        "possessionPct": "62.7",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "36.4",
+        "possessionPct": "37.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3193,6 +3193,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T00:58:19.835Z",
+  "lastUpdated": "2026-06-20T01:00:40.106Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
