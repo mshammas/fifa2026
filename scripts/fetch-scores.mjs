@@ -20,6 +20,7 @@ import * as cheerio from "cheerio";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = path.join(__dirname, "../src/data/matches.json");
+const PUBLIC_OUT_PATH = path.join(__dirname, "../public/data/matches.json");
 const WIKI_URL = "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup";
 const ESPN_SCOREBOARD = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard";
 const ESPN_STANDINGS = "https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings";
@@ -227,9 +228,12 @@ async function main() {
   }
 
   const output = { matches, lastUpdated: new Date().toISOString(), source };
+  const json = JSON.stringify(output, null, 2) + "\n";
   fs.mkdirSync(path.dirname(OUT_PATH), { recursive: true });
-  fs.writeFileSync(OUT_PATH, JSON.stringify(output, null, 2) + "\n");
-  console.log(`\n✓ Wrote ${matches.length} matches to src/data/matches.json`);
+  fs.writeFileSync(OUT_PATH, json);
+  fs.mkdirSync(path.dirname(PUBLIC_OUT_PATH), { recursive: true });
+  fs.writeFileSync(PUBLIC_OUT_PATH, json);
+  console.log(`\n✓ Wrote ${matches.length} matches to src/data/matches.json + public/data/matches.json`);
   console.log(`✓ Last updated: ${output.lastUpdated}`);
 }
 

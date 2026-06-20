@@ -29,8 +29,8 @@ self.addEventListener("fetch", (e) => {
 
   const url = new URL(e.request.url);
 
-  // Network-first for the HTML shell so updates propagate immediately.
-  if (url.pathname === "/" || url.pathname.endsWith(".html")) {
+  // Network-first for the HTML shell and live match data.
+  if (url.pathname === "/" || url.pathname.endsWith(".html") || url.pathname.endsWith("matches.json")) {
     e.respondWith(
       fetch(e.request)
         .then((r) => {

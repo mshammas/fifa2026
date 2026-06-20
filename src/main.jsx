@@ -3821,7 +3821,7 @@ export default function App() {
 
   const refreshMatches = useCallback(async () => {
     try {
-      const res = await fetch(`./src/data/matches.json?t=${Date.now()}`);
+      const res = await fetch(`./data/matches.json?t=${Date.now()}`);
       if (!res.ok) return;
       const data = await res.json();
       setMatchesState(data);
