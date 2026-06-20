@@ -225,6 +225,10 @@ function GlobalStyles({ fontScale = 1 }) {
       .wc-ticker:hover { animation-play-state: paused; }
       @keyframes wcScoreFlash { 0% { color: ${C.green}; transform: scale(1.35); } 100% { color: inherit; transform: scale(1); } }
       .wc-score-flash { animation: wcScoreFlash 0.65s ease; }
+      @keyframes wcEventToastIn { from { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(0.9); } to { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); } }
+      @keyframes wcEventToastOut { from { opacity: 1; } to { opacity: 0; transform: translateX(-50%) translateY(-12px); } }
+      .wc-event-toast-in  { animation: wcEventToastIn  0.3s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+      .wc-event-toast-out { animation: wcEventToastOut 0.3s ease forwards; }
       .wc-noscroll { scrollbar-width: none; -ms-overflow-style: none; }
       .wc-noscroll::-webkit-scrollbar { display: none; }
       @keyframes wcUpcomingPulse {
@@ -1498,7 +1502,11 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
     window.speechSynthesis.cancel();
     const utt = new SpeechSynthesisUtterance(text);
     utt.rate = rate; utt.pitch = pitch; utt.volume = 1;
-    window.speechSynthesis.speak(utt);
+    // resume() + setTimeout: iOS Safari silently drops speak() immediately after cancel()
+    setTimeout(() => {
+      window.speechSynthesis.resume();
+      window.speechSynthesis.speak(utt);
+    }, 80);
   };
 
   // Ambient crowd noise — Web Audio API for gapless looping
@@ -1791,6 +1799,48 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
   const homeFlash  = useScoreFlash(mh);
   const awayFlash  = useScoreFlash(ma);
 
+  // Visual event toast — shown for goals/cards as a reliable fallback to speech synthesis
+  const [eventToast, setEventToast] = useState(null);
+  const [toastLeaving, setToastLeaving] = useState(false);
+  const toastTimer = React.useRef(null);
+  const toastLeaveTimer = React.useRef(null);
+  const prevToastGoals   = React.useRef(goals.length);
+  const prevToastYellow  = React.useRef(yellowCount);
+  const prevToastRed     = React.useRef(redCount);
+
+  const showToast = (icon, text, bg) => {
+    clearTimeout(toastTimer.current);
+    clearTimeout(toastLeaveTimer.current);
+    setToastLeaving(false);
+    setEventToast({ icon, text, bg });
+    toastTimer.current = setTimeout(() => {
+      setToastLeaving(true);
+      toastLeaveTimer.current = setTimeout(() => { setEventToast(null); setToastLeaving(false); }, 300);
+    }, 4000);
+  };
+
+  useEffect(() => {
+    if (goals.length > prevToastGoals.current) {
+      const g = goals[goals.length - 1];
+      showToast("⚽", g?.player ? `GOAL!  ${g.player}` : "GOAL!", C.green);
+    }
+    prevToastGoals.current = goals.length;
+  }, [goals.length]);
+
+  useEffect(() => {
+    if (yellowCount > prevToastYellow.current) {
+      showToast("🟨", lastYellowPlayer ? `Yellow — ${lastYellowPlayer}` : "Yellow card", "#b45309");
+    }
+    prevToastYellow.current = yellowCount;
+  }, [yellowCount]);
+
+  useEffect(() => {
+    if (redCount > prevToastRed.current) {
+      showToast("🟥", lastRedPlayer ? `Red card — ${lastRedPlayer}` : "Red card! Off!", C.red);
+    }
+    prevToastRed.current = redCount;
+  }, [redCount]);
+
   const homeYellow = cards.filter(c => c.side === "home" && c.type === "yellow").length;
   const homeRed    = cards.filter(c => c.side === "home" && c.type === "red").length;
   const awayYellow = cards.filter(c => c.side === "away" && c.type === "yellow").length;
@@ -1838,6 +1888,18 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
 
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+
+      {/* ── EVENT TOAST ── */}
+      {eventToast && (
+        <div className={toastLeaving ? "wc-event-toast-out" : "wc-event-toast-in"} style={{
+          position: "absolute", top: 68, left: "50%", transform: "translateX(-50%)",
+          background: eventToast.bg, color: "#fff", padding: "10px 22px", borderRadius: 28,
+          fontWeight: 700, fontSize: 17, zIndex: 320, whiteSpace: "nowrap",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.5)", pointerEvents: "none", letterSpacing: 0.3,
+        }}>
+          {eventToast.icon} {eventToast.text}
+        </div>
+      )}
 
       {/* ── HEADER ── */}
       <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px", borderBottom: `1px solid ${C.border}` }}>
