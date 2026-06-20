@@ -2164,16 +2164,16 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "59.4",
+        "possessionPct": "59.5",
         "shotsOnTarget": "7",
         "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "40.6",
+        "possessionPct": "40.5",
         "shotsOnTarget": "2",
         "totalShots": "9"
       },
-      "recap": null
+      "recap": "A brace by substitute Deniz Undav fired Germany to a last-gasp 2-1 win over Ivory Coast to secure their place in the last 32 of the World Cup."
     },
     {
       "id": "e760446",
@@ -2188,8 +2188,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3366,6 +3374,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T22:00:41.724Z",
+  "lastUpdated": "2026-06-20T23:58:20.794Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
