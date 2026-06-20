@@ -2135,19 +2135,19 @@
       "away": "Ivory Coast",
       "group": "E",
       "venue": "BMO Field, Toronto",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "33.3",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "66.7",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3344,6 +3344,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T20:00:34.997Z",
+  "lastUpdated": "2026-06-20T20:02:21.183Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
