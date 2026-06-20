@@ -2051,7 +2051,7 @@
       "homeScore": 4,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "79'",
+      "clock": "81'",
       "goals": [
         {
           "side": "home",
@@ -2101,15 +2101,21 @@
           "player": "Y. Ayari",
           "minute": "75'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Bergvall",
+          "minute": "80'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "54.9",
+        "possessionPct": "54.2",
         "shotsOnTarget": "6",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "45.1",
+        "possessionPct": "45.8",
         "shotsOnTarget": "5",
         "totalShots": "12"
       },
@@ -3323,6 +3329,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T18:40:33.669Z",
+  "lastUpdated": "2026-06-20T18:42:20.903Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
