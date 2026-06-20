@@ -1854,12 +1854,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "62",
+        "possessionPct": "61.9",
         "shotsOnTarget": "2",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "38",
+        "possessionPct": "38.1",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
@@ -1909,7 +1909,7 @@
         "shotsOnTarget": "2",
         "totalShots": "12"
       },
-      "recap": null
+      "recap": "Scotland's spirited second-half rally was not enough to bring any World Cup joy as they suffered a frustrating 1-0 defeat to Morocco in Foxborough."
     },
     {
       "id": "e760444",
@@ -3178,6 +3178,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T00:00:41.373Z",
+  "lastUpdated": "2026-06-20T00:28:22.539Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
