@@ -1992,8 +1992,8 @@
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+9'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -2877,7 +2877,7 @@
     {
       "id": "e760494",
       "date": "2026-07-02T00:00Z",
-      "home": "Group D Winner",
+      "home": "USA",
       "away": "Third Place Group B/E/F/I/J",
       "group": null,
       "venue": "Levi's Stadium, Santa Clara, California",
@@ -3266,6 +3266,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T05:06:29.345Z",
+  "lastUpdated": "2026-06-20T05:08:25.296Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
