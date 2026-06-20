@@ -1921,7 +1921,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "65'",
+      "clock": "67'",
       "goals": [
         {
           "side": "home",
@@ -1957,17 +1957,23 @@
           "player": "F. Pierrot",
           "minute": "45'+4'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "D. Santos",
+          "minute": "66'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "59.1",
+        "possessionPct": "59",
         "shotsOnTarget": "5",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "40.9",
+        "possessionPct": "41",
         "shotsOnTarget": "1",
-        "totalShots": "2"
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -1984,8 +1990,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3213,6 +3227,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T02:00:35.448Z",
+  "lastUpdated": "2026-06-20T02:02:20.777Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
