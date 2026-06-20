@@ -2051,7 +2051,7 @@
       "homeScore": 4,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "73'",
+      "clock": "76'",
       "goals": [
         {
           "side": "home",
@@ -2095,15 +2095,21 @@
           "player": "G. Gudmundsson",
           "minute": "53'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "Y. Ayari",
+          "minute": "75'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "54.4",
+        "possessionPct": "55.3",
         "shotsOnTarget": "6",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "45.6",
+        "possessionPct": "44.7",
         "shotsOnTarget": "5",
         "totalShots": "12"
       },
@@ -3317,6 +3323,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T18:36:27.369Z",
+  "lastUpdated": "2026-06-20T18:38:22.047Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
