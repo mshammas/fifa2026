@@ -1918,10 +1918,10 @@
       "away": "Haiti",
       "group": "C",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -3178,6 +3178,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T00:32:26.092Z",
+  "lastUpdated": "2026-06-20T00:34:22.142Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
