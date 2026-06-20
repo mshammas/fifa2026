@@ -1993,7 +1993,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "67'",
+      "clock": "72'",
       "goals": [
         {
           "side": "away",
@@ -2021,15 +2021,21 @@
           "player": "—",
           "minute": "63'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "E. Elmali",
+          "minute": "71'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "79.8",
+        "possessionPct": "79.7",
         "shotsOnTarget": "4",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "20.2",
+        "possessionPct": "20.3",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
@@ -3260,6 +3266,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T04:36:26.445Z",
+  "lastUpdated": "2026-06-20T04:38:20.877Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
