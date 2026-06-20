@@ -2048,19 +2048,27 @@
       "away": "Sweden",
       "group": "F",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "4'",
-      "goals": [],
+      "clock": "6'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "B. Brobbey",
+          "minute": "5'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "57.6",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "69.2",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "42.4",
+        "possessionPct": "30.8",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3274,6 +3282,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T17:04:23.462Z",
+  "lastUpdated": "2026-06-20T17:06:22.683Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
