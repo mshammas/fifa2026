@@ -1918,11 +1918,19 @@
       "away": "Haiti",
       "group": "C",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "23'",
-      "goals": [],
+      "clock": "25'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "—",
+          "minute": "23'",
+          "pen": false,
+          "og": true
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -1932,12 +1940,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "65.5",
-        "shotsOnTarget": "0",
-        "totalShots": "2"
+        "possessionPct": "63.6",
+        "shotsOnTarget": "2",
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "34.5",
+        "possessionPct": "36.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3185,6 +3193,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T00:56:21.935Z",
+  "lastUpdated": "2026-06-20T00:58:19.835Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
