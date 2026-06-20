@@ -1760,70 +1760,98 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
   }, []);
   const secs = Math.max(1, 30 - Math.floor((Date.now() - lastRefreshed) / 1000));
 
-  // Crowd audio
   const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
+  const [showRecap, setShowRecap] = useState(false);
+
   const isLive = m.status === "LIVE" || m.status === "HT";
-  const goalCount     = (m.goals || []).length;
-  const yellowCards   = (m.cards || []).filter(c => c.type === "yellow");
-  const redCards      = (m.cards || []).filter(c => c.type === "red");
-  const yellowCount   = yellowCards.length;
-  const redCount      = redCards.length;
+  const goals  = m.goals || [];
+  const cards  = m.cards || [];
+
+  const yellowCards      = cards.filter(c => c.type === "yellow");
+  const redCards         = cards.filter(c => c.type === "red");
+  const yellowCount      = yellowCards.length;
+  const redCount         = redCards.length;
   const lastYellowCard   = yellowCards[yellowCards.length - 1];
   const lastRedCard      = redCards[redCards.length - 1];
   const lastYellowPlayer = lastYellowCard?.player ?? null;
   const lastYellowTeam   = lastYellowCard ? (lastYellowCard.side === "home" ? m.home : m.away) : null;
   const lastRedPlayer    = lastRedCard?.player ?? null;
   const lastRedTeam      = lastRedCard ? (lastRedCard.side === "home" ? m.home : m.away) : null;
-  const shotsOnTarget = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
-  const { h: liveH, a: liveA } = liveScores(m);
-  useCrowdAudio(crowdOn, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
+  const shotsOnTarget    = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
 
-  const wide = useWindowWidth() >= 768;
-  const mh = liveH; const ma = liveA;
-  const hasScore = mh != null && ma != null;
+  const { h: liveH, a: liveA } = liveScores(m);
+  useCrowdAudio(crowdOn, isLive, goals.length, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
+
+  const wide      = useWindowWidth() >= 768;
+  const mh        = liveH;
+  const ma        = liveA;
+  const hasScore  = mh != null && ma != null;
   const watchQuery = encodeURIComponent(`${m.home} vs ${m.away} live`);
 
-  const panelStyle = {
-    background: C.card, border: `1px solid ${C.border}`, borderRadius: 16,
-    padding: "20px 22px", display: "flex", flexDirection: "column",
-  };
-  const panelHead = (icon, title) => (
-    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-      <div style={{ width: 34, height: 34, borderRadius: 10, background: "rgba(220,38,38,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, flexShrink: 0 }}>{icon}</div>
-      <span style={{ fontSize: 15, fontWeight: 900, letterSpacing: 0.5 }}>{title}</span>
-    </div>
-  );
+  const homeFlash  = useScoreFlash(mh);
+  const awayFlash  = useScoreFlash(ma);
 
-  // Goals rows extracted for the panel view.
-  const goals = m.goals || [];
-  const cards = m.cards || [];
+  const homeYellow = cards.filter(c => c.side === "home" && c.type === "yellow").length;
+  const homeRed    = cards.filter(c => c.side === "home" && c.type === "red").length;
+  const awayYellow = cards.filter(c => c.side === "away" && c.type === "yellow").length;
+  const awayRed    = cards.filter(c => c.side === "away" && c.type === "red").length;
+
   const goalRows = goals.map((g) => {
     const scorerSide = g.og ? (g.side === "home" ? "away" : "home") : g.side;
-    return { flag: flag(scorerSide === "home" ? m.home : m.away), label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""), minute: g.minute };
+    return { flag: flag(scorerSide === "home" ? m.home : m.away), label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""), minute: g.minute, side: g.side };
   });
 
-  // Stats rows.
   const hs = m.homeStats || {};
   const as = m.awayStats || {};
   const statKeys = Object.keys(STAT_LABELS).filter((k) => hs[k] != null || as[k] != null);
 
+  const statusSub = m.status === "FT" ? "FULL TIME"
+    : m.status === "HT" ? "HALF TIME"
+    : m.status === "LIVE" && m.clock ? m.clock
+    : "";
+
+  const flagSz  = wide ? 62 : 50;
+  const scoreSz = wide ? 72 : 58;
+  const teamSz  = wide ? 18 : 15;
+
+  const panelStyle = {
+    background: C.card, border: `1px solid ${C.border}`, borderRadius: 12,
+    padding: "12px 14px", display: "flex", flexDirection: "column", minHeight: 0, overflow: "hidden",
+  };
+
+  const panelHead = (txt) => (
+    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1, color: C.dim, textTransform: "uppercase", marginBottom: 8, flexShrink: 0 }}>{txt}</div>
+  );
+
+  const eventRow = (key, emoji, teamFlag, name, detail, onClick) => (
+    <div
+      key={key}
+      onClick={onClick}
+      style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 6px", borderRadius: 8, background: "rgba(255,255,255,0.03)", marginBottom: 4, cursor: onClick ? "pointer" : "default", flexShrink: 0 }}
+    >
+      <span style={{ fontSize: 18, flexShrink: 0 }}>{teamFlag}</span>
+      <span style={{ flex: 1, fontSize: 14, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{name}</span>
+      {onClick && <span style={{ fontSize: 11, color: C.dim, flexShrink: 0 }}>›</span>}
+      <span style={{ fontSize: 13, fontWeight: 800, color: C.dim, whiteSpace: "nowrap" }}>{emoji} {detail}</span>
+    </div>
+  );
+
   return (
     <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-      {/* Sticky header */}
-      <div style={{ flexShrink: 0, background: C.bg, borderBottom: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", gap: 10 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <StatusBadge status={m.status} clock={m.clock} />
-          {m.group && <span style={{ fontSize: 15, fontWeight: 700, color: C.dim }}>Group {m.group}</span>}
-        </div>
+
+      {/* ── HEADER ── */}
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 16px", borderBottom: `1px solid ${C.border}` }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontSize: 12, fontWeight: 700, color: C.dim }}>↻ {secs}s</span>
+          <StatusBadge status={m.status} clock={m.clock} />
+          {m.group && <span style={{ fontSize: 13, fontWeight: 700, color: C.dim, letterSpacing: 0.5 }}>GROUP {m.group}</span>}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          {isLive && <span style={{ fontSize: 11, fontWeight: 700, color: C.dim }}>↻ {secs}s</span>}
           <button
             onClick={() => setCrowdOn(!crowdOn)}
             title={crowdOn ? "Mute crowd audio" : "Enable crowd audio"}
             style={{ background: crowdOn ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.07)", border: crowdOn ? "1px solid rgba(34,197,94,0.4)" : `1px solid ${C.border}`, borderRadius: 8, color: crowdOn ? C.green : C.dim, fontSize: 16, padding: "5px 8px", cursor: "pointer", lineHeight: 1 }}
-          >
-            {crowdOn ? "🔊" : "🔇"}
-          </button>
+          >{crowdOn ? "🔊" : "🔇"}</button>
           <ShareButton m={m} />
           <button
             onClick={onClose}
@@ -1832,215 +1860,155 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
         </div>
       </div>
 
-      {wide ? (
-        /* ── WIDE LAYOUT (tablet / desktop) ───────────────────────── */
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", padding: "16px 20px 20px", gap: 14, minHeight: 0 }}>
-          {/* Three-column panel row */}
-          <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14, minHeight: 0 }}>
-
-            {/* Panel 1 — Score */}
-            {(() => {
-              const homeYellow = cards.filter(c => c.side === "home" && c.type === "yellow").length;
-              const homeRed    = cards.filter(c => c.side === "home" && c.type === "red").length;
-              const awayYellow = cards.filter(c => c.side === "away" && c.type === "yellow").length;
-              const awayRed    = cards.filter(c => c.side === "away" && c.type === "red").length;
-              const hasCards   = homeYellow + homeRed + awayYellow + awayRed > 0;
-              const statusLabel = m.status === "FT" ? "FULL TIME" : m.status === "HT" ? "HALF TIME" : "LIVE";
-              return (
-                <div style={panelStyle}>
-                  {panelHead("🏆", "SCORE")}
-                  <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-
-                    {/* Teams + score — main hero area */}
-                    <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "space-around", gap: 8, padding: "10px 0" }}>
-                      <div style={{ textAlign: "center", flex: 1 }}>
-                        <div style={{ fontSize: 80, lineHeight: 1.05 }}>{flag(m.home)}</div>
-                        <div style={{ fontSize: 19, fontWeight: 900, marginTop: 12, lineHeight: 1.3 }}>{m.home}</div>
-                        {hasCards && (
-                          <div style={{ marginTop: 8, fontSize: 14, color: C.dim }}>
-                            {homeYellow > 0 && <span>🟨 {homeYellow} </span>}
-                            {homeRed    > 0 && <span>🟥 {homeRed}</span>}
-                            {homeYellow === 0 && homeRed === 0 && <span style={{ opacity: 0 }}>–</span>}
-                          </div>
-                        )}
-                      </div>
-
-                      <div style={{ textAlign: "center", minWidth: 90 }}>
-                        {hasScore
-                          ? <div style={{ fontSize: 68, fontWeight: 900, letterSpacing: -3, lineHeight: 1 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
-                          : <div style={{ fontSize: 28, color: C.dim, fontWeight: 700 }}>vs</div>}
-                      </div>
-
-                      <div style={{ textAlign: "center", flex: 1 }}>
-                        <div style={{ fontSize: 80, lineHeight: 1.05 }}>{flag(m.away)}</div>
-                        <div style={{ fontSize: 19, fontWeight: 900, marginTop: 12, lineHeight: 1.3 }}>{m.away}</div>
-                        {hasCards && (
-                          <div style={{ marginTop: 8, fontSize: 14, color: C.dim }}>
-                            {awayYellow > 0 && <span>🟨 {awayYellow} </span>}
-                            {awayRed    > 0 && <span>🟥 {awayRed}</span>}
-                            {awayYellow === 0 && awayRed === 0 && <span style={{ opacity: 0 }}>–</span>}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Status bar */}
-                    {hasScore && (
-                      <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 16, display: "flex", justifyContent: "space-around", alignItems: "center" }}>
-                        <span style={{ fontSize: 17, color: C.dim }}>⚽ <strong style={{ color: C.text, fontSize: 20 }}>{mh}</strong></span>
-                        <span style={{ fontSize: 13, fontWeight: 900, letterSpacing: 1, color: C.dim }}>{statusLabel}</span>
-                        <span style={{ fontSize: 17, color: C.dim }}><strong style={{ color: C.text, fontSize: 20 }}>{ma}</strong> ⚽</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })()}
-
-            {/* Panel 2 — Goals */}
-            <div style={panelStyle}>
-              {panelHead("⚽", "GOALS")}
-              <div style={{ flex: 1, overflowY: "auto" }}>
-                {goalRows.length === 0 && cards.length === 0 ? (
-                  <div style={{ color: C.dim, fontSize: 14, textAlign: "center", marginTop: 20 }}>No events yet</div>
-                ) : (
-                  <div style={{ display: "grid", gap: 10 }}>
-                    <GoalTimeline m={m} />
-                    {goalRows.map((g, i) => (
-                      <div
-                        key={i}
-                        onClick={onPlayerClick ? () => onPlayerClick(goals[i]?.player, goals[i]?.side === "home" ? m.home : m.away) : undefined}
-                        style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", background: "rgba(255,255,255,0.04)", borderRadius: 10, cursor: onPlayerClick ? "pointer" : "default" }}
-                      >
-                        <span style={{ fontSize: 20, flexShrink: 0 }}>{g.flag}</span>
-                        <span style={{ flex: 1, fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{g.label}</span>
-                        {onPlayerClick && <span style={{ fontSize: 11, color: C.dim, flexShrink: 0 }}>›</span>}
-                        <span style={{ fontSize: 14, fontWeight: 800, color: C.dim, whiteSpace: "nowrap" }}>{g.minute}</span>
-                      </div>
-                    ))}
-                    {cards.map((c, i) => (
-                      <div
-                        key={`c${i}`}
-                        onClick={onPlayerClick ? () => onPlayerClick(c.player, c.side === "home" ? m.home : m.away) : undefined}
-                        style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", background: "rgba(255,255,255,0.04)", borderRadius: 10, cursor: onPlayerClick ? "pointer" : "default" }}
-                      >
-                        <span style={{ fontSize: 20, flexShrink: 0 }}>{flag(c.side === "home" ? m.home : m.away)}</span>
-                        <span style={{ flex: 1, fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.player}</span>
-                        {onPlayerClick && <span style={{ fontSize: 11, color: C.dim, flexShrink: 0 }}>›</span>}
-                        <span style={{ fontSize: 14, fontWeight: 800, color: C.dim, whiteSpace: "nowrap" }}>{c.type === "red" ? "🟥" : "🟨"} {c.minute}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Panel 3 — Stats */}
-            <div style={panelStyle}>
-              {panelHead("📊", "MATCH STATS")}
-              {statKeys.length === 0 ? (
-                <div style={{ color: C.dim, fontSize: 14, textAlign: "center", marginTop: 20 }}>Stats not available yet</div>
-              ) : (
-                <div style={{ flex: 1, overflowY: "auto", display: "grid", gap: 16 }}>
-                  {statKeys.map((k) => {
-                    const { label, suffix = "" } = STAT_LABELS[k];
-                    const hv = parseFloat(hs[k]) || 0;
-                    const av = parseFloat(as[k]) || 0;
-                    const total = hv + av || 1;
-                    const hPct = Math.round((hv / total) * 100);
-                    return (
-                      <div key={k}>
-                        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15, fontWeight: 800, marginBottom: 6 }}>
-                          <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
-                          <span style={{ color: C.dim, fontWeight: 700, fontSize: 13 }}>{label}</span>
-                          <span style={{ color: "#aaa" }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
-                        </div>
-                        <div style={{ display: "flex", height: 7, borderRadius: 4, overflow: "hidden", background: C.border }}>
-                          <div style={{ width: `${hPct}%`, background: C.green, borderRadius: "4px 0 0 4px" }} />
-                          <div style={{ flex: 1, background: "#555", borderRadius: "0 4px 4px 0" }} />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
+      {/* ── HERO SCORE ── */}
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: wide ? "14px 28px 12px" : "10px 20px 8px", borderBottom: `1px solid ${C.border}` }}>
+        <div style={{ textAlign: "center", flex: 1 }}>
+          <div style={{ fontSize: flagSz, lineHeight: 1 }}>{flag(m.home)}</div>
+          <div style={{ fontSize: teamSz, fontWeight: 800, marginTop: 6, lineHeight: 1.3 }}>{m.home}</div>
+          <div style={{ fontSize: 14, marginTop: 4, minHeight: 20, color: C.dim }}>
+            {homeYellow > 0 && <span>🟨{homeYellow > 1 ? `×${homeYellow}` : ""} </span>}
+            {homeRed    > 0 && <span>🟥{homeRed > 1 ? `×${homeRed}` : ""}</span>}
           </div>
+        </div>
 
-          {/* Bottom bar — venue + Watch Live */}
-          <div style={{ flexShrink: 0, background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "14px 20px", display: "flex", alignItems: "center", gap: 16 }}>
-            <div style={{ display: "flex", gap: 12, alignItems: "center", flex: 1, minWidth: 0 }}>
-              <div style={{ width: 38, height: 38, borderRadius: 10, background: "rgba(239,68,68,0.15)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>📍</div>
-              <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: 11, fontWeight: 900, color: C.dim, letterSpacing: 1, textTransform: "uppercase" }}>Venue</div>
-                <div style={{ fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.venue}</div>
-              </div>
+        <div style={{ textAlign: "center", flexShrink: 0, padding: "0 16px" }}>
+          {hasScore ? (
+            <div style={{ display: "flex", alignItems: "baseline", gap: 2 }}>
+              <span className={homeFlash ? "wc-score-flash" : ""} style={{ fontSize: scoreSz, fontWeight: 900, letterSpacing: -3, lineHeight: 1 }}>{mh}</span>
+              <span style={{ fontSize: Math.round(scoreSz * 0.54), fontWeight: 300, color: C.dim, lineHeight: 1, margin: "0 4px" }}>–</span>
+              <span className={awayFlash ? "wc-score-flash" : ""} style={{ fontSize: scoreSz, fontWeight: 900, letterSpacing: -3, lineHeight: 1 }}>{ma}</span>
             </div>
-            <a
-              href={`https://www.google.com/search?q=${watchQuery}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0, fontSize: 16, fontWeight: 900, color: "#06210f", background: C.green, borderRadius: 12, padding: "12px 22px", textDecoration: "none" }}
-            >
-              ▶ Watch Live
-            </a>
+          ) : (
+            <div style={{ fontSize: wide ? 34 : 26, fontWeight: 700, color: C.dim }}>vs</div>
+          )}
+          {statusSub && (
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: C.dim, textTransform: "uppercase", marginTop: 5 }}>{statusSub}</div>
+          )}
+        </div>
+
+        <div style={{ textAlign: "center", flex: 1 }}>
+          <div style={{ fontSize: flagSz, lineHeight: 1 }}>{flag(m.away)}</div>
+          <div style={{ fontSize: teamSz, fontWeight: 800, marginTop: 6, lineHeight: 1.3 }}>{m.away}</div>
+          <div style={{ fontSize: 14, marginTop: 4, minHeight: 20, color: C.dim }}>
+            {awayYellow > 0 && <span>🟨{awayYellow > 1 ? `×${awayYellow}` : ""} </span>}
+            {awayRed    > 0 && <span>🟥{awayRed > 1 ? `×${awayRed}` : ""}</span>}
           </div>
-          {m.recap && (
-            <div style={{ flexShrink: 0, background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "16px 20px" }}>
-              <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 10 }}>
-                {eventBadge("📰")}
-                <div style={{ fontSize: 16, fontWeight: 800 }}>Match Recap</div>
-              </div>
-              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: C.dim }}>{m.recap}</p>
+        </div>
+      </div>
+
+      {/* ── GOAL TIMELINE — full-width strip ── */}
+      {(goals.length > 0 || cards.length > 0) && (
+        <div style={{ flexShrink: 0, padding: "0 18px 8px", borderBottom: `1px solid ${C.border}` }}>
+          <GoalTimeline m={m} />
+        </div>
+      )}
+
+      {/* ── PANELS: Events + Stats side by side (wide) or stacked (mobile) ── */}
+      <div style={{ flex: 1, display: "grid", gridTemplateColumns: wide ? "1fr 1fr" : "1fr", gap: 10, padding: wide ? "12px 16px" : "10px 14px", minHeight: 0 }}>
+
+        {/* Events — goals + cards unified */}
+        <div style={panelStyle}>
+          {panelHead("⚽  Goals & Cards")}
+          {goals.length === 0 && cards.length === 0 ? (
+            <div style={{ color: C.dim, fontSize: 14, textAlign: "center", padding: "16px 0" }}>No events yet</div>
+          ) : (
+            <div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>
+              {goalRows.map((g, i) => eventRow(
+                i, "⚽", g.flag, g.label, g.minute,
+                onPlayerClick ? () => onPlayerClick(goals[i]?.player, goals[i]?.side === "home" ? m.home : m.away) : null
+              ))}
+              {cards.map((c, i) => eventRow(
+                `c${i}`, c.type === "red" ? "🟥" : "🟨",
+                flag(c.side === "home" ? m.home : m.away), c.player, c.minute,
+                onPlayerClick ? () => onPlayerClick(c.player, c.side === "home" ? m.home : m.away) : null
+              ))}
             </div>
           )}
         </div>
-      ) : (
-        /* ── MOBILE LAYOUT (single column scroll) ─────────────────── */
-        <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column" }}>
-        <div style={{ margin: "auto", padding: "28px 20px 40px", maxWidth: 600, width: "100%", boxSizing: "border-box" }}>
-          {/* Large score */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around", gap: 8, marginBottom: 36 }}>
-            <div style={{ textAlign: "center", flex: 1 }}>
-              <div style={{ fontSize: 62, lineHeight: 1.1 }}>{flag(m.home)}</div>
-              <div style={{ fontSize: 17, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.home}</div>
-            </div>
-            <div style={{ textAlign: "center", minWidth: 80 }}>
-              {hasScore
-                ? <div style={{ fontSize: 54, fontWeight: 900, letterSpacing: -2 }}>{mh}<span style={{ color: C.dim }}>–</span>{ma}</div>
-                : <div style={{ fontSize: 26, color: C.dim }}>vs</div>}
-            </div>
-            <div style={{ textAlign: "center", flex: 1 }}>
-              <div style={{ fontSize: 62, lineHeight: 1.1 }}>{flag(m.away)}</div>
-              <div style={{ fontSize: 17, fontWeight: 900, marginTop: 8, lineHeight: 1.3 }}>{m.away}</div>
-            </div>
-          </div>
 
-          <div style={{ display: "grid", gap: 20, gridTemplateColumns: "minmax(0, 1fr)" }}>
-            <MatchEvents m={m} onPlayerClick={onPlayerClick} />
-            <MatchStatsTable homeStats={m.homeStats} awayStats={m.awayStats} home={m.home} away={m.away} />
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ display: "flex", gap: 8, alignItems: "center", flex: 1, minWidth: 0 }}>
-                {eventBadge("📍")}
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ fontSize: 13, fontWeight: 800 }}>Venue</div>
-                  <div style={{ fontSize: 12, color: C.dim, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.venue}</div>
-                </div>
-              </div>
-              <a
-                href={`https://www.google.com/search?q=${watchQuery}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0, fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "10px 14px", textDecoration: "none" }}
-              >
-                ▶ Watch Live
-              </a>
+        {/* Stats — bars on wide, compact number grid on mobile */}
+        <div style={panelStyle}>
+          {panelHead("📊  Match Stats")}
+          {statKeys.length === 0 ? (
+            <div style={{ color: C.dim, fontSize: 14, textAlign: "center", padding: "16px 0" }}>Stats not available yet</div>
+          ) : wide ? (
+            <div style={{ flex: 1, overflowY: "auto", minHeight: 0, display: "grid", gap: 10 }}>
+              {statKeys.map((k) => {
+                const { label, suffix = "" } = STAT_LABELS[k];
+                const hv = parseFloat(hs[k]) || 0;
+                const av = parseFloat(as[k]) || 0;
+                const total = hv + av || 1;
+                const hPct = Math.round((hv / total) * 100);
+                return (
+                  <div key={k}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 800, marginBottom: 5 }}>
+                      <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
+                      <span style={{ color: C.dim, fontSize: 12, fontWeight: 700 }}>{label}</span>
+                      <span style={{ color: "#aaa" }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
+                    </div>
+                    <div style={{ display: "flex", height: 5, borderRadius: 3, overflow: "hidden", background: C.border }}>
+                      <div style={{ width: `${hPct}%`, background: C.green, borderRadius: "3px 0 0 3px", transition: "width 0.6s ease" }} />
+                      <div style={{ flex: 1, background: "#555", borderRadius: "0 3px 3px 0" }} />
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <RecapBlock recap={m.recap} />
-          </div>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+              {statKeys.slice(0, 6).map((k) => {
+                const { label } = STAT_LABELS[k];
+                return (
+                  <div key={k} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 8, padding: "7px 10px" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15, fontWeight: 800, marginBottom: 3 }}>
+                      <span style={{ color: C.green }}>{hs[k] ?? "–"}</span>
+                      <span style={{ color: "#aaa" }}>{as[k] ?? "–"}</span>
+                    </div>
+                    <div style={{ fontSize: 11, color: C.dim, fontWeight: 600, letterSpacing: 0.3 }}>{label}</div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
+      </div>
+
+      {/* ── FOOTER ── */}
+      <div style={{ flexShrink: 0, display: "flex", alignItems: "center", gap: 12, padding: "10px 16px", borderTop: `1px solid ${C.border}`, background: "rgba(0,0,0,0.2)" }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontSize: 10, fontWeight: 700, color: C.dim, letterSpacing: 1, textTransform: "uppercase" }}>Venue</div>
+          <div style={{ fontSize: 13, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", color: C.text }}>{m.venue || "—"}</div>
+        </div>
+        {m.recap && (
+          <button
+            onClick={() => setShowRecap(r => !r)}
+            style={{ background: showRecap ? "rgba(255,255,255,0.12)" : "rgba(255,255,255,0.07)", border: `1px solid ${C.border}`, color: C.dim, fontSize: 13, fontWeight: 700, borderRadius: 8, padding: "7px 12px", cursor: "pointer", flexShrink: 0 }}
+          >📰 Recap</button>
+        )}
+        <a
+          href={`https://www.google.com/search?q=${watchQuery}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 800, color: "#06210f", background: C.green, borderRadius: 10, padding: "9px 18px", textDecoration: "none", flexShrink: 0, whiteSpace: "nowrap" }}
+        >▶ {m.status === "FT" ? "Highlights" : "Watch Live"}</a>
+      </div>
+
+      {/* ── RECAP SHEET (slides up on demand) ── */}
+      {showRecap && m.recap && (
+        <div
+          onClick={(e) => { if (e.target === e.currentTarget) setShowRecap(false); }}
+          style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 10, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}
+        >
+          <div style={{ background: C.card, borderRadius: "16px 16px 0 0", padding: "20px 20px 40px", maxHeight: "55vh", display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexShrink: 0 }}>
+              <span style={{ fontSize: 16, fontWeight: 800 }}>📰 Match Recap</span>
+              <button onClick={() => setShowRecap(false)} style={{ background: "none", border: "none", color: C.dim, fontSize: 20, cursor: "pointer", lineHeight: 1 }}>✕</button>
+            </div>
+            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.7, color: C.dim, overflowY: "auto" }}>{m.recap}</p>
+          </div>
         </div>
       )}
+
     </div>
   );
 }
