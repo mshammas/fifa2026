@@ -1863,7 +1863,7 @@
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
-      "recap": null
+      "recap": "U.S. ease into World Cup knockouts after 2-0 win over Australia"
     },
     {
       "id": "e760445",
@@ -2030,16 +2030,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "78.6",
+        "possessionPct": "78.5",
         "shotsOnTarget": "5",
         "totalShots": "32"
       },
       "awayStats": {
-        "possessionPct": "21.4",
+        "possessionPct": "21.5",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "10-man Paraguay eliminate Turkey with 1-0 win"
     },
     {
       "id": "e760447",
@@ -2054,8 +2054,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3266,6 +3274,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T05:08:25.296Z",
+  "lastUpdated": "2026-06-20T16:58:24.323Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
