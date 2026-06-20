@@ -1993,7 +1993,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "3'",
+      "clock": "5'",
       "goals": [
         {
           "side": "away",
@@ -2003,14 +2003,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "M. Galarza",
+          "minute": "4'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "77.8",
+        "possessionPct": "81.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "22.2",
+        "possessionPct": "18.4",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -3241,6 +3248,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T03:04:25.767Z",
+  "lastUpdated": "2026-06-20T03:06:20.371Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
