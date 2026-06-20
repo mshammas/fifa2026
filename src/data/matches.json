@@ -1918,10 +1918,10 @@
       "away": "Haiti",
       "group": "C",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "45'+2'",
+      "clock": "45'+5'",
       "goals": [
         {
           "side": "home",
@@ -1936,6 +1936,13 @@
           "minute": "36'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "Vinícius Júnior",
+          "minute": "45'+3'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -1944,15 +1951,21 @@
           "player": "C. Arcus",
           "minute": "4'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "F. Pierrot",
+          "minute": "45'+4'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "62.7",
-        "shotsOnTarget": "4",
-        "totalShots": "6"
+        "possessionPct": "62.8",
+        "shotsOnTarget": "5",
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "37.3",
+        "possessionPct": "37.2",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3200,6 +3213,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T01:20:29.447Z",
+  "lastUpdated": "2026-06-20T01:22:23.200Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
