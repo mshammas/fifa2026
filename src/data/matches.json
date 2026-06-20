@@ -1921,7 +1921,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "70'",
+      "clock": "75'",
       "goals": [
         {
           "side": "home",
@@ -1962,6 +1962,12 @@
           "side": "home",
           "player": "D. Santos",
           "minute": "65'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "D. Jean Jacques",
+          "minute": "72'",
           "type": "yellow"
         }
       ],
@@ -3227,6 +3233,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T02:08:26.097Z",
+  "lastUpdated": "2026-06-20T02:10:31.359Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
