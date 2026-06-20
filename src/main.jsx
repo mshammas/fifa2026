@@ -1706,12 +1706,7 @@ function GoalToast({ alerts }) {
   );
 }
 
-function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
-  // Fetch fresh match data every 30 s without a full page reload.
-  useEffect(() => {
-    const t = setInterval(() => onRefresh?.(), 30_000);
-    return () => clearInterval(t);
-  }, [onRefresh]);
+function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick }) {
 
   // Request native fullscreen (Android Chrome / desktop). iOS Safari silently ignores.
   useEffect(() => {
@@ -1739,13 +1734,13 @@ function LiveMatchModal({ m, onClose, onRefresh, onPlayerClick }) {
     return () => window.removeEventListener("keydown", fn);
   }, [onClose]);
 
-  // Countdown to next auto-refresh.
-  const [secs, setSecs] = useState(30);
+  // Countdown to next auto-refresh — stays in sync with the actual refresh cycle.
+  const [, setTick] = useState(0);
   useEffect(() => {
-    setSecs(30);
-    const t = setInterval(() => setSecs((s) => (s <= 1 ? 30 : s - 1)), 1000);
+    const t = setInterval(() => setTick((n) => n + 1), 1000);
     return () => clearInterval(t);
   }, []);
+  const secs = Math.max(1, 30 - Math.floor((Date.now() - lastRefreshed) / 1000));
 
   // Crowd audio
   const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
@@ -3822,6 +3817,7 @@ export default function App() {
   const [missedSummary, setMissedSummary] = useState(null);
   const [matchesState, setMatchesState] = useState(matchesData);
   const matches = matchesState.matches || [];
+  const [lastRefreshed, setLastRefreshed] = useState(Date.now());
 
   const refreshMatches = useCallback(async () => {
     try {
@@ -3829,6 +3825,7 @@ export default function App() {
       if (!res.ok) return;
       const data = await res.json();
       setMatchesState(data);
+      setLastRefreshed(Date.now());
       // Keep liveModal in sync with refreshed data.
       setLiveModal((prev) => {
         if (!prev) return prev;
@@ -3838,13 +3835,18 @@ export default function App() {
     } catch { /* silently ignore network errors */ }
   }, []);
 
-  // Auto-refresh every 30 s when there are live matches and the modal isn't open.
+  // Auto-refresh every 30 s (always — catches matches kicking off even from NS state).
   useEffect(() => {
-    const hasLive = matches.some((m) => m.status === "LIVE" || m.status === "HT");
-    if (!hasLive || liveModal) return;
     const t = setInterval(refreshMatches, 30_000);
     return () => clearInterval(t);
-  }, [matches, liveModal, refreshMatches]);
+  }, [refreshMatches]);
+
+  // Immediate refresh when returning to the tab.
+  useEffect(() => {
+    const onVisible = () => { if (document.visibilityState === "visible") refreshMatches(); };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
+  }, [refreshMatches]);
 
   // Restore live modal after page load (sessionStorage survives soft navigation).
   useEffect(() => {
@@ -3856,7 +3858,7 @@ export default function App() {
     }
   }, []);
 
-  const openLiveModal = (m) => { sessionStorage.setItem("wc_live_modal", m.id); setLiveModal(m); };
+  const openLiveModal = (m) => { sessionStorage.setItem("wc_live_modal", m.id); setLiveModal(m); refreshMatches(); };
   const closeLiveModal = () => { sessionStorage.removeItem("wc_live_modal"); setLiveModal(null); };
 
   // Compute "what did I miss" on mount when user returns after ≥3 min away.
@@ -4014,7 +4016,7 @@ export default function App() {
       <GoalToast alerts={goalAlerts} />
       <PullToRefresh onRefresh={refreshMatches} />
       <Onboarding />
-      {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} onPlayerClick={openSpotlight} />}
+      {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} lastRefreshed={lastRefreshed} onPlayerClick={openSpotlight} />}
       {spotlightPlayer && <PlayerSpotlight player={spotlightPlayer} matches={matches} onClose={() => setSpotlightPlayer(null)} />}
       {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} fontScale={fontScale} setFontScale={setFontScale} />}
       <WhatDidIMiss summary={missedSummary} onDismiss={() => setMissedSummary(null)} onOpenLive={openLiveModal} tz={tz} />
