@@ -1993,7 +1993,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "45'+3'",
+      "clock": "45'+5'",
       "goals": [
         {
           "side": "away",
@@ -2009,15 +2009,21 @@
           "player": "M. Galarza",
           "minute": "4'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Almirón",
+          "minute": "45'+3'",
+          "type": "red"
         }
       ],
       "homeStats": {
-        "possessionPct": "76.9",
+        "possessionPct": "77.2",
         "shotsOnTarget": "1",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "23.1",
+        "possessionPct": "22.8",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
@@ -3248,6 +3254,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T03:48:24.851Z",
+  "lastUpdated": "2026-06-20T03:50:27.183Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
