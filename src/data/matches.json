@@ -2048,10 +2048,10 @@
       "away": "Sweden",
       "group": "F",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "53'",
+      "clock": "55'",
       "goals": [
         {
           "side": "home",
@@ -2073,6 +2073,13 @@
           "minute": "47'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Gakpo",
+          "minute": "54'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -2084,12 +2091,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "56.5",
-        "shotsOnTarget": "5",
-        "totalShots": "7"
+        "possessionPct": "56.3",
+        "shotsOnTarget": "6",
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "43.5",
+        "possessionPct": "43.7",
         "shotsOnTarget": "4",
         "totalShots": "10"
       },
@@ -3303,6 +3310,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T18:14:22.223Z",
+  "lastUpdated": "2026-06-20T18:16:25.266Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
