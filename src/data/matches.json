@@ -1981,7 +1981,7 @@
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
-      "recap": "- Vinícius Júnior scored and assisted on one of Matheus Cunha's two goals as five-time champion Brazil eliminated Haiti from the World Cup with a 3-0 victory on Friday night."
+      "recap": "Brazil moved top of World Cup Group C with a 3-0 win over Haiti"
     },
     {
       "id": "e760443",
@@ -1993,7 +1993,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "16'",
+      "clock": "17'",
       "goals": [
         {
           "side": "away",
@@ -2012,12 +2012,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "75.2",
+        "possessionPct": "77.8",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "24.8",
+        "possessionPct": "22.2",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -3248,6 +3248,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T03:16:24.749Z",
+  "lastUpdated": "2026-06-20T03:18:22.706Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
