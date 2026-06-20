@@ -2136,20 +2136,28 @@
       "group": "E",
       "venue": "BMO Field, Toronto",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "29'",
-      "goals": [],
+      "clock": "33'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "F. Kessié",
+          "minute": "30'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "63.9",
+        "possessionPct": "60.2",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "36.1",
-        "shotsOnTarget": "0",
-        "totalShots": "1"
+        "possessionPct": "39.8",
+        "shotsOnTarget": "1",
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -3344,6 +3352,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T20:30:38.232Z",
+  "lastUpdated": "2026-06-20T20:32:26.391Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
