@@ -2051,7 +2051,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "53'",
       "goals": [
         {
           "side": "home",
@@ -2075,16 +2075,23 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "G. Gudmundsson",
+          "minute": "53'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "59.3",
+        "possessionPct": "56.5",
         "shotsOnTarget": "5",
-        "totalShots": "6"
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "40.7",
+        "possessionPct": "43.5",
         "shotsOnTarget": "4",
-        "totalShots": "9"
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -3296,6 +3303,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T18:12:20.343Z",
+  "lastUpdated": "2026-06-20T18:14:22.223Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
