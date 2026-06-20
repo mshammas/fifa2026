@@ -2048,10 +2048,10 @@
       "away": "Sweden",
       "group": "F",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "88'",
+      "clock": "90'+1'",
       "goals": [
         {
           "side": "home",
@@ -2087,6 +2087,13 @@
           "minute": "59'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Summerville",
+          "minute": "89'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -2110,12 +2117,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "52.8",
-        "shotsOnTarget": "6",
-        "totalShots": "9"
+        "possessionPct": "52.7",
+        "shotsOnTarget": "7",
+        "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "47.2",
+        "possessionPct": "47.3",
         "shotsOnTarget": "7",
         "totalShots": "14"
       },
@@ -3329,6 +3336,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T18:50:32.319Z",
+  "lastUpdated": "2026-06-20T18:52:24.873Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
