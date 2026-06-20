@@ -1918,15 +1918,22 @@
       "away": "Haiti",
       "group": "C",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "35'",
+      "clock": "38'",
       "goals": [
         {
           "side": "home",
           "player": "M. Cunha",
           "minute": "23'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Cunha",
+          "minute": "36'",
           "pen": false,
           "og": false
         }
@@ -1940,12 +1947,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "62.1",
-        "shotsOnTarget": "3",
-        "totalShots": "5"
+        "possessionPct": "60.6",
+        "shotsOnTarget": "4",
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "37.9",
+        "possessionPct": "39.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3193,6 +3200,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T01:08:20.908Z",
+  "lastUpdated": "2026-06-20T01:10:28.191Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
