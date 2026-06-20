@@ -2050,8 +2050,8 @@
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": 5,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+5'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -2117,14 +2117,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "51.9",
+        "possessionPct": "51",
         "shotsOnTarget": "7",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "48.1",
-        "shotsOnTarget": "7",
-        "totalShots": "15"
+        "possessionPct": "49",
+        "shotsOnTarget": "8",
+        "totalShots": "16"
       },
       "recap": null
     },
@@ -3336,6 +3336,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T18:56:23.472Z",
+  "lastUpdated": "2026-06-20T18:58:23.879Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
