@@ -2117,16 +2117,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "51",
+        "possessionPct": "50.9",
         "shotsOnTarget": "7",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "49",
+        "possessionPct": "49.1",
         "shotsOnTarget": "8",
         "totalShots": "16"
       },
-      "recap": null
+      "recap": "Brian Brobbey and Cody Gakpo scored two each as Netherlands cruised to a 5-1 World Cup victory over Sweden to go top of Group F."
     },
     {
       "id": "e760448",
@@ -2141,8 +2141,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3336,6 +3344,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T18:58:23.879Z",
+  "lastUpdated": "2026-06-20T19:58:24.194Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
