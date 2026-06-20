@@ -1921,16 +1921,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "3'",
+      "clock": "6'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "C. Arcus",
+          "minute": "4'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "67.7",
+        "possessionPct": "65.1",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "32.3",
+        "possessionPct": "34.9",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3178,6 +3185,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T00:36:20.955Z",
+  "lastUpdated": "2026-06-20T00:38:19.682Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
