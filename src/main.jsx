@@ -1727,6 +1727,24 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
     return () => { document.body.style.overflow = ""; };
   }, []);
 
+  // Keep the screen on while watching live.
+  useEffect(() => {
+    if (!navigator.wakeLock) return;
+    let lock = null;
+    navigator.wakeLock.request("screen").then((l) => { lock = l; }).catch(() => {});
+    // Wake lock is released automatically when the tab goes to background;
+    // re-acquire it when the page becomes visible again.
+    const onVisible = () => {
+      if (document.visibilityState === "visible" && navigator.wakeLock)
+        navigator.wakeLock.request("screen").then((l) => { lock = l; }).catch(() => {});
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisible);
+      lock?.release().catch(() => {});
+    };
+  }, []);
+
   // Escape to close on desktop.
   useEffect(() => {
     const fn = (e) => { if (e.key === "Escape") onClose(); };
