@@ -2185,7 +2185,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "74'",
+      "clock": "75'",
       "goals": [],
       "cards": [
         {
@@ -2211,15 +2211,21 @@
           "player": "L. Comenencia",
           "minute": "56'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Gaari",
+          "minute": "75'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "73.6",
+        "possessionPct": "73.7",
         "shotsOnTarget": "13",
-        "totalShots": "22"
+        "totalShots": "24"
       },
       "awayStats": {
-        "possessionPct": "26.4",
+        "possessionPct": "26.3",
         "shotsOnTarget": "2",
         "totalShots": "9"
       },
@@ -3399,6 +3405,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T01:34:20.263Z",
+  "lastUpdated": "2026-06-21T01:36:24.073Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
