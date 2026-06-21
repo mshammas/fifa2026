@@ -2289,7 +2289,7 @@
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
-      "recap": null
+      "recap": " A dominant Japan produced the biggest margin of victory for an Asian nation in a World Cup match as they beat Tunisia 4-0"
     },
     {
       "id": "e760453",
@@ -2304,8 +2304,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3448,6 +3456,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T05:58:22.207Z",
+  "lastUpdated": "2026-06-21T15:58:25.295Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
