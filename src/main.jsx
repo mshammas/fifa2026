@@ -1497,16 +1497,27 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
 
   const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
+  // Chrome silently pauses speechSynthesis when the tab is backgrounded or after ~15s of
+  // inactivity. Keep it alive with a periodic resume() heartbeat while crowd audio is on.
+  useEffect(() => {
+    if (!enabled || !window.speechSynthesis) return;
+    const id = setInterval(() => {
+      if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+    }, 5000);
+    return () => clearInterval(id);
+  }, [enabled]);
+
   const announce = (text, { rate = 0.9, pitch = 1.0 } = {}) => {
     if (!window.speechSynthesis) return;
     window.speechSynthesis.cancel();
     const utt = new SpeechSynthesisUtterance(text);
     utt.rate = rate; utt.pitch = pitch; utt.volume = 1;
-    // resume() + setTimeout: iOS Safari silently drops speak() immediately after cancel()
+    // Bump delay to 150ms: on Chrome the engine needs longer to settle after cancel()
+    // especially when it has been paused by the browser (background tab throttling).
     setTimeout(() => {
       window.speechSynthesis.resume();
       window.speechSynthesis.speak(utt);
-    }, 80);
+    }, 150);
   };
 
   // Ambient crowd noise — Web Audio API for gapless looping
