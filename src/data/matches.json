@@ -2410,9 +2410,9 @@
       "group": "H",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "60'",
+      "clock": "62'",
       "goals": [
         {
           "side": "away",
@@ -2432,6 +2432,13 @@
           "side": "home",
           "player": "A. Cano",
           "minute": "45'+6'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "H. Varela",
+          "minute": "61'",
           "pen": false,
           "og": false
         }
@@ -2457,14 +2464,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "65.6",
+        "possessionPct": "66.1",
         "shotsOnTarget": "2",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "34.4",
-        "shotsOnTarget": "1",
-        "totalShots": "4"
+        "possessionPct": "33.9",
+        "shotsOnTarget": "2",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -3574,6 +3581,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T23:26:24.131Z",
+  "lastUpdated": "2026-06-21T23:28:20.371Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
