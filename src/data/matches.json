@@ -2368,7 +2368,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "32'",
+      "clock": "34'",
       "goals": [],
       "cards": [
         {
@@ -2376,15 +2376,21 @@
           "player": "R. Lukaku",
           "minute": "3'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "S. Ezatolahi",
+          "minute": "33'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "74.1",
+        "possessionPct": "74.3",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "25.9",
+        "possessionPct": "25.7",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -3513,6 +3519,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T19:32:24.790Z",
+  "lastUpdated": "2026-06-21T19:34:22.068Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
