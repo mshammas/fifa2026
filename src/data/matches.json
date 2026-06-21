@@ -2185,7 +2185,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+1'",
+      "clock": "90'+2'",
       "goals": [],
       "cards": [
         {
@@ -2217,15 +2217,21 @@
           "player": "J. Gaari",
           "minute": "75'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "G. Kastaneer",
+          "minute": "90'+1'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "74.7",
+        "possessionPct": "74.8",
         "shotsOnTarget": "15",
         "totalShots": "29"
       },
       "awayStats": {
-        "possessionPct": "25.3",
+        "possessionPct": "25.2",
         "shotsOnTarget": "3",
         "totalShots": "10"
       },
@@ -3405,6 +3411,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T01:50:29.762Z",
+  "lastUpdated": "2026-06-21T01:52:22.726Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
