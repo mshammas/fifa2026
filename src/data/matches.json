@@ -2349,14 +2349,14 @@
       "homeStats": {
         "possessionPct": "67.1",
         "shotsOnTarget": "8",
-        "totalShots": "21"
+        "totalShots": "22"
       },
       "awayStats": {
         "possessionPct": "32.9",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
-      "recap": null
+      "recap": "Spain got their World Cup campaign back on track with a 4-0 victory over Saudi Arabia in Atlanta."
     },
     {
       "id": "e760451",
@@ -3506,6 +3506,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T18:02:24.429Z",
+  "lastUpdated": "2026-06-21T18:58:20.599Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
