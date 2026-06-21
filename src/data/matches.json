@@ -2245,20 +2245,28 @@
       "group": "F",
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "4'",
-      "goals": [],
+      "clock": "6'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "D. Kamada",
+          "minute": "4'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "31.2",
+        "possessionPct": "33.3",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "68.8",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "66.7",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -3419,6 +3427,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T04:04:22.497Z",
+  "lastUpdated": "2026-06-21T04:06:20.640Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
