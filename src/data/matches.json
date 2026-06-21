@@ -2185,16 +2185,29 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "37'",
+      "clock": "39'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "J. Alcívar",
+          "minute": "38'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Bacuna",
+          "minute": "39'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "73.8",
+        "possessionPct": "73.6",
         "shotsOnTarget": "5",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "26.2",
+        "possessionPct": "26.4",
         "shotsOnTarget": "0",
         "totalShots": "4"
       },
@@ -3374,6 +3387,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T00:38:25.174Z",
+  "lastUpdated": "2026-06-21T00:40:32.763Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
