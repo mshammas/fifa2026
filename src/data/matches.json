@@ -2409,15 +2409,22 @@
       "away": "Cape Verde",
       "group": "H",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "43'",
+      "clock": "45'+1'",
       "goals": [
         {
           "side": "away",
           "player": "K. Pina",
           "minute": "21'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Araújo",
+          "minute": "44'",
           "pen": false,
           "og": false
         }
@@ -2437,14 +2444,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "66.2",
-        "shotsOnTarget": "0",
-        "totalShots": "8"
+        "possessionPct": "67",
+        "shotsOnTarget": "1",
+        "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "33.8",
+        "possessionPct": "33",
         "shotsOnTarget": "1",
-        "totalShots": "1"
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -3554,6 +3561,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T22:44:23.047Z",
+  "lastUpdated": "2026-06-21T22:46:27.687Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
