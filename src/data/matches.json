@@ -2298,10 +2298,10 @@
       "away": "Saudi Arabia",
       "group": "H",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "23'",
+      "clock": "25'",
       "goals": [
         {
           "side": "home",
@@ -2316,16 +2316,23 @@
           "minute": "21'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Oyarzabal",
+          "minute": "24'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "72.6",
-        "shotsOnTarget": "3",
-        "totalShots": "10"
+        "possessionPct": "72.5",
+        "shotsOnTarget": "4",
+        "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "27.4",
+        "possessionPct": "27.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3471,6 +3478,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T16:24:20.039Z",
+  "lastUpdated": "2026-06-21T16:26:20.609Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
