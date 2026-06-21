@@ -4136,6 +4136,7 @@ export default function App() {
   const closeLiveModal = () => { sessionStorage.removeItem("wc_live_modal"); setLiveModal(null); };
 
   // Compute "what did I miss" on mount when user returns after ≥3 min away.
+  // Fetches fresh data first so diffs aren't against stale build-time bundle.
   useEffect(() => {
     const lastVisit = parseInt(localStorage.getItem("wc_last_visit_ts") || "0");
     localStorage.setItem("wc_last_visit_ts", String(Date.now()));
@@ -4143,21 +4144,30 @@ export default function App() {
     if (!wasAway || !lastVisit) return;
     const prev = (() => { try { return JSON.parse(localStorage.getItem("wc_prev_scores")); } catch { return null; } })();
     if (!prev) return;
-    const newResults = [], newGoals = [];
-    for (const m of matches) {
-      const p = prev[m.id];
-      if (!p) continue;
-      if (m.status === "FT" && p.status !== "FT") {
-        newResults.push(m);
-      } else if (m.homeScore != null && p.h != null) {
-        const hd = m.homeScore - (p.h || 0), ad = m.awayScore - (p.a || 0);
-        if (hd > 0 || ad > 0) newGoals.push({ m, homeChange: hd, awayChange: ad });
+    const compute = (freshMatches) => {
+      const newResults = [], newGoals = [];
+      for (const m of freshMatches) {
+        const p = prev[m.id];
+        if (!p) continue;
+        if (m.status === "FT" && p.status !== "FT") {
+          newResults.push(m);
+        } else if (m.homeScore != null && p.h != null) {
+          const hd = m.homeScore - (p.h || 0), ad = m.awayScore - (p.a || 0);
+          if (hd > 0 || ad > 0) newGoals.push({ m, homeChange: hd, awayChange: ad });
+        }
       }
-    }
-    const liveNow = matches.filter(m => m.status === "LIVE" || m.status === "HT");
-    if (newResults.length || newGoals.length || liveNow.length) {
-      setMissedSummary({ newResults, newGoals, liveNow });
-    }
+      const liveNow = freshMatches.filter(m => m.status === "LIVE" || m.status === "HT");
+      if (newResults.length || newGoals.length || liveNow.length) {
+        setMissedSummary({ newResults, newGoals, liveNow });
+      }
+    };
+    fetch(`./data/matches.json?t=${Date.now()}`)
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data) { setMatchesState(data); setLastRefreshed(Date.now()); }
+        compute((data?.matches) || matches);
+      })
+      .catch(() => compute(matches));
   }, []);
 
   // Deep-link: ?match=<id> opens that match's modal on load.
