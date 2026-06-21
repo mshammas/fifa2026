@@ -4021,7 +4021,7 @@ function WhatDidIMiss({ summary, onDismiss, onOpenLive, tz }) {
             {newResults.map(m => {
               const homeWin = m.homeScore > m.awayScore, awayWin = m.awayScore > m.homeScore;
               return (
-                <div key={m.id} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 6 }}>
+                <button key={m.id} onClick={() => { onDismiss(); onOpenLive(m); }} style={{ width: "100%", display: "block", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 6, cursor: "pointer", color: C.text, textAlign: "left" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ fontSize: 16 }}>{flag(m.home)}</span>
                     <span style={{ fontWeight: homeWin ? 900 : 700, fontSize: 15, color: homeWin ? C.gold : C.text }}>{m.home}</span>
@@ -4030,7 +4030,7 @@ function WhatDidIMiss({ summary, onDismiss, onOpenLive, tz }) {
                     <span style={{ fontSize: 16 }}>{flag(m.away)}</span>
                   </div>
                   {m.group && <div style={{ fontSize: 12, color: C.dim, marginTop: 4 }}>Group {m.group} · {fmt(m.date, tz, { month: "short", day: "numeric" })}</div>}
-                </div>
+                </button>
               );
             })}
           </div>
@@ -4040,7 +4040,7 @@ function WhatDidIMiss({ summary, onDismiss, onOpenLive, tz }) {
           <div style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 11, fontWeight: 900, color: C.green, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>⚽ Score updates</div>
             {newGoals.map(({ m, homeChange, awayChange }) => (
-              <div key={m.id} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 6 }}>
+              <button key={m.id} onClick={() => { onDismiss(); onOpenLive(m); }} style={{ width: "100%", display: "block", background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", marginBottom: 6, cursor: "pointer", color: C.text, textAlign: "left" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ fontSize: 16 }}>{flag(m.home)}</span>
                   <span style={{ fontWeight: 700, fontSize: 15 }}>{m.home}</span>
@@ -4052,7 +4052,7 @@ function WhatDidIMiss({ summary, onDismiss, onOpenLive, tz }) {
                   {homeChange > 0 && `+${homeChange} for ${m.home}`}{homeChange > 0 && awayChange > 0 && ", "}
                   {awayChange > 0 && `+${awayChange} for ${m.away}`}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         )}
