@@ -2245,9 +2245,9 @@
       "group": "F",
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "30'",
+      "clock": "32'",
       "goals": [
         {
           "side": "away",
@@ -2255,18 +2255,25 @@
           "minute": "4'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Ueda",
+          "minute": "31'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "32.1",
+        "possessionPct": "39.5",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "67.9",
-        "shotsOnTarget": "2",
-        "totalShots": "4"
+        "possessionPct": "60.5",
+        "shotsOnTarget": "3",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -3427,6 +3434,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T04:30:35.847Z",
+  "lastUpdated": "2026-06-21T04:32:21.557Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
