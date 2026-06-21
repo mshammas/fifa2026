@@ -1696,6 +1696,9 @@ const COMMENTARY_STYLE = {
   ft:      { icon: "✅", color: "#94a3b8",  border: "rgba(148,163,184,0.3)" },
   red:     { icon: "🟥", color: "#ef4444",  border: "rgba(239,68,68,0.6)" },
   yellow:  { icon: "🟨", color: "#eab308",  border: "rgba(234,179,8,0.45)" },
+  shot:    { icon: "💨", color: "#60a5fa",  border: "rgba(96,165,250,0.35)" },
+  sot:     { icon: "🧤", color: "#60a5fa",  border: "rgba(96,165,250,0.45)" },
+  poss:    { icon: "📊", color: "#a78bfa",  border: "rgba(167,139,250,0.4)" },
 };
 
 function buildCommentary(prev, curr) {
@@ -1754,6 +1757,53 @@ function buildCommentary(prev, curr) {
         items.push({ type: "red", headline: "RED CARD!", sub: `${c.player} (${team}) is sent off in the ${c.minute}`, match: m });
       } else {
         items.push({ type: "yellow", headline: "Yellow card", sub: `${c.player} (${team}) ${c.minute}`, match: m });
+      }
+    }
+
+    // Stats — only during live play; skip if a goal was also detected this cycle (goal covers it)
+    if ((m.status === "LIVE" || m.status === "HT") && p.homeStats && p.awayStats && m.homeStats && m.awayStats) {
+      const goalTeams = new Set(newGoals.map((g) => g.og ? (g.side === "home" ? m.away : m.home) : (g.side === "home" ? m.home : m.away)));
+
+      const pHS = parseInt(p.homeStats.totalShots) || 0;
+      const pAS = parseInt(p.awayStats.totalShots) || 0;
+      const cHS = parseInt(m.homeStats.totalShots) || 0;
+      const cAS = parseInt(m.awayStats.totalShots) || 0;
+      const pHSoT = parseInt(p.homeStats.shotsOnTarget) || 0;
+      const pASoT = parseInt(p.awayStats.shotsOnTarget) || 0;
+      const cHSoT = parseInt(m.homeStats.shotsOnTarget) || 0;
+      const cASoT = parseInt(m.awayStats.shotsOnTarget) || 0;
+
+      // Shots on target (suppress if that team scored — goal commentary covers it)
+      if (cHSoT > pHSoT && !goalTeams.has(m.home)) {
+        const n = cHSoT - pHSoT;
+        items.push({ type: "sot", headline: "SHOT ON TARGET", sub: `${flag(m.home)} ${m.home} test the keeper — ${cHSoT} shot${cHSoT !== 1 ? "s" : ""} on target`, match: m });
+      }
+      if (cASoT > pASoT && !goalTeams.has(m.away)) {
+        items.push({ type: "sot", headline: "SHOT ON TARGET", sub: `${flag(m.away)} ${m.away} test the keeper — ${cASoT} shot${cASoT !== 1 ? "s" : ""} on target`, match: m });
+      }
+
+      // Total shots (only when shots on target didn't already fire for that team)
+      const sotFiredHome = cHSoT > pHSoT && !goalTeams.has(m.home);
+      const sotFiredAway = cASoT > pASoT && !goalTeams.has(m.away);
+      if (cHS > pHS && !goalTeams.has(m.home) && !sotFiredHome) {
+        const n = cHS - pHS;
+        items.push({ type: "shot", headline: "ATTEMPT", sub: `${flag(m.home)} ${m.home} with ${n > 1 ? `${n} attempts` : "an attempt"} — ${cHS} shot${cHS !== 1 ? "s" : ""} in this match`, match: m });
+      }
+      if (cAS > pAS && !goalTeams.has(m.away) && !sotFiredAway) {
+        const n = cAS - pAS;
+        items.push({ type: "shot", headline: "ATTEMPT", sub: `${flag(m.away)} ${m.away} with ${n > 1 ? `${n} attempts` : "an attempt"} — ${cAS} shot${cAS !== 1 ? "s" : ""} in this match`, match: m });
+      }
+
+      // Possession — only when the leading team flips
+      const prevHomePoss = parseFloat(p.homeStats.possessionPct) || 50;
+      const currHomePoss = parseFloat(m.homeStats.possessionPct) || 50;
+      if (prevHomePoss !== currHomePoss && Math.round(prevHomePoss) !== Math.round(currHomePoss)) {
+        const prevLeader = prevHomePoss >= 50 ? m.home : m.away;
+        const currLeader = currHomePoss >= 50 ? m.home : m.away;
+        if (prevLeader !== currLeader) {
+          const pct = currHomePoss >= 50 ? Math.round(currHomePoss) : Math.round(100 - currHomePoss);
+          items.push({ type: "poss", headline: "POSSESSION SWING", sub: `${flag(currLeader)} ${currLeader} now on top — ${pct}% of the ball`, match: m });
+        }
       }
     }
   }
