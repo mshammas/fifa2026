@@ -1151,7 +1151,8 @@ function liveScores(m) {
   if (m.goals && m.goals.length > 0) {
     let h = 0, a = 0;
     for (const g of m.goals) {
-      const forHome = (g.side === "home" && !g.og) || (g.side === "away" && g.og);
+      // g.side = beneficiary team (ESPN convention); same for OGs — no inversion needed
+      const forHome = g.side === "home";
       if (forHome) h++; else a++;
     }
     return { h, a };
@@ -1859,7 +1860,8 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
 
   const goalRows = goals.map((g) => {
     const scorerSide = g.og ? (g.side === "home" ? "away" : "home") : g.side;
-    return { flag: flag(scorerSide === "home" ? m.home : m.away), label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""), minute: g.minute, side: g.side };
+    const scorerTeam = scorerSide === "home" ? m.home : m.away;
+    return { flag: flag(scorerSide === "home" ? m.home : m.away), label: g.player + (g.pen ? " (pen)" : "") + (g.og ? " (OG)" : ""), minute: g.minute, side: g.side, scorerTeam };
   });
 
   const hs = m.homeStats || {};
@@ -1988,7 +1990,7 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
             <div style={{ flex: 1, overflowY: "auto", minHeight: 0 }}>
               {goalRows.map((g, i) => eventRow(
                 i, "⚽", g.flag, g.label, g.minute,
-                onPlayerClick ? () => onPlayerClick(goals[i]?.player, goals[i]?.side === "home" ? m.home : m.away) : null
+                onPlayerClick ? () => onPlayerClick(goals[i]?.player, goalRows[i]?.scorerTeam) : null
               ))}
               {cards.map((c, i) => eventRow(
                 `c${i}`, c.type === "red" ? "🟥" : "🟨",
