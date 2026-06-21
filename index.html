@@ -43,7 +43,15 @@
   <script type="module" src="/src/main.jsx"></script>
   <script>
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js").catch(() => {});
+        // When a new SW takes over (skipWaiting fires), reload cleanly so the
+        // running JS bundle and the new SW's cache don't get out of sync,
+        // which otherwise causes a black screen in fullscreen PWA mode.
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          window.location.reload();
+        });
+      });
     }
   </script>
 </body>
