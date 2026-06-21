@@ -2298,10 +2298,10 @@
       "away": "Saudi Arabia",
       "group": "H",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "49'",
+      "clock": "50'",
       "goals": [
         {
           "side": "home",
@@ -2323,6 +2323,13 @@
           "minute": "24'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "H. Al-Tambakti",
+          "minute": "49'",
+          "pen": false,
+          "og": true
         }
       ],
       "cards": [
@@ -2334,12 +2341,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "72.3",
-        "shotsOnTarget": "5",
-        "totalShots": "17"
+        "possessionPct": "72.2",
+        "shotsOnTarget": "6",
+        "totalShots": "18"
       },
       "awayStats": {
-        "possessionPct": "27.7",
+        "possessionPct": "27.8",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -3485,6 +3492,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T17:12:23.590Z",
+  "lastUpdated": "2026-06-21T17:14:21.821Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
