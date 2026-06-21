@@ -2244,19 +2244,19 @@
       "away": "Japan",
       "group": "F",
       "venue": "Estadio BBVA, Guadalupe",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "25",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "75",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3419,6 +3419,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T04:00:39.938Z",
+  "lastUpdated": "2026-06-21T04:02:21.386Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
