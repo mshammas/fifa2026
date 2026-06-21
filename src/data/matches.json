@@ -2301,7 +2301,7 @@
       "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+3'",
+      "clock": "90'+5'",
       "goals": [
         {
           "side": "home",
@@ -2330,13 +2330,6 @@
           "minute": "49'",
           "pen": false,
           "og": true
-        },
-        {
-          "side": "home",
-          "player": "F. Torres",
-          "minute": "90'+2'",
-          "pen": false,
-          "og": false
         }
       ],
       "cards": [
@@ -2354,12 +2347,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "66.4",
+        "possessionPct": "66.5",
         "shotsOnTarget": "9",
         "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "33.6",
+        "possessionPct": "33.5",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -3505,6 +3498,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T17:56:20.610Z",
+  "lastUpdated": "2026-06-21T17:58:20.390Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
