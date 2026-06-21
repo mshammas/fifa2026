@@ -2368,7 +2368,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "64'",
+      "clock": "67'",
       "goals": [],
       "cards": [
         {
@@ -2382,17 +2382,23 @@
           "player": "S. Ezatolahi",
           "minute": "33'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "N. Ngoy",
+          "minute": "66'",
+          "type": "red"
         }
       ],
       "homeStats": {
-        "possessionPct": "80.1",
+        "possessionPct": "79.4",
         "shotsOnTarget": "6",
         "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "19.9",
+        "possessionPct": "20.6",
         "shotsOnTarget": "2",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -3519,6 +3525,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T20:30:37.884Z",
+  "lastUpdated": "2026-06-21T20:32:25.645Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
