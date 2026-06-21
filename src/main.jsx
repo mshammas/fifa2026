@@ -1540,7 +1540,7 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
       .then(decoded => {
         if (ctxRef.current !== ctx) return; // unmounted before decode finished
         const gain = ctx.createGain();
-        gain.gain.value = 0.35;
+        gain.gain.value = 0.15;
         gain.connect(ctx.destination);
 
         const src = ctx.createBufferSource();
