@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React, { useState, useMemo, useEffect, useCallback, useRef } from "react";
 import ReactDOM from "react-dom/client";
 import matchesData from "./data/matches.json";
 import rostersData from "./data/rosters.json";
@@ -1686,7 +1686,82 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
   }, [enabled, isLive, home, away, homeScore, awayScore]);
 }
 
-// Toasts for score changes detected since last visit.
+const COMMENTARY_STYLE = {
+  goal:    { icon: "⚽", color: C.green,    border: "rgba(34,197,94,0.55)" },
+  pen:     { icon: "⚽", color: C.green,    border: "rgba(34,197,94,0.55)" },
+  og:      { icon: "😬", color: "#f97316",  border: "rgba(249,115,22,0.55)" },
+  kickoff: { icon: "🟢", color: C.green,    border: "rgba(34,197,94,0.4)" },
+  ht:      { icon: "⏸",  color: "#eab308",  border: "rgba(234,179,8,0.4)" },
+  "2h":    { icon: "▶",  color: C.green,    border: "rgba(34,197,94,0.4)" },
+  ft:      { icon: "✅", color: "#94a3b8",  border: "rgba(148,163,184,0.3)" },
+  red:     { icon: "🟥", color: "#ef4444",  border: "rgba(239,68,68,0.6)" },
+  yellow:  { icon: "🟨", color: "#eab308",  border: "rgba(234,179,8,0.45)" },
+};
+
+function buildCommentary(prev, curr) {
+  const items = [];
+  const prevMap = Object.fromEntries(prev.map((m) => [m.id, m]));
+
+  for (const m of curr) {
+    const p = prevMap[m.id];
+    if (!p) continue;
+
+    // Status transitions
+    if (p.status === "NS" && (m.status === "LIVE" || m.status === "HT")) {
+      items.push({ type: "kickoff", headline: "KICK-OFF!", sub: `${flag(m.home)} ${m.home} vs ${m.away} ${flag(m.away)} is underway`, match: m });
+    }
+    if (p.status === "LIVE" && m.status === "HT") {
+      items.push({ type: "ht", headline: "HALF TIME", sub: `${flag(m.home)} ${m.home} ${m.homeScore ?? 0}–${m.awayScore ?? 0} ${m.away} ${flag(m.away)}`, match: m });
+    }
+    if (p.status === "HT" && m.status === "LIVE") {
+      items.push({ type: "2h", headline: "2ND HALF UNDERWAY", sub: `${flag(m.home)} ${m.home} vs ${m.away} ${flag(m.away)}`, match: m });
+    }
+    if ((p.status === "LIVE" || p.status === "HT") && m.status === "FT") {
+      const hs = m.homeScore ?? 0, as_ = m.awayScore ?? 0;
+      const result = hs > as_ ? `${m.home} win!` : as_ > hs ? `${m.away} win!` : "It's a draw!";
+      items.push({ type: "ft", headline: "FULL TIME", sub: `${flag(m.home)} ${m.home} ${hs}–${as_} ${m.away} ${flag(m.away)} · ${result}`, match: m });
+    }
+
+    // Goals — detect new entries by player+minute+side
+    const prevGoals = p.goals || [];
+    const currGoals = m.goals || [];
+    const newGoals = currGoals.filter(
+      (g) => !prevGoals.find((pg) => pg.player === g.player && pg.minute === g.minute && pg.side === g.side)
+    );
+    for (const g of newGoals) {
+      const team = g.side === "home" ? m.home : m.away;
+      const beneficiary = g.og ? (g.side === "home" ? m.away : m.home) : team;
+      const hs = m.homeScore ?? 0, as_ = m.awayScore ?? 0;
+      const scoreStr = `${flag(m.home)} ${m.home} ${hs}–${as_} ${m.away} ${flag(m.away)}`;
+      if (g.og) {
+        items.push({ type: "og", headline: "OWN GOAL!", sub: `${g.player} puts it past his own keeper (${g.minute}) · ${beneficiary} benefit · ${scoreStr}`, match: m });
+      } else if (g.pen) {
+        items.push({ type: "pen", headline: "PENALTY GOAL!", sub: `${g.player} converts from the spot for ${team} (${g.minute}) · ${scoreStr}`, match: m });
+      } else {
+        items.push({ type: "goal", headline: "GOAL!", sub: `${g.player} scores for ${team} (${g.minute}) · ${scoreStr}`, match: m });
+      }
+    }
+
+    // Cards — detect new entries by player+minute+side
+    const prevCards = p.cards || [];
+    const currCards = m.cards || [];
+    const newCards = currCards.filter(
+      (c) => !prevCards.find((pc) => pc.player === c.player && pc.minute === c.minute && pc.side === c.side)
+    );
+    for (const c of newCards) {
+      const team = c.side === "home" ? m.home : m.away;
+      if (c.type === "red") {
+        items.push({ type: "red", headline: "RED CARD!", sub: `${c.player} (${team}) is sent off in the ${c.minute}`, match: m });
+      } else {
+        items.push({ type: "yellow", headline: "Yellow card", sub: `${c.player} (${team}) ${c.minute}`, match: m });
+      }
+    }
+  }
+
+  return items;
+}
+
+// Toasts for live commentary — fires on every refresh diff and on page-load catch-up.
 function GoalToast({ alerts }) {
   const [idx, setIdx] = useState(0);
   const [show, setShow] = useState(true);
@@ -1696,32 +1771,33 @@ function GoalToast({ alerts }) {
   useEffect(() => {
     if (idx >= alerts.length) return;
     navigator.vibrate?.(200);
-    const t = setTimeout(next, 4500);
+    const t = setTimeout(next, 5000);
     return () => clearTimeout(t);
   }, [idx, alerts.length]);
 
   if (!alerts.length || idx >= alerts.length) return null;
   const a = alerts[idx];
+  const style = COMMENTARY_STYLE[a.type] || COMMENTARY_STYLE.goal;
 
   return (
     <div style={{
       position: "fixed", top: 16, left: "50%", transform: "translateX(-50%)",
-      zIndex: 200, width: "min(360px, 92vw)",
-      background: C.card2, border: `1px solid rgba(34,197,94,0.5)`,
+      zIndex: 200, width: "min(380px, 93vw)",
+      background: C.card2, border: `1px solid ${style.border}`,
       borderRadius: 14, padding: "12px 14px",
       boxShadow: "0 8px 32px rgba(0,0,0,0.7)",
       opacity: show ? 1 : 0, transition: "opacity 0.22s",
-      display: "flex", alignItems: "center", gap: 10,
+      display: "flex", alignItems: "flex-start", gap: 10,
     }}>
-      <span style={{ fontSize: 26, flexShrink: 0 }}>⚽</span>
+      <span style={{ fontSize: 24, flexShrink: 0, marginTop: 1 }}>{style.icon}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 11, fontWeight: 900, color: C.green, letterSpacing: 0.8, marginBottom: 2 }}>{a.headline}</div>
-        <div style={{ fontSize: 15, fontWeight: 800, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-          {flag(a.home)} {a.home} {a.homeScore}–{a.awayScore} {a.away} {flag(a.away)}
+        <div style={{ fontSize: 11, fontWeight: 900, color: style.color, letterSpacing: 0.9, marginBottom: 3, textTransform: "uppercase" }}>{a.headline}</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: C.text, lineHeight: 1.35 }}>
+          {a.sub || `${flag(a.home)} ${a.home} ${a.homeScore}–${a.awayScore} ${a.away} ${flag(a.away)}`}
         </div>
       </div>
-      {alerts.length > 1 && <span style={{ fontSize: 12, color: C.dim, flexShrink: 0 }}>{idx + 1}/{alerts.length}</span>}
-      <button onClick={next} style={{ background: "none", border: "none", color: C.dim, fontSize: 18, cursor: "pointer", flexShrink: 0, padding: "0 2px" }}>✕</button>
+      {alerts.length > 1 && <span style={{ fontSize: 12, color: C.dim, flexShrink: 0, marginTop: 2 }}>{idx + 1}/{alerts.length}</span>}
+      <button onClick={next} style={{ background: "none", border: "none", color: C.dim, fontSize: 18, cursor: "pointer", flexShrink: 0, padding: "0 2px", marginTop: -1 }}>✕</button>
     </div>
   );
 }
@@ -3879,6 +3955,7 @@ export default function App() {
   const [matchesState, setMatchesState] = useState(matchesData);
   const matches = matchesState.matches || [];
   const [lastRefreshed, setLastRefreshed] = useState(Date.now());
+  const prevMatchesRef = useRef(null);
 
   const refreshMatches = useCallback(async () => {
     try {
@@ -3999,7 +4076,8 @@ export default function App() {
           const headline = homeUp && !awayUp ? `GOAL — ${m.home}!`
             : !homeUp && awayUp ? `GOAL — ${m.away}!`
             : "Score update";
-          alerts.push({ ...m, headline });
+          const sub = `${flag(m.home)} ${m.home} ${m.homeScore}–${m.awayScore} ${m.away} ${flag(m.away)}`;
+          alerts.push({ ...m, type: "goal", headline, sub });
           if (prefs.goals) sendNotif(`⚽ ${headline}`, `${label}  ${m.homeScore}–${m.awayScore}`);
         }
       }
@@ -4022,8 +4100,20 @@ export default function App() {
     }
 
     try { localStorage.setItem("wc_prev_scores", JSON.stringify(current)); } catch {}
-    if (alerts.length) setGoalAlerts(alerts);
+    if (alerts.length) setGoalAlerts((prev) => [...prev, ...alerts]);
+    prevMatchesRef.current = matches;
   }, []);
+
+  // Generate live commentary on every refresh diff.
+  useEffect(() => {
+    if (prevMatchesRef.current === null) {
+      prevMatchesRef.current = matches;
+      return;
+    }
+    const items = buildCommentary(prevMatchesRef.current, matches);
+    prevMatchesRef.current = matches;
+    if (items.length) setGoalAlerts((prev) => [...prev, ...items]);
+  }, [matches]);
 
   const onPredict = (matchId, pred) => {
     const next = { ...predictions };
