@@ -236,6 +236,10 @@ function GlobalStyles({ fontScale = 1 }) {
         50% { box-shadow: 0 0 0 5px rgba(34,197,94,0.25); border-color: ${C.green}; }
       }
       .wc-upcoming-pulse { animation: wcUpcomingPulse 1.8s ease-in-out infinite; }
+      @keyframes wcLiveDot { 0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.8); } 70% { box-shadow: 0 0 0 7px rgba(239,68,68,0); } 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); } }
+      .wc-live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; animation: wcLiveDot 1.4s ease infinite; margin-right: 5px; flex-shrink: 0; }
+      @keyframes wcScoreRoll { 0% { transform: translateY(55%) scale(0.65); opacity: 0; } 55% { transform: translateY(-8%) scale(1.18); opacity: 1; } 100% { transform: translateY(0) scale(1); opacity: 1; } }
+      .wc-score-roll { animation: wcScoreRoll 0.55s cubic-bezier(0.34,1.56,0.64,1); }
     `}</style>
   );
 }
@@ -623,13 +627,14 @@ function StatusBadge({ status, clock }) {
   const s = STATUS[status] || STATUS.NS;
   return (
     <span
-      className={s.live ? "wc-live" : undefined}
       style={{
         fontSize: 14, fontWeight: 800, letterSpacing: 0.5, color: s.color,
         background: s.bg, borderRadius: 999, padding: "4px 10px", whiteSpace: "nowrap",
+        display: "inline-flex", alignItems: "center",
       }}
     >
-      {s.live ? "🔴 " : ""}{s.label}{s.live && clock ? ` ${clock}` : ""}
+      {s.live && <span className="wc-live-dot" />}
+      {s.label}{s.live && clock ? ` ${clock}` : ""}
     </span>
   );
 }
@@ -958,6 +963,27 @@ function GoalTimeline({ m, playheadMin }) {
   );
 }
 
+function MomentumBar({ m }) {
+  const ratio = matchMomentum(m);
+  if (ratio === null) return null;
+  const hPct = Math.round(ratio * 100);
+  const aPct = 100 - hPct;
+  const homeDom = hPct > 55, awayDom = aPct > 55;
+  return (
+    <div style={{ padding: "6px 18px 8px", borderBottom: `1px solid ${C.border}`, flexShrink: 0 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 5 }}>
+        <span style={{ fontSize: 11, fontWeight: 800, color: homeDom ? C.green : C.dim }}>{flag(m.home)} {hPct}%</span>
+        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1, color: C.dim, textTransform: "uppercase" }}>Momentum</span>
+        <span style={{ fontSize: 11, fontWeight: 800, color: awayDom ? "#f87171" : C.dim }}>{aPct}% {flag(m.away)}</span>
+      </div>
+      <div style={{ height: 8, borderRadius: 99, overflow: "hidden", display: "flex" }}>
+        <div style={{ width: `${hPct}%`, background: homeDom ? `linear-gradient(90deg,${C.green},#16a34a)` : "#444", transition: "width 0.9s ease", borderRadius: "99px 0 0 99px" }} />
+        <div style={{ flex: 1, background: awayDom ? "linear-gradient(90deg,#b91c1c,#ef4444)" : "#333", borderRadius: "0 99px 99px 0" }} />
+      </div>
+    </div>
+  );
+}
+
 // Animated minute-by-minute replay of a finished match.
 function TimeMachineReplay({ m }) {
   const [phase, setPhase] = useState("idle"); // idle | playing | done
@@ -1144,6 +1170,31 @@ function parseEventMin(str) {
   const m = str && str.match(/(\d+)(?:\+(\d+))?/);
   if (!m) return null;
   return parseInt(m[1]) + (m[2] ? parseInt(m[2]) : 0);
+}
+
+// Compute which team has momentum (0..1, >0.5 = home dominant). Returns null if no data.
+function matchMomentum(m) {
+  const currentMin = parseEventMin(m.clock) || 0;
+  const windowStart = Math.max(0, currentMin - 20);
+  let h = 0, a = 0;
+  for (const g of (m.goals || [])) {
+    const min = parseEventMin(g.minute);
+    if (min == null) continue;
+    const w = min >= windowStart ? 3 : 1;
+    if (g.side === "home") h += w; else a += w;
+  }
+  for (const c of (m.cards || [])) {
+    const min = parseEventMin(c.minute);
+    if (min == null) continue;
+    const w = (min >= windowStart ? 1 : 0.3) * (c.type === "red" ? 1.5 : 0.5);
+    if (c.side === "home") a += w; else h += w;
+  }
+  const hs = m.homeStats || {};
+  const as = m.awayStats || {};
+  h += (parseFloat(hs.shotsOnTarget) || 0) * 0.5 + (parseFloat(hs.cornerKicks) || 0) * 0.2;
+  a += (parseFloat(as.shotsOnTarget) || 0) * 0.5 + (parseFloat(as.cornerKicks) || 0) * 0.2;
+  const total = h + a;
+  return total < 0.1 ? null : h / total;
 }
 
 // Derive live score from goals array — more up-to-date than ESPN's score field during live matches.
@@ -1852,7 +1903,7 @@ function GoalToast({ alerts }) {
   );
 }
 
-function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick }) {
+function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, liveMatches, onNavigate }) {
 
   // Request native fullscreen (Android Chrome / desktop). iOS Safari silently ignores.
   useEffect(() => {
@@ -1906,6 +1957,25 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
   }, []);
   const secs = Math.max(1, 30 - Math.floor((Date.now() - lastRefreshed) / 1000));
 
+  // Swipe between live matches
+  const swipeX = useRef(null);
+  const swipeY = useRef(null);
+  const onModalTouchStart = (e) => {
+    swipeX.current = e.touches[0].clientX;
+    swipeY.current = e.touches[0].clientY;
+  };
+  const onModalTouchEnd = (e) => {
+    if (swipeX.current === null) return;
+    const dx = e.changedTouches[0].clientX - swipeX.current;
+    const dy = e.changedTouches[0].clientY - swipeY.current;
+    swipeX.current = null; swipeY.current = null;
+    if (!liveMatches || liveMatches.length <= 1) return;
+    if (Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
+    const idx = liveMatches.findIndex((lm) => lm.id === m.id);
+    if (dx < 0 && idx < liveMatches.length - 1) onNavigate?.(liveMatches[idx + 1]);
+    if (dx > 0 && idx > 0) onNavigate?.(liveMatches[idx - 1]);
+  };
+
   const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
   const [showRecap, setShowRecap] = useState(false);
 
@@ -1945,6 +2015,13 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
   const prevToastGoals   = React.useRef(goals.length);
   const prevToastYellow  = React.useRef(yellowCount);
   const prevToastRed     = React.useRef(redCount);
+
+  // Reset toast refs when switching matches so we don't fire false events.
+  useEffect(() => {
+    prevToastGoals.current  = goals.length;
+    prevToastYellow.current = yellowCount;
+    prevToastRed.current    = redCount;
+  }, [m.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const showToast = (icon, text, bg) => {
     clearTimeout(toastTimer.current);
@@ -2025,8 +2102,15 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
     </div>
   );
 
+  const liveIdx = liveMatches ? liveMatches.findIndex((lm) => lm.id === m.id) : -1;
+  const hasMultiLive = liveMatches && liveMatches.length > 1;
+
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+    <div
+      style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, display: "flex", flexDirection: "column", overflow: "hidden" }}
+      onTouchStart={(e) => { e.stopPropagation(); onModalTouchStart(e); }}
+      onTouchEnd={(e) => { e.stopPropagation(); onModalTouchEnd(e); }}
+    >
 
       {/* ── EVENT TOAST ── */}
       {eventToast && (
@@ -2061,6 +2145,20 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
         </div>
       </div>
 
+      {/* ── LIVE MATCH SWITCHER DOTS ── */}
+      {hasMultiLive && (
+        <div style={{ flexShrink: 0, display: "flex", justifyContent: "center", alignItems: "center", gap: 6, padding: "5px 16px", borderBottom: `1px solid ${C.border}`, background: "rgba(0,0,0,0.15)" }}>
+          {liveMatches.map((lm, i) => (
+            <button
+              key={lm.id}
+              onClick={() => onNavigate?.(lm)}
+              title={`${lm.home} vs ${lm.away}`}
+              style={{ width: lm.id === m.id ? 22 : 7, height: 7, borderRadius: 99, border: "none", padding: 0, cursor: "pointer", background: lm.id === m.id ? C.green : C.border, transition: "all 0.3s ease", flexShrink: 0 }}
+            />
+          ))}
+        </div>
+      )}
+
       {/* ── HERO SCORE ── */}
       <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "space-between", padding: wide ? "14px 28px 12px" : "10px 20px 8px", borderBottom: `1px solid ${C.border}` }}>
         <div style={{ textAlign: "center", flex: 1 }}>
@@ -2075,9 +2173,9 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
         <div style={{ textAlign: "center", flexShrink: 0, padding: "0 16px" }}>
           {hasScore ? (
             <div style={{ display: "flex", alignItems: "baseline", gap: 2 }}>
-              <span className={homeFlash ? "wc-score-flash" : ""} style={{ fontSize: scoreSz, fontWeight: 900, letterSpacing: -3, lineHeight: 1 }}>{mh}</span>
+              <span className={homeFlash ? "wc-score-roll" : ""} style={{ fontSize: scoreSz, fontWeight: 900, letterSpacing: -3, lineHeight: 1, display: "inline-block" }}>{mh}</span>
               <span style={{ fontSize: Math.round(scoreSz * 0.54), fontWeight: 300, color: C.dim, lineHeight: 1, margin: "0 4px" }}>–</span>
-              <span className={awayFlash ? "wc-score-flash" : ""} style={{ fontSize: scoreSz, fontWeight: 900, letterSpacing: -3, lineHeight: 1 }}>{ma}</span>
+              <span className={awayFlash ? "wc-score-roll" : ""} style={{ fontSize: scoreSz, fontWeight: 900, letterSpacing: -3, lineHeight: 1, display: "inline-block" }}>{ma}</span>
             </div>
           ) : (
             <div style={{ fontSize: wide ? 34 : 26, fontWeight: 700, color: C.dim }}>vs</div>
@@ -2104,6 +2202,9 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
         </div>
       )}
 
+      {/* ── MOMENTUM BAR — only while live/HT ── */}
+      {isLive && <MomentumBar m={m} />}
+
       {/* ── PANELS: Events + Stats side by side (wide) or stacked (mobile) ── */}
       <div style={{ flex: 1, display: "grid", gridTemplateColumns: wide ? "1fr 1fr" : "1fr", gap: 10, padding: wide ? "12px 16px" : "10px 14px", minHeight: 0 }}>
 
@@ -2127,13 +2228,13 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
           )}
         </div>
 
-        {/* Stats — bars on wide, compact number grid on mobile */}
+        {/* Stats — bars on all screen sizes (narrower bars on mobile) */}
         <div style={panelStyle}>
           {panelHead("📊  Match Stats")}
           {statKeys.length === 0 ? (
             <div style={{ color: C.dim, fontSize: 14, textAlign: "center", padding: "16px 0" }}>Stats not available yet</div>
-          ) : wide ? (
-            <div style={{ flex: 1, overflowY: "auto", minHeight: 0, display: "grid", gap: 10 }}>
+          ) : (
+            <div style={{ flex: 1, overflowY: "auto", minHeight: 0, display: "grid", gap: wide ? 10 : 8 }}>
               {statKeys.map((k) => {
                 const { label, suffix = "" } = STAT_LABELS[k];
                 const hv = parseFloat(hs[k]) || 0;
@@ -2142,30 +2243,15 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick })
                 const hPct = Math.round((hv / total) * 100);
                 return (
                   <div key={k}>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, fontWeight: 800, marginBottom: 5 }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: wide ? 14 : 13, fontWeight: 800, marginBottom: wide ? 5 : 4 }}>
                       <span style={{ color: C.green }}>{hs[k] != null ? `${hs[k]}${suffix}` : "–"}</span>
-                      <span style={{ color: C.dim, fontSize: 12, fontWeight: 700 }}>{label}</span>
+                      <span style={{ color: C.dim, fontSize: wide ? 12 : 11, fontWeight: 700 }}>{label}</span>
                       <span style={{ color: "#aaa" }}>{as[k] != null ? `${as[k]}${suffix}` : "–"}</span>
                     </div>
-                    <div style={{ display: "flex", height: 5, borderRadius: 3, overflow: "hidden", background: C.border }}>
+                    <div style={{ display: "flex", height: wide ? 5 : 3, borderRadius: 3, overflow: "hidden", background: C.border }}>
                       <div style={{ width: `${hPct}%`, background: C.green, borderRadius: "3px 0 0 3px", transition: "width 0.6s ease" }} />
                       <div style={{ flex: 1, background: "#555", borderRadius: "0 3px 3px 0" }} />
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-              {statKeys.slice(0, 6).map((k) => {
-                const { label } = STAT_LABELS[k];
-                return (
-                  <div key={k} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 8, padding: "7px 10px" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 15, fontWeight: 800, marginBottom: 3 }}>
-                      <span style={{ color: C.green }}>{hs[k] ?? "–"}</span>
-                      <span style={{ color: "#aaa" }}>{as[k] ?? "–"}</span>
-                    </div>
-                    <div style={{ fontSize: 11, color: C.dim, fontWeight: 600, letterSpacing: 0.3 }}>{label}</div>
                   </div>
                 );
               })}
@@ -4217,7 +4303,7 @@ export default function App() {
       <GoalToast alerts={goalAlerts} />
       <PullToRefresh onRefresh={refreshMatches} />
       <Onboarding />
-      {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} lastRefreshed={lastRefreshed} onPlayerClick={openSpotlight} />}
+      {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} lastRefreshed={lastRefreshed} onPlayerClick={openSpotlight} liveMatches={matches.filter(m => m.status === "LIVE" || m.status === "HT")} onNavigate={openLiveModal} />}
       {spotlightPlayer && <PlayerSpotlight player={spotlightPlayer} matches={matches} onClose={() => setSpotlightPlayer(null)} />}
       {showSettings && <SettingsPanel onClose={() => setShowSettings(false)} fontScale={fontScale} setFontScale={setFontScale} />}
       <WhatDidIMiss summary={missedSummary} onDismiss={() => setMissedSummary(null)} onOpenLive={openLiveModal} tz={tz} />
