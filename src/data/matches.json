@@ -2226,16 +2226,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "74.8",
+        "possessionPct": "74.7",
         "shotsOnTarget": "15",
-        "totalShots": "28"
+        "totalShots": "27"
       },
       "awayStats": {
-        "possessionPct": "25.2",
+        "possessionPct": "25.3",
         "shotsOnTarget": "3",
         "totalShots": "10"
       },
-      "recap": null
+      "recap": "Room made 15 saves - the most by any goalkeeper in 90 minutes of a World Cup match since records began in 1966"
     },
     {
       "id": "e760449",
@@ -2250,8 +2250,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -2903,7 +2911,7 @@
     {
       "id": "e760489",
       "date": "2026-06-29T20:30Z",
-      "home": "Group E Winner",
+      "home": "Germany",
       "away": "Third Place Group A/B/C/D/F",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
@@ -3411,6 +3419,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T01:56:23.080Z",
+  "lastUpdated": "2026-06-21T03:58:20.498Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
