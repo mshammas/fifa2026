@@ -2368,16 +2368,8 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "25'",
-      "goals": [
-        {
-          "side": "away",
-          "player": "M. Taremi",
-          "minute": "25'",
-          "pen": false,
-          "og": false
-        }
-      ],
+      "clock": "28'",
+      "goals": [],
       "cards": [
         {
           "side": "home",
@@ -2387,14 +2379,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "72.4",
+        "possessionPct": "73.4",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "27.6",
-        "shotsOnTarget": "2",
-        "totalShots": "3"
+        "possessionPct": "26.6",
+        "shotsOnTarget": "1",
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -3521,6 +3513,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T19:26:24.942Z",
+  "lastUpdated": "2026-06-21T19:28:26.500Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
