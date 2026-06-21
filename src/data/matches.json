@@ -2298,10 +2298,10 @@
       "away": "Saudi Arabia",
       "group": "H",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+1'",
+      "clock": "90'+3'",
       "goals": [
         {
           "side": "home",
@@ -2330,6 +2330,13 @@
           "minute": "49'",
           "pen": false,
           "og": true
+        },
+        {
+          "side": "home",
+          "player": "F. Torres",
+          "minute": "90'+2'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -2347,12 +2354,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "65.7",
-        "shotsOnTarget": "8",
-        "totalShots": "21"
+        "possessionPct": "66.4",
+        "shotsOnTarget": "9",
+        "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "34.3",
+        "possessionPct": "33.6",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -3498,6 +3505,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T17:54:22.228Z",
+  "lastUpdated": "2026-06-21T17:56:20.610Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
