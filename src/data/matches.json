@@ -2245,9 +2245,9 @@
       "group": "F",
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
-      "clock": "67'",
+      "clock": "70'",
       "goals": [
         {
           "side": "away",
@@ -2262,18 +2262,25 @@
           "minute": "31'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "J. Ito",
+          "minute": "69'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "36.6",
+        "possessionPct": "36.3",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "63.4",
-        "shotsOnTarget": "3",
-        "totalShots": "8"
+        "possessionPct": "63.7",
+        "shotsOnTarget": "4",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -3434,6 +3441,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T05:28:20.889Z",
+  "lastUpdated": "2026-06-21T05:30:32.815Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
