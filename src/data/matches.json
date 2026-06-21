@@ -2301,7 +2301,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "29'",
+      "clock": "31'",
       "goals": [
         {
           "side": "home",
@@ -2325,14 +2325,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "S. Al-Dawsari",
+          "minute": "30'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "73.1",
+        "possessionPct": "73.6",
         "shotsOnTarget": "4",
         "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "26.9",
+        "possessionPct": "26.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3478,6 +3485,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T16:30:32.346Z",
+  "lastUpdated": "2026-06-21T16:32:21.076Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
