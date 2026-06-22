@@ -2561,15 +2561,22 @@
       "away": "Austria",
       "group": "J",
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+4'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "home",
           "player": "L. Messi",
           "minute": "38'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "L. Messi",
+          "minute": "90'+5'",
           "pen": false,
           "og": false
         }
@@ -2601,12 +2608,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "54",
-        "shotsOnTarget": "2",
-        "totalShots": "8"
+        "possessionPct": "53.8",
+        "shotsOnTarget": "5",
+        "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "46",
+        "possessionPct": "46.2",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -3684,6 +3691,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T18:58:21.842Z",
+  "lastUpdated": "2026-06-22T19:00:41.938Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
