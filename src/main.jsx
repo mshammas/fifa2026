@@ -2182,8 +2182,8 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
               >
                 <div style={{ fontSize: 10, fontWeight: 700, color: C.dim, letterSpacing: 0.8, padding: "2px 10px 6px", textTransform: "uppercase" }}>Audio options</div>
                 {[
-                  { label: "🎺 Commentary", val: commentaryOn, set: setCommentaryOn },
-                  { label: "📣 Crowd noise", val: cheerOn, set: setCheerOn },
+                  { label: "🎺 Commentary", val: crowdOn && commentaryOn, set: setCommentaryOn },
+                  { label: "📣 Crowd noise", val: crowdOn && cheerOn, set: setCheerOn },
                 ].map(({ label, val, set }) => (
                   <button
                     key={label}
