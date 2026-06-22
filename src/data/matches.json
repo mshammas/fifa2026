@@ -2491,7 +2491,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "34'",
+      "clock": "36'",
       "goals": [
         {
           "side": "home",
@@ -2513,17 +2513,23 @@
           "player": "S. Singh",
           "minute": "20'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "C. McCowatt",
+          "minute": "34'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "46.8",
+        "possessionPct": "44.2",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "53.2",
+        "possessionPct": "55.8",
         "shotsOnTarget": "1",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -3616,6 +3622,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T01:34:26.152Z",
+  "lastUpdated": "2026-06-22T01:36:26.353Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
