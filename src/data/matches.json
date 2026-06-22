@@ -2430,7 +2430,7 @@
         },
         {
           "side": "home",
-          "player": "A. Cano",
+          "player": "A. Canobbio",
           "minute": "45'+6'",
           "pen": false,
           "og": false
@@ -2479,7 +2479,7 @@
         "shotsOnTarget": "4",
         "totalShots": "12"
       },
-      "recap": null
+      "recap": "After holding Spain to a 0-0 draw, Cape Verde pulled off another impressive result with a draw against Uruguay."
     },
     {
       "id": "e760452",
@@ -3595,6 +3595,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T00:06:25.674Z",
+  "lastUpdated": "2026-06-22T00:58:21.100Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
