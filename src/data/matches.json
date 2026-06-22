@@ -2491,7 +2491,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "65'",
+      "clock": "68'",
       "goals": [
         {
           "side": "home",
@@ -2504,6 +2504,13 @@
           "side": "away",
           "player": "M. Zico",
           "minute": "58'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "M. Salah",
+          "minute": "67'",
           "pen": false,
           "og": false
         }
@@ -2529,12 +2536,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "41.6",
+        "possessionPct": "42.3",
         "shotsOnTarget": "4",
-        "totalShots": "8"
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "58.4",
+        "possessionPct": "57.7",
         "shotsOnTarget": "3",
         "totalShots": "14"
       },
@@ -3629,6 +3636,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T02:26:20.402Z",
+  "lastUpdated": "2026-06-22T02:28:24.578Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
