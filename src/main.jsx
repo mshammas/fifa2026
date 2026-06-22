@@ -1911,9 +1911,23 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
   // Request native fullscreen (Android Chrome / desktop). iOS Safari silently ignores.
   useEffect(() => {
     const el = document.documentElement;
-    if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
-    // Back-button on Android or Esc on desktop exits fullscreen → close modal.
-    const onFs = () => { if (!document.fullscreenElement) onClose(); };
+    // Track whether WE successfully entered fullscreen — only then should
+    // a fullscreenchange exit close the modal (e.g. Android back button).
+    // If requestFullscreen is rejected (no user gesture on desktop) some
+    // browsers fire fullscreenchange with fullscreenElement=null immediately,
+    // which previously triggered onClose() and blanked the screen.
+    let weAreFullscreen = false;
+    if (el.requestFullscreen) {
+      el.requestFullscreen()
+        .then(() => { weAreFullscreen = true; })
+        .catch(() => {});
+    }
+    const onFs = () => {
+      if (weAreFullscreen && !document.fullscreenElement) {
+        weAreFullscreen = false;
+        onClose();
+      }
+    };
     document.addEventListener("fullscreenchange", onFs);
     return () => {
       document.removeEventListener("fullscreenchange", onFs);
