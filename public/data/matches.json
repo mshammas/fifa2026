@@ -2626,11 +2626,19 @@
       "away": "Iraq",
       "group": "I",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "13'",
-      "goals": [],
+      "clock": "15'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "K. Mbappé",
+          "minute": "14'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -2640,12 +2648,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "53.9",
-        "shotsOnTarget": "0",
-        "totalShots": "3"
+        "possessionPct": "65.5",
+        "shotsOnTarget": "1",
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "46.1",
+        "possessionPct": "34.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3706,6 +3714,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T21:14:22.979Z",
+  "lastUpdated": "2026-06-22T21:16:27.006Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
