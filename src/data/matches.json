@@ -2412,7 +2412,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+4'",
       "goals": [
         {
           "side": "away",
@@ -2461,17 +2461,23 @@
           "player": "M. Olivera",
           "minute": "58'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "D. Borges",
+          "minute": "90'+4'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
         "possessionPct": "66.5",
         "shotsOnTarget": "2",
-        "totalShots": "16"
+        "totalShots": "17"
       },
       "awayStats": {
         "possessionPct": "33.5",
         "shotsOnTarget": "2",
-        "totalShots": "7"
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -3581,6 +3587,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-21T23:58:22.232Z",
+  "lastUpdated": "2026-06-22T00:00:45.063Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
