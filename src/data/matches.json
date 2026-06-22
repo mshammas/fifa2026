@@ -2628,8 +2628,8 @@
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "Delay",
       "goals": [
         {
           "side": "home",
@@ -3714,6 +3714,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T22:06:30.837Z",
+  "lastUpdated": "2026-06-22T22:08:22.448Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
