@@ -2629,16 +2629,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "5'",
+      "clock": "7'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "A. Al-Ammari",
+          "minute": "6'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "57.1",
+        "possessionPct": "54.4",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "42.9",
+        "possessionPct": "45.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3699,6 +3706,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T21:06:28.223Z",
+  "lastUpdated": "2026-06-22T21:08:22.585Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
