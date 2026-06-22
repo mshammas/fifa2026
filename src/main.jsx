@@ -4223,10 +4223,21 @@ export default function App() {
           if (hd > 0 || ad > 0) newGoals.push({ m, homeChange: hd, awayChange: ad });
         }
       }
-      const liveNow = freshMatches.filter(m => m.status === "LIVE" || m.status === "HT");
+      // Only show matches that newly became live — exclude any that were already
+      // live/HT in wc_prev_scores, which the user already knew about.
+      const liveNow = freshMatches.filter(m => {
+        if (m.status !== "LIVE" && m.status !== "HT") return false;
+        const p = prev[m.id];
+        return !p || (p.status !== "LIVE" && p.status !== "HT");
+      });
       if (newResults.length || newGoals.length || liveNow.length) {
         setMissedSummary({ newResults, newGoals, liveNow });
       }
+      // Advance wc_prev_scores to the fresh snapshot so the next open
+      // doesn't diff against this same stale baseline.
+      const nextSnapshot = {};
+      for (const m of freshMatches) nextSnapshot[m.id] = { h: m.homeScore, a: m.awayScore, status: m.status, redCards: (m.cards || []).filter(c => c.type === "red").length };
+      try { localStorage.setItem("wc_prev_scores", JSON.stringify(nextSnapshot)); } catch {}
     };
     fetch(`./data/matches.json?t=${Date.now()}`)
       .then(r => r.ok ? r.json() : null)
