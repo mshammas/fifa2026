@@ -1537,8 +1537,9 @@ function ShareButton({ m }) {
 }
 
 // Synthesised crowd audio via Web Audio API — no external files.
-// enabled: bool (user toggle), isLive: bool, goalCount: number
-function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget, home, away, homeScore, awayScore) {
+// cheerEnabled: crowd noise + sound effects; commentaryEnabled: speech synthesis
+function useCrowdAudio(cheerEnabled, commentaryEnabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget, home, away, homeScore, awayScore) {
+  const enabled = cheerEnabled || commentaryEnabled;
   const ambientRef  = React.useRef(null); // AudioBufferSourceNode
   const ctxRef      = React.useRef(null); // AudioContext
   const prevGoals   = React.useRef(goalCount);
@@ -1550,17 +1551,17 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
   const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
   // Chrome silently pauses speechSynthesis when the tab is backgrounded or after ~15s of
-  // inactivity. Keep it alive with a periodic resume() heartbeat while crowd audio is on.
+  // inactivity. Keep it alive with a periodic resume() heartbeat while commentary is on.
   useEffect(() => {
-    if (!enabled || !window.speechSynthesis) return;
+    if (!commentaryEnabled || !window.speechSynthesis) return;
     const id = setInterval(() => {
       if (window.speechSynthesis.paused) window.speechSynthesis.resume();
     }, 5000);
     return () => clearInterval(id);
-  }, [enabled]);
+  }, [commentaryEnabled]);
 
   const announce = (text, { rate = 0.9, pitch = 1.0 } = {}) => {
-    if (!window.speechSynthesis) return;
+    if (!commentaryEnabled || !window.speechSynthesis) return;
     window.speechSynthesis.cancel();
     const utt = new SpeechSynthesisUtterance(text);
     utt.rate = rate; utt.pitch = pitch; utt.volume = 1;
@@ -1580,7 +1581,7 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
       ctxRef.current?.close();
       ctxRef.current = null;
     };
-    if (!enabled || !isLive) { stop(); return; }
+    if (!cheerEnabled || !isLive) { stop(); return; }
 
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     ctxRef.current = ctx;
@@ -1606,7 +1607,7 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
       .catch(() => {});
 
     return stop;
-  }, [enabled, isLive]);
+  }, [cheerEnabled, isLive]);
 
   // GOAL!
   useEffect(() => {
@@ -1619,9 +1620,11 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
       "What a finish! It's in the back of the net!",
       "He's scored! An absolutely stunning goal!",
     ]), { rate: 0.85, pitch: 1.2 });
-    const cheer = new Audio("./sounds/goal-cheer.mp3");
-    cheer.volume = 0.7;
-    cheer.play().catch(() => {});
+    if (cheerEnabled) {
+      const cheer = new Audio("./sounds/goal-cheer.mp3");
+      cheer.volume = 0.7;
+      cheer.play().catch(() => {});
+    }
   }, [goalCount, enabled]);
 
   // Yellow card
@@ -1703,7 +1706,7 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
 
   // Periodic score update every 3 minutes
   useEffect(() => {
-    if (!enabled || !isLive) return;
+    if (!commentaryEnabled || !isLive) return;
     const t = setInterval(() => {
       const h = homeScore ?? 0;
       const a = awayScore ?? 0;
@@ -1734,7 +1737,7 @@ function useCrowdAudio(enabled, isLive, goalCount, yellowCount, lastYellowPlayer
       announce(line);
     }, 180_000);
     return () => clearInterval(t);
-  }, [enabled, isLive, home, away, homeScore, awayScore]);
+  }, [commentaryEnabled, isLive, home, away, homeScore, awayScore]);
 }
 
 const COMMENTARY_STYLE = {
@@ -1977,6 +1980,10 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
   };
 
   const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
+  const [cheerOn, setCheerOn] = useLocalStorage("wc_cheer_on", true);
+  const [commentaryOn, setCommentaryOn] = useLocalStorage("wc_commentary_on", true);
+  const [showAudioMenu, setShowAudioMenu] = useState(false);
+  const audioLpRef = React.useRef(null);
   const [showRecap, setShowRecap] = useState(false);
 
   const isLive = m.status === "LIVE" || m.status === "HT";
@@ -1996,7 +2003,7 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
   const shotsOnTarget    = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
 
   const { h: liveH, a: liveA } = liveScores(m);
-  useCrowdAudio(crowdOn, isLive, goals.length, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
+  useCrowdAudio(crowdOn && cheerOn, crowdOn && commentaryOn, isLive, goals.length, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
 
   const wide      = useWindowWidth() >= 768;
   const mh        = liveH;
@@ -2110,6 +2117,7 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
       style={{ position: "fixed", inset: 0, zIndex: 300, background: C.bg, display: "flex", flexDirection: "column", overflow: "hidden" }}
       onTouchStart={(e) => { e.stopPropagation(); onModalTouchStart(e); }}
       onTouchEnd={(e) => { e.stopPropagation(); onModalTouchEnd(e); }}
+      onClick={() => showAudioMenu && setShowAudioMenu(false)}
     >
 
       {/* ── EVENT TOAST ── */}
@@ -2132,11 +2140,56 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           {isLive && <span style={{ fontSize: 11, fontWeight: 700, color: C.dim }}>↻ {secs}s</span>}
-          <button
-            onClick={() => setCrowdOn(!crowdOn)}
-            title={crowdOn ? "Mute crowd audio" : "Enable crowd audio"}
-            style={{ background: crowdOn ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.07)", border: crowdOn ? "1px solid rgba(34,197,94,0.4)" : `1px solid ${C.border}`, borderRadius: 8, color: crowdOn ? C.green : C.dim, fontSize: 16, padding: "5px 8px", cursor: "pointer", lineHeight: 1 }}
-          >{crowdOn ? "🔊" : "🔇"}</button>
+          <div style={{ position: "relative" }}>
+            <button
+              onPointerDown={() => {
+                audioLpRef.current = setTimeout(() => {
+                  audioLpRef.current = null;
+                  setShowAudioMenu(v => !v);
+                }, 500);
+              }}
+              onPointerUp={() => {
+                if (audioLpRef.current) {
+                  clearTimeout(audioLpRef.current);
+                  audioLpRef.current = null;
+                  setCrowdOn(!crowdOn);
+                  setShowAudioMenu(false);
+                }
+              }}
+              onPointerLeave={() => { clearTimeout(audioLpRef.current); audioLpRef.current = null; }}
+              onContextMenu={e => { e.preventDefault(); setShowAudioMenu(v => !v); }}
+              title={crowdOn ? "Tap: mute  |  Hold: audio options" : "Tap: enable audio  |  Hold: audio options"}
+              style={{ background: crowdOn ? "rgba(34,197,94,0.15)" : "rgba(255,255,255,0.07)", border: crowdOn ? "1px solid rgba(34,197,94,0.4)" : `1px solid ${C.border}`, borderRadius: 8, color: crowdOn ? C.green : C.dim, fontSize: 16, padding: "5px 8px", cursor: "pointer", lineHeight: 1, userSelect: "none", WebkitUserSelect: "none" }}
+            >{crowdOn ? "🔊" : "🔇"}</button>
+            {showAudioMenu && (
+              <div
+                onClick={e => e.stopPropagation()}
+                style={{ position: "absolute", top: "calc(100% + 6px)", right: 0, background: "#1e2630", border: `1px solid ${C.border}`, borderRadius: 10, padding: "6px 4px", zIndex: 400, minWidth: 170, boxShadow: "0 6px 24px rgba(0,0,0,0.55)" }}
+              >
+                <div style={{ fontSize: 10, fontWeight: 700, color: C.dim, letterSpacing: 0.8, padding: "2px 10px 6px", textTransform: "uppercase" }}>Audio options</div>
+                {[
+                  { label: "🎺 Commentary", val: commentaryOn, set: setCommentaryOn },
+                  { label: "📣 Crowd noise", val: cheerOn, set: setCheerOn },
+                ].map(({ label, val, set }) => (
+                  <button
+                    key={label}
+                    onClick={() => { set(!val); if (!crowdOn) setCrowdOn(true); }}
+                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", background: "none", border: "none", color: C.text, fontSize: 14, padding: "7px 10px", cursor: "pointer", borderRadius: 7, gap: 12 }}
+                  >
+                    <span>{label}</span>
+                    <span style={{ width: 34, height: 18, borderRadius: 9, background: val ? C.green : C.border, display: "inline-flex", alignItems: "center", padding: "0 2px", transition: "background 0.2s", flexShrink: 0 }}>
+                      <span style={{ width: 14, height: 14, borderRadius: "50%", background: "#fff", transform: val ? "translateX(16px)" : "translateX(0)", transition: "transform 0.2s", display: "block" }} />
+                    </span>
+                  </button>
+                ))}
+                <div style={{ borderTop: `1px solid ${C.border}`, margin: "4px 6px 2px" }} />
+                <button
+                  onClick={() => setShowAudioMenu(false)}
+                  style={{ width: "100%", background: "none", border: "none", color: C.dim, fontSize: 13, padding: "6px 10px", cursor: "pointer", textAlign: "center" }}
+                >Done</button>
+              </div>
+            )}
+          </div>
           <ShareButton m={m} />
           <button
             onClick={onClose}
