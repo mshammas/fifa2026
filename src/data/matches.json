@@ -2564,7 +2564,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "74'",
+      "clock": "78'",
       "goals": [
         {
           "side": "home",
@@ -2580,15 +2580,27 @@
           "player": "S. Posch",
           "minute": "40'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "F. Medina",
+          "minute": "76'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "K. Laimer",
+          "minute": "76'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "58.4",
+        "possessionPct": "57.5",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "41.6",
+        "possessionPct": "42.5",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -3666,6 +3678,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T18:40:38.444Z",
+  "lastUpdated": "2026-06-22T18:42:31.965Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
