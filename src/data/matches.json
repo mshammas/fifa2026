@@ -2617,7 +2617,7 @@
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
-      "recap": null
+      "recap": "Lionel Messi set a World Cup record with his 17th and 18th goals, and defending champion Argentina advanced to the knockout stage with a 2-0 victory over Austria on Monday."
     },
     {
       "id": "e760457",
@@ -2632,8 +2632,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3691,6 +3699,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T19:04:23.738Z",
+  "lastUpdated": "2026-06-22T20:58:23.528Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
