@@ -1863,7 +1863,7 @@
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
-      "recap": null
+      "recap": "The U.S. advanced to the knockout round of the World Cup without their injured star forward, beating Australia 2-0 on Friday."
     },
     {
       "id": "e760445",
@@ -1972,16 +1972,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "56.6",
+        "possessionPct": "56.7",
         "shotsOnTarget": "5",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "43.4",
+        "possessionPct": "43.3",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
-      "recap": "- Vinícius Júnior scored and assisted on one of Matheus Cunha's two goals as five-time champion Brazil eliminated Haiti from the World Cup with a 3-0 victory on Friday night."
+      "recap": "Brazil moved top of World Cup Group C with a 3-0 win over Haiti"
     },
     {
       "id": "e760443",
@@ -1992,8 +1992,8 @@
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "8'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -2009,19 +2009,37 @@
           "player": "M. Galarza",
           "minute": "4'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Almirón",
+          "minute": "45'+3'",
+          "type": "red"
+        },
+        {
+          "side": "home",
+          "player": "—",
+          "minute": "63'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "E. Elmali",
+          "minute": "71'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "77.6",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "78.5",
+        "shotsOnTarget": "5",
+        "totalShots": "32"
       },
       "awayStats": {
-        "possessionPct": "22.4",
-        "shotsOnTarget": "1",
-        "totalShots": "1"
+        "possessionPct": "21.5",
+        "shotsOnTarget": "2",
+        "totalShots": "7"
       },
-      "recap": null
+      "recap": "10-man Paraguay eliminate Turkey with 1-0 win"
     },
     {
       "id": "e760447",
@@ -2030,15 +2048,85 @@
       "away": "Sweden",
       "group": "F",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 5,
+      "awayScore": 1,
+      "status": "FT",
       "clock": null,
-      "goals": [],
-      "cards": [],
-      "homeStats": null,
-      "awayStats": null,
-      "recap": null
+      "goals": [
+        {
+          "side": "home",
+          "player": "B. Brobbey",
+          "minute": "5'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "B. Brobbey",
+          "minute": "17'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Gakpo",
+          "minute": "47'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Gakpo",
+          "minute": "54'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Elanga",
+          "minute": "59'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Summerville",
+          "minute": "89'",
+          "pen": false,
+          "og": false
+        }
+      ],
+      "cards": [
+        {
+          "side": "away",
+          "player": "G. Gudmundsson",
+          "minute": "53'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "Y. Ayari",
+          "minute": "75'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Bergvall",
+          "minute": "80'",
+          "type": "yellow"
+        }
+      ],
+      "homeStats": {
+        "possessionPct": "50.9",
+        "shotsOnTarget": "7",
+        "totalShots": "10"
+      },
+      "awayStats": {
+        "possessionPct": "49.1",
+        "shotsOnTarget": "8",
+        "totalShots": "16"
+      },
+      "recap": "Brian Brobbey and Cody Gakpo scored two each as Netherlands cruised to a 5-1 World Cup victory over Sweden to go top of Group F."
     },
     {
       "id": "e760448",
@@ -2047,15 +2135,45 @@
       "away": "Ivory Coast",
       "group": "E",
       "venue": "BMO Field, Toronto",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FT",
       "clock": null,
-      "goals": [],
+      "goals": [
+        {
+          "side": "away",
+          "player": "F. Kessié",
+          "minute": "30'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "D. Undav",
+          "minute": "68'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "D. Undav",
+          "minute": "90'+4'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
-      "recap": null
+      "homeStats": {
+        "possessionPct": "59.5",
+        "shotsOnTarget": "7",
+        "totalShots": "16"
+      },
+      "awayStats": {
+        "possessionPct": "40.5",
+        "shotsOnTarget": "2",
+        "totalShots": "9"
+      },
+      "recap": "A brace by substitute Deniz Undav fired Germany to a last-gasp 2-1 win over Ivory Coast to secure their place in the last 32 of the World Cup."
     },
     {
       "id": "e760446",
@@ -2064,15 +2182,60 @@
       "away": "Curaçao",
       "group": "E",
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FT",
       "clock": null,
       "goals": [],
-      "cards": [],
-      "homeStats": null,
-      "awayStats": null,
-      "recap": null
+      "cards": [
+        {
+          "side": "home",
+          "player": "J. Alcívar",
+          "minute": "38'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Bacuna",
+          "minute": "39'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Bacuna",
+          "minute": "53'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Comenencia",
+          "minute": "56'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Gaari",
+          "minute": "75'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "G. Kastaneer",
+          "minute": "90'+1'",
+          "type": "yellow"
+        }
+      ],
+      "homeStats": {
+        "possessionPct": "74.6",
+        "shotsOnTarget": "15",
+        "totalShots": "27"
+      },
+      "awayStats": {
+        "possessionPct": "25.4",
+        "shotsOnTarget": "3",
+        "totalShots": "10"
+      },
+      "recap": "Room made 15 saves - the most by any goalkeeper in 90 minutes of a World Cup match since records began in 1966"
     },
     {
       "id": "e760449",
@@ -2081,15 +2244,52 @@
       "away": "Japan",
       "group": "F",
       "venue": "Estadio BBVA, Guadalupe",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 0,
+      "awayScore": 4,
+      "status": "FT",
       "clock": null,
-      "goals": [],
+      "goals": [
+        {
+          "side": "away",
+          "player": "D. Kamada",
+          "minute": "4'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Ueda",
+          "minute": "31'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "J. Ito",
+          "minute": "69'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Ueda",
+          "minute": "83'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
-      "recap": null
+      "homeStats": {
+        "possessionPct": "37.9",
+        "shotsOnTarget": "0",
+        "totalShots": "2"
+      },
+      "awayStats": {
+        "possessionPct": "62.1",
+        "shotsOnTarget": "5",
+        "totalShots": "11"
+      },
+      "recap": " A dominant Japan produced the biggest margin of victory for an Asian nation in a World Cup match as they beat Tunisia 4-0"
     },
     {
       "id": "e760453",
@@ -2098,15 +2298,65 @@
       "away": "Saudi Arabia",
       "group": "H",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "FT",
       "clock": null,
-      "goals": [],
-      "cards": [],
-      "homeStats": null,
-      "awayStats": null,
-      "recap": null
+      "goals": [
+        {
+          "side": "home",
+          "player": "L. Yamal",
+          "minute": "10'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Oyarzabal",
+          "minute": "21'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Oyarzabal",
+          "minute": "24'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "H. Al-Tambakti",
+          "minute": "49'",
+          "pen": false,
+          "og": true
+        }
+      ],
+      "cards": [
+        {
+          "side": "away",
+          "player": "S. Al-Dawsari",
+          "minute": "30'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Kanno",
+          "minute": "60'",
+          "type": "yellow"
+        }
+      ],
+      "homeStats": {
+        "possessionPct": "67.1",
+        "shotsOnTarget": "8",
+        "totalShots": "22"
+      },
+      "awayStats": {
+        "possessionPct": "32.9",
+        "shotsOnTarget": "1",
+        "totalShots": "3"
+      },
+      "recap": "Spain got their World Cup campaign back on track with a 4-0 victory over Saudi Arabia in Atlanta."
     },
     {
       "id": "e760451",
@@ -2115,15 +2365,42 @@
       "away": "Iran",
       "group": "G",
       "venue": "SoFi Stadium, Inglewood, California",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FT",
       "clock": null,
       "goals": [],
-      "cards": [],
-      "homeStats": null,
-      "awayStats": null,
-      "recap": null
+      "cards": [
+        {
+          "side": "home",
+          "player": "R. Lukaku",
+          "minute": "3'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "S. Ezatolahi",
+          "minute": "33'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "N. Ngoy",
+          "minute": "66'",
+          "type": "red"
+        }
+      ],
+      "homeStats": {
+        "possessionPct": "70.1",
+        "shotsOnTarget": "7",
+        "totalShots": "23"
+      },
+      "awayStats": {
+        "possessionPct": "29.9",
+        "shotsOnTarget": "3",
+        "totalShots": "7"
+      },
+      "recap": " Alireza Beiranvand made seven saves as Iran and 10-man Belgium played to a 0-0 draw at the World Cup on Sunday."
     },
     {
       "id": "e760450",
@@ -2132,15 +2409,77 @@
       "away": "Cape Verde",
       "group": "H",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FT",
       "clock": null,
-      "goals": [],
-      "cards": [],
-      "homeStats": null,
-      "awayStats": null,
-      "recap": null
+      "goals": [
+        {
+          "side": "away",
+          "player": "K. Pina",
+          "minute": "21'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Araújo",
+          "minute": "44'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "A. Canobbio",
+          "minute": "45'+6'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "H. Varela",
+          "minute": "61'",
+          "pen": false,
+          "og": false
+        }
+      ],
+      "cards": [
+        {
+          "side": "away",
+          "player": "S. Lopes Cabral",
+          "minute": "5'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "R. Bentancur",
+          "minute": "20'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "M. Olivera",
+          "minute": "58'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "D. Borges",
+          "minute": "90'+3'",
+          "type": "yellow"
+        }
+      ],
+      "homeStats": {
+        "possessionPct": "65.3",
+        "shotsOnTarget": "2",
+        "totalShots": "17"
+      },
+      "awayStats": {
+        "possessionPct": "34.7",
+        "shotsOnTarget": "4",
+        "totalShots": "12"
+      },
+      "recap": "After holding Spain to a 0-0 draw, Cape Verde pulled off another impressive result with a draw against Uruguay."
     },
     {
       "id": "e760452",
@@ -2149,14 +2488,70 @@
       "away": "Egypt",
       "group": "G",
       "venue": "BC Place, Vancouver",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FT",
       "clock": null,
-      "goals": [],
-      "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "goals": [
+        {
+          "side": "home",
+          "player": "F. Surman",
+          "minute": "15'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "M. Zico",
+          "minute": "58'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "M. Salah",
+          "minute": "67'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "Trézéguet",
+          "minute": "82'",
+          "pen": false,
+          "og": false
+        }
+      ],
+      "cards": [
+        {
+          "side": "away",
+          "player": "M. Lashin",
+          "minute": "17'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "S. Singh",
+          "minute": "20'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "C. McCowatt",
+          "minute": "34'",
+          "type": "yellow"
+        }
+      ],
+      "homeStats": {
+        "possessionPct": "44.3",
+        "shotsOnTarget": "5",
+        "totalShots": "11"
+      },
+      "awayStats": {
+        "possessionPct": "55.7",
+        "shotsOnTarget": "7",
+        "totalShots": "19"
+      },
       "recap": null
     },
     {
@@ -2740,7 +3135,7 @@
     {
       "id": "e760489",
       "date": "2026-06-29T20:30Z",
-      "home": "Group E Winner",
+      "home": "Germany",
       "away": "Third Place Group A/B/C/D/F",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
@@ -2859,7 +3254,7 @@
     {
       "id": "e760494",
       "date": "2026-07-02T00:00Z",
-      "home": "Group D Winner",
+      "home": "USA",
       "away": "Third Place Group B/E/F/I/J",
       "group": null,
       "venue": "Levi's Stadium, Santa Clara, California",
@@ -3248,6 +3643,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-20T03:08:59.936Z",
+  "lastUpdated": "2026-06-22T03:02:26.584Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }

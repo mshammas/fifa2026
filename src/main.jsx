@@ -4160,13 +4160,14 @@ export default function App() {
   const [lastRefreshed, setLastRefreshed] = useState(Date.now());
   const prevMatchesRef = useRef(null);
 
-  const refreshMatches = useCallback(async () => {
+  const refreshMatches = useCallback(async (dismissMissed = false) => {
     try {
       const res = await fetch(`./data/matches.json?t=${Date.now()}`);
       if (!res.ok) return;
       const data = await res.json();
       setMatchesState(data);
       setLastRefreshed(Date.now());
+      if (dismissMissed) setMissedSummary(null);
       // Keep liveModal in sync with refreshed data.
       setLiveModal((prev) => {
         if (!prev) return prev;
@@ -4389,7 +4390,7 @@ export default function App() {
     >
       <GlobalStyles fontScale={fontScale} />
       <GoalToast alerts={goalAlerts} />
-      <PullToRefresh onRefresh={refreshMatches} />
+      <PullToRefresh onRefresh={() => refreshMatches(true)} />
       <Onboarding />
       {liveModal && <LiveMatchModal m={liveModal} onClose={closeLiveModal} onRefresh={refreshMatches} lastRefreshed={lastRefreshed} onPlayerClick={openSpotlight} liveMatches={matches.filter(m => m.status === "LIVE" || m.status === "HT")} onNavigate={openLiveModal} />}
       {spotlightPlayer && <PlayerSpotlight player={spotlightPlayer} matches={matches} onClose={() => setSpotlightPlayer(null)} />}
@@ -4433,7 +4434,7 @@ export default function App() {
 
       <Tabs tab={tab} setTab={changeTab} hasLive={hasLive} />
       <ScrollToTop />
-      <FloatingActions onRefresh={refreshMatches} />
+      <FloatingActions onRefresh={() => refreshMatches(true)} />
     </div>
   );
 }
