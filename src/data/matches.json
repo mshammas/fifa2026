@@ -2391,12 +2391,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "70.3",
+        "possessionPct": "70.1",
         "shotsOnTarget": "7",
         "totalShots": "23"
       },
       "awayStats": {
-        "possessionPct": "29.7",
+        "possessionPct": "29.9",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -2412,7 +2412,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+4'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "away",
@@ -2465,19 +2465,19 @@
         {
           "side": "away",
           "player": "D. Borges",
-          "minute": "90'+4'",
+          "minute": "90'+3'",
           "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "66.5",
+        "possessionPct": "65.8",
         "shotsOnTarget": "2",
         "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "33.5",
-        "shotsOnTarget": "2",
-        "totalShots": "9"
+        "possessionPct": "34.2",
+        "shotsOnTarget": "3",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -2494,8 +2494,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3587,6 +3595,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T00:00:45.063Z",
+  "lastUpdated": "2026-06-22T00:02:21.094Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
