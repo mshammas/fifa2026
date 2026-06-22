@@ -2491,7 +2491,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "16'",
+      "clock": "17'",
       "goals": [
         {
           "side": "home",
@@ -2501,14 +2501,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "M. Lashin",
+          "minute": "17'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "50",
+        "possessionPct": "49.3",
         "shotsOnTarget": "2",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "50",
+        "possessionPct": "50.7",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -3603,6 +3610,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-22T01:16:25.143Z",
+  "lastUpdated": "2026-06-22T01:18:22.683Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
