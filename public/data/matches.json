@@ -2803,8 +2803,8 @@
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": 5,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+4'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -3872,6 +3872,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T18:58:29.864Z",
+  "lastUpdated": "2026-06-23T19:00:52.809Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
