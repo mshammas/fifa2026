@@ -2629,7 +2629,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "86'",
+      "clock": "89'",
       "goals": [
         {
           "side": "home",
@@ -2662,12 +2662,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "56",
-        "shotsOnTarget": "4",
-        "totalShots": "17"
+        "possessionPct": "55.3",
+        "shotsOnTarget": "5",
+        "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "44",
+        "possessionPct": "44.7",
         "shotsOnTarget": "0",
         "totalShots": "4"
       },
@@ -2680,16 +2680,24 @@
       "away": "Senegal",
       "group": "I",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "43'",
-      "goals": [],
+      "clock": "45'+1'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "M. Holmgren Pedersen",
+          "minute": "43'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
         "possessionPct": "53.2",
-        "shotsOnTarget": "2",
-        "totalShots": "4"
+        "shotsOnTarget": "3",
+        "totalShots": "6"
       },
       "awayStats": {
         "possessionPct": "46.8",
@@ -3736,6 +3744,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T00:44:24.784Z",
+  "lastUpdated": "2026-06-23T00:46:20.242Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
