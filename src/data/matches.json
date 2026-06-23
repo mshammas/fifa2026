@@ -2857,16 +2857,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "66.1",
+        "possessionPct": "66",
         "shotsOnTarget": "9",
         "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "33.9",
+        "possessionPct": "34",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "Cristiano Ronaldo scores twice as Portugal rout Uzbekistan to get campaign back on track"
     },
     {
       "id": "e760458",
@@ -2881,8 +2881,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3872,6 +3880,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T19:00:52.809Z",
+  "lastUpdated": "2026-06-23T19:58:24.505Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
