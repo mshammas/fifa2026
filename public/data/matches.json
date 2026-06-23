@@ -2801,10 +2801,10 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "37'",
+      "clock": "39'",
       "goals": [
         {
           "side": "home",
@@ -2819,6 +2819,13 @@
           "minute": "17'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Ronaldo",
+          "minute": "39'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -2830,12 +2837,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "69.3",
-        "shotsOnTarget": "2",
-        "totalShots": "6"
+        "possessionPct": "67.9",
+        "shotsOnTarget": "3",
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "30.7",
+        "possessionPct": "32.1",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -3845,6 +3852,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T17:38:47.460Z",
+  "lastUpdated": "2026-06-23T17:40:40.852Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
