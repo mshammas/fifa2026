@@ -2801,10 +2801,10 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "86'",
+      "clock": "88'",
       "goals": [
         {
           "side": "home",
@@ -2833,6 +2833,13 @@
           "minute": "60'",
           "pen": false,
           "og": true
+        },
+        {
+          "side": "home",
+          "player": "R. Leão",
+          "minute": "87'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -2850,12 +2857,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "67.2",
-        "shotsOnTarget": "8",
-        "totalShots": "15"
+        "possessionPct": "66.8",
+        "shotsOnTarget": "9",
+        "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "32.8",
+        "possessionPct": "33.2",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
@@ -3865,6 +3872,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T18:50:35.886Z",
+  "lastUpdated": "2026-06-23T18:52:23.284Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
