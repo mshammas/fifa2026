@@ -2913,10 +2913,10 @@
       "away": "Croatia",
       "group": "L",
       "venue": "BMO Field, Toronto",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -3901,6 +3901,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T22:58:22.316Z",
+  "lastUpdated": "2026-06-23T23:00:44.197Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
