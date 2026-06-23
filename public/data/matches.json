@@ -2744,7 +2744,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "42'",
+      "clock": "45'",
       "goals": [
         {
           "side": "home",
@@ -2754,14 +2754,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "R. Zerrouki",
+          "minute": "44'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "26.1",
+        "possessionPct": "27.1",
         "shotsOnTarget": "3",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "73.9",
+        "possessionPct": "72.9",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
@@ -3788,6 +3795,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T03:44:24.007Z",
+  "lastUpdated": "2026-06-23T03:46:23.553Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
