@@ -2743,8 +2743,8 @@
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+8'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -2783,12 +2783,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "27.9",
+        "possessionPct": "28",
         "shotsOnTarget": "4",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "72.1",
+        "possessionPct": "72",
         "shotsOnTarget": "8",
         "totalShots": "17"
       },
@@ -3511,7 +3511,7 @@
     {
       "id": "e760500",
       "date": "2026-07-03T22:00Z",
-      "home": "Group J Winner",
+      "home": "Argentina",
       "away": "Group H 2nd Place",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
@@ -3815,6 +3815,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T05:00:38.715Z",
+  "lastUpdated": "2026-06-23T05:02:24.043Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
