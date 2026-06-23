@@ -2801,10 +2801,10 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "59'",
+      "clock": "62'",
       "goals": [
         {
           "side": "home",
@@ -2826,6 +2826,13 @@
           "minute": "39'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "A. Nematov",
+          "minute": "60'",
+          "pen": false,
+          "og": true
         }
       ],
       "cards": [
@@ -2838,8 +2845,8 @@
       ],
       "homeStats": {
         "possessionPct": "64.6",
-        "shotsOnTarget": "4",
-        "totalShots": "10"
+        "shotsOnTarget": "5",
+        "totalShots": "12"
       },
       "awayStats": {
         "possessionPct": "35.4",
@@ -3852,6 +3859,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T18:24:44.520Z",
+  "lastUpdated": "2026-06-23T18:26:33.656Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
