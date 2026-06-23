@@ -2681,9 +2681,9 @@
       "group": "I",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 3,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+4'",
       "goals": [
         {
           "side": "home",
@@ -2712,18 +2712,25 @@
           "minute": "58'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "I. Sarr",
+          "minute": "90'+3'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "44.4",
+        "possessionPct": "43.3",
         "shotsOnTarget": "7",
         "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "55.6",
-        "shotsOnTarget": "3",
-        "totalShots": "12"
+        "possessionPct": "56.7",
+        "shotsOnTarget": "4",
+        "totalShots": "14"
       },
       "recap": null
     },
@@ -3765,6 +3772,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T01:52:21.233Z",
+  "lastUpdated": "2026-06-23T01:54:23.945Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
