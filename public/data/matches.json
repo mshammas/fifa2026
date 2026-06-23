@@ -2857,12 +2857,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "66",
+        "possessionPct": "65.9",
         "shotsOnTarget": "9",
         "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "34",
+        "possessionPct": "34.1",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
@@ -2895,16 +2895,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "78.7",
-        "shotsOnTarget": "4",
+        "possessionPct": "78.8",
+        "shotsOnTarget": "3",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "21.3",
+        "possessionPct": "21.2",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
-      "recap": null
+      "recap": "Thomas Tuchel's stilted side stumbled to a 0-0 draw with well-drilled Ghana as England edged closer to the World Cup knockout phase in forgettable fashion."
     },
     {
       "id": "e760460",
@@ -3901,6 +3901,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T22:02:22.288Z",
+  "lastUpdated": "2026-06-23T22:58:22.316Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
