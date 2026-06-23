@@ -2801,10 +2801,10 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -3823,6 +3823,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T17:00:45.559Z",
+  "lastUpdated": "2026-06-23T17:01:37.968Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
