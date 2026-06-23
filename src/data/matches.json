@@ -2662,12 +2662,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "55.5",
+        "possessionPct": "55.6",
         "shotsOnTarget": "5",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "44.5",
+        "possessionPct": "44.4",
         "shotsOnTarget": "0",
         "totalShots": "4"
       },
@@ -2732,7 +2732,7 @@
         "shotsOnTarget": "4",
         "totalShots": "16"
       },
-      "recap": null
+      "recap": "Norway sensation Erling Haaland scored two stellar goals to lead his team to a fairly routine 3-2 win over Senegal at Gillette Stadium in Foxborough, Massachusetts, on Monday."
     },
     {
       "id": "e760455",
@@ -3780,6 +3780,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T02:02:23.886Z",
+  "lastUpdated": "2026-06-23T02:58:20.841Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
