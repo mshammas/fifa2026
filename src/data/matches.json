@@ -2742,9 +2742,9 @@
       "group": "J",
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "82'",
+      "clock": "85'",
       "goals": [
         {
           "side": "home",
@@ -2757,6 +2757,13 @@
           "side": "away",
           "player": "N. Benbouali",
           "minute": "69'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Gouiri",
+          "minute": "82'",
           "pen": false,
           "og": false
         }
@@ -2776,14 +2783,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "25.4",
+        "possessionPct": "25.3",
         "shotsOnTarget": "4",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "74.6",
-        "shotsOnTarget": "6",
-        "totalShots": "14"
+        "possessionPct": "74.7",
+        "shotsOnTarget": "7",
+        "totalShots": "16"
       },
       "recap": null
     },
@@ -3808,6 +3815,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T04:46:26.490Z",
+  "lastUpdated": "2026-06-23T04:48:26.873Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
