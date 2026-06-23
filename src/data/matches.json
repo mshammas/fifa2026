@@ -2783,16 +2783,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "28",
+        "possessionPct": "27.9",
         "shotsOnTarget": "4",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "72",
+        "possessionPct": "72.1",
         "shotsOnTarget": "8",
         "totalShots": "17"
       },
-      "recap": null
+      "recap": "Two second-half goals from corners saw Algeria come from behind to beat Jordan 2-1"
     },
     {
       "id": "e760461",
@@ -2807,8 +2807,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3815,6 +3823,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T05:02:24.043Z",
+  "lastUpdated": "2026-06-23T16:58:22.723Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
