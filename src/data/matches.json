@@ -2661,8 +2661,16 @@
           "type": "yellow"
         }
       ],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "55.5",
+        "shotsOnTarget": "5",
+        "totalShots": "19"
+      },
+      "awayStats": {
+        "possessionPct": "44.5",
+        "shotsOnTarget": "0",
+        "totalShots": "4"
+      },
       "recap": "Kylian Mbappé scored twice to move into a tie for second in career World Cup goals with 16, and France played through the tournament's first rain delay to beat Iraq 3-0 on Monday."
     },
     {
@@ -2675,7 +2683,7 @@
       "homeScore": 3,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'",
+      "clock": "90'+2'",
       "goals": [
         {
           "side": "home",
@@ -3757,6 +3765,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T01:50:44.308Z",
+  "lastUpdated": "2026-06-23T01:52:21.233Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
