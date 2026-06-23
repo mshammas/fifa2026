@@ -2878,7 +2878,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "58'",
+      "clock": "60'",
       "goals": [],
       "cards": [
         {
@@ -2886,15 +2886,21 @@
           "player": "D. Rice",
           "minute": "41'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "I. Williams",
+          "minute": "60'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "75.5",
-        "shotsOnTarget": "0",
-        "totalShots": "6"
+        "possessionPct": "75.9",
+        "shotsOnTarget": "1",
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "24.5",
+        "possessionPct": "24.1",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -3887,6 +3893,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T21:22:25.949Z",
+  "lastUpdated": "2026-06-23T21:24:23.499Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
