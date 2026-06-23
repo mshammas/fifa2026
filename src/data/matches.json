@@ -2804,7 +2804,7 @@
       "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "68'",
+      "clock": "70'",
       "goals": [
         {
           "side": "home",
@@ -2841,15 +2841,21 @@
           "player": "O. Xamrobekov",
           "minute": "14'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "R. Veiga",
+          "minute": "68'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "65.8",
+        "possessionPct": "65.9",
         "shotsOnTarget": "6",
         "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "34.2",
+        "possessionPct": "34.1",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
@@ -3859,6 +3865,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T18:32:23.751Z",
+  "lastUpdated": "2026-06-23T18:34:28.979Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
