@@ -2742,14 +2742,21 @@
       "group": "J",
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "67'",
+      "clock": "70'",
       "goals": [
         {
           "side": "home",
           "player": "N. Al-Rashdan",
           "minute": "36'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "N. Benbouali",
+          "minute": "69'",
           "pen": false,
           "og": false
         }
@@ -2769,14 +2776,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "25.6",
+        "possessionPct": "25.2",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "74.4",
-        "shotsOnTarget": "4",
-        "totalShots": "10"
+        "possessionPct": "74.8",
+        "shotsOnTarget": "5",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -3801,6 +3808,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T04:30:37.537Z",
+  "lastUpdated": "2026-06-23T04:32:20.679Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
