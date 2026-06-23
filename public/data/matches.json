@@ -2804,7 +2804,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "14'",
+      "clock": "17'",
       "goals": [
         {
           "side": "home",
@@ -2814,14 +2814,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "O. Xamrobekov",
+          "minute": "14'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "83.7",
+        "possessionPct": "85",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "16.3",
+        "possessionPct": "15",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3831,6 +3838,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T17:14:47.066Z",
+  "lastUpdated": "2026-06-23T17:17:23.540Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
