@@ -2744,7 +2744,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "63'",
+      "clock": "65'",
       "goals": [
         {
           "side": "home",
@@ -2760,17 +2760,23 @@
           "player": "R. Zerrouki",
           "minute": "44'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "H. Abu Dahab",
+          "minute": "64'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "26.3",
+        "possessionPct": "25.9",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "73.7",
-        "shotsOnTarget": "3",
-        "totalShots": "8"
+        "possessionPct": "74.1",
+        "shotsOnTarget": "4",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -3795,6 +3801,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-23T04:26:22.769Z",
+  "lastUpdated": "2026-06-23T04:28:22.164Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
