@@ -2959,11 +2959,19 @@
       "away": "Congo DR",
       "group": "K",
       "venue": "Estadio Akron, Guadalajara",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "75'",
-      "goals": [],
+      "clock": "78'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "D. Muñoz",
+          "minute": "76'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -2973,12 +2981,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "67.4",
-        "shotsOnTarget": "7",
-        "totalShots": "16"
+        "possessionPct": "67.2",
+        "shotsOnTarget": "8",
+        "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "32.6",
+        "possessionPct": "32.8",
         "shotsOnTarget": "0",
         "totalShots": "4"
       },
@@ -3937,6 +3945,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T03:38:25.210Z",
+  "lastUpdated": "2026-06-24T03:40:32.014Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
