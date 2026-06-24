@@ -2941,16 +2941,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "42.2",
+        "possessionPct": "42.1",
         "shotsOnTarget": "1",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "57.8",
+        "possessionPct": "57.9",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
-      "recap": null
+      "recap": "Josip Stanisic lifted a curving cross onto the boot of Ante Budimir, who tapped it into an open net in the 54th minute Tuesday, giving Croatia a 1-0 win over Panama in the FIFA World Cup."
     },
     {
       "id": "e760459",
@@ -2965,8 +2965,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3922,6 +3930,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T00:56:22.034Z",
+  "lastUpdated": "2026-06-24T01:58:19.952Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
