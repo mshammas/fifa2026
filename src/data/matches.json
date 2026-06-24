@@ -3069,7 +3069,7 @@
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
-      "recap": null
+      "recap": "With the victory, third-place Bosnia-Herzegovina are more than likely to advance to the round of 32 in the expanded field -- and their likely opponent would be one of the tournaments co-hosts in the United States."
     },
     {
       "id": "e760463",
@@ -3135,7 +3135,7 @@
         "shotsOnTarget": "7",
         "totalShots": "13"
       },
-      "recap": null
+      "recap": "Breel Embolo helped to dash co-hosts Canada's hopes of a last-32 clash on home soil as unbeaten Switzerland clinched top spot in Group B with a 2-1 victory in Vancouver."
     },
     {
       "id": "e760464",
@@ -3175,8 +3175,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -4064,6 +4072,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T21:00:39.953Z",
+  "lastUpdated": "2026-06-24T21:58:20.857Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
