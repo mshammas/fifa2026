@@ -3144,7 +3144,7 @@
       "away": "Haiti",
       "group": "C",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
       "clock": "39'",
@@ -3155,16 +3155,23 @@
           "minute": "10'",
           "pen": false,
           "og": true
+        },
+        {
+          "side": "home",
+          "player": "A. Hakimi",
+          "minute": "39'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "66.6",
+        "possessionPct": "66.9",
         "shotsOnTarget": "3",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "33.4",
+        "possessionPct": "33.1",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -4088,6 +4095,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T22:40:31.932Z",
+  "lastUpdated": "2026-06-24T22:42:24.165Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
