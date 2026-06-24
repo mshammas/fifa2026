@@ -3146,8 +3146,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 2,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "45'+5'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -3180,12 +3180,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "66.7",
-        "shotsOnTarget": "6",
-        "totalShots": "12"
+        "possessionPct": "66.6",
+        "shotsOnTarget": "7",
+        "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "33.3",
+        "possessionPct": "33.4",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -3200,8 +3200,8 @@
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 0,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "45'+5'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -3220,14 +3220,14 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "47.6",
+        "possessionPct": "47.7",
         "shotsOnTarget": "0",
-        "totalShots": "3"
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "52.4",
-        "shotsOnTarget": "3",
-        "totalShots": "9"
+        "possessionPct": "52.3",
+        "shotsOnTarget": "4",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -4116,6 +4116,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T22:54:26.169Z",
+  "lastUpdated": "2026-06-24T22:56:15.489Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
