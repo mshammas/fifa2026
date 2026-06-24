@@ -3147,7 +3147,7 @@
       "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "84'",
+      "clock": "87'",
       "goals": [
         {
           "side": "away",
@@ -3188,18 +3188,24 @@
       "cards": [
         {
           "side": "away",
+          "player": "J. Placide",
+          "minute": "78'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
           "player": "D. Nazon",
           "minute": "79'",
           "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "71",
+        "possessionPct": "70.5",
         "shotsOnTarget": "9",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "29",
+        "possessionPct": "29.5",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -3215,7 +3221,7 @@
       "homeScore": 0,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "82'",
+      "clock": "85'",
       "goals": [
         {
           "side": "away",
@@ -3254,14 +3260,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "49.3",
+        "possessionPct": "48.6",
         "shotsOnTarget": "3",
-        "totalShots": "10"
+        "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "50.7",
+        "possessionPct": "51.4",
         "shotsOnTarget": "8",
-        "totalShots": "17"
+        "totalShots": "18"
       },
       "recap": null
     },
@@ -4150,6 +4156,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T23:48:24.791Z",
+  "lastUpdated": "2026-06-24T23:50:31.556Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
