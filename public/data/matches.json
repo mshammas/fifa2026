@@ -3144,14 +3144,14 @@
       "away": "Haiti",
       "group": "C",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "3'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3169,19 +3169,19 @@
       "away": "Brazil",
       "group": "C",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "75",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "25",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4072,6 +4072,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T22:00:42.763Z",
+  "lastUpdated": "2026-06-24T22:04:08.540Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
