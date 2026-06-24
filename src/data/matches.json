@@ -3014,7 +3014,7 @@
       "homeScore": 3,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "81'",
+      "clock": "83'",
       "goals": [
         {
           "side": "home",
@@ -3051,15 +3051,21 @@
           "player": "A. Fathy",
           "minute": "78'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "E. Mahmic",
+          "minute": "82'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "57.6",
+        "possessionPct": "56.8",
         "shotsOnTarget": "5",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "42.4",
+        "possessionPct": "43.2",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -3075,7 +3081,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "84'",
+      "clock": "86'",
       "goals": [
         {
           "side": "home",
@@ -4044,6 +4050,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T20:44:27.140Z",
+  "lastUpdated": "2026-06-24T20:46:25.735Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
