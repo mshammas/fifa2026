@@ -3147,7 +3147,7 @@
       "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "81'",
+      "clock": "84'",
       "goals": [
         {
           "side": "away",
@@ -3185,14 +3185,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "D. Nazon",
+          "minute": "79'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "71.1",
+        "possessionPct": "71",
         "shotsOnTarget": "9",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "28.9",
+        "possessionPct": "29",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -3208,7 +3215,7 @@
       "homeScore": 0,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "79'",
+      "clock": "82'",
       "goals": [
         {
           "side": "away",
@@ -3238,17 +3245,23 @@
           "player": "Danilo",
           "minute": "62'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "Fabinho",
+          "minute": "82'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "49.5",
+        "possessionPct": "49.3",
         "shotsOnTarget": "3",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "50.5",
-        "shotsOnTarget": "7",
-        "totalShots": "16"
+        "possessionPct": "50.7",
+        "shotsOnTarget": "8",
+        "totalShots": "17"
       },
       "recap": null
     },
@@ -4137,6 +4150,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T23:46:24.161Z",
+  "lastUpdated": "2026-06-24T23:48:24.791Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
