@@ -3013,8 +3013,8 @@
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": 3,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+5'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -3060,12 +3060,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "54.6",
+        "possessionPct": "54.5",
         "shotsOnTarget": "5",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "45.4",
+        "possessionPct": "45.5",
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
@@ -3150,8 +3150,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3515,7 +3523,7 @@
       "id": "e760486",
       "date": "2026-06-28T19:00Z",
       "home": "Group A 2nd Place",
-      "away": "Group B 2nd Place",
+      "away": "Canada",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": null,
@@ -3718,7 +3726,7 @@
     {
       "id": "e760498",
       "date": "2026-07-03T03:00Z",
-      "home": "Group B Winner",
+      "home": "Switzerland",
       "away": "Third Place Group E/F/G/I/J",
       "group": null,
       "venue": "BC Place, Vancouver",
@@ -4056,6 +4064,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T20:58:22.310Z",
+  "lastUpdated": "2026-06-24T21:00:39.953Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
