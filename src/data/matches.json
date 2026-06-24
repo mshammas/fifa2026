@@ -3147,7 +3147,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "63'",
+      "clock": "68'",
       "goals": [
         {
           "side": "away",
@@ -3180,14 +3180,14 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "70.4",
+        "possessionPct": "70.6",
         "shotsOnTarget": "8",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "29.6",
+        "possessionPct": "29.4",
         "shotsOnTarget": "1",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -3201,7 +3201,7 @@
       "homeScore": 0,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "61'",
+      "clock": "65'",
       "goals": [
         {
           "side": "away",
@@ -3225,16 +3225,23 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "Danilo",
+          "minute": "62'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "48.8",
-        "shotsOnTarget": "1",
-        "totalShots": "5"
+        "possessionPct": "49.5",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "51.2",
-        "shotsOnTarget": "6",
-        "totalShots": "15"
+        "possessionPct": "50.5",
+        "shotsOnTarget": "7",
+        "totalShots": "16"
       },
       "recap": null
     },
@@ -4123,6 +4130,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T23:28:24.269Z",
+  "lastUpdated": "2026-06-24T23:30:37.080Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
