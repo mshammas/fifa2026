@@ -2962,9 +2962,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "54'",
+      "clock": "57'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "J. Lucumí",
+          "minute": "56'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
         "possessionPct": "66.3",
         "shotsOnTarget": "7",
@@ -3930,6 +3937,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T03:16:20.149Z",
+  "lastUpdated": "2026-06-24T03:18:24.826Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
