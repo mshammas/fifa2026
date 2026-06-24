@@ -3147,7 +3147,7 @@
       "homeScore": 4,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+1'",
+      "clock": "90'+3'",
       "goals": [
         {
           "side": "away",
@@ -3204,6 +3204,12 @@
           "player": "D. Nazon",
           "minute": "80'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Casimir",
+          "minute": "90'+3'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
@@ -3228,7 +3234,7 @@
       "homeScore": 0,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "89'",
+      "clock": "90'",
       "goals": [
         {
           "side": "away",
@@ -3264,17 +3270,23 @@
           "player": "Fabinho",
           "minute": "82'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "R. Christie",
+          "minute": "89'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "47.5",
-        "shotsOnTarget": "3",
-        "totalShots": "12"
+        "possessionPct": "47.2",
+        "shotsOnTarget": "4",
+        "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "52.5",
-        "shotsOnTarget": "8",
-        "totalShots": "19"
+        "possessionPct": "52.8",
+        "shotsOnTarget": "9",
+        "totalShots": "20"
       },
       "recap": null
     },
@@ -4163,6 +4175,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T23:54:25.552Z",
+  "lastUpdated": "2026-06-24T23:56:20.053Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
