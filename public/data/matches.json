@@ -3014,7 +3014,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "54'",
+      "clock": "56'",
       "goals": [
         {
           "side": "home",
@@ -3040,12 +3040,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "59.4",
+        "possessionPct": "58.9",
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "40.6",
+        "possessionPct": "41.1",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -3058,10 +3058,10 @@
       "away": "Canada",
       "group": "B",
       "venue": "BC Place, Vancouver",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "57'",
+      "clock": "59'",
       "goals": [
         {
           "side": "home",
@@ -3093,12 +3093,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "66.6",
-        "shotsOnTarget": "3",
-        "totalShots": "5"
+        "possessionPct": "65",
+        "shotsOnTarget": "4",
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "33.4",
+        "possessionPct": "35",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
@@ -4023,6 +4023,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T20:16:23.987Z",
+  "lastUpdated": "2026-06-24T20:18:21.331Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
