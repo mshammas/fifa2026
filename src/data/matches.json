@@ -3146,8 +3146,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 2,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "45'+2'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -3180,12 +3180,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "65.5",
-        "shotsOnTarget": "5",
-        "totalShots": "10"
+        "possessionPct": "66.6",
+        "shotsOnTarget": "7",
+        "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "34.5",
+        "possessionPct": "33.4",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -3199,9 +3199,9 @@
       "group": "C",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "45'+1'",
+      "clock": "45'+5'",
       "goals": [
         {
           "side": "away",
@@ -3209,18 +3209,25 @@
           "minute": "7'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "Vinícius Júnior",
+          "minute": "45'+3'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "46.8",
+        "possessionPct": "47.6",
         "shotsOnTarget": "0",
-        "totalShots": "2"
+        "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "53.2",
-        "shotsOnTarget": "2",
-        "totalShots": "8"
+        "possessionPct": "52.4",
+        "shotsOnTarget": "3",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -4109,6 +4116,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T22:50:32.218Z",
+  "lastUpdated": "2026-06-24T22:52:22.471Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
