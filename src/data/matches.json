@@ -3014,7 +3014,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "71'",
+      "clock": "73'",
       "goals": [
         {
           "side": "home",
@@ -3040,12 +3040,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "58",
+        "possessionPct": "57.7",
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "42",
+        "possessionPct": "42.3",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -3059,9 +3059,9 @@
       "group": "B",
       "venue": "BC Place, Vancouver",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "75'",
+      "clock": "77'",
       "goals": [
         {
           "side": "home",
@@ -3074,6 +3074,13 @@
           "side": "home",
           "player": "J. Manzambi",
           "minute": "57'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "P. David",
+          "minute": "76'",
           "pen": false,
           "og": false
         }
@@ -3099,8 +3106,8 @@
       },
       "awayStats": {
         "possessionPct": "43",
-        "shotsOnTarget": "3",
-        "totalShots": "8"
+        "shotsOnTarget": "4",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -4023,6 +4030,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T20:34:20.246Z",
+  "lastUpdated": "2026-06-24T20:36:21.630Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
