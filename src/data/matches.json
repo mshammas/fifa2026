@@ -2962,7 +2962,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "home",
@@ -2978,17 +2978,29 @@
           "player": "J. Lucumí",
           "minute": "56'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "C. Pickel",
+          "minute": "90'+3'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "J. Lerma",
+          "minute": "90'+4'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "64",
+        "possessionPct": "63.9",
         "shotsOnTarget": "9",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "36",
+        "possessionPct": "36.1",
         "shotsOnTarget": "1",
-        "totalShots": "6"
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -3945,6 +3957,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T03:56:24.913Z",
+  "lastUpdated": "2026-06-24T03:58:26.901Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
