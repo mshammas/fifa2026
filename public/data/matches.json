@@ -3011,10 +3011,10 @@
       "away": "Qatar",
       "group": "B",
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "34'",
+      "clock": "36'",
       "goals": [
         {
           "side": "home",
@@ -3022,16 +3022,23 @@
           "minute": "29'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "S. Al-Brake",
+          "minute": "34'",
+          "pen": false,
+          "og": true
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "60.6",
+        "possessionPct": "60.9",
         "shotsOnTarget": "3",
-        "totalShots": "6"
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "39.4",
+        "possessionPct": "39.1",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3047,7 +3054,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "34'",
+      "clock": "36'",
       "goals": [],
       "cards": [
         {
@@ -3064,12 +3071,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "71.8",
+        "possessionPct": "72.4",
         "shotsOnTarget": "2",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "28.2",
+        "possessionPct": "27.6",
         "shotsOnTarget": "2",
         "totalShots": "2"
       },
@@ -3994,6 +4001,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T19:34:21.682Z",
+  "lastUpdated": "2026-06-24T19:36:20.568Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
