@@ -3014,7 +3014,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "76'",
+      "clock": "79'",
       "goals": [
         {
           "side": "home",
@@ -3038,14 +3038,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "A. Fathy",
+          "minute": "78'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "57.9",
+        "possessionPct": "57.2",
         "shotsOnTarget": "3",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "42.1",
+        "possessionPct": "42.8",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -3061,7 +3068,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "80'",
+      "clock": "82'",
       "goals": [
         {
           "side": "home",
@@ -3100,14 +3107,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "56.2",
+        "possessionPct": "55.7",
         "shotsOnTarget": "4",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "43.8",
+        "possessionPct": "44.3",
         "shotsOnTarget": "4",
-        "totalShots": "10"
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -4030,6 +4037,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T20:40:36.018Z",
+  "lastUpdated": "2026-06-24T20:42:27.670Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
