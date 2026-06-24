@@ -3147,7 +3147,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "25'",
+      "clock": "26'",
       "goals": [
         {
           "side": "away",
@@ -3178,9 +3178,9 @@
       "group": "C",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "25'",
+      "clock": "26'",
       "goals": [
         {
           "side": "away",
@@ -3188,25 +3188,18 @@
           "minute": "7'",
           "pen": false,
           "og": false
-        },
-        {
-          "side": "away",
-          "player": "Vinícius Júnior",
-          "minute": "22'",
-          "pen": false,
-          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "47.7",
+        "possessionPct": "47.9",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "52.3",
-        "shotsOnTarget": "2",
-        "totalShots": "6"
+        "possessionPct": "52.1",
+        "shotsOnTarget": "1",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -4095,6 +4088,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T22:26:21.713Z",
+  "lastUpdated": "2026-06-24T22:28:24.680Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
