@@ -3144,10 +3144,10 @@
       "away": "Haiti",
       "group": "C",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "87'",
+      "clock": "89'",
       "goals": [
         {
           "side": "away",
@@ -3183,26 +3183,33 @@
           "minute": "78'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "G. Yassine",
+          "minute": "89'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
         {
           "side": "away",
           "player": "J. Placide",
-          "minute": "78'",
+          "minute": "79'",
           "type": "yellow"
         },
         {
           "side": "away",
           "player": "D. Nazon",
-          "minute": "79'",
+          "minute": "80'",
           "type": "yellow"
         }
       ],
       "homeStats": {
         "possessionPct": "70.5",
-        "shotsOnTarget": "9",
-        "totalShots": "19"
+        "shotsOnTarget": "10",
+        "totalShots": "20"
       },
       "awayStats": {
         "possessionPct": "29.5",
@@ -3221,7 +3228,7 @@
       "homeScore": 0,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "85'",
+      "clock": "86'",
       "goals": [
         {
           "side": "away",
@@ -3260,14 +3267,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48.6",
+        "possessionPct": "48.3",
         "shotsOnTarget": "3",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "51.4",
+        "possessionPct": "51.7",
         "shotsOnTarget": "8",
-        "totalShots": "18"
+        "totalShots": "19"
       },
       "recap": null
     },
@@ -4156,6 +4163,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T23:50:31.556Z",
+  "lastUpdated": "2026-06-24T23:52:25.443Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
