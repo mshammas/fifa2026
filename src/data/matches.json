@@ -2961,8 +2961,8 @@
       "venue": "Estadio Akron, Guadalajara",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+6'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -2993,12 +2993,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "63.9",
+        "possessionPct": "63.6",
         "shotsOnTarget": "9",
-        "totalShots": "19"
+        "totalShots": "20"
       },
       "awayStats": {
-        "possessionPct": "36.1",
+        "possessionPct": "36.4",
         "shotsOnTarget": "1",
         "totalShots": "8"
       },
@@ -3957,6 +3957,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-24T03:58:26.901Z",
+  "lastUpdated": "2026-06-24T04:00:38.417Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
