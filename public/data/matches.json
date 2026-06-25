@@ -3397,10 +3397,10 @@
       "away": "Ivory Coast",
       "group": "E",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -3422,10 +3422,10 @@
       "away": "Germany",
       "group": "E",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -3434,7 +3434,7 @@
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4257,6 +4257,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T20:00:35.597Z",
+  "lastUpdated": "2026-06-25T20:02:27.147Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
