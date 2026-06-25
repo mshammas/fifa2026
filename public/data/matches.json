@@ -3300,7 +3300,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "71'",
+      "clock": "73'",
       "goals": [
         {
           "side": "away",
@@ -3326,12 +3326,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "51.9",
+        "possessionPct": "52",
         "shotsOnTarget": "1",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "48.1",
+        "possessionPct": "48",
         "shotsOnTarget": "3",
         "totalShots": "8"
       },
@@ -3347,7 +3347,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "71'",
+      "clock": "73'",
       "goals": [
         {
           "side": "home",
@@ -3357,14 +3357,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "A. Modiba",
+          "minute": "73'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "35.3",
+        "possessionPct": "35.1",
         "shotsOnTarget": "4",
         "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "64.7",
+        "possessionPct": "64.9",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
@@ -4221,6 +4228,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T02:32:22.362Z",
+  "lastUpdated": "2026-06-25T02:34:19.954Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
