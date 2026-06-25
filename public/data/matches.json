@@ -3447,7 +3447,7 @@
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "A Nicolas Pépé brace powered Ivory Coast to a 2-0 win over Curacao. "
     },
     {
       "id": "e760468",
@@ -3519,7 +3519,7 @@
         "shotsOnTarget": "3",
         "totalShots": "11"
       },
-      "recap": null
+      "recap": "Ecuador produced a rousing fightback to come from behind and beat Germany 2-1 in their final Group E match in New Jersey to put themselves into the last 32 of the World Cup."
     },
     {
       "id": "e760471",
@@ -3534,8 +3534,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3551,8 +3559,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3864,7 +3880,7 @@
     {
       "id": "e760490",
       "date": "2026-06-30T17:00Z",
-      "home": "Group E 2nd Place",
+      "home": "Ivory Coast",
       "away": "Group I 2nd Place",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
@@ -4338,6 +4354,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T22:00:41.577Z",
+  "lastUpdated": "2026-06-25T22:58:21.505Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
