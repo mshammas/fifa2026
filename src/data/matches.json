@@ -3458,8 +3458,8 @@
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+7'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4338,6 +4338,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T21:58:25.383Z",
+  "lastUpdated": "2026-06-25T22:00:41.577Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
