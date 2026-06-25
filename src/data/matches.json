@@ -3279,12 +3279,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "45.9",
+        "possessionPct": "46",
         "shotsOnTarget": "5",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "54.1",
+        "possessionPct": "54",
         "shotsOnTarget": "9",
         "totalShots": "21"
       },
@@ -3298,18 +3298,26 @@
       "group": "A",
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "53'",
-      "goals": [],
+      "clock": "56'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "M. Chávez",
+          "minute": "55'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "45.2",
+        "possessionPct": "45.8",
         "shotsOnTarget": "1",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "54.8",
+        "possessionPct": "54.2",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -3325,16 +3333,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "53'",
+      "clock": "55'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "39.6",
+        "possessionPct": "39.3",
         "shotsOnTarget": "3",
         "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "60.4",
+        "possessionPct": "60.7",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -4191,6 +4199,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T02:14:23.172Z",
+  "lastUpdated": "2026-06-25T02:16:20.958Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
