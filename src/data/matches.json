@@ -3400,7 +3400,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "39'",
+      "clock": "43'",
       "goals": [
         {
           "side": "away",
@@ -3419,12 +3419,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "25.7",
+        "possessionPct": "25.9",
         "shotsOnTarget": "1",
-        "totalShots": "2"
+        "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "74.3",
+        "possessionPct": "74.1",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -3440,7 +3440,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "40'",
+      "clock": "44'",
       "goals": [
         {
           "side": "away",
@@ -3457,14 +3457,27 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "P. Hincapié",
+          "minute": "43'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Pavlovic",
+          "minute": "44'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "41.2",
+        "possessionPct": "37.2",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "58.8",
+        "possessionPct": "62.8",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
@@ -4287,6 +4300,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T20:42:24.520Z",
+  "lastUpdated": "2026-06-25T20:44:25.635Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
