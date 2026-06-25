@@ -3299,17 +3299,17 @@
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+4'",
+      "status": "HT",
+      "clock": null,
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "46.4",
+        "possessionPct": "46.3",
         "shotsOnTarget": "0",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "53.6",
+        "possessionPct": "53.7",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -3324,17 +3324,17 @@
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+4'",
+      "status": "HT",
+      "clock": null,
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "38.8",
+        "possessionPct": "39.4",
         "shotsOnTarget": "3",
-        "totalShots": "9"
+        "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "61.2",
+        "possessionPct": "60.6",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -4191,6 +4191,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T01:50:28.650Z",
+  "lastUpdated": "2026-06-25T01:52:22.310Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
