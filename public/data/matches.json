@@ -3531,16 +3531,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "14'",
+      "clock": "15'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "50",
+        "possessionPct": "52.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "50",
+        "possessionPct": "47.7",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -3556,7 +3556,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "14'",
+      "clock": "16'",
       "goals": [
         {
           "side": "away",
@@ -4369,6 +4369,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T23:14:24.926Z",
+  "lastUpdated": "2026-06-25T23:16:20.467Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
