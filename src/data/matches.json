@@ -3531,16 +3531,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "5'",
+      "clock": "7'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "23.5",
+        "possessionPct": "44.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "76.5",
+        "possessionPct": "55.4",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -3554,9 +3554,9 @@
       "group": "F",
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "6'",
+      "clock": "8'",
       "goals": [
         {
           "side": "away",
@@ -3564,18 +3564,25 @@
           "minute": "3'",
           "pen": false,
           "og": true
+        },
+        {
+          "side": "away",
+          "player": "B. Brobbey",
+          "minute": "7'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "29.2",
+        "possessionPct": "26.9",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "70.8",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "73.1",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -4362,6 +4369,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T23:06:20.476Z",
+  "lastUpdated": "2026-06-25T23:08:24.644Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
