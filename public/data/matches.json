@@ -3400,7 +3400,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "11'",
       "goals": [
         {
           "side": "away",
@@ -3412,14 +3412,14 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "25.7",
+        "possessionPct": "28.6",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "74.3",
+        "possessionPct": "71.4",
         "shotsOnTarget": "1",
-        "totalShots": "1"
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -3430,10 +3430,10 @@
       "away": "Germany",
       "group": "E",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "11'",
       "goals": [
         {
           "side": "away",
@@ -3441,16 +3441,23 @@
           "minute": "2'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "N. Angulo",
+          "minute": "9'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "38.4",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "36.8",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "61.6",
+        "possessionPct": "63.2",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -4273,6 +4280,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T20:10:31.670Z",
+  "lastUpdated": "2026-06-25T20:12:25.534Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
