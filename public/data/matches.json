@@ -3213,12 +3213,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "69",
+        "possessionPct": "69.1",
         "shotsOnTarget": "11",
         "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "31",
+        "possessionPct": "30.9",
         "shotsOnTarget": "2",
         "totalShots": "9"
       },
@@ -3333,16 +3333,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "51.6",
+        "possessionPct": "51.9",
         "shotsOnTarget": "1",
         "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "48.4",
+        "possessionPct": "48.1",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
-      "recap": null
+      "recap": "Goals from Chavez, Quinones and Fidalgo saw Mexico eliminate Czechia from the World Cup."
     },
     {
       "id": "e760466",
@@ -3388,7 +3388,7 @@
         "shotsOnTarget": "3",
         "totalShots": "8"
       },
-      "recap": null
+      "recap": "South Africa advanced to the knockout phase of the World Cup for the first time with a 1-0 victory over South Korea on Wednesday."
     },
     {
       "id": "e760473",
@@ -3403,8 +3403,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3420,8 +3428,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3699,7 +3715,7 @@
     {
       "id": "e760486",
       "date": "2026-06-28T19:00Z",
-      "home": "Group A 2nd Place",
+      "home": "South Africa",
       "away": "Canada",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
@@ -4241,6 +4257,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T02:58:21.690Z",
+  "lastUpdated": "2026-06-25T19:58:25.426Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
