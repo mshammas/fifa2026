@@ -3233,8 +3233,8 @@
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 0,
       "awayScore": 3,
-      "status": "LIVE",
-      "clock": "90'+6'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -3280,13 +3280,13 @@
       ],
       "homeStats": {
         "possessionPct": "46",
-        "shotsOnTarget": "4",
-        "totalShots": "13"
+        "shotsOnTarget": "5",
+        "totalShots": "14"
       },
       "awayStats": {
         "possessionPct": "54",
         "shotsOnTarget": "9",
-        "totalShots": "20"
+        "totalShots": "21"
       },
       "recap": null
     },
@@ -3666,7 +3666,7 @@
     {
       "id": "e760487",
       "date": "2026-06-29T17:00Z",
-      "home": "Group C Winner",
+      "home": "Brazil",
       "away": "Group F 2nd Place",
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
@@ -3701,7 +3701,7 @@
       "id": "e760488",
       "date": "2026-06-30T01:00Z",
       "home": "Group F Winner",
-      "away": "Group C 2nd Place",
+      "away": "Morocco",
       "group": null,
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": null,
@@ -4191,6 +4191,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T00:02:26.928Z",
+  "lastUpdated": "2026-06-25T00:04:29.347Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
