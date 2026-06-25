@@ -3531,16 +3531,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "30'",
+      "clock": "32'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "I. Hien",
+          "minute": "32'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "51.4",
+        "possessionPct": "50.6",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "48.6",
+        "possessionPct": "49.4",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -3556,7 +3563,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "30'",
+      "clock": "31'",
       "goals": [
         {
           "side": "away",
@@ -3575,14 +3582,14 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "32.6",
+        "possessionPct": "31.9",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "67.4",
+        "possessionPct": "68.1",
         "shotsOnTarget": "2",
-        "totalShots": "6"
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -4369,6 +4376,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T23:30:32.581Z",
+  "lastUpdated": "2026-06-25T23:32:23.728Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
