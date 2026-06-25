@@ -3531,16 +3531,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "2'",
+      "clock": "4'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "6.7",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "100",
+        "possessionPct": "93.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3554,18 +3554,26 @@
       "group": "F",
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "2'",
-      "goals": [],
+      "clock": "4'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "E. Skhiri",
+          "minute": "3'",
+          "pen": false,
+          "og": true
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "11.8",
+        "possessionPct": "5.7",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "88.2",
+        "possessionPct": "94.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4354,6 +4362,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T23:02:21.202Z",
+  "lastUpdated": "2026-06-25T23:04:21.505Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
