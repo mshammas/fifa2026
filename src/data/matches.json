@@ -3298,9 +3298,9 @@
       "group": "A",
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+5'",
       "goals": [
         {
           "side": "away",
@@ -3315,6 +3315,13 @@
           "minute": "61'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "Á. Fidalgo",
+          "minute": "90'+4'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -3326,14 +3333,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "51.1",
+        "possessionPct": "51.3",
         "shotsOnTarget": "1",
-        "totalShots": "11"
+        "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "48.9",
-        "shotsOnTarget": "3",
-        "totalShots": "9"
+        "possessionPct": "48.7",
+        "shotsOnTarget": "5",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -3347,7 +3354,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+5'",
       "goals": [
         {
           "side": "home",
@@ -3372,14 +3379,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "30.5",
+        "possessionPct": "31.5",
         "shotsOnTarget": "4",
         "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "69.5",
-        "shotsOnTarget": "2",
-        "totalShots": "7"
+        "possessionPct": "68.5",
+        "shotsOnTarget": "3",
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -4234,6 +4241,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T02:54:25.232Z",
+  "lastUpdated": "2026-06-25T02:56:21.968Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
