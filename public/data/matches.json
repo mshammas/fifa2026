@@ -3400,7 +3400,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "75'",
+      "clock": "79'",
       "goals": [
         {
           "side": "away",
@@ -3423,15 +3423,21 @@
           "player": "N. Pépé",
           "minute": "35'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "J. Bacuna",
+          "minute": "75'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "36.3",
+        "possessionPct": "35",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "63.7",
+        "possessionPct": "65",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
@@ -3444,10 +3450,10 @@
       "away": "Germany",
       "group": "E",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "76'",
+      "clock": "79'",
       "goals": [
         {
           "side": "away",
@@ -3460,6 +3466,13 @@
           "side": "home",
           "player": "N. Angulo",
           "minute": "9'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "G. Plata",
+          "minute": "77'",
           "pen": false,
           "og": false
         }
@@ -3485,14 +3498,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "41.6",
-        "shotsOnTarget": "2",
-        "totalShots": "6"
+        "possessionPct": "42.5",
+        "shotsOnTarget": "3",
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "58.4",
-        "shotsOnTarget": "2",
-        "totalShots": "8"
+        "possessionPct": "57.5",
+        "shotsOnTarget": "3",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -4313,6 +4326,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-25T21:38:25.477Z",
+  "lastUpdated": "2026-06-25T21:40:30.231Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
