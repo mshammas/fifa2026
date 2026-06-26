@@ -3681,8 +3681,8 @@
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 3,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+9'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -3730,8 +3730,8 @@
       ],
       "homeStats": {
         "possessionPct": "47.4",
-        "shotsOnTarget": "2",
-        "totalShots": "7"
+        "shotsOnTarget": "4",
+        "totalShots": "9"
       },
       "awayStats": {
         "possessionPct": "52.6",
@@ -4489,6 +4489,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T04:02:20.893Z",
+  "lastUpdated": "2026-06-26T04:04:21.917Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
