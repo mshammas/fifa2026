@@ -3644,7 +3644,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "75'",
+      "clock": "77'",
       "goals": [],
       "cards": [
         {
@@ -3652,15 +3652,21 @@
           "player": "J. Irvine",
           "minute": "46'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "D. Gómez",
+          "minute": "77'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "40.3",
+        "possessionPct": "41",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "59.7",
+        "possessionPct": "59",
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
@@ -3676,7 +3682,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "75'",
+      "clock": "77'",
       "goals": [
         {
           "side": "away",
@@ -3716,12 +3722,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "41.7",
+        "possessionPct": "41.8",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "58.3",
+        "possessionPct": "58.2",
         "shotsOnTarget": "7",
         "totalShots": "15"
       },
@@ -4476,6 +4482,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T03:38:20.741Z",
+  "lastUpdated": "2026-06-26T03:40:30.505Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
