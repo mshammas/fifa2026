@@ -3623,12 +3623,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "28.5",
+        "possessionPct": "28.6",
         "shotsOnTarget": "4",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "71.5",
+        "possessionPct": "71.4",
         "shotsOnTarget": "7",
         "totalShots": "20"
       },
@@ -3644,7 +3644,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "47'",
+      "clock": "49'",
       "goals": [],
       "cards": [
         {
@@ -3655,12 +3655,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "37.4",
+        "possessionPct": "37.9",
         "shotsOnTarget": "0",
-        "totalShots": "1"
+        "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "62.6",
+        "possessionPct": "62.1",
         "shotsOnTarget": "3",
         "totalShots": "6"
       },
@@ -3674,9 +3674,9 @@
       "group": "D",
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "47'",
+      "clock": "49'",
       "goals": [
         {
           "side": "away",
@@ -3698,6 +3698,13 @@
           "minute": "31'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "S. Berhalter",
+          "minute": "49'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -3709,14 +3716,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "41.8",
+        "possessionPct": "41",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "58.2",
-        "shotsOnTarget": "4",
-        "totalShots": "8"
+        "possessionPct": "59",
+        "shotsOnTarget": "5",
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -4469,6 +4476,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T03:10:31.034Z",
+  "lastUpdated": "2026-06-26T03:12:26.850Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
