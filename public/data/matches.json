@@ -3748,9 +3748,9 @@
       "group": "I",
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
       "homeScore": 1,
-      "awayScore": 3,
+      "awayScore": 4,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+4'",
       "goals": [
         {
           "side": "away",
@@ -3779,6 +3779,13 @@
           "minute": "32'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "D. Doué",
+          "minute": "90'+4'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -3796,12 +3803,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "43",
+        "possessionPct": "43.2",
         "shotsOnTarget": "4",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "57",
+        "possessionPct": "56.8",
         "shotsOnTarget": "8",
         "totalShots": "17"
       },
@@ -3817,7 +3824,7 @@
       "homeScore": 5,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "88'",
+      "clock": "90'+1'",
       "goals": [
         {
           "side": "home",
@@ -3879,15 +3886,21 @@
           "player": "P. Gueye",
           "minute": "81'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Doski",
+          "minute": "90'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "68.3",
+        "possessionPct": "69",
         "shotsOnTarget": "9",
-        "totalShots": "24"
+        "totalShots": "25"
       },
       "awayStats": {
-        "possessionPct": "31.7",
+        "possessionPct": "31",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -4608,6 +4621,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T20:56:22.412Z",
+  "lastUpdated": "2026-06-26T20:58:21.254Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
