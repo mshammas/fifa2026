@@ -3748,14 +3748,21 @@
       "group": "I",
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "19'",
+      "clock": "21'",
       "goals": [
         {
           "side": "away",
           "player": "O. Dembélé",
           "minute": "7'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "O. Dembélé",
+          "minute": "20'",
           "pen": false,
           "og": false
         }
@@ -3769,14 +3776,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "29.4",
+        "possessionPct": "31",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "70.6",
-        "shotsOnTarget": "6",
-        "totalShots": "7"
+        "possessionPct": "69",
+        "shotsOnTarget": "7",
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -3790,7 +3797,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "18'",
+      "clock": "20'",
       "goals": [
         {
           "side": "home",
@@ -3815,12 +3822,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "40",
+        "possessionPct": "42",
         "shotsOnTarget": "2",
-        "totalShots": "5"
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "60",
+        "possessionPct": "58",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4541,6 +4548,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T19:20:28.065Z",
+  "lastUpdated": "2026-06-26T19:22:24.358Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
