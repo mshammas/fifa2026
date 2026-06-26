@@ -3803,16 +3803,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "43.2",
+        "possessionPct": "43.3",
         "shotsOnTarget": "4",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "56.8",
+        "possessionPct": "56.7",
         "shotsOnTarget": "9",
         "totalShots": "18"
       },
-      "recap": null
+      "recap": "France forward Ousmane Dembélé scored a first-half hat trick, including one off a feed from Kylian Mbappé, to help his team beat Norway 4-1 at the World Cup on Friday."
     },
     {
       "id": "e760474",
@@ -3895,16 +3895,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "69.3",
+        "possessionPct": "69.2",
         "shotsOnTarget": "12",
         "totalShots": "28"
       },
       "awayStats": {
-        "possessionPct": "30.7",
+        "possessionPct": "30.8",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
-      "recap": null
+      "recap": "Senegal racked up the goals on 10-man Iraq in a 5-0 victory Friday that boosted their hopes of reaching the World Cup knockout stages."
     },
     {
       "id": "e760478",
@@ -3919,8 +3919,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3936,8 +3944,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -4148,7 +4164,7 @@
       "id": "e760490",
       "date": "2026-06-30T17:00Z",
       "home": "Ivory Coast",
-      "away": "Group I 2nd Place",
+      "away": "Norway",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": null,
@@ -4164,7 +4180,7 @@
     {
       "id": "e760492",
       "date": "2026-06-30T21:00Z",
-      "home": "Group I Winner",
+      "home": "France",
       "away": "Third Place Group C/D/F/G/H",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
@@ -4621,6 +4637,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T21:06:25.510Z",
+  "lastUpdated": "2026-06-26T23:58:24.151Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
