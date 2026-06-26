@@ -3576,9 +3576,9 @@
       "awayStats": {
         "possessionPct": "47.7",
         "shotsOnTarget": "5",
-        "totalShots": "10"
+        "totalShots": "11"
       },
-      "recap": null
+      "recap": "Japan and Sweden booked their places in the knockout phase of the World Cup as they drew 1-1 in their final Group F clash in Dallas."
     },
     {
       "id": "e760472",
@@ -3632,7 +3632,7 @@
         "shotsOnTarget": "7",
         "totalShots": "20"
       },
-      "recap": null
+      "recap": "Brian Brobbey scored his third goal of the World Cup, the Netherlands got a pair of goals that deflected off Tunisia into its own net, and the Dutch rolled in the rain to a 3-1 victory Thursday."
     },
     {
       "id": "e760469",
@@ -3647,8 +3647,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3664,8 +3672,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3893,7 +3909,7 @@
       "id": "e760487",
       "date": "2026-06-29T17:00Z",
       "home": "Brazil",
-      "away": "Group F 2nd Place",
+      "away": "Japan",
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": null,
@@ -3926,7 +3942,7 @@
     {
       "id": "e760488",
       "date": "2026-06-30T01:00Z",
-      "home": "Group F Winner",
+      "home": "Netherlands",
       "away": "Morocco",
       "group": null,
       "venue": "Estadio BBVA, Guadalupe",
@@ -4029,7 +4045,7 @@
       "id": "e760494",
       "date": "2026-07-02T00:00Z",
       "home": "USA",
-      "away": "Third Place Group B/E/F/I/J",
+      "away": "Bosnia & Herzegovina",
       "group": null,
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": null,
@@ -4417,6 +4433,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T01:00:44.292Z",
+  "lastUpdated": "2026-06-26T01:58:21.163Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
