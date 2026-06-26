@@ -3750,7 +3750,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "9'",
+      "clock": "11'",
       "goals": [
         {
           "side": "away",
@@ -3760,16 +3760,23 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "P. Berg",
+          "minute": "10'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "28.6",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "34.9",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "71.4",
-        "shotsOnTarget": "4",
-        "totalShots": "4"
+        "possessionPct": "65.1",
+        "shotsOnTarget": "5",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -3783,7 +3790,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "10'",
       "goals": [
         {
           "side": "home",
@@ -3793,14 +3800,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "R. Sulaka",
+          "minute": "10'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "30.2",
+        "possessionPct": "37.8",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "69.8",
+        "possessionPct": "62.2",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4521,6 +4535,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T19:10:27.873Z",
+  "lastUpdated": "2026-06-26T19:12:24.381Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
