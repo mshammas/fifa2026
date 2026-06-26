@@ -3644,16 +3644,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "18'",
+      "clock": "19'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "35.4",
+        "possessionPct": "37.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "64.6",
+        "possessionPct": "62.4",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -3669,7 +3669,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "17'",
+      "clock": "19'",
       "goals": [
         {
           "side": "away",
@@ -3686,14 +3686,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "S. Berhalter",
+          "minute": "19'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "43.8",
+        "possessionPct": "38.7",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "56.2",
+        "possessionPct": "61.3",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
@@ -4448,6 +4455,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T02:18:25.402Z",
+  "lastUpdated": "2026-06-26T02:20:30.243Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
