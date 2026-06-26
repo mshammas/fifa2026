@@ -3750,7 +3750,7 @@
       "homeScore": 1,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "79'",
+      "clock": "81'",
       "goals": [
         {
           "side": "away",
@@ -3796,12 +3796,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "46.8",
+        "possessionPct": "45",
         "shotsOnTarget": "4",
-        "totalShots": "8"
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "53.2",
+        "possessionPct": "55",
         "shotsOnTarget": "8",
         "totalShots": "16"
       },
@@ -3817,7 +3817,7 @@
       "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "76'",
+      "clock": "78'",
       "goals": [
         {
           "side": "home",
@@ -3864,17 +3864,17 @@
         {
           "side": "away",
           "player": "A. Al-Ammari",
-          "minute": "76'",
+          "minute": "75'",
           "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "63.2",
+        "possessionPct": "65.3",
         "shotsOnTarget": "6",
-        "totalShots": "19"
+        "totalShots": "20"
       },
       "awayStats": {
-        "possessionPct": "36.8",
+        "possessionPct": "34.7",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -4595,6 +4595,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T20:44:20.115Z",
+  "lastUpdated": "2026-06-26T20:46:25.357Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
