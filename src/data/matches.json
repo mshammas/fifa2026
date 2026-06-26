@@ -3643,17 +3643,17 @@
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+5'",
+      "status": "HT",
+      "clock": null,
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "38.1",
+        "possessionPct": "37.6",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "61.9",
+        "possessionPct": "62.4",
         "shotsOnTarget": "3",
         "totalShots": "6"
       },
@@ -3668,8 +3668,8 @@
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "45'+4'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -3702,12 +3702,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "41.8",
+        "possessionPct": "41.7",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "58.2",
+        "possessionPct": "58.3",
         "shotsOnTarget": "4",
         "totalShots": "8"
       },
@@ -4462,6 +4462,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T02:50:26.693Z",
+  "lastUpdated": "2026-06-26T02:52:23.053Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
