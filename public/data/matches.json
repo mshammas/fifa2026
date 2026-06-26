@@ -3750,7 +3750,7 @@
       "homeScore": 1,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "62'",
+      "clock": "64'",
       "goals": [
         {
           "side": "away",
@@ -3790,12 +3790,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "42.3",
+        "possessionPct": "42",
         "shotsOnTarget": "3",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "57.7",
+        "possessionPct": "58",
         "shotsOnTarget": "8",
         "totalShots": "15"
       },
@@ -3808,10 +3808,10 @@
       "away": "Iraq",
       "group": "I",
       "venue": "BMO Field, Toronto",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "58'",
+      "clock": "60'",
       "goals": [
         {
           "side": "home",
@@ -3824,6 +3824,13 @@
           "side": "home",
           "player": "I. Sarr",
           "minute": "56'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "P. Gueye",
+          "minute": "59'",
           "pen": false,
           "og": false
         }
@@ -3843,12 +3850,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "62.9",
-        "shotsOnTarget": "4",
-        "totalShots": "14"
+        "possessionPct": "62.3",
+        "shotsOnTarget": "5",
+        "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "37.1",
+        "possessionPct": "37.7",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -4569,6 +4576,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T20:26:21.185Z",
+  "lastUpdated": "2026-06-26T20:28:20.620Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
