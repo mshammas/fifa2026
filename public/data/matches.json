@@ -3750,7 +3750,7 @@
       "homeScore": 1,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "72'",
+      "clock": "74'",
       "goals": [
         {
           "side": "away",
@@ -3787,15 +3787,21 @@
           "player": "P. Berg",
           "minute": "10'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Tchouaméni",
+          "minute": "74'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "41.3",
-        "shotsOnTarget": "3",
-        "totalShots": "7"
+        "possessionPct": "42.2",
+        "shotsOnTarget": "4",
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "58.7",
+        "possessionPct": "57.8",
         "shotsOnTarget": "8",
         "totalShots": "16"
       },
@@ -3811,7 +3817,7 @@
       "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "68'",
+      "clock": "70'",
       "goals": [
         {
           "side": "home",
@@ -3850,12 +3856,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "62.9",
+        "possessionPct": "63",
         "shotsOnTarget": "5",
         "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "37.1",
+        "possessionPct": "37",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -4576,6 +4582,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T20:36:20.057Z",
+  "lastUpdated": "2026-06-26T20:38:22.897Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
