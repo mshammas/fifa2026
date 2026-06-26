@@ -3750,7 +3750,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "16'",
+      "clock": "19'",
       "goals": [
         {
           "side": "away",
@@ -3769,14 +3769,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "32.4",
+        "possessionPct": "29.4",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "67.6",
-        "shotsOnTarget": "5",
-        "totalShots": "6"
+        "possessionPct": "70.6",
+        "shotsOnTarget": "6",
+        "totalShots": "7"
       },
       "recap": null
     },
@@ -3790,7 +3790,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "15'",
+      "clock": "18'",
       "goals": [
         {
           "side": "home",
@@ -3806,15 +3806,21 @@
           "player": "R. Sulaka",
           "minute": "13'",
           "type": "red"
+        },
+        {
+          "side": "home",
+          "player": "A. Seck",
+          "minute": "18'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "40.3",
+        "possessionPct": "40",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "59.7",
+        "possessionPct": "60",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4535,6 +4541,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T19:18:22.522Z",
+  "lastUpdated": "2026-06-26T19:20:28.065Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
