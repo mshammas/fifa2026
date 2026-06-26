@@ -3643,17 +3643,24 @@
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "47'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "J. Irvine",
+          "minute": "46'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "37.2",
+        "possessionPct": "37.4",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "62.8",
+        "possessionPct": "62.6",
         "shotsOnTarget": "3",
         "totalShots": "6"
       },
@@ -3668,8 +3675,8 @@
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "47'",
       "goals": [
         {
           "side": "away",
@@ -3702,12 +3709,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "41.7",
+        "possessionPct": "41.8",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "58.3",
+        "possessionPct": "58.2",
         "shotsOnTarget": "4",
         "totalShots": "8"
       },
@@ -4462,6 +4469,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T03:08:25.558Z",
+  "lastUpdated": "2026-06-26T03:10:31.034Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
