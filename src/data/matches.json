@@ -3528,11 +3528,19 @@
       "away": "Sweden",
       "group": "F",
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "53'",
-      "goals": [],
+      "clock": "57'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "D. Maeda",
+          "minute": "56'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -3542,12 +3550,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "57.1",
-        "shotsOnTarget": "2",
-        "totalShots": "5"
+        "possessionPct": "58.1",
+        "shotsOnTarget": "3",
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "42.9",
+        "possessionPct": "41.9",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -3563,7 +3571,7 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "54'",
+      "clock": "58'",
       "goals": [
         {
           "side": "away",
@@ -3589,12 +3597,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "29.5",
-        "shotsOnTarget": "1",
-        "totalShots": "4"
+        "possessionPct": "27.5",
+        "shotsOnTarget": "2",
+        "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "70.5",
+        "possessionPct": "72.5",
         "shotsOnTarget": "3",
         "totalShots": "13"
       },
@@ -4383,6 +4391,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T00:16:25.678Z",
+  "lastUpdated": "2026-06-26T00:18:22.235Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
