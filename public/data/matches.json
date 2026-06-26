@@ -3644,7 +3644,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "66'",
+      "clock": "67'",
       "goals": [],
       "cards": [
         {
@@ -3655,12 +3655,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "38.7",
+        "possessionPct": "39.6",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "61.3",
+        "possessionPct": "60.4",
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
@@ -3694,7 +3694,7 @@
         },
         {
           "side": "home",
-          "player": "O. Kökçü",
+          "player": "B. Yilmaz",
           "minute": "31'",
           "pen": false,
           "og": false
@@ -4476,6 +4476,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T03:30:36.381Z",
+  "lastUpdated": "2026-06-26T03:32:24.796Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
