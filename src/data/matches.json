@@ -3796,12 +3796,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "45.5",
+        "possessionPct": "44.9",
         "shotsOnTarget": "4",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "54.5",
+        "possessionPct": "55.1",
         "shotsOnTarget": "8",
         "totalShots": "16"
       },
@@ -3817,7 +3817,7 @@
       "homeScore": 4,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "80'",
+      "clock": "82'",
       "goals": [
         {
           "side": "home",
@@ -3866,15 +3866,21 @@
           "player": "A. Al-Ammari",
           "minute": "75'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "P. Gueye",
+          "minute": "81'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "65.8",
-        "shotsOnTarget": "7",
-        "totalShots": "21"
+        "possessionPct": "65.7",
+        "shotsOnTarget": "8",
+        "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "34.2",
+        "possessionPct": "34.3",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -4595,6 +4601,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T20:48:19.591Z",
+  "lastUpdated": "2026-06-26T20:50:33.455Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
