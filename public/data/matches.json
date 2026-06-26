@@ -3750,7 +3750,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "13'",
+      "clock": "15'",
       "goals": [
         {
           "side": "away",
@@ -3769,14 +3769,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "32.8",
+        "possessionPct": "38.8",
         "shotsOnTarget": "1",
-        "totalShots": "1"
+        "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "67.2",
+        "possessionPct": "61.2",
         "shotsOnTarget": "5",
-        "totalShots": "5"
+        "totalShots": "6"
       },
       "recap": null
     },
@@ -3790,7 +3790,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "11'",
+      "clock": "14'",
       "goals": [
         {
           "side": "home",
@@ -3804,8 +3804,8 @@
         {
           "side": "away",
           "player": "R. Sulaka",
-          "minute": "10'",
-          "type": "yellow"
+          "minute": "13'",
+          "type": "red"
         }
       ],
       "homeStats": {
@@ -4535,6 +4535,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T19:14:21.618Z",
+  "lastUpdated": "2026-06-26T19:16:22.214Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
