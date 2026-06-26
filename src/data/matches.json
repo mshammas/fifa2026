@@ -3661,16 +3661,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "44.1",
+        "possessionPct": "44",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "55.9",
+        "possessionPct": "56",
         "shotsOnTarget": "5",
         "totalShots": "12"
       },
-      "recap": null
+      "recap": "Australia and Paraguay played to a 0-0 draw Thursday night in a result that clinched a spot in the knockout round of the World Cup for the Socceroos and will likely be enough for the Paraguayans to advance."
     },
     {
       "id": "e760470",
@@ -3730,7 +3730,7 @@
       ],
       "homeStats": {
         "possessionPct": "47.4",
-        "shotsOnTarget": "4",
+        "shotsOnTarget": "3",
         "totalShots": "9"
       },
       "awayStats": {
@@ -3738,7 +3738,7 @@
         "shotsOnTarget": "7",
         "totalShots": "18"
       },
-      "recap": null
+      "recap": "Kaan Ayhan scored on the final kick of the match, and Türkiye beat the United States 3-2 Thursday night for its only win of the World Cup."
     },
     {
       "id": "e760475",
@@ -3753,8 +3753,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -3770,8 +3778,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -4168,7 +4184,7 @@
     {
       "id": "e760499",
       "date": "2026-07-03T18:00Z",
-      "home": "Group D 2nd Place",
+      "home": "Australia",
       "away": "Group G 2nd Place",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
@@ -4489,6 +4505,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-26T04:04:21.917Z",
+  "lastUpdated": "2026-06-26T18:58:26.494Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
