@@ -4030,7 +4030,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "17'",
+      "clock": "19'",
       "goals": [
         {
           "side": "home",
@@ -4047,14 +4047,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "H. Kanani",
+          "minute": "19'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "55.5",
+        "possessionPct": "54.2",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "44.5",
+        "possessionPct": "45.8",
         "shotsOnTarget": "3",
         "totalShots": "3"
       },
@@ -4070,16 +4077,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "17'",
+      "clock": "19'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "22.1",
+        "possessionPct": "26.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "77.9",
+        "possessionPct": "73.6",
         "shotsOnTarget": "3",
         "totalShots": "6"
       },
@@ -4732,6 +4739,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T03:18:29.450Z",
+  "lastUpdated": "2026-06-27T03:20:30.855Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
