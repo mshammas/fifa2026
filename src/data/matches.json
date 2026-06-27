@@ -4313,16 +4313,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "11'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "44.6",
+        "possessionPct": "46.2",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "55.4",
+        "possessionPct": "53.8",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -4336,18 +4336,26 @@
       "group": "K",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "8'",
-      "goals": [],
+      "clock": "11'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "E. Shomurodov",
+          "minute": "10'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "49.4",
+        "possessionPct": "50",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "50.6",
+        "possessionPct": "50",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -4932,6 +4940,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T23:42:27.414Z",
+  "lastUpdated": "2026-06-27T23:43:58.318Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
