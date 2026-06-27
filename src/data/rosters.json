@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-26T08:50:56.094Z",
+  "lastUpdated": "2026-06-27T08:28:58.648Z",
   "rosters": {
     "Algeria": [
       {
@@ -1528,7 +1528,7 @@
         "shortName": "A. Saelemaekers",
         "jersey": 22,
         "pos": "FWD",
-        "age": 26,
+        "age": 27,
         "dob": "1999-06-27",
         "height": "5' 11\"",
         "weight": "159 lbs",
@@ -2838,7 +2838,7 @@
         "dob": "1995-03-29",
         "height": "6' 7\"",
         "weight": "214 lbs",
-        "club": "Monopoli 1966"
+        "club": "Vélez Sarsfield"
       },
       {
         "id": "146679",
@@ -3768,7 +3768,7 @@
         "dob": "2002-05-15",
         "height": "6' 3\"",
         "weight": "170 lbs",
-        "club": "Curaçao"
+        "club": "Telstar"
       },
       {
         "id": "262109",
@@ -3888,7 +3888,7 @@
         "dob": "2003-05-16",
         "height": "6' 2\"",
         "weight": "181 lbs",
-        "club": "Curaçao"
+        "club": "NEC Nijmegen"
       },
       {
         "id": "273295",
@@ -3936,7 +3936,7 @@
         "dob": "2002-09-11",
         "height": "6' 0\"",
         "weight": "168 lbs",
-        "club": "Curaçao"
+        "club": "Telstar"
       },
       {
         "id": "306553",
@@ -3972,7 +3972,7 @@
         "dob": "1999-11-11",
         "height": "5' 9\"",
         "weight": "146 lbs",
-        "club": "Curaçao"
+        "club": "FC Den Bosch"
       },
       {
         "id": "167213",
@@ -6340,7 +6340,7 @@
         "dob": "1999-02-28",
         "height": "6' 0\"",
         "weight": "172 lbs",
-        "club": "FC Lugano"
+        "club": "Burnley"
       },
       {
         "id": "320212",
@@ -6408,7 +6408,7 @@
         "shortName": "J. Bellegarde",
         "jersey": 10,
         "pos": "MID",
-        "age": 27,
+        "age": 28,
         "dob": "1998-06-27",
         "height": "5' 7\"",
         "weight": "146 lbs",
@@ -8368,7 +8368,7 @@
         "dob": "2003-06-17",
         "height": "5' 10\"",
         "weight": "159 lbs",
-        "club": "River Plate"
+        "club": "Guadalajara"
       },
       {
         "id": "167060",
@@ -9821,18 +9821,6 @@
         "club": "Plaza Amador"
       },
       {
-        "id": "189775",
-        "name": "Andrés Andrade",
-        "shortName": "A. Andrade",
-        "jersey": 16,
-        "pos": "DEF",
-        "age": 27,
-        "dob": "1998-10-16",
-        "height": "6' 2\"",
-        "weight": "190 lbs",
-        "club": "LASK Linz"
-      },
-      {
         "id": "216420",
         "name": "Amir Murillo",
         "shortName": "A. Murillo",
@@ -9927,6 +9915,18 @@
         "height": "6' 1\"",
         "weight": "194 lbs",
         "club": "Minnesota United FC"
+      },
+      {
+        "id": "189775",
+        "name": "Andrés Andrade",
+        "shortName": "A. Andrade",
+        "jersey": 16,
+        "pos": "MID",
+        "age": 37,
+        "dob": "1989-02-23",
+        "height": "6' 0\"",
+        "weight": "161 lbs",
+        "club": "LASK Linz"
       },
       {
         "id": "116825",
@@ -10236,7 +10236,7 @@
         "shortName": "B. Ojeda",
         "jersey": 20,
         "pos": "MID",
-        "age": 25,
+        "age": 26,
         "dob": "2000-06-27",
         "height": "5' 8\"",
         "weight": "150 lbs",
