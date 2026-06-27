@@ -3916,7 +3916,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "56'",
       "goals": [],
       "cards": [
         {
@@ -3933,12 +3933,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "52.8",
+        "possessionPct": "51.5",
         "shotsOnTarget": "1",
-        "totalShots": "6"
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "47.2",
+        "possessionPct": "48.5",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -3954,7 +3954,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "55'",
       "goals": [
         {
           "side": "away",
@@ -3970,15 +3970,21 @@
           "player": "Á. Baena",
           "minute": "46'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "J. Sanabria",
+          "minute": "54'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "27.9",
+        "possessionPct": "28.6",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "72.1",
+        "possessionPct": "71.4",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -4665,6 +4671,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T01:18:24.460Z",
+  "lastUpdated": "2026-06-27T01:20:28.226Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
