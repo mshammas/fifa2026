@@ -4313,16 +4313,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "19'",
+      "clock": "21'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "44.9",
+        "possessionPct": "41.6",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "55.1",
+        "possessionPct": "58.4",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -4335,10 +4335,10 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 1,
+      "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "19'",
+      "clock": "21'",
       "goals": [
         {
           "side": "away",
@@ -4346,23 +4346,23 @@
           "minute": "10'",
           "pen": false,
           "og": false
-        },
-        {
-          "side": "home",
-          "player": "N. Mbuku",
-          "minute": "17'",
-          "pen": false,
-          "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "N. Sadiki",
+          "minute": "21'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "52.4",
+        "possessionPct": "52.3",
         "shotsOnTarget": "1",
-        "totalShots": "2"
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "47.6",
+        "possessionPct": "47.7",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -4947,6 +4947,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T23:50:31.135Z",
+  "lastUpdated": "2026-06-27T23:52:20.617Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
