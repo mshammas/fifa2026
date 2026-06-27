@@ -4194,7 +4194,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "50'",
+      "clock": "52'",
       "goals": [
         {
           "side": "home",
@@ -4206,12 +4206,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "51.7",
+        "possessionPct": "50.7",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "48.3",
+        "possessionPct": "49.3",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -4227,16 +4227,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "53'",
+      "clock": "55'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "J. Fajardo",
+          "minute": "53'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "27.2",
+        "possessionPct": "28.1",
         "shotsOnTarget": "2",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "72.8",
+        "possessionPct": "71.9",
         "shotsOnTarget": "2",
         "totalShots": "9"
       },
@@ -4855,6 +4862,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T22:12:25.291Z",
+  "lastUpdated": "2026-06-27T22:14:23.255Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
