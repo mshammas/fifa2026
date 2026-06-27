@@ -4029,8 +4029,8 @@
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "46'",
       "goals": [
         {
           "side": "home",
@@ -4094,8 +4094,8 @@
       "venue": "BC Place, Vancouver",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "47'",
       "goals": [
         {
           "side": "away",
@@ -4105,16 +4105,23 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "M. Stamenic",
+          "minute": "46'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "37.8",
+        "possessionPct": "38.7",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "62.2",
+        "possessionPct": "61.3",
         "shotsOnTarget": "4",
-        "totalShots": "16"
+        "totalShots": "17"
       },
       "recap": null
     },
@@ -4765,6 +4772,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T04:08:19.989Z",
+  "lastUpdated": "2026-06-27T04:10:29.280Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
