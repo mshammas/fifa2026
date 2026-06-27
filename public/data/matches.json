@@ -4194,7 +4194,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "64'",
+      "clock": "68'",
       "goals": [
         {
           "side": "home",
@@ -4204,14 +4204,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "I. Perisic",
+          "minute": "68'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "50.8",
+        "possessionPct": "52.7",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "49.2",
+        "possessionPct": "47.3",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
@@ -4225,14 +4232,21 @@
       "group": "L",
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "67'",
+      "clock": "71'",
       "goals": [
         {
           "side": "away",
           "player": "J. Bellingham",
           "minute": "62'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "H. Kane",
+          "minute": "67'",
           "pen": false,
           "og": false
         }
@@ -4252,14 +4266,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "29",
+        "possessionPct": "29.1",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "71",
-        "shotsOnTarget": "4",
-        "totalShots": "13"
+        "possessionPct": "70.9",
+        "shotsOnTarget": "5",
+        "totalShots": "14"
       },
       "recap": null
     },
@@ -4876,6 +4890,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T22:28:24.237Z",
+  "lastUpdated": "2026-06-27T22:30:32.242Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
