@@ -3916,7 +3916,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "58'",
+      "clock": "61'",
       "goals": [],
       "cards": [
         {
@@ -3933,12 +3933,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "52.8",
+        "possessionPct": "53.4",
         "shotsOnTarget": "1",
-        "totalShots": "7"
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "47.2",
+        "possessionPct": "46.6",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -3954,7 +3954,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "57'",
+      "clock": "61'",
       "goals": [
         {
           "side": "away",
@@ -3976,15 +3976,21 @@
           "player": "J. Sanabria",
           "minute": "54'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "G. Varela",
+          "minute": "58'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "28.8",
+        "possessionPct": "28.5",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "71.2",
+        "possessionPct": "71.5",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -4671,6 +4677,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T01:24:24.690Z",
+  "lastUpdated": "2026-06-27T01:26:22.025Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
