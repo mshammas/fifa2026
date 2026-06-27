@@ -4194,7 +4194,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+7'",
       "goals": [
         {
           "side": "home",
@@ -4224,17 +4224,23 @@
           "player": "I. Perisic",
           "minute": "68'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "K. Oppong",
+          "minute": "90'+4'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "53.6",
+        "possessionPct": "53.7",
         "shotsOnTarget": "4",
-        "totalShots": "7"
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "46.4",
+        "possessionPct": "46.3",
         "shotsOnTarget": "1",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -4247,8 +4253,8 @@
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 0,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+5'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4286,14 +4292,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "32.5",
+        "possessionPct": "32.9",
         "shotsOnTarget": "2",
-        "totalShots": "13"
+        "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "67.5",
+        "possessionPct": "67.1",
         "shotsOnTarget": "6",
-        "totalShots": "16"
+        "totalShots": "17"
       },
       "recap": null
     },
@@ -4926,6 +4932,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T22:56:24.538Z",
+  "lastUpdated": "2026-06-27T22:58:22.265Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
