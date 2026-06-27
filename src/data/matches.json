@@ -4242,7 +4242,7 @@
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
-      "recap": null
+      "recap": "Croatia earned a spot in the World Cup knockout round, getting goals from Nikola Vlasic and Luka Sucic to beat Ghana 2-1 on Saturday."
     },
     {
       "id": "e760485",
@@ -4301,7 +4301,7 @@
         "shotsOnTarget": "6",
         "totalShots": "17"
       },
-      "recap": null
+      "recap": "Jude Bellingham and Harry Kane scored early in the second half, lifting England over Panama 2-0 Saturday and into what appears to be a more favorable bracket for the knockout phase of the World Cup."
     },
     {
       "id": "e760481",
@@ -4493,7 +4493,7 @@
       "id": "e760491",
       "date": "2026-07-01T01:00Z",
       "home": "Mexico",
-      "away": "Third Place Group C/E/F/H/I",
+      "away": "Ecuador",
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": null,
@@ -4509,7 +4509,7 @@
     {
       "id": "e760495",
       "date": "2026-07-01T16:00Z",
-      "home": "Group L Winner",
+      "home": "England",
       "away": "Third Place Group E/H/I/J/K",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
@@ -4578,7 +4578,7 @@
       "id": "e760496",
       "date": "2026-07-02T23:00Z",
       "home": "Group K 2nd Place",
-      "away": "Group L 2nd Place",
+      "away": "Croatia",
       "group": null,
       "venue": "BMO Field, Toronto",
       "homeScore": null,
@@ -4646,7 +4646,7 @@
       "id": "e760501",
       "date": "2026-07-04T01:30Z",
       "home": "Group K Winner",
-      "away": "Third Place Group D/E/I/J/L",
+      "away": "Ghana",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": null,
@@ -4932,6 +4932,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T23:00:38.527Z",
+  "lastUpdated": "2026-06-27T23:28:23.290Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
