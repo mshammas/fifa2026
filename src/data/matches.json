@@ -3916,7 +3916,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "40'",
+      "clock": "42'",
       "goals": [],
       "cards": [
         {
@@ -3933,12 +3933,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "54.5",
+        "possessionPct": "57",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "45.5",
+        "possessionPct": "43",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -3952,20 +3952,28 @@
       "group": "H",
       "venue": "Estadio Akron, Guadalajara",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "41'",
-      "goals": [],
+      "clock": "43'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "Á. Baena",
+          "minute": "42'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "25.6",
+        "possessionPct": "25.2",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "74.4",
-        "shotsOnTarget": "0",
-        "totalShots": "2"
+        "possessionPct": "74.8",
+        "shotsOnTarget": "1",
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -4650,6 +4658,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T00:42:19.836Z",
+  "lastUpdated": "2026-06-27T00:44:18.958Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
