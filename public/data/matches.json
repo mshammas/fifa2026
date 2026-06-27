@@ -3928,7 +3928,7 @@
         {
           "side": "home",
           "player": "W. Pina",
-          "minute": "9'",
+          "minute": "8'",
           "type": "yellow"
         },
         {
@@ -3945,16 +3945,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "51.1",
+        "possessionPct": "51.2",
         "shotsOnTarget": "2",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "48.9",
+        "possessionPct": "48.8",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "Cape Verde drew Saudi Arabia 0-0 to finish second in Group H"
     },
     {
       "id": "e760479",
@@ -4018,7 +4018,7 @@
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
-      "recap": null
+      "recap": "Spain defeated Uruguay 1-0 after another goalkeeping mistake by Fernando Muslera to advance to the knockout stage of the World Cup and eliminate the South American powerhouse."
     },
     {
       "id": "e760476",
@@ -4210,7 +4210,7 @@
       "id": "e760489",
       "date": "2026-06-29T20:30Z",
       "home": "Germany",
-      "away": "Third Place Group A/B/C/D/F",
+      "away": "Paraguay",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
       "homeScore": null,
@@ -4261,7 +4261,7 @@
       "id": "e760492",
       "date": "2026-06-30T21:00Z",
       "home": "France",
-      "away": "Third Place Group C/D/F/G/H",
+      "away": "Sweden",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": null,
@@ -4345,7 +4345,7 @@
     {
       "id": "e760497",
       "date": "2026-07-02T19:00Z",
-      "home": "Group H Winner",
+      "home": "Spain",
       "away": "Group J 2nd Place",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
@@ -4414,7 +4414,7 @@
       "id": "e760500",
       "date": "2026-07-03T22:00Z",
       "home": "Argentina",
-      "away": "Group H 2nd Place",
+      "away": "Cape Verde",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": null,
@@ -4717,6 +4717,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T02:02:21.571Z",
+  "lastUpdated": "2026-06-27T02:58:18.839Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
