@@ -4030,7 +4030,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "41'",
+      "clock": "43'",
       "goals": [
         {
           "side": "home",
@@ -4065,15 +4065,21 @@
           "player": "Y. Ibrahim",
           "minute": "42'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Nemati",
+          "minute": "43'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "60.2",
+        "possessionPct": "59.7",
         "shotsOnTarget": "2",
-        "totalShots": "6"
+        "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "39.8",
+        "possessionPct": "40.3",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
@@ -4089,7 +4095,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "41'",
+      "clock": "42'",
       "goals": [
         {
           "side": "away",
@@ -4101,14 +4107,14 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "39",
+        "possessionPct": "40.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "61",
+        "possessionPct": "59.6",
         "shotsOnTarget": "3",
-        "totalShots": "10"
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -4759,6 +4765,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T03:42:25.498Z",
+  "lastUpdated": "2026-06-27T03:44:20.003Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
