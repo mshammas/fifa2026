@@ -4030,7 +4030,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "19'",
+      "clock": "20'",
       "goals": [
         {
           "side": "home",
@@ -4053,17 +4053,23 @@
           "player": "H. Kanani",
           "minute": "19'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "M. Saber",
+          "minute": "20'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "54.2",
+        "possessionPct": "56.1",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "45.8",
+        "possessionPct": "43.9",
         "shotsOnTarget": "3",
-        "totalShots": "3"
+        "totalShots": "4"
       },
       "recap": null
     },
@@ -4077,16 +4083,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "19'",
+      "clock": "20'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "26.4",
+        "possessionPct": "25.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "73.6",
+        "possessionPct": "74.7",
         "shotsOnTarget": "3",
         "totalShots": "6"
       },
@@ -4739,6 +4745,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T03:20:30.855Z",
+  "lastUpdated": "2026-06-27T03:22:22.842Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
