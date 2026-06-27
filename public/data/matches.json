@@ -3916,7 +3916,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+1'",
+      "clock": "90'+4'",
       "goals": [],
       "cards": [
         {
@@ -3936,15 +3936,21 @@
           "player": "N. Al-Dawsari",
           "minute": "67'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "F. Al-Brikan",
+          "minute": "90'+3'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "51.3",
+        "possessionPct": "50.7",
         "shotsOnTarget": "2",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "48.7",
+        "possessionPct": "49.3",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
@@ -3960,7 +3966,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'+1'",
+      "clock": "90'+3'",
       "goals": [
         {
           "side": "away",
@@ -3988,15 +3994,21 @@
           "player": "G. Varela",
           "minute": "58'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "N. de la Cruz",
+          "minute": "90'+3'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "32.1",
+        "possessionPct": "32.5",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "67.9",
+        "possessionPct": "67.5",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
@@ -4683,6 +4695,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T01:56:24.787Z",
+  "lastUpdated": "2026-06-27T01:58:20.998Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
