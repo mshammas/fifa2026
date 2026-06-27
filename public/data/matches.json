@@ -4028,9 +4028,9 @@
       "group": "G",
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "home",
@@ -4083,6 +4083,12 @@
           "player": "M. Lashin",
           "minute": "90'+2'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "S. Khalilzadeh",
+          "minute": "90'+4'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
@@ -4092,8 +4098,8 @@
       },
       "awayStats": {
         "possessionPct": "37.7",
-        "shotsOnTarget": "3",
-        "totalShots": "9"
+        "shotsOnTarget": "5",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -4105,9 +4111,9 @@
       "group": "G",
       "venue": "BC Place, Vancouver",
       "homeScore": 1,
-      "awayScore": 4,
-      "status": "LIVE",
-      "clock": "90'+3'",
+      "awayScore": 5,
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4143,6 +4149,13 @@
           "minute": "86'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Saelemaekers",
+          "minute": "90'+4'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -4160,14 +4173,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "44.7",
+        "possessionPct": "45.4",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "55.3",
-        "shotsOnTarget": "9",
-        "totalShots": "34"
+        "possessionPct": "54.6",
+        "shotsOnTarget": "10",
+        "totalShots": "35"
       },
       "recap": null
     },
@@ -4818,6 +4831,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T04:58:25.420Z",
+  "lastUpdated": "2026-06-27T05:00:39.902Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
