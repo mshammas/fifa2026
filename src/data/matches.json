@@ -4030,7 +4030,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "82'",
+      "clock": "86'",
       "goals": [
         {
           "side": "home",
@@ -4080,12 +4080,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "64.3",
+        "possessionPct": "62.8",
         "shotsOnTarget": "3",
-        "totalShots": "14"
+        "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "35.7",
+        "possessionPct": "37.2",
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
@@ -4098,10 +4098,10 @@
       "away": "Belgium",
       "group": "G",
       "venue": "BC Place, Vancouver",
-      "homeScore": 0,
-      "awayScore": 3,
+      "homeScore": 1,
+      "awayScore": 4,
       "status": "LIVE",
-      "clock": "84'",
+      "clock": "88'",
       "goals": [
         {
           "side": "away",
@@ -4123,6 +4123,20 @@
           "minute": "66'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "E. Just",
+          "minute": "84'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "R. Lukaku",
+          "minute": "86'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -4140,14 +4154,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "43.3",
-        "shotsOnTarget": "1",
-        "totalShots": "5"
+        "possessionPct": "43.8",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "56.7",
-        "shotsOnTarget": "7",
-        "totalShots": "30"
+        "possessionPct": "56.2",
+        "shotsOnTarget": "8",
+        "totalShots": "31"
       },
       "recap": null
     },
@@ -4798,6 +4812,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T04:48:23.814Z",
+  "lastUpdated": "2026-06-27T04:50:27.112Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
