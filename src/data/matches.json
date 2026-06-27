@@ -4030,7 +4030,7 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+6'",
+      "clock": "90'+5'",
       "goals": [
         {
           "side": "home",
@@ -4043,6 +4043,13 @@
           "side": "away",
           "player": "R. Rezaeian",
           "minute": "14'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "S. Khalilzadeh",
+          "minute": "90'+3'",
           "pen": false,
           "og": false
         }
@@ -4092,12 +4099,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "62.3",
+        "possessionPct": "62.2",
         "shotsOnTarget": "3",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "37.7",
+        "possessionPct": "37.8",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
@@ -4831,6 +4838,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T05:00:39.902Z",
+  "lastUpdated": "2026-06-27T05:02:26.380Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
