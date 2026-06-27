@@ -4310,14 +4310,14 @@
       "away": "Portugal",
       "group": "K",
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4335,10 +4335,10 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -4347,7 +4347,7 @@
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4932,6 +4932,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T23:30:30.823Z",
+  "lastUpdated": "2026-06-27T23:32:23.058Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
