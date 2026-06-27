@@ -4027,19 +4027,27 @@
       "away": "Iran",
       "group": "G",
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "3'",
-      "goals": [],
+      "clock": "5'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "M. Saber",
+          "minute": "5'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "25",
+        "possessionPct": "69.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "75",
+        "possessionPct": "30.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4055,18 +4063,18 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "3'",
+      "clock": "5'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "20",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "100",
+        "possessionPct": "80",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -4717,6 +4725,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T03:04:25.451Z",
+  "lastUpdated": "2026-06-27T03:06:21.861Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
