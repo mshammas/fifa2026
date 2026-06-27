@@ -4191,7 +4191,7 @@
       "away": "Ghana",
       "group": "L",
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": 2,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
       "clock": "82'",
@@ -4207,13 +4207,6 @@
           "side": "away",
           "player": "D. Luckassen",
           "minute": "73'",
-          "pen": false,
-          "og": false
-        },
-        {
-          "side": "home",
-          "player": "N. Vlasic",
-          "minute": "83'",
           "pen": false,
           "og": false
         }
@@ -4248,7 +4241,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "85'",
+      "clock": "84'",
       "goals": [
         {
           "side": "away",
@@ -4926,6 +4919,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T22:44:19.970Z",
+  "lastUpdated": "2026-06-27T22:46:22.634Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
