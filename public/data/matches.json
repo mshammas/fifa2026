@@ -3916,7 +3916,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "10'",
       "goals": [],
       "cards": [
         {
@@ -3924,15 +3924,21 @@
           "player": "S. Abdulhamid",
           "minute": "4'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "W. Pina",
+          "minute": "9'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "64.9",
+        "possessionPct": "54.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "35.1",
+        "possessionPct": "45.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -3948,16 +3954,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "10'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "27.5",
+        "possessionPct": "22.8",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "72.5",
+        "possessionPct": "77.2",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -4644,6 +4650,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T00:10:25.888Z",
+  "lastUpdated": "2026-06-27T00:12:20.733Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
