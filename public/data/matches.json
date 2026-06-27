@@ -4030,7 +4030,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "53'",
+      "clock": "54'",
       "goals": [
         {
           "side": "home",
@@ -4074,12 +4074,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "61.9",
+        "possessionPct": "62.2",
         "shotsOnTarget": "3",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "38.1",
+        "possessionPct": "37.8",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -4095,7 +4095,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "55'",
+      "clock": "56'",
       "goals": [
         {
           "side": "away",
@@ -4118,15 +4118,21 @@
           "player": "M. Stamenic",
           "minute": "46'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "E. Just",
+          "minute": "56'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "39.1",
-        "shotsOnTarget": "0",
-        "totalShots": "1"
+        "possessionPct": "39.5",
+        "shotsOnTarget": "1",
+        "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "60.9",
+        "possessionPct": "60.5",
         "shotsOnTarget": "5",
         "totalShots": "19"
       },
@@ -4779,6 +4785,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-27T04:18:25.547Z",
+  "lastUpdated": "2026-06-27T04:20:33.918Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
