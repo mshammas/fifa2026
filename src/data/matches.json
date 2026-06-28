@@ -4429,8 +4429,8 @@
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "45'+3'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4456,12 +4456,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "55.6",
+        "possessionPct": "57.1",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "44.4",
+        "possessionPct": "42.9",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -4476,8 +4476,8 @@
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 0,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "45'+3'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4503,14 +4503,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "25.7",
+        "possessionPct": "28.4",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "74.3",
-        "shotsOnTarget": "2",
-        "totalShots": "4"
+        "possessionPct": "71.6",
+        "shotsOnTarget": "3",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -5059,6 +5059,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T02:50:31.587Z",
+  "lastUpdated": "2026-06-28T02:52:25.754Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
