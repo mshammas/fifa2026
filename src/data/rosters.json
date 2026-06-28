@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T08:28:58.648Z",
+  "lastUpdated": "2026-06-28T08:41:36.265Z",
   "rosters": {
     "Algeria": [
       {
@@ -1396,7 +1396,7 @@
         "shortName": "K. De Bruyne",
         "jersey": 7,
         "pos": "MID",
-        "age": 34,
+        "age": 35,
         "dob": "1991-06-28",
         "height": "5' 11\"",
         "weight": "172 lbs",
@@ -3948,7 +3948,7 @@
         "dob": "2003-09-04",
         "height": "5' 11\"",
         "weight": "141 lbs",
-        "club": "Curaçao"
+        "club": "Rotherham United"
       },
       {
         "id": "276218",
@@ -3972,7 +3972,7 @@
         "dob": "1999-11-11",
         "height": "5' 9\"",
         "weight": "146 lbs",
-        "club": "FC Den Bosch"
+        "club": "Curaçao"
       },
       {
         "id": "167213",
@@ -5622,7 +5622,7 @@
         "shortName": "J. Mateta",
         "jersey": 22,
         "pos": "FWD",
-        "age": 28,
+        "age": 29,
         "dob": "1997-06-28",
         "height": "6' 4\"",
         "weight": "192 lbs",
@@ -6300,7 +6300,7 @@
         "shortName": "C. Arcus",
         "jersey": 2,
         "pos": "DEF",
-        "age": 29,
+        "age": 30,
         "dob": "1996-06-28",
         "height": "5' 11\"",
         "weight": "163 lbs",
@@ -7556,7 +7556,7 @@
         "shortName": "Y. Sugawara",
         "jersey": 2,
         "pos": "DEF",
-        "age": 25,
+        "age": 26,
         "dob": "2000-06-28",
         "height": "5' 10\"",
         "weight": "157 lbs",
@@ -9821,6 +9821,18 @@
         "club": "Plaza Amador"
       },
       {
+        "id": "189775",
+        "name": "Andrés Andrade",
+        "shortName": "A. Andrade",
+        "jersey": 16,
+        "pos": "DEF",
+        "age": 27,
+        "dob": "1998-10-16",
+        "height": "6' 2\"",
+        "weight": "190 lbs",
+        "club": "LASK Linz"
+      },
+      {
         "id": "216420",
         "name": "Amir Murillo",
         "shortName": "A. Murillo",
@@ -9915,18 +9927,6 @@
         "height": "6' 1\"",
         "weight": "194 lbs",
         "club": "Minnesota United FC"
-      },
-      {
-        "id": "189775",
-        "name": "Andrés Andrade",
-        "shortName": "A. Andrade",
-        "jersey": 16,
-        "pos": "MID",
-        "age": 37,
-        "dob": "1989-02-23",
-        "height": "6' 0\"",
-        "weight": "161 lbs",
-        "club": "LASK Linz"
       },
       {
         "id": "116825",
