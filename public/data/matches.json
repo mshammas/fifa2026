@@ -4429,8 +4429,8 @@
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 3,
       "awayScore": 3,
-      "status": "LIVE",
-      "clock": "90'+6'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4490,8 +4490,8 @@
       },
       "awayStats": {
         "possessionPct": "35",
-        "shotsOnTarget": "2",
-        "totalShots": "9"
+        "shotsOnTarget": "3",
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -4742,7 +4742,7 @@
       "id": "e760497",
       "date": "2026-07-02T19:00Z",
       "home": "Spain",
-      "away": "Group J 2nd Place",
+      "away": "Austria",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": null,
@@ -4776,7 +4776,7 @@
       "id": "e760498",
       "date": "2026-07-03T03:00Z",
       "home": "Switzerland",
-      "away": "Third Place Group E/F/G/I/J",
+      "away": "Algeria",
       "group": null,
       "venue": "BC Place, Vancouver",
       "homeScore": null,
@@ -5113,6 +5113,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T04:00:43.163Z",
+  "lastUpdated": "2026-06-28T04:02:27.288Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
