@@ -4313,16 +4313,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "68'",
+      "clock": "70'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "54.9",
-        "shotsOnTarget": "5",
-        "totalShots": "18"
+        "possessionPct": "54.8",
+        "shotsOnTarget": "6",
+        "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "45.1",
+        "possessionPct": "45.2",
         "shotsOnTarget": "2",
         "totalShots": "11"
       },
@@ -4335,16 +4335,23 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "66'",
+      "clock": "69'",
       "goals": [
         {
           "side": "away",
           "player": "E. Shomurodov",
           "minute": "10'",
           "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "Y. Wissa",
+          "minute": "68'",
+          "pen": true,
           "og": false
         }
       ],
@@ -4381,12 +4388,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "65",
+        "possessionPct": "64.5",
         "shotsOnTarget": "1",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "35",
+        "possessionPct": "35.5",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -4405,8 +4412,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -4422,8 +4437,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -4971,6 +4994,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T01:00:42.005Z",
+  "lastUpdated": "2026-06-28T01:02:20.842Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
