@@ -4313,18 +4313,18 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "78'",
+      "clock": "80'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "55.6",
+        "possessionPct": "55.9",
         "shotsOnTarget": "6",
         "totalShots": "21"
       },
       "awayStats": {
-        "possessionPct": "44.4",
+        "possessionPct": "44.1",
         "shotsOnTarget": "2",
-        "totalShots": "11"
+        "totalShots": "12"
       },
       "recap": null
     },
@@ -4335,10 +4335,10 @@
       "away": "Uzbekistan",
       "group": "K",
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "76'",
+      "clock": "78'",
       "goals": [
         {
           "side": "away",
@@ -4352,6 +4352,13 @@
           "player": "Y. Wissa",
           "minute": "68'",
           "pen": true,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "F. Mayele",
+          "minute": "78'",
+          "pen": false,
           "og": false
         }
       ],
@@ -4388,12 +4395,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "64.2",
-        "shotsOnTarget": "2",
-        "totalShots": "12"
+        "possessionPct": "64.9",
+        "shotsOnTarget": "3",
+        "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "35.8",
+        "possessionPct": "35.1",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -4994,6 +5001,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T01:10:25.883Z",
+  "lastUpdated": "2026-06-28T01:12:20.513Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
