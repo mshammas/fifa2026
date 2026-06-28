@@ -4575,10 +4575,10 @@
       "away": "Canada",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -4587,7 +4587,7 @@
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5121,6 +5121,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T19:00:37.272Z",
+  "lastUpdated": "2026-06-28T19:02:23.223Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
