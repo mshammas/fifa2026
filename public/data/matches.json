@@ -4344,8 +4344,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 3,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+8'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4593,7 +4593,7 @@
       "id": "e760495",
       "date": "2026-07-01T16:00Z",
       "home": "England",
-      "away": "Third Place Group E/H/I/J/K",
+      "away": "Congo DR",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": null,
@@ -4610,7 +4610,7 @@
       "id": "e760493",
       "date": "2026-07-01T20:00Z",
       "home": "Belgium",
-      "away": "Third Place Group A/E/H/I/J",
+      "away": "Senegal",
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": null,
@@ -4660,7 +4660,7 @@
     {
       "id": "e760496",
       "date": "2026-07-02T23:00Z",
-      "home": "Group K 2nd Place",
+      "home": "Portugal",
       "away": "Croatia",
       "group": null,
       "venue": "BMO Field, Toronto",
@@ -4728,7 +4728,7 @@
     {
       "id": "e760501",
       "date": "2026-07-04T01:30Z",
-      "home": "Group K Winner",
+      "home": "Colombia",
       "away": "Ghana",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
@@ -5015,6 +5015,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T01:34:25.850Z",
+  "lastUpdated": "2026-06-28T01:36:22.763Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
