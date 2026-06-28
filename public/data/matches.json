@@ -4578,16 +4578,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "52'",
+      "clock": "56'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "N. Saliba",
+          "minute": "54'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "57.7",
+        "possessionPct": "58.5",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "42.3",
+        "possessionPct": "41.5",
         "shotsOnTarget": "4",
         "totalShots": "7"
       },
@@ -5121,6 +5128,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T20:14:22.998Z",
+  "lastUpdated": "2026-06-28T20:16:22.198Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
