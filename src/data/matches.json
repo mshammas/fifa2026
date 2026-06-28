@@ -4428,10 +4428,18 @@
       "group": "J",
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "27'",
-      "goals": [],
+      "clock": "32'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "M. Arnautovic",
+          "minute": "28'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -4441,14 +4449,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "53.2",
+        "possessionPct": "54.3",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "46.8",
-        "shotsOnTarget": "0",
-        "totalShots": "1"
+        "possessionPct": "45.7",
+        "shotsOnTarget": "1",
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -4460,15 +4468,22 @@
       "group": "J",
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "26'",
+      "clock": "31'",
       "goals": [
         {
           "side": "away",
           "player": "G. Lo Celso",
           "minute": "19'",
           "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "L. Martínez",
+          "minute": "31'",
+          "pen": true,
           "og": false
         }
       ],
@@ -4481,14 +4496,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "21",
+        "possessionPct": "19.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "79",
-        "shotsOnTarget": "1",
-        "totalShots": "2"
+        "possessionPct": "80.7",
+        "shotsOnTarget": "2",
+        "totalShots": "4"
       },
       "recap": null
     },
@@ -5037,6 +5052,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T02:30:37.169Z",
+  "lastUpdated": "2026-06-28T02:32:25.207Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
