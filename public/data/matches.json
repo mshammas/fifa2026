@@ -4313,9 +4313,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "84'",
+      "clock": "87'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "G. Puerta",
+          "minute": "86'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
         "possessionPct": "55.1",
         "shotsOnTarget": "6",
@@ -4338,7 +4345,7 @@
       "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "82'",
+      "clock": "84'",
       "goals": [
         {
           "side": "away",
@@ -4395,12 +4402,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "62.7",
+        "possessionPct": "61.4",
         "shotsOnTarget": "3",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "37.3",
+        "possessionPct": "38.6",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -5001,6 +5008,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T01:16:21.125Z",
+  "lastUpdated": "2026-06-28T01:18:25.804Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
