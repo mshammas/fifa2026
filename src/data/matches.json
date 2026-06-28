@@ -4430,7 +4430,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "62'",
+      "clock": "63'",
       "goals": [
         {
           "side": "away",
@@ -4470,12 +4470,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "60.5",
+        "possessionPct": "59.7",
         "shotsOnTarget": "4",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "39.5",
+        "possessionPct": "40.3",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
@@ -4491,7 +4491,7 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "62'",
+      "clock": "64'",
       "goals": [
         {
           "side": "away",
@@ -4521,15 +4521,21 @@
           "player": "M. Abu Taha",
           "minute": "17'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "Y. Al-Arab",
+          "minute": "64'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "29",
+        "possessionPct": "27.3",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "71",
+        "possessionPct": "72.7",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -5080,6 +5086,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T03:24:26.879Z",
+  "lastUpdated": "2026-06-28T03:26:21.778Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
