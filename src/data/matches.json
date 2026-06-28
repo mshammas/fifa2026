@@ -4430,16 +4430,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "9'",
+      "clock": "12'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "M. Arnautovic",
+          "minute": "11'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "61.5",
+        "possessionPct": "53.2",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "38.5",
+        "possessionPct": "46.8",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -4455,16 +4462,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "9'",
+      "clock": "12'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "10.8",
+        "possessionPct": "20.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "89.2",
+        "possessionPct": "79.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5015,6 +5022,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T02:12:24.531Z",
+  "lastUpdated": "2026-06-28T02:14:26.285Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
