@@ -4430,7 +4430,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "76'",
+      "clock": "79'",
       "goals": [
         {
           "side": "away",
@@ -4470,12 +4470,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "58.6",
+        "possessionPct": "58.4",
         "shotsOnTarget": "4",
         "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "41.4",
+        "possessionPct": "41.6",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
@@ -4489,9 +4489,9 @@
       "group": "J",
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 1,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
-      "clock": "76'",
+      "clock": "79'",
       "goals": [
         {
           "side": "away",
@@ -4513,6 +4513,13 @@
           "minute": "55'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "L. Messi",
+          "minute": "80'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -4530,14 +4537,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "27.3",
+        "possessionPct": "26.6",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "72.7",
-        "shotsOnTarget": "3",
-        "totalShots": "8"
+        "possessionPct": "73.4",
+        "shotsOnTarget": "4",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -5086,6 +5093,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T03:40:33.407Z",
+  "lastUpdated": "2026-06-28T03:42:22.374Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
