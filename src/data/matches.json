@@ -4493,7 +4493,7 @@
         "shotsOnTarget": "3",
         "totalShots": "10"
       },
-      "recap": null
+      "recap": "Iran would have advanced as one of the eight best third-place teams had Austria or Algeria won."
     },
     {
       "id": "e760483",
@@ -4566,7 +4566,7 @@
         "shotsOnTarget": "4",
         "totalShots": "12"
       },
-      "recap": null
+      "recap": "Messi added to first half goals from Giovani Lo Celso and Lautaro Martinez, after Mousa Al-Tamari pulled a goal back for Jordan. "
     },
     {
       "id": "e760486",
@@ -4581,8 +4581,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5113,6 +5121,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T04:02:27.288Z",
+  "lastUpdated": "2026-06-28T18:58:22.976Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
