@@ -4292,12 +4292,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "32.8",
+        "possessionPct": "32.9",
         "shotsOnTarget": "2",
         "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "67.2",
+        "possessionPct": "67.1",
         "shotsOnTarget": "6",
         "totalShots": "17"
       },
@@ -4333,7 +4333,7 @@
         "shotsOnTarget": "2",
         "totalShots": "13"
       },
-      "recap": null
+      "recap": "Colombia finished the World Cup 's opening round as the Group K winners after playing Portugal to a scoreless draw Saturday night."
     },
     {
       "id": "e760482",
@@ -4416,7 +4416,7 @@
       "awayStats": {
         "possessionPct": "42.4",
         "shotsOnTarget": "1",
-        "totalShots": "4"
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -5015,6 +5015,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T01:36:22.763Z",
+  "lastUpdated": "2026-06-28T01:58:22.993Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
