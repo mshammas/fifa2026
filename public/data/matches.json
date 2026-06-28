@@ -4577,8 +4577,8 @@
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+3'",
+      "status": "HT",
+      "clock": null,
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -5121,6 +5121,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T19:50:29.473Z",
+  "lastUpdated": "2026-06-28T19:52:25.102Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
