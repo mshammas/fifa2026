@@ -4427,10 +4427,10 @@
       "away": "Austria",
       "group": "J",
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+3'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "away",
@@ -4459,6 +4459,13 @@
           "minute": "60'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "R. Mahrez",
+          "minute": "90'+3'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -4470,14 +4477,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "60.1",
-        "shotsOnTarget": "4",
-        "totalShots": "11"
+        "possessionPct": "65",
+        "shotsOnTarget": "5",
+        "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "39.9",
+        "possessionPct": "35",
         "shotsOnTarget": "2",
-        "totalShots": "8"
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -4490,8 +4497,8 @@
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 1,
       "awayScore": 3,
-      "status": "LIVE",
-      "clock": "90'+2'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -4534,15 +4541,21 @@
           "player": "Y. Al-Arab",
           "minute": "64'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "M. Abu Zraiq",
+          "minute": "90'+4'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "26.6",
+        "possessionPct": "26.7",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "73.4",
+        "possessionPct": "73.3",
         "shotsOnTarget": "4",
         "totalShots": "12"
       },
@@ -5093,6 +5106,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T03:56:26.550Z",
+  "lastUpdated": "2026-06-28T03:58:21.543Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
