@@ -4430,7 +4430,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "15'",
+      "clock": "17'",
       "goals": [],
       "cards": [
         {
@@ -4441,12 +4441,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "56.6",
+        "possessionPct": "60.2",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "43.4",
+        "possessionPct": "39.8",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -4462,16 +4462,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "15'",
+      "clock": "17'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "M. Abu Taha",
+          "minute": "17'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "20.6",
+        "possessionPct": "17.9",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "79.4",
+        "possessionPct": "82.1",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -5022,6 +5029,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T02:16:20.818Z",
+  "lastUpdated": "2026-06-28T02:18:21.426Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
