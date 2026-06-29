@@ -4702,7 +4702,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "115'",
+      "clock": "120'",
       "goals": [
         {
           "side": "away",
@@ -4727,15 +4727,15 @@
           "type": "yellow"
         },
         {
-          "side": "home",
-          "player": "—",
-          "minute": "105'+1'",
-          "type": "yellow"
-        },
-        {
           "side": "away",
           "player": "—",
           "minute": "105'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "—",
+          "minute": "105'+1'",
           "type": "yellow"
         },
         {
@@ -4748,6 +4748,12 @@
           "side": "home",
           "player": "J. Musiala",
           "minute": "115'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Galarza",
+          "minute": "117'",
           "type": "yellow"
         }
       ],
@@ -5257,6 +5263,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T23:08:23.656Z",
+  "lastUpdated": "2026-06-29T23:10:32.448Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
