@@ -1614,11 +1614,10 @@ function useCrowdAudio(cheerEnabled, commentaryEnabled, goalShoutEnabled, isLive
     const isNew = goalCount > prevGoals.current;
     prevGoals.current = goalCount;
     if (!isNew) return;
-    if (goalShoutEnabled && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      const utt = new SpeechSynthesisUtterance("IT'S A GOAL!");
-      utt.rate = 0.72; utt.pitch = 1.45; utt.volume = 1;
-      setTimeout(() => { window.speechSynthesis.resume(); window.speechSynthesis.speak(utt); }, 80);
+    if (goalShoutEnabled) {
+      const shout = new Audio("./sounds/goal-shout.mp3");
+      shout.volume = 1.0;
+      shout.play().catch(() => {});
     } else if (commentaryEnabled) {
       announce(pick([
         "It's a goal! What a moment!",
