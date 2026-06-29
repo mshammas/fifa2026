@@ -4690,7 +4690,7 @@
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
-      "recap": null
+      "recap": "Gabriel Martinelli scored late injury time to give Brazil a 2-1 win over Japan in the round of 32 at the World Cup on Monday."
     },
     {
       "id": "e760489",
@@ -4705,8 +4705,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -4967,7 +4975,7 @@
     {
       "id": "e760504",
       "date": "2026-07-05T20:00Z",
-      "home": "Round of 32 4 Winner",
+      "home": "Brazil",
       "away": "Round of 32 6 Winner",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
@@ -5203,6 +5211,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T19:04:25.889Z",
+  "lastUpdated": "2026-06-29T20:28:23.091Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
