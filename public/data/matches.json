@@ -4699,10 +4699,10 @@
       "away": "Paraguay",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
-      "homeScore": 2,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "105'",
+      "clock": "105'+2'",
       "goals": [
         {
           "side": "away",
@@ -4717,13 +4717,6 @@
           "minute": "54'",
           "pen": false,
           "og": false
-        },
-        {
-          "side": "home",
-          "player": "J. Tah",
-          "minute": "102'",
-          "pen": false,
-          "og": false
         }
       ],
       "cards": [
@@ -4732,15 +4725,27 @@
           "player": "A. Cubas",
           "minute": "65'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "—",
+          "minute": "105'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "—",
+          "minute": "105'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "77.5",
-        "shotsOnTarget": "4",
-        "totalShots": "18"
+        "possessionPct": "77.4",
+        "shotsOnTarget": "3",
+        "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "22.5",
+        "possessionPct": "22.6",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -5240,6 +5245,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T22:48:28.366Z",
+  "lastUpdated": "2026-06-29T22:50:27.414Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
