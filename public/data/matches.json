@@ -4624,7 +4624,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "83'",
+      "clock": "84'",
       "goals": [
         {
           "side": "away",
@@ -4665,15 +4665,21 @@
           "player": "Danilo",
           "minute": "48'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Suzuki",
+          "minute": "84'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "68.4",
+        "possessionPct": "69.2",
         "shotsOnTarget": "6",
         "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "31.6",
+        "possessionPct": "30.8",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
@@ -5190,6 +5196,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T18:44:25.087Z",
+  "lastUpdated": "2026-06-29T18:46:23.634Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
