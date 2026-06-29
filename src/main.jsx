@@ -1551,14 +1551,15 @@ function useCrowdAudio(cheerEnabled, commentaryEnabled, goalShoutEnabled, isLive
   const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
   // Chrome silently pauses speechSynthesis when the tab is backgrounded or after ~15s of
-  // inactivity. Keep it alive with a periodic resume() heartbeat while commentary is on.
+  // inactivity. Keep it alive with a periodic resume() heartbeat while any speech feature is on.
+  const speechNeeded = commentaryEnabled || goalShoutEnabled;
   useEffect(() => {
-    if (!commentaryEnabled || !window.speechSynthesis) return;
+    if (!speechNeeded || !window.speechSynthesis) return;
     const id = setInterval(() => {
       if (window.speechSynthesis.paused) window.speechSynthesis.resume();
     }, 5000);
     return () => clearInterval(id);
-  }, [commentaryEnabled]);
+  }, [speechNeeded]);
 
   const announce = (text, { rate = 0.9, pitch = 1.0 } = {}) => {
     if (!commentaryEnabled || !window.speechSynthesis) return;
@@ -2190,8 +2191,16 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
                 if (audioLpRef.current) {
                   clearTimeout(audioLpRef.current);
                   audioLpRef.current = null;
-                  setCrowdOn(!crowdOn);
+                  const turningOn = !crowdOn;
+                  setCrowdOn(turningOn);
                   setShowAudioMenu(false);
+                  // Warm up speech synthesis synchronously inside the user gesture so
+                  // iOS PWA allows subsequent async speak() calls (e.g. goal announcements).
+                  if (turningOn && window.speechSynthesis) {
+                    const w = new SpeechSynthesisUtterance('');
+                    w.volume = 0;
+                    window.speechSynthesis.speak(w);
+                  }
                 }
               }}
               onPointerLeave={() => { clearTimeout(audioLpRef.current); audioLpRef.current = null; }}
