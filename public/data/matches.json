@@ -4624,7 +4624,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "14'",
+      "clock": "16'",
       "goals": [],
       "cards": [
         {
@@ -4632,15 +4632,21 @@
           "player": "K. Sano",
           "minute": "12'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "Casemiro",
+          "minute": "14'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "71.6",
+        "possessionPct": "71",
         "shotsOnTarget": "1",
-        "totalShots": "3"
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "28.4",
+        "possessionPct": "29",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5157,6 +5163,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T17:14:20.985Z",
+  "lastUpdated": "2026-06-29T17:16:22.851Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
