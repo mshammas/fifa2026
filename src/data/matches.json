@@ -4624,7 +4624,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "47'",
+      "clock": "49'",
       "goals": [
         {
           "side": "away",
@@ -4652,15 +4652,21 @@
           "player": "D. Kamada",
           "minute": "45'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "Danilo",
+          "minute": "48'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "67.4",
+        "possessionPct": "66.9",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "32.6",
+        "possessionPct": "33.1",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -5177,6 +5183,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T18:08:22.846Z",
+  "lastUpdated": "2026-06-29T18:10:27.907Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
