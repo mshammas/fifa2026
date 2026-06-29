@@ -4621,10 +4621,10 @@
       "away": "Japan",
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'+5'",
+      "clock": "90'+8'",
       "goals": [
         {
           "side": "away",
@@ -4637,6 +4637,13 @@
           "side": "home",
           "player": "Casemiro",
           "minute": "56'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "G. Martinelli",
+          "minute": "90'+5'",
           "pen": false,
           "og": false
         }
@@ -4674,12 +4681,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "68.8",
-        "shotsOnTarget": "6",
-        "totalShots": "18"
+        "possessionPct": "69.1",
+        "shotsOnTarget": "7",
+        "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "31.2",
+        "possessionPct": "30.9",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
@@ -5196,6 +5203,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T18:58:23.231Z",
+  "lastUpdated": "2026-06-29T19:00:36.441Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
