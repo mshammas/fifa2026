@@ -1538,8 +1538,8 @@ function ShareButton({ m }) {
 
 // Synthesised crowd audio via Web Audio API — no external files.
 // cheerEnabled: crowd noise + sound effects; commentaryEnabled: speech synthesis
-function useCrowdAudio(cheerEnabled, commentaryEnabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget, home, away, homeScore, awayScore) {
-  const enabled = cheerEnabled || commentaryEnabled;
+function useCrowdAudio(cheerEnabled, commentaryEnabled, goalShoutEnabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget, home, away, homeScore, awayScore) {
+  const enabled = cheerEnabled || commentaryEnabled || goalShoutEnabled;
   const ambientRef  = React.useRef(null); // AudioBufferSourceNode
   const ctxRef      = React.useRef(null); // AudioContext
   const prevGoals   = React.useRef(goalCount);
@@ -1613,19 +1613,26 @@ function useCrowdAudio(cheerEnabled, commentaryEnabled, isLive, goalCount, yello
   useEffect(() => {
     const isNew = goalCount > prevGoals.current;
     prevGoals.current = goalCount;
-    if (!isNew || !enabled) return;
-    announce(pick([
-      "It's a goal! What a moment!",
-      "GOAL! The crowd goes absolutely wild!",
-      "What a finish! It's in the back of the net!",
-      "He's scored! An absolutely stunning goal!",
-    ]), { rate: 0.85, pitch: 1.2 });
+    if (!isNew) return;
+    if (goalShoutEnabled && window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance("IT'S A GOAL!");
+      utt.rate = 0.72; utt.pitch = 1.45; utt.volume = 1;
+      setTimeout(() => { window.speechSynthesis.resume(); window.speechSynthesis.speak(utt); }, 80);
+    } else if (commentaryEnabled) {
+      announce(pick([
+        "It's a goal! What a moment!",
+        "GOAL! The crowd goes absolutely wild!",
+        "What a finish! It's in the back of the net!",
+        "He's scored! An absolutely stunning goal!",
+      ]), { rate: 0.85, pitch: 1.2 });
+    }
     if (cheerEnabled) {
       const cheer = new Audio("./sounds/goal-cheer.mp3");
-      cheer.volume = 0.7;
+      cheer.volume = 1.0;
       cheer.play().catch(() => {});
     }
-  }, [goalCount, enabled]);
+  }, [goalCount, goalShoutEnabled, commentaryEnabled, cheerEnabled]);
 
   // Yellow card
   useEffect(() => {
@@ -1996,6 +2003,7 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
   const [crowdOn, setCrowdOn] = useLocalStorage("wc_crowd_audio", false);
   const [cheerOn, setCheerOn] = useLocalStorage("wc_cheer_on", true);
   const [commentaryOn, setCommentaryOn] = useLocalStorage("wc_commentary_on", true);
+  const [goalShoutOn, setGoalShoutOn] = useLocalStorage("wc_goal_shout", true);
   const [showAudioMenu, setShowAudioMenu] = useState(false);
   const audioLpRef = React.useRef(null);
   const [showRecap, setShowRecap] = useState(false);
@@ -2017,7 +2025,7 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
   const shotsOnTarget    = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
 
   const { h: liveH, a: liveA } = liveScores(m);
-  useCrowdAudio(crowdOn && cheerOn, crowdOn && commentaryOn, isLive, goals.length, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
+  useCrowdAudio(crowdOn && cheerOn, crowdOn && commentaryOn, crowdOn && goalShoutOn, isLive, goals.length, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
 
   const wide      = useWindowWidth() >= 768;
   const mh        = liveH;
@@ -2182,6 +2190,7 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
               >
                 <div style={{ fontSize: 10, fontWeight: 700, color: C.dim, letterSpacing: 0.8, padding: "2px 10px 6px", textTransform: "uppercase" }}>Audio options</div>
                 {[
+                  { label: "⚽ Goal shout", val: crowdOn && goalShoutOn, set: setGoalShoutOn },
                   { label: "🎺 Commentary", val: crowdOn && commentaryOn, set: setCommentaryOn },
                   { label: "📣 Crowd noise", val: crowdOn && cheerOn, set: setCheerOn },
                 ].map(({ label, val, set }) => (
