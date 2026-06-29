@@ -4624,16 +4624,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "10'",
+      "clock": "12'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "K. Sano",
+          "minute": "12'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "77.2",
+        "possessionPct": "70.5",
         "shotsOnTarget": "0",
-        "totalShots": "1"
+        "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "22.8",
+        "possessionPct": "29.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5150,6 +5157,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T17:10:26.715Z",
+  "lastUpdated": "2026-06-29T17:12:25.444Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
