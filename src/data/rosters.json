@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T08:41:36.265Z",
+  "lastUpdated": "2026-06-29T10:24:13.713Z",
   "rosters": {
     "Algeria": [
       {
@@ -442,7 +442,7 @@
         "shortName": "L. Paredes",
         "jersey": 5,
         "pos": "MID",
-        "age": 31,
+        "age": 32,
         "dob": "1994-06-29",
         "height": "5' 11\"",
         "weight": "161 lbs",
@@ -5176,7 +5176,7 @@
         "shortName": "J. Bellingham",
         "jersey": 10,
         "pos": "MID",
-        "age": 22,
+        "age": 23,
         "dob": "2003-06-29",
         "height": "6' 1\"",
         "weight": "163 lbs",
@@ -5212,7 +5212,7 @@
         "shortName": "E. Eze",
         "jersey": 21,
         "pos": "MID",
-        "age": 27,
+        "age": 28,
         "dob": "1998-06-29",
         "height": "5' 10\"",
         "weight": "161 lbs",
@@ -6340,7 +6340,7 @@
         "dob": "1999-02-28",
         "height": "6' 0\"",
         "weight": "172 lbs",
-        "club": "Burnley"
+        "club": "FC Lugano"
       },
       {
         "id": "320212",
@@ -6364,6 +6364,18 @@
         "dob": "1993-10-14",
         "height": "5' 9\"",
         "weight": "148 lbs",
+        "club": "Colorado Springs Switchbacks FC"
+      },
+      {
+        "id": "320621",
+        "name": "Garven Metusala",
+        "shortName": "G. Metusala",
+        "jersey": 14,
+        "pos": "DEF",
+        "age": 26,
+        "dob": "1999-12-31",
+        "height": "6' 1\"",
+        "weight": "181 lbs",
         "club": "Colorado Springs Switchbacks FC"
       },
       {
@@ -6415,18 +6427,6 @@
         "club": "Wolverhampton Wanderers"
       },
       {
-        "id": "268134",
-        "name": "Leverton Pierre",
-        "shortName": "L. Pierre",
-        "jersey": 14,
-        "pos": "MID",
-        "age": 28,
-        "dob": "1998-03-09",
-        "height": "5' 11\"",
-        "weight": "161 lbs",
-        "club": "Dunkerque"
-      },
-      {
         "id": "333939",
         "name": "Danley Jean Jacques",
         "shortName": "D. Jean Jacques",
@@ -6437,18 +6437,6 @@
         "height": "6' 0\"",
         "weight": "159 lbs",
         "club": "Philadelphia Union"
-      },
-      {
-        "id": "275007",
-        "name": "Yassin Fortuné",
-        "shortName": "Y. Fortuné",
-        "jersey": 19,
-        "pos": "MID",
-        "age": 27,
-        "dob": "1999-01-30",
-        "height": "6' 1\"",
-        "weight": "161 lbs",
-        "club": "US Quevilly"
       },
       {
         "id": "342631",
@@ -6545,6 +6533,18 @@
         "height": "6' 0\"",
         "weight": "159 lbs",
         "club": "Sunderland"
+      },
+      {
+        "id": "275007",
+        "name": "Yassin Fortuné",
+        "shortName": "Y. Fortuné",
+        "jersey": 19,
+        "pos": "FWD",
+        "age": 27,
+        "dob": "1999-01-30",
+        "height": "6' 1\"",
+        "weight": "161 lbs",
+        "club": "US Quevilly"
       },
       {
         "id": "250241",
@@ -7040,7 +7040,7 @@
         "dob": "2003-04-27",
         "height": "5' 11\"",
         "weight": "157 lbs",
-        "club": "Jong FC Utrecht"
+        "club": "FC Utrecht"
       },
       {
         "id": "311149",
@@ -10534,8 +10534,8 @@
       },
       {
         "id": "288897",
-        "name": "Vitinha ",
-        "shortName": "Vitinha ",
+        "name": "Vitinha",
+        "shortName": "Vitinha",
         "jersey": 23,
         "pos": "MID",
         "age": 26,
@@ -15018,7 +15018,7 @@
         "shortName": "E. Shomurodov",
         "jersey": 14,
         "pos": "FWD",
-        "age": 30,
+        "age": 31,
         "dob": "1995-06-29",
         "height": "6' 3\"",
         "weight": "172 lbs",
