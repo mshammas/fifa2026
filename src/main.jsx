@@ -1538,7 +1538,7 @@ function ShareButton({ m }) {
 
 // Synthesised crowd audio via Web Audio API — no external files.
 // cheerEnabled: crowd noise + sound effects; commentaryEnabled: speech synthesis
-function useCrowdAudio(cheerEnabled, commentaryEnabled, goalShoutEnabled, isLive, goalCount, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget, home, away, homeScore, awayScore) {
+function useCrowdAudio(cheerEnabled, commentaryEnabled, goalShoutEnabled, isLive, goalCount, lastGoalPlayer, lastGoalTeam, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, status, shotsOnTarget, home, away, homeScore, awayScore) {
   const enabled = cheerEnabled || commentaryEnabled || goalShoutEnabled;
   const ambientRef  = React.useRef(null); // AudioBufferSourceNode
   const ctxRef      = React.useRef(null); // AudioContext
@@ -1617,7 +1617,21 @@ function useCrowdAudio(cheerEnabled, commentaryEnabled, goalShoutEnabled, isLive
     if (goalShoutEnabled) {
       const shout = new Audio("./sounds/goal-shout.mp3");
       shout.volume = 1.0;
-      shout.play().catch(() => {});
+      let announced = false;
+      const speakGoal = () => {
+        if (announced || !window.speechSynthesis) return;
+        announced = true;
+        const parts = [];
+        if (lastGoalTeam) parts.push(`for ${lastGoalTeam}`);
+        if (lastGoalPlayer) parts.push(`by ${lastGoalPlayer}`);
+        if (!parts.length) return;
+        const utt = new SpeechSynthesisUtterance(`It's a goal ${parts.join(' ')}`);
+        utt.rate = 0.9; utt.pitch = 1.0; utt.volume = 1;
+        window.speechSynthesis.cancel();
+        setTimeout(() => { window.speechSynthesis.resume(); window.speechSynthesis.speak(utt); }, 100);
+      };
+      shout.onended = speakGoal;
+      shout.play().catch(speakGoal);
     } else if (commentaryEnabled) {
       announce(pick([
         "It's a goal! What a moment!",
@@ -1631,7 +1645,7 @@ function useCrowdAudio(cheerEnabled, commentaryEnabled, goalShoutEnabled, isLive
       cheer.volume = 1.0;
       cheer.play().catch(() => {});
     }
-  }, [goalCount, goalShoutEnabled, commentaryEnabled, cheerEnabled]);
+  }, [goalCount, goalShoutEnabled, commentaryEnabled, cheerEnabled, lastGoalPlayer, lastGoalTeam]);
 
   // Yellow card
   useEffect(() => {
@@ -2022,9 +2036,12 @@ function LiveMatchModal({ m, onClose, onRefresh, lastRefreshed, onPlayerClick, l
   const lastRedPlayer    = lastRedCard?.player ?? null;
   const lastRedTeam      = lastRedCard ? (lastRedCard.side === "home" ? m.home : m.away) : null;
   const shotsOnTarget    = parseInt(m.homeStats?.shotsOnTarget || 0) + parseInt(m.awayStats?.shotsOnTarget || 0);
+  const lastGoal         = goals[goals.length - 1];
+  const lastGoalPlayer   = lastGoal?.player ?? null;
+  const lastGoalTeam     = lastGoal ? (lastGoal.side === "home" ? m.home : m.away) : null;
 
   const { h: liveH, a: liveA } = liveScores(m);
-  useCrowdAudio(crowdOn && cheerOn, crowdOn && commentaryOn, crowdOn && goalShoutOn, isLive, goals.length, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
+  useCrowdAudio(crowdOn && cheerOn, crowdOn && commentaryOn, crowdOn && goalShoutOn, isLive, goals.length, lastGoalPlayer, lastGoalTeam, yellowCount, lastYellowPlayer, lastYellowTeam, redCount, lastRedPlayer, lastRedTeam, m.status, shotsOnTarget, m.home, m.away, liveH, liveA);
 
   const wide      = useWindowWidth() >= 768;
   const mh        = liveH;
