@@ -4621,19 +4621,19 @@
       "away": "Japan",
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "87.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "12.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5150,6 +5150,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T17:00:39.225Z",
+  "lastUpdated": "2026-06-29T17:02:23.540Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
