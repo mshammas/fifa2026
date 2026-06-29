@@ -826,7 +826,7 @@
         },
         {
           "side": "home",
-          "player": "Pedri ",
+          "player": "Pedri",
           "minute": "90'+3'",
           "type": "yellow"
         }
@@ -4603,16 +4603,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "58.2",
+        "possessionPct": "58.4",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "41.8",
+        "possessionPct": "41.6",
         "shotsOnTarget": "7",
         "totalShots": "12"
       },
-      "recap": null
+      "recap": "Stephen Eustáquio scored in second-half stoppage time, and Canada beat South Africa 1-0 to earn their first knockout match victory in a World Cup."
     },
     {
       "id": "e760487",
@@ -4627,8 +4627,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -4872,7 +4880,7 @@
     {
       "id": "e760502",
       "date": "2026-07-04T17:00Z",
-      "home": "Round of 32 1 Winner",
+      "home": "Canada",
       "away": "Round of 32 3 Winner",
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
@@ -5142,6 +5150,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-28T20:58:22.030Z",
+  "lastUpdated": "2026-06-29T16:58:24.254Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
