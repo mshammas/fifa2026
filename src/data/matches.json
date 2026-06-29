@@ -4622,10 +4622,18 @@
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "28'",
-      "goals": [],
+      "clock": "30'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "K. Sano",
+          "minute": "29'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -4641,14 +4649,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "72.4",
+        "possessionPct": "73.7",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "27.6",
-        "shotsOnTarget": "0",
-        "totalShots": "2"
+        "possessionPct": "26.3",
+        "shotsOnTarget": "1",
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -5163,6 +5171,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T17:28:20.431Z",
+  "lastUpdated": "2026-06-29T17:30:34.355Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
