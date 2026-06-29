@@ -4699,10 +4699,10 @@
       "away": "Paraguay",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "52'",
+      "clock": "55'",
       "goals": [
         {
           "side": "away",
@@ -4710,16 +4710,23 @@
           "minute": "42'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "K. Havertz",
+          "minute": "54'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "77",
+        "possessionPct": "77.5",
         "shotsOnTarget": "1",
-        "totalShots": "5"
+        "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "23",
+        "possessionPct": "22.5",
         "shotsOnTarget": "3",
         "totalShots": "4"
       },
@@ -5219,6 +5226,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T21:48:25.720Z",
+  "lastUpdated": "2026-06-29T21:49:36.812Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
