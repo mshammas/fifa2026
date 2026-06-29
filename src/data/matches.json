@@ -4702,7 +4702,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "113'",
+      "clock": "116'",
       "goals": [
         {
           "side": "away",
@@ -4729,7 +4729,7 @@
         {
           "side": "home",
           "player": "—",
-          "minute": "105'",
+          "minute": "105'+1'",
           "type": "yellow"
         },
         {
@@ -4742,6 +4742,12 @@
           "side": "home",
           "player": "K. Havertz",
           "minute": "106'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "J. Musiala",
+          "minute": "115'",
           "type": "yellow"
         }
       ],
@@ -5251,6 +5257,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T23:04:20.734Z",
+  "lastUpdated": "2026-06-29T23:06:22.226Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
