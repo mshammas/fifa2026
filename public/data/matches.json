@@ -4823,15 +4823,22 @@
       "away": "Norway",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "74'",
+      "clock": "78'",
       "goals": [
         {
           "side": "away",
           "player": "A. Nusa",
           "minute": "39'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "A. Diallo",
+          "minute": "74'",
           "pen": false,
           "og": false
         }
@@ -4845,12 +4852,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "50.4",
-        "shotsOnTarget": "3",
-        "totalShots": "11"
+        "possessionPct": "48.9",
+        "shotsOnTarget": "4",
+        "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "49.6",
+        "possessionPct": "51.1",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -5316,6 +5323,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T18:36:05.659Z",
+  "lastUpdated": "2026-06-30T18:38:22.300Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
