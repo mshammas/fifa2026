@@ -4877,10 +4877,10 @@
       "away": "Sweden",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "54'",
       "goals": [
         {
           "side": "home",
@@ -4888,16 +4888,23 @@
           "minute": "45'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "B. Barcola",
+          "minute": "53'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "71",
-        "shotsOnTarget": "6",
-        "totalShots": "16"
+        "possessionPct": "70.7",
+        "shotsOnTarget": "7",
+        "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "29",
+        "possessionPct": "29.3",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -5346,6 +5353,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T22:12:25.915Z",
+  "lastUpdated": "2026-06-30T22:14:20.438Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
