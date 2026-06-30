@@ -4778,17 +4778,24 @@
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "47'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "I. Diop",
+          "minute": "47'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "49.6",
+        "possessionPct": "49.9",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "50.4",
+        "possessionPct": "50.1",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
@@ -5271,6 +5278,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T02:08:19.805Z",
+  "lastUpdated": "2026-06-30T02:10:31.278Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
