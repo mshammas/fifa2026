@@ -4779,7 +4779,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "AET-pens",
+      "clock": "Pens",
       "goals": [
         {
           "side": "home",
@@ -4805,12 +4805,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "29.9",
+        "possessionPct": "30",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "70.1",
+        "possessionPct": "70",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
@@ -5293,6 +5293,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T03:44:20.257Z",
+  "lastUpdated": "2026-06-30T03:46:21.683Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
