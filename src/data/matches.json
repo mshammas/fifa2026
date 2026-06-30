@@ -4879,8 +4879,8 @@
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 3,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+3'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -4906,14 +4906,14 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "61.6",
+        "possessionPct": "60.9",
         "shotsOnTarget": "12",
         "totalShots": "25"
       },
       "awayStats": {
-        "possessionPct": "38.4",
-        "shotsOnTarget": "2",
-        "totalShots": "6"
+        "possessionPct": "39.1",
+        "shotsOnTarget": "3",
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -5108,7 +5108,7 @@
       "id": "e760503",
       "date": "2026-07-04T21:00Z",
       "home": "Paraguay",
-      "away": "Round of 32 5 Winner",
+      "away": "France",
       "group": null,
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
       "homeScore": null,
@@ -5360,6 +5360,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T22:54:26.866Z",
+  "lastUpdated": "2026-06-30T22:56:21.071Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
