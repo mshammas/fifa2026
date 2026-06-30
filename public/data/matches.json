@@ -4868,7 +4868,7 @@
         "shotsOnTarget": "4",
         "totalShots": "9"
       },
-      "recap": null
+      "recap": "Erling Haaland scored the deciding goal in the 86th minute as Norway won their first ever World Cup knockout match, advancing to the round of 16 with a 2-1 victory over Ivory Coast on Tuesday."
     },
     {
       "id": "e760492",
@@ -4883,8 +4883,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5330,6 +5338,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T19:00:46.334Z",
+  "lastUpdated": "2026-06-30T20:58:26.346Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
