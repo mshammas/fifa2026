@@ -4805,16 +4805,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "30",
+        "possessionPct": "29.9",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "70",
+        "possessionPct": "70.1",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
-      "recap": null
+      "recap": "Netherlands knocked out of World Cup after penalty shootout loss to Morocco"
     },
     {
       "id": "e760490",
@@ -4829,8 +4829,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5293,6 +5301,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T03:56:19.811Z",
+  "lastUpdated": "2026-06-30T16:58:20.768Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
