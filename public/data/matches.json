@@ -4777,14 +4777,21 @@
       "group": null,
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'",
+      "clock": "90'+2'",
       "goals": [
         {
           "side": "home",
           "player": "C. Gakpo",
           "minute": "72'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "I. Diop",
+          "minute": "90'+1'",
           "pen": false,
           "og": false
         }
@@ -4798,14 +4805,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "34.7",
+        "possessionPct": "34.4",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "65.3",
-        "shotsOnTarget": "3",
-        "totalShots": "9"
+        "possessionPct": "65.6",
+        "shotsOnTarget": "4",
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -5286,6 +5293,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T02:52:21.481Z",
+  "lastUpdated": "2026-06-30T02:54:20.114Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
