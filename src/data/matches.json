@@ -4778,8 +4778,8 @@
       "venue": "Estadio BBVA, Guadalupe",
       "homeScore": 1,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "Pens",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -5024,7 +5024,7 @@
       "id": "e760502",
       "date": "2026-07-04T17:00Z",
       "home": "Canada",
-      "away": "Round of 32 3 Winner",
+      "away": "Morocco",
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": null,
@@ -5293,6 +5293,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T03:54:19.321Z",
+  "lastUpdated": "2026-06-30T03:56:19.811Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
