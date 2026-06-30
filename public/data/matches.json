@@ -4767,7 +4767,7 @@
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "José Canale scored on the first sudden death penalty kick, Orlando Gill made two key saves in the shootout, and Paraguay upset Germany 4-3 on penalties Monday to earn the biggest upset of the 2026 World Cup so far."
     },
     {
       "id": "e760488",
@@ -4782,8 +4782,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5010,7 +5018,7 @@
     {
       "id": "e760503",
       "date": "2026-07-04T21:00Z",
-      "home": "Round of 32 2 Winner",
+      "home": "Paraguay",
       "away": "Round of 32 5 Winner",
       "group": null,
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
@@ -5263,6 +5271,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-29T23:30:33.119Z",
+  "lastUpdated": "2026-06-30T00:58:23.080Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
