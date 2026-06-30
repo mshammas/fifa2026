@@ -4776,11 +4776,19 @@
       "away": "Morocco",
       "group": null,
       "venue": "Estadio BBVA, Guadalupe",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "70'",
-      "goals": [],
+      "clock": "72'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "C. Gakpo",
+          "minute": "72'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -5278,6 +5286,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T02:32:25.425Z",
+  "lastUpdated": "2026-06-30T02:34:19.873Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
