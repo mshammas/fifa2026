@@ -4877,10 +4877,10 @@
       "away": "Sweden",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "73'",
+      "clock": "75'",
       "goals": [
         {
           "side": "home",
@@ -4895,16 +4895,23 @@
           "minute": "53'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "K. Mbappé",
+          "minute": "74'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "64.1",
-        "shotsOnTarget": "10",
-        "totalShots": "21"
+        "possessionPct": "63.7",
+        "shotsOnTarget": "11",
+        "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "35.9",
+        "possessionPct": "36.3",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -5353,6 +5360,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T22:32:22.930Z",
+  "lastUpdated": "2026-06-30T22:34:22.485Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
