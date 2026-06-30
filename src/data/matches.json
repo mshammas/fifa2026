@@ -4879,8 +4879,8 @@
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "45'+2'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -4892,12 +4892,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "72.7",
+        "possessionPct": "71.3",
         "shotsOnTarget": "6",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "27.3",
+        "possessionPct": "28.7",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -5346,6 +5346,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T21:48:20.553Z",
+  "lastUpdated": "2026-06-30T21:50:30.846Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
