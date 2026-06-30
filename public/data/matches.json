@@ -4825,8 +4825,8 @@
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+8'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -5095,7 +5095,7 @@
       "id": "e760504",
       "date": "2026-07-05T20:00Z",
       "home": "Brazil",
-      "away": "Round of 32 6 Winner",
+      "away": "Norway",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": null,
@@ -5330,6 +5330,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T18:58:20.768Z",
+  "lastUpdated": "2026-06-30T19:00:46.334Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
