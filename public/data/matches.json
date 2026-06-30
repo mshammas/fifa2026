@@ -4823,14 +4823,14 @@
       "away": "Norway",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "3'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5301,6 +5301,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T16:58:20.768Z",
+  "lastUpdated": "2026-06-30T17:03:24.294Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
