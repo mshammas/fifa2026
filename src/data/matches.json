@@ -4877,10 +4877,10 @@
       "away": "Sweden",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -5338,6 +5338,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T20:58:26.346Z",
+  "lastUpdated": "2026-06-30T21:00:44.307Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
