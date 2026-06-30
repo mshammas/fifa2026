@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-29T10:24:13.713Z",
+  "lastUpdated": "2026-06-30T08:56:57.730Z",
   "rosters": {
     "Algeria": [
       {
@@ -164,7 +164,7 @@
         "shortName": "H. Aouar",
         "jersey": 8,
         "pos": "MID",
-        "age": 27,
+        "age": 28,
         "dob": "1998-06-30",
         "height": "5' 9\"",
         "weight": "152 lbs",
@@ -2104,8 +2104,8 @@
       },
       {
         "id": "231050",
-        "name": "Raphinha ",
-        "shortName": "Raphinha ",
+        "name": "Raphinha",
+        "shortName": "Raphinha",
         "jersey": 11,
         "pos": "FWD",
         "age": 29,
@@ -2865,6 +2865,18 @@
         "club": "Bologna"
       },
       {
+        "id": "164756",
+        "name": "Santiago Arias",
+        "shortName": "S. Arias",
+        "jersey": 4,
+        "pos": "DEF",
+        "age": 34,
+        "dob": "1992-01-13",
+        "height": "5' 10\"",
+        "weight": "168 lbs",
+        "club": "Independiente"
+      },
+      {
         "id": "196901",
         "name": "Yerry Mina",
         "shortName": "Y. Mina",
@@ -2925,18 +2937,6 @@
         "club": "Galatasaray"
       },
       {
-        "id": "164756",
-        "name": "Santiago Arias",
-        "shortName": "S. Arias",
-        "jersey": 4,
-        "pos": "MID",
-        "age": 31,
-        "dob": "1995-06-19",
-        "height": "5' 11\"",
-        "weight": "172 lbs",
-        "club": "Cienciano del Cusco"
-      },
-      {
         "id": "307756",
         "name": "Kevin Castaño",
         "shortName": "K. Castaño",
@@ -2971,6 +2971,18 @@
         "height": "5' 11\"",
         "weight": "163 lbs",
         "club": "Flamengo"
+      },
+      {
+        "id": "176058",
+        "name": "Jhon Córdoba",
+        "shortName": "J. Córdoba",
+        "jersey": 9,
+        "pos": "MID",
+        "age": 25,
+        "dob": "2000-07-15",
+        "height": "6' 0\"",
+        "weight": "146 lbs",
+        "club": "Instituto (Córdoba)"
       },
       {
         "id": "82816",
@@ -3067,18 +3079,6 @@
         "height": "5' 11\"",
         "weight": "152 lbs",
         "club": "Bayern München"
-      },
-      {
-        "id": "176058",
-        "name": "Jhon Córdoba",
-        "shortName": "J. Córdoba",
-        "jersey": 9,
-        "pos": "FWD",
-        "age": 33,
-        "dob": "1993-05-11",
-        "height": "6' 2\"",
-        "weight": "185 lbs",
-        "club": "Instituto (Córdoba)"
       },
       {
         "id": "336809",
@@ -3756,7 +3756,7 @@
         "dob": "1989-02-06",
         "height": "6' 3\"",
         "weight": "179 lbs",
-        "club": "Curaçao"
+        "club": "Miami FC"
       },
       {
         "id": "297542",
@@ -3984,7 +3984,7 @@
         "dob": "1993-11-07",
         "height": "6' 4\"",
         "weight": "201 lbs",
-        "club": "Curaçao"
+        "club": "Miami FC"
       },
       {
         "id": "310925",
@@ -6602,7 +6602,7 @@
         "shortName": "H. Hosseini",
         "jersey": 22,
         "pos": "GK",
-        "age": 33,
+        "age": 34,
         "dob": "1992-06-30",
         "height": "6' 2\"",
         "weight": "183 lbs",
@@ -6995,6 +6995,18 @@
         "club": "Iraq"
       },
       {
+        "id": "345320",
+        "name": "Merchas Doski",
+        "shortName": "M. Doski",
+        "jersey": 23,
+        "pos": "DEF",
+        "age": 26,
+        "dob": "1999-12-07",
+        "height": "5' 8\"",
+        "weight": "141 lbs",
+        "club": "Slovacko"
+      },
+      {
         "id": "371649",
         "name": "Mustafa Saadoon",
         "shortName": "M. Saadoon",
@@ -7089,18 +7101,6 @@
         "height": "6' 0\"",
         "weight": "172 lbs",
         "club": "Venezia"
-      },
-      {
-        "id": "345320",
-        "name": "Merchas Doski",
-        "shortName": "M. Doski",
-        "jersey": 23,
-        "pos": "MID",
-        "age": 26,
-        "dob": "1999-12-07",
-        "height": "5' 8\"",
-        "weight": "141 lbs",
-        "club": "Slovacko"
       },
       {
         "id": "384274",
@@ -9905,6 +9905,18 @@
         "club": "Pumas UNAM"
       },
       {
+        "id": "288563",
+        "name": "Tomás Rodríguez",
+        "shortName": "T. Rodríguez",
+        "jersey": 9,
+        "pos": "MID",
+        "age": 24,
+        "dob": "2002-02-21",
+        "height": "6' 0\"",
+        "weight": "163 lbs",
+        "club": "Acassuso"
+      },
+      {
         "id": "201919",
         "name": "Édgar Yoel Bárcenas",
         "shortName": "É. Bárcenas",
@@ -9939,18 +9951,6 @@
         "height": "6' 0\"",
         "weight": "163 lbs",
         "club": "San Diego FC"
-      },
-      {
-        "id": "288563",
-        "name": "Tomás Rodríguez",
-        "shortName": "T. Rodríguez",
-        "jersey": 9,
-        "pos": "FWD",
-        "age": 27,
-        "dob": "1999-03-09",
-        "height": "6' 0\"",
-        "weight": "163 lbs",
-        "club": "Acassuso"
       },
       {
         "id": "195326",
@@ -10040,8 +10040,8 @@
       },
       {
         "id": "301648",
-        "name": "Orlando Gil",
-        "shortName": "O. Gil",
+        "name": "Orlando Gill",
+        "shortName": "O. Gill",
         "jersey": 12,
         "pos": "GK",
         "age": 26,
@@ -12696,8 +12696,8 @@
       },
       {
         "id": "323702",
-        "name": "Gavi ",
-        "shortName": "Gavi ",
+        "name": "Gavi",
+        "shortName": "Gavi",
         "jersey": 9,
         "pos": "MID",
         "age": 21,
@@ -12768,8 +12768,8 @@
       },
       {
         "id": "250465",
-        "name": "Pedri ",
-        "shortName": "Pedri ",
+        "name": "Pedri",
+        "shortName": "Pedri",
         "jersey": 20,
         "pos": "MID",
         "age": 23,
@@ -14728,7 +14728,7 @@
         "shortName": "F. Viñas",
         "jersey": 21,
         "pos": "FWD",
-        "age": 27,
+        "age": 28,
         "dob": "1998-06-30",
         "height": "5' 11\"",
         "weight": "179 lbs",
