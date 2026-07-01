@@ -5049,10 +5049,10 @@
       "away": "Senegal",
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "86'",
+      "clock": "87'",
       "goals": [
         {
           "side": "away",
@@ -5065,6 +5065,13 @@
           "side": "away",
           "player": "I. Sarr",
           "minute": "51'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "R. Lukaku",
+          "minute": "86'",
           "pen": false,
           "og": false
         }
@@ -5084,12 +5091,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "53.9",
-        "shotsOnTarget": "2",
-        "totalShots": "13"
+        "possessionPct": "54.2",
+        "shotsOnTarget": "3",
+        "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "46.1",
+        "possessionPct": "45.8",
         "shotsOnTarget": "4",
         "totalShots": "11"
       },
@@ -5487,6 +5494,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T21:48:24.371Z",
+  "lastUpdated": "2026-07-01T21:50:33.289Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
