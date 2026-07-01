@@ -5050,9 +5050,9 @@
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "53'",
       "goals": [
         {
           "side": "away",
@@ -5060,18 +5060,25 @@
           "minute": "25'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "I. Sarr",
+          "minute": "51'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "50.4",
+        "possessionPct": "50.2",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "49.6",
-        "shotsOnTarget": "3",
-        "totalShots": "10"
+        "possessionPct": "49.8",
+        "shotsOnTarget": "4",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -5467,6 +5474,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T21:14:22.180Z",
+  "lastUpdated": "2026-07-01T21:16:22.118Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
