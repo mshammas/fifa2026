@@ -5040,7 +5040,7 @@
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "Harry Kane's brace saved England from World Cup humiliation as Thomas Tuchel's men survived an almighty scare against Congo DR."
     },
     {
       "id": "e760493",
@@ -5055,8 +5055,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5451,6 +5459,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T18:02:27.741Z",
+  "lastUpdated": "2026-07-01T19:58:21.971Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
