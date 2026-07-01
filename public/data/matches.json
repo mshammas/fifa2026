@@ -4989,19 +4989,19 @@
       "away": "Congo DR",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "31.2",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "68.8",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5416,6 +5416,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T15:58:25.622Z",
+  "lastUpdated": "2026-07-01T16:03:14.837Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
