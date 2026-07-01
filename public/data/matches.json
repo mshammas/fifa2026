@@ -5049,10 +5049,10 @@
       "away": "Senegal",
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "120'+4'",
+      "clock": "120'+7'",
       "goals": [
         {
           "side": "away",
@@ -5081,6 +5081,13 @@
           "minute": "89'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "Y. Tielemans",
+          "minute": "120'+5'",
+          "pen": true,
+          "og": false
         }
       ],
       "cards": [
@@ -5105,8 +5112,8 @@
       ],
       "homeStats": {
         "possessionPct": "53.6",
-        "shotsOnTarget": "4",
-        "totalShots": "18"
+        "shotsOnTarget": "5",
+        "totalShots": "19"
       },
       "awayStats": {
         "possessionPct": "46.4",
@@ -5507,6 +5514,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T22:42:25.464Z",
+  "lastUpdated": "2026-07-01T22:44:27.078Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
