@@ -4906,20 +4906,20 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "60.9",
+        "possessionPct": "61",
         "shotsOnTarget": "12",
         "totalShots": "25"
       },
       "awayStats": {
-        "possessionPct": "39.1",
+        "possessionPct": "39",
         "shotsOnTarget": "3",
         "totalShots": "8"
       },
-      "recap": null
+      "recap": "Kylian Mbappé scored twice as France comfortably beat Sweden 3-0 in the World Cup round of 32."
     },
     {
       "id": "e760491",
-      "date": "2026-07-01T01:00Z",
+      "date": "2026-07-01T02:00Z",
       "home": "Mexico",
       "away": "Ecuador",
       "group": null,
@@ -4930,8 +4930,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5360,6 +5368,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-06-30T22:56:21.071Z",
+  "lastUpdated": "2026-07-01T00:58:27.805Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
