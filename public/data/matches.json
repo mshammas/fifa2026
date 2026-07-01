@@ -4991,8 +4991,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+7'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -5233,7 +5233,7 @@
       "id": "e760505",
       "date": "2026-07-06T00:00Z",
       "home": "Mexico",
-      "away": "Round of 32 8 Winner",
+      "away": "England",
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": null,
@@ -5451,6 +5451,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T18:00:45.330Z",
+  "lastUpdated": "2026-07-01T18:02:27.741Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
