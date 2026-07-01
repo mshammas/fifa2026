@@ -4971,16 +4971,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "43.2",
+        "possessionPct": "42.8",
         "shotsOnTarget": "3",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "56.8",
+        "possessionPct": "57.2",
         "shotsOnTarget": "1",
         "totalShots": "7"
       },
-      "recap": null
+      "recap": "Mexico will now face either England or DR Congo in Mexico City in the Round of 16. "
     },
     {
       "id": "e760495",
@@ -4995,8 +4995,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5189,7 +5197,7 @@
     {
       "id": "e760505",
       "date": "2026-07-06T00:00Z",
-      "home": "Round of 32 7 Winner",
+      "home": "Mexico",
       "away": "Round of 32 8 Winner",
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
@@ -5408,6 +5416,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T04:02:22.833Z",
+  "lastUpdated": "2026-07-01T15:58:25.622Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
