@@ -4927,7 +4927,7 @@
       "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "home",
@@ -4956,15 +4956,21 @@
           "player": "K. Páez",
           "minute": "90'+3'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "P. Hincapié",
+          "minute": "90'+5'",
+          "type": "red"
         }
       ],
       "homeStats": {
-        "possessionPct": "43.4",
+        "possessionPct": "43.1",
         "shotsOnTarget": "3",
-        "totalShots": "14"
+        "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "56.6",
+        "possessionPct": "56.9",
         "shotsOnTarget": "1",
         "totalShots": "7"
       },
@@ -5396,6 +5402,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T03:56:26.667Z",
+  "lastUpdated": "2026-07-01T03:58:21.607Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
