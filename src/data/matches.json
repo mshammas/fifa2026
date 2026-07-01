@@ -4859,12 +4859,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "47.1",
+        "possessionPct": "47",
         "shotsOnTarget": "5",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "52.9",
+        "possessionPct": "53",
         "shotsOnTarget": "4",
         "totalShots": "9"
       },
@@ -4990,20 +4990,28 @@
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "5'",
-      "goals": [],
+      "clock": "14'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "B. Cipenga",
+          "minute": "7'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "20",
+        "possessionPct": "47.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "80",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "52.6",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -5416,6 +5424,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T16:05:33.747Z",
+  "lastUpdated": "2026-07-01T16:15:03.287Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
