@@ -5120,7 +5120,7 @@
         "shotsOnTarget": "5",
         "totalShots": "19"
       },
-      "recap": null
+      "recap": "Youri Tielemans saved Belgium World Cup hopes by converting a contentious penalty in added time at the end of extra time to win 3-2 having scored an 89th-minute equaliser to keep the tie alive against Senegal."
     },
     {
       "id": "e760494",
@@ -5135,8 +5135,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5330,7 +5338,7 @@
       "id": "e760507",
       "date": "2026-07-07T00:00Z",
       "home": "Round of 32 9 Winner",
-      "away": "Round of 32 10 Winner",
+      "away": "Belgium",
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": null,
@@ -5514,6 +5522,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T22:52:20.403Z",
+  "lastUpdated": "2026-07-01T23:58:25.259Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
