@@ -5052,7 +5052,7 @@
       "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'",
+      "clock": "90'+2'",
       "goals": [
         {
           "side": "away",
@@ -5095,15 +5095,21 @@
           "player": "L. Camara",
           "minute": "67'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "—",
+          "minute": "90'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "54.6",
+        "possessionPct": "54.1",
         "shotsOnTarget": "4",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "45.4",
+        "possessionPct": "45.9",
         "shotsOnTarget": "4",
         "totalShots": "12"
       },
@@ -5501,6 +5507,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T21:52:27.786Z",
+  "lastUpdated": "2026-07-01T21:54:20.687Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
