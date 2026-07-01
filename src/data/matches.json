@@ -4926,8 +4926,8 @@
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 2,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+8'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -4962,15 +4962,21 @@
           "player": "P. Hincapié",
           "minute": "90'+5'",
           "type": "red"
+        },
+        {
+          "side": "away",
+          "player": "M. Caicedo",
+          "minute": "90'+9'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "43",
+        "possessionPct": "43.2",
         "shotsOnTarget": "3",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "57",
+        "possessionPct": "56.8",
         "shotsOnTarget": "1",
         "totalShots": "7"
       },
@@ -5402,6 +5408,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T04:00:41.274Z",
+  "lastUpdated": "2026-07-01T04:02:22.833Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
