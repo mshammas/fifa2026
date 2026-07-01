@@ -4927,7 +4927,7 @@
       "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "45'",
+      "clock": "45'+2'",
       "goals": [
         {
           "side": "home",
@@ -4944,14 +4944,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "A. Franco",
+          "minute": "45'+1'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "59.1",
+        "possessionPct": "57.8",
         "shotsOnTarget": "2",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "40.9",
+        "possessionPct": "42.2",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -5383,6 +5390,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-01T02:46:21.965Z",
+  "lastUpdated": "2026-07-01T02:48:22.497Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
