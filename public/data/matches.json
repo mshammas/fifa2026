@@ -5132,7 +5132,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "62'",
+      "clock": "65'",
       "goals": [
         {
           "side": "home",
@@ -5142,7 +5142,14 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "F. Balogun",
+          "minute": "64'",
+          "type": "red"
+        }
+      ],
       "homeStats": {
         "possessionPct": "57.8",
         "shotsOnTarget": "1",
@@ -5530,6 +5537,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T01:28:21.007Z",
+  "lastUpdated": "2026-07-02T01:30:43.698Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
