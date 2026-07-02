@@ -5190,8 +5190,8 @@
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 3,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+6'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -5224,12 +5224,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "64.6",
+        "possessionPct": "64.5",
         "shotsOnTarget": "10",
         "totalShots": "23"
       },
       "awayStats": {
-        "possessionPct": "35.4",
+        "possessionPct": "35.5",
         "shotsOnTarget": "0",
         "totalShots": "5"
       },
@@ -5392,7 +5392,7 @@
       "id": "e760506",
       "date": "2026-07-06T19:00Z",
       "home": "Round of 32 11 Winner",
-      "away": "Round of 32 12 Winner",
+      "away": "Spain",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": null,
@@ -5593,6 +5593,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T20:58:23.450Z",
+  "lastUpdated": "2026-07-02T21:00:41.289Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
