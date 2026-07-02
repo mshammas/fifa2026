@@ -5242,10 +5242,10 @@
       "away": "Croatia",
       "group": null,
       "venue": "BMO Field, Toronto",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -5254,7 +5254,7 @@
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5601,6 +5601,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T22:58:26.207Z",
+  "lastUpdated": "2026-07-02T23:00:42.079Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
