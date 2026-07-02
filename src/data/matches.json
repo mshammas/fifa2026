@@ -5245,23 +5245,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "21'",
+      "clock": "11'",
       "goals": [],
-      "cards": [
-        {
-          "side": "home",
-          "player": "R. Dias",
-          "minute": "17'",
-          "type": "yellow"
-        }
-      ],
+      "cards": [],
       "homeStats": {
-        "possessionPct": "56",
+        "possessionPct": "54.1",
         "shotsOnTarget": "1",
-        "totalShots": "6"
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "44",
+        "possessionPct": "45.9",
         "shotsOnTarget": "1",
         "totalShots": "2"
       },
@@ -5608,6 +5601,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T23:22:20.744Z",
+  "lastUpdated": "2026-07-02T23:24:24.857Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
