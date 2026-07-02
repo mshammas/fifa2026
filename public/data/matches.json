@@ -5188,10 +5188,10 @@
       "away": "Austria",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "88'",
+      "clock": "90'",
       "goals": [
         {
           "side": "home",
@@ -5206,6 +5206,13 @@
           "minute": "66'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Oyarzabal",
+          "minute": "89'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -5217,12 +5224,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "65.6",
-        "shotsOnTarget": "9",
-        "totalShots": "21"
+        "possessionPct": "66.4",
+        "shotsOnTarget": "10",
+        "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "34.4",
+        "possessionPct": "33.6",
         "shotsOnTarget": "0",
         "totalShots": "5"
       },
@@ -5586,6 +5593,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T20:50:32.340Z",
+  "lastUpdated": "2026-07-02T20:52:24.086Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
