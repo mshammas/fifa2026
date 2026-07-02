@@ -5129,10 +5129,10 @@
       "away": "Bosnia & Herzegovina",
       "group": null,
       "venue": "Levi's Stadium, Santa Clara, California",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -5141,7 +5141,7 @@
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5522,6 +5522,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T00:00:45.943Z",
+  "lastUpdated": "2026-07-02T00:02:24.938Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
