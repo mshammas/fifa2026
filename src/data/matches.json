@@ -5131,8 +5131,8 @@
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 2,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+10'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -5170,12 +5170,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48.5",
+        "possessionPct": "48.4",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "51.5",
+        "possessionPct": "51.6",
         "shotsOnTarget": "3",
         "totalShots": "10"
       },
@@ -5371,7 +5371,7 @@
     {
       "id": "e760507",
       "date": "2026-07-07T00:00Z",
-      "home": "Round of 32 9 Winner",
+      "home": "USA",
       "away": "Belgium",
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
@@ -5556,6 +5556,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T02:06:24.431Z",
+  "lastUpdated": "2026-07-02T02:08:27.763Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
