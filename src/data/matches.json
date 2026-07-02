@@ -5057,7 +5057,7 @@
         {
           "side": "away",
           "player": "H. Diarra",
-          "minute": "25'",
+          "minute": "24'",
           "pen": false,
           "og": false
         },
@@ -5132,7 +5132,7 @@
       "homeScore": 2,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "90'+4'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "home",
@@ -5170,12 +5170,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48.2",
+        "possessionPct": "48.7",
         "shotsOnTarget": "2",
-        "totalShots": "7"
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "51.8",
+        "possessionPct": "51.3",
         "shotsOnTarget": "3",
         "totalShots": "8"
       },
@@ -5556,6 +5556,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T02:00:47.244Z",
+  "lastUpdated": "2026-07-02T02:02:24.576Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
