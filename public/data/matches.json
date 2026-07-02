@@ -5131,8 +5131,8 @@
       "venue": "Levi's Stadium, Santa Clara, California",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "46'",
       "goals": [
         {
           "side": "home",
@@ -5530,6 +5530,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T01:10:32.693Z",
+  "lastUpdated": "2026-07-02T01:12:20.613Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
