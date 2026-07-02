@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-01T09:31:43.825Z",
+  "lastUpdated": "2026-07-02T08:42:33.348Z",
   "rosters": {
     "Algeria": [
       {
@@ -156,7 +156,7 @@
         "dob": "1998-05-26",
         "height": "6' 0\"",
         "weight": "181 lbs",
-        "club": "FC Twente"
+        "club": "Feyenoord Rotterdam"
       },
       {
         "id": "241116",
@@ -1582,7 +1582,7 @@
         "dob": "1998-08-16",
         "height": "6' 3\"",
         "weight": "185 lbs",
-        "club": "Rijeka"
+        "club": "FK Qarabag"
       },
       {
         "id": "257942",
@@ -1594,7 +1594,7 @@
         "dob": "1998-04-15",
         "height": "6' 2\"",
         "weight": "172 lbs",
-        "club": "Gaziantep FK"
+        "club": "Partizan Belgrade"
       },
       {
         "id": "246836",
@@ -1666,7 +1666,7 @@
         "dob": "1997-09-05",
         "height": "6' 7\"",
         "weight": "192 lbs",
-        "club": "Rijeka"
+        "club": "Dinamo Zagreb"
       },
       {
         "id": "387044",
@@ -1834,7 +1834,7 @@
         "dob": "2005-03-10",
         "height": "5' 9\"",
         "weight": "139 lbs",
-        "club": "Jong PSV"
+        "club": "PSV Eindhoven"
       },
       {
         "id": "184869",
@@ -2330,7 +2330,7 @@
         "dob": "1996-12-21",
         "height": "5' 10\"",
         "weight": "152 lbs",
-        "club": "LAFC"
+        "club": "FC Porto"
       },
       {
         "id": "325001",
@@ -2973,18 +2973,6 @@
         "club": "Flamengo"
       },
       {
-        "id": "176058",
-        "name": "Jhon Córdoba",
-        "shortName": "J. Córdoba",
-        "jersey": 9,
-        "pos": "MID",
-        "age": 25,
-        "dob": "2000-07-15",
-        "height": "6' 0\"",
-        "weight": "146 lbs",
-        "club": "Millonarios"
-      },
-      {
         "id": "82816",
         "name": "James Rodríguez",
         "shortName": "J. Rodríguez",
@@ -3079,6 +3067,18 @@
         "height": "5' 11\"",
         "weight": "152 lbs",
         "club": "Bayern München"
+      },
+      {
+        "id": "176058",
+        "name": "Jhon Córdoba",
+        "shortName": "J. Córdoba",
+        "jersey": 9,
+        "pos": "FWD",
+        "age": 33,
+        "dob": "1993-05-11",
+        "height": "6' 2\"",
+        "weight": "185 lbs",
+        "club": "Krasnodar"
       },
       {
         "id": "336809",
@@ -3356,7 +3356,7 @@
         "dob": "2002-03-16",
         "height": "5' 7\"",
         "weight": "152 lbs",
-        "club": "Montpellier"
+        "club": "FC Augsburg"
       },
       {
         "id": "352285",
@@ -3442,7 +3442,7 @@
         "dob": "1995-01-09",
         "height": "6' 2\"",
         "weight": "172 lbs",
-        "club": "Dinamo Zagreb"
+        "club": "Fenerbahce"
       },
       {
         "id": "277234",
@@ -4008,7 +4008,7 @@
         "dob": "2002-05-18",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "Curaçao"
+        "club": "Middlesbrough"
       },
       {
         "id": "188452",
@@ -6034,7 +6034,7 @@
         "shortName": "B. Rahman",
         "jersey": 17,
         "pos": "DEF",
-        "age": 31,
+        "age": 32,
         "dob": "1994-07-02",
         "height": "5' 10\"",
         "weight": "150 lbs",
@@ -7052,7 +7052,7 @@
         "dob": "2003-04-27",
         "height": "5' 11\"",
         "weight": "157 lbs",
-        "club": "Jong FC Utrecht"
+        "club": "FC Utrecht"
       },
       {
         "id": "311149",
@@ -7354,7 +7354,7 @@
         "dob": "1995-05-07",
         "height": "6' 1\"",
         "weight": "183 lbs",
-        "club": "FC Porto"
+        "club": "Stade Rennais"
       },
       {
         "id": "194711",
@@ -7474,7 +7474,7 @@
         "dob": "2003-12-20",
         "height": "6' 1\"",
         "weight": "170 lbs",
-        "club": "Cercle Brugge KSV"
+        "club": "Stade de Reims"
       },
       {
         "id": "210397",
@@ -8236,7 +8236,7 @@
         "dob": "2004-05-12",
         "height": "5' 10\"",
         "weight": "161 lbs",
-        "club": "Jong AZ"
+        "club": "AZ Alkmaar"
       },
       {
         "id": "132098",
@@ -8249,18 +8249,6 @@
         "height": "5' 10\"",
         "weight": "172 lbs",
         "club": "Toluca"
-      },
-      {
-        "id": "303577",
-        "name": "Brian Gutiérrez",
-        "shortName": "B. Gutiérrez",
-        "jersey": 26,
-        "pos": "DEF",
-        "age": 19,
-        "dob": "2007-01-21",
-        "height": "6' 1\"",
-        "weight": "181 lbs",
-        "club": "Guadalajara"
       },
       {
         "id": "241627",
@@ -8369,6 +8357,18 @@
         "height": "5' 10\"",
         "weight": "161 lbs",
         "club": "Dinamo Moscow"
+      },
+      {
+        "id": "303577",
+        "name": "Brian Gutiérrez",
+        "shortName": "B. Gutiérrez",
+        "jersey": 26,
+        "pos": "MID",
+        "age": 23,
+        "dob": "2003-06-17",
+        "height": "5' 10\"",
+        "weight": "159 lbs",
+        "club": "Guadalajara"
       },
       {
         "id": "167060",
@@ -8610,7 +8610,7 @@
         "dob": "1996-08-21",
         "height": "6' 1\"",
         "weight": "170 lbs",
-        "club": "Real Betis"
+        "club": "Fenerbahce"
       },
       {
         "id": "373927",
@@ -8658,7 +8658,7 @@
         "dob": "2001-01-28",
         "height": "6' 1\"",
         "weight": "179 lbs",
-        "club": "PSV Eindhoven"
+        "club": "Bayern München"
       },
       {
         "id": "378491",
@@ -8690,7 +8690,7 @@
         "shortName": "N. El Aynaoui",
         "jersey": 24,
         "pos": "MID",
-        "age": 24,
+        "age": 25,
         "dob": "2001-07-02",
         "height": "6' 1\"",
         "weight": "174 lbs",
@@ -8816,7 +8816,7 @@
         "dob": "2000-07-18",
         "height": "6' 0\"",
         "weight": "150 lbs",
-        "club": "Sunderland"
+        "club": "RB Leipzig"
       },
       {
         "id": "157892",
@@ -9008,7 +9008,7 @@
         "dob": "1992-08-07",
         "height": "6' 6\"",
         "weight": "196 lbs",
-        "club": "Ajax Amsterdam"
+        "club": "FC Twente"
       },
       {
         "id": "159255",
@@ -9974,7 +9974,7 @@
         "dob": "1993-08-18",
         "height": "5' 11\"",
         "weight": "174 lbs",
-        "club": "Universidad Católica (Quito)"
+        "club": "Independiente del Valle"
       },
       {
         "id": "155913",
@@ -13404,7 +13404,7 @@
         "dob": "1997-01-06",
         "height": "6' 0\"",
         "weight": "172 lbs",
-        "club": "Pisa"
+        "club": "Bologna"
       },
       {
         "id": "308908",
@@ -13476,7 +13476,7 @@
         "dob": "1996-12-27",
         "height": "6' 3\"",
         "weight": "183 lbs",
-        "club": "Fortuna Düsseldorf"
+        "club": "Werder Bremen"
       }
     ],
     "Tunisia": [
@@ -13654,7 +13654,7 @@
         "shortName": "M. Ben Ouanes",
         "jersey": 12,
         "pos": "MID",
-        "age": 31,
+        "age": 32,
         "dob": "1994-07-02",
         "height": "6' 2\"",
         "weight": "161 lbs",
@@ -13718,7 +13718,7 @@
         "dob": "1999-12-27",
         "height": "6' 1\"",
         "weight": "174 lbs",
-        "club": "Hannover 96"
+        "club": "FC Augsburg"
       },
       {
         "id": "396085",
@@ -14052,7 +14052,7 @@
         "shortName": "D. Gül",
         "jersey": 9,
         "pos": "FWD",
-        "age": 21,
+        "age": 22,
         "dob": "2004-07-02",
         "height": "6' 3\"",
         "weight": "181 lbs",
