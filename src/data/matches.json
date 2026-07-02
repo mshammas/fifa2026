@@ -5188,10 +5188,10 @@
       "away": "Austria",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
-      "homeScore": 2,
+      "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "70'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -5199,25 +5199,18 @@
           "minute": "36'",
           "pen": false,
           "og": false
-        },
-        {
-          "side": "home",
-          "player": "P. Porro",
-          "minute": "66'",
-          "pen": false,
-          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "66.8",
-        "shotsOnTarget": "8",
-        "totalShots": "19"
+        "possessionPct": "64",
+        "shotsOnTarget": "6",
+        "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "33.2",
+        "possessionPct": "36",
         "shotsOnTarget": "0",
-        "totalShots": "3"
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -5579,6 +5572,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T20:32:24.519Z",
+  "lastUpdated": "2026-07-02T20:34:25.129Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
