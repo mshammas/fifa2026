@@ -5129,19 +5129,27 @@
       "away": "Bosnia & Herzegovina",
       "group": null,
       "venue": "Levi's Stadium, Santa Clara, California",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "44'",
-      "goals": [],
+      "clock": "45'+1'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "F. Balogun",
+          "minute": "45'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "66.8",
-        "shotsOnTarget": "0",
-        "totalShots": "3"
+        "possessionPct": "63.1",
+        "shotsOnTarget": "1",
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "33.2",
+        "possessionPct": "36.9",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -5522,6 +5530,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T00:44:20.995Z",
+  "lastUpdated": "2026-07-02T00:46:20.418Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
