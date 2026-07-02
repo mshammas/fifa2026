@@ -5224,12 +5224,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "64.5",
+        "possessionPct": "64.4",
         "shotsOnTarget": "10",
         "totalShots": "23"
       },
       "awayStats": {
-        "possessionPct": "35.5",
+        "possessionPct": "35.6",
         "shotsOnTarget": "0",
         "totalShots": "5"
       },
@@ -5242,21 +5242,21 @@
       "away": "Croatia",
       "group": null,
       "venue": "BMO Field, Toronto",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "8'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "68.4",
+        "shotsOnTarget": "1",
+        "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "0",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "31.6",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -5601,6 +5601,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-02T23:08:26.031Z",
+  "lastUpdated": "2026-07-02T23:10:34.248Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
