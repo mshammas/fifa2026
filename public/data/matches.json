@@ -5244,8 +5244,8 @@
       "venue": "BMO Field, Toronto",
       "homeScore": 2,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+19'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -5290,14 +5290,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "60.3",
+        "possessionPct": "60.5",
         "shotsOnTarget": "3",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "39.7",
+        "possessionPct": "39.5",
         "shotsOnTarget": "6",
-        "totalShots": "14"
+        "totalShots": "13"
       },
       "recap": null
     },
@@ -5440,7 +5440,7 @@
     {
       "id": "e760506",
       "date": "2026-07-06T19:00Z",
-      "home": "Round of 32 11 Winner",
+      "home": "Portugal",
       "away": "Spain",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
@@ -5642,6 +5642,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T01:10:33.770Z",
+  "lastUpdated": "2026-07-03T01:12:25.997Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
