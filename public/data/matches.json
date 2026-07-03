@@ -5414,19 +5414,19 @@
       "away": "Cape Verde",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "5'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "50.8",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "49.2",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5722,6 +5722,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T22:04:26.563Z",
+  "lastUpdated": "2026-07-03T22:06:24.622Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
