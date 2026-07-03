@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T08:42:33.348Z",
+  "lastUpdated": "2026-07-03T08:51:32.956Z",
   "rosters": {
     "Algeria": [
       {
@@ -1074,7 +1074,7 @@
         "dob": "1998-10-15",
         "height": "6' 5\"",
         "weight": "190 lbs",
-        "club": "Venezia"
+        "club": "Brighton & Hove Albion"
       },
       {
         "id": "238886",
@@ -1170,7 +1170,7 @@
         "dob": "2001-05-30",
         "height": "6' 0\"",
         "weight": "170 lbs",
-        "club": "VfL Wolfsburg"
+        "club": "TSG Hoffenheim"
       },
       {
         "id": "333399",
@@ -1594,7 +1594,7 @@
         "dob": "1998-04-15",
         "height": "6' 2\"",
         "weight": "172 lbs",
-        "club": "Partizan Belgrade"
+        "club": "Gaziantep FK"
       },
       {
         "id": "246836",
@@ -1750,7 +1750,7 @@
         "dob": "1997-03-08",
         "height": "5' 10\"",
         "weight": "157 lbs",
-        "club": "Hull City"
+        "club": "Besiktas"
       },
       {
         "id": "225571",
@@ -1846,7 +1846,7 @@
         "dob": "1994-06-20",
         "height": "6' 5\"",
         "weight": "196 lbs",
-        "club": "Borussia Mönchengladbach"
+        "club": "TSG Hoffenheim"
       },
       {
         "id": "305118",
@@ -2470,7 +2470,7 @@
         "shortName": "P. David",
         "jersey": 24,
         "pos": "FWD",
-        "age": 24,
+        "age": 25,
         "dob": "2001-07-03",
         "height": "6' 5\"",
         "weight": "201 lbs",
@@ -2692,7 +2692,7 @@
         "dob": "1995-12-29",
         "height": "5' 9\"",
         "weight": "130 lbs",
-        "club": "Santa Clara"
+        "club": "SC Farense"
       },
       {
         "id": "304076",
@@ -2740,7 +2740,7 @@
         "dob": "1990-11-27",
         "height": "5' 8\"",
         "weight": "150 lbs",
-        "club": "Sivasspor"
+        "club": "Apollon Limassol"
       },
       {
         "id": "271675",
@@ -2764,7 +2764,7 @@
         "dob": "2001-05-04",
         "height": "6' 1\"",
         "weight": "161 lbs",
-        "club": "Casa Pia"
+        "club": "Hellas Verona"
       },
       {
         "id": "135216",
@@ -4471,6 +4471,18 @@
         "club": "AC Milan"
       },
       {
+        "id": "281316",
+        "name": "Kevin Rodríguez",
+        "shortName": "K. Rodríguez",
+        "jersey": 11,
+        "pos": "DEF",
+        "age": 20,
+        "dob": "2005-10-29",
+        "height": "5' 6\"",
+        "weight": "139 lbs",
+        "club": "Peñarol"
+      },
+      {
         "id": "256560",
         "name": "Ángelo Preciado",
         "shortName": "Á. Preciado",
@@ -4613,18 +4625,6 @@
         "height": "5' 7\"",
         "weight": "146 lbs",
         "club": "Venezia"
-      },
-      {
-        "id": "281316",
-        "name": "Kevin Rodríguez",
-        "shortName": "K. Rodríguez",
-        "jersey": 11,
-        "pos": "FWD",
-        "age": 26,
-        "dob": "2000-03-04",
-        "height": "6' 3\"",
-        "weight": "183 lbs",
-        "club": "Union St.-Gilloise"
       },
       {
         "id": "171771",
@@ -5168,7 +5168,7 @@
         "dob": "2002-11-06",
         "height": "5' 10\"",
         "weight": "150 lbs",
-        "club": "Nottingham Forest"
+        "club": "Manchester City"
       },
       {
         "id": "291281",
@@ -5334,7 +5334,7 @@
         "shortName": "M. Maignan",
         "jersey": 16,
         "pos": "GK",
-        "age": 30,
+        "age": 31,
         "dob": "1995-07-03",
         "height": "6' 3\"",
         "weight": "194 lbs",
@@ -5664,7 +5664,7 @@
         "dob": "1996-09-30",
         "height": "6' 4\"",
         "weight": "190 lbs",
-        "club": "VfB Stuttgart"
+        "club": "Bayern München"
       },
       {
         "id": "169438",
@@ -6070,7 +6070,7 @@
         "shortName": "D. Luckassen",
         "jersey": 23,
         "pos": "DEF",
-        "age": 30,
+        "age": 31,
         "dob": "1995-07-03",
         "height": "6' 2\"",
         "weight": "172 lbs",
@@ -7004,7 +7004,7 @@
         "dob": "1999-12-07",
         "height": "5' 8\"",
         "weight": "141 lbs",
-        "club": "Viktoria Plzen"
+        "club": "Slovacko"
       },
       {
         "id": "371649",
@@ -7752,7 +7752,7 @@
         "dob": "2005-06-03",
         "height": "6' 3\"",
         "weight": "152 lbs",
-        "club": "Sint-Truidense"
+        "club": "SC Freiburg"
       },
       {
         "id": "286347",
@@ -8002,7 +8002,7 @@
         "shortName": "A. Jamous",
         "jersey": 6,
         "pos": "MID",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-03",
         "height": "5' 10\"",
         "weight": "168 lbs",
@@ -8251,6 +8251,18 @@
         "club": "Toluca"
       },
       {
+        "id": "303577",
+        "name": "Brian Gutiérrez",
+        "shortName": "B. Gutiérrez",
+        "jersey": 26,
+        "pos": "DEF",
+        "age": 19,
+        "dob": "2007-01-21",
+        "height": "6' 1\"",
+        "weight": "181 lbs",
+        "club": "Guadalajara"
+      },
+      {
         "id": "241627",
         "name": "Edson Álvarez",
         "shortName": "E. Álvarez",
@@ -8357,18 +8369,6 @@
         "height": "5' 10\"",
         "weight": "161 lbs",
         "club": "Dinamo Moscow"
-      },
-      {
-        "id": "303577",
-        "name": "Brian Gutiérrez",
-        "shortName": "B. Gutiérrez",
-        "jersey": 26,
-        "pos": "MID",
-        "age": 23,
-        "dob": "2003-06-17",
-        "height": "5' 10\"",
-        "weight": "159 lbs",
-        "club": "Guadalajara"
       },
       {
         "id": "167060",
@@ -8975,6 +8975,18 @@
         "club": "Barcelona"
       },
       {
+        "id": "284792",
+        "name": "Crysencio Summerville",
+        "shortName": "C. Summerville",
+        "jersey": 24,
+        "pos": "MID",
+        "age": 24,
+        "dob": "2001-10-30",
+        "height": "5' 8\"",
+        "weight": "139 lbs",
+        "club": "West Ham United"
+      },
+      {
         "id": "282230",
         "name": "Quinten Timber",
         "shortName": "Q. Timber",
@@ -9069,18 +9081,6 @@
         "height": "5' 11\"",
         "weight": "174 lbs",
         "club": "Sunderland"
-      },
-      {
-        "id": "284792",
-        "name": "Crysencio Summerville",
-        "shortName": "C. Summerville",
-        "jersey": 24,
-        "pos": "FWD",
-        "age": 24,
-        "dob": "2001-10-30",
-        "height": "5' 8\"",
-        "weight": "139 lbs",
-        "club": "West Ham United"
       }
     ],
     "New Zealand": [
@@ -9821,18 +9821,6 @@
         "club": "Plaza Amador"
       },
       {
-        "id": "189775",
-        "name": "Andrés Andrade",
-        "shortName": "A. Andrade",
-        "jersey": 16,
-        "pos": "DEF",
-        "age": 27,
-        "dob": "1998-10-16",
-        "height": "6' 2\"",
-        "weight": "190 lbs",
-        "club": "LASK Linz"
-      },
-      {
         "id": "216420",
         "name": "Amir Murillo",
         "shortName": "A. Murillo",
@@ -9927,6 +9915,18 @@
         "height": "6' 1\"",
         "weight": "194 lbs",
         "club": "Minnesota United FC"
+      },
+      {
+        "id": "189775",
+        "name": "Andrés Andrade",
+        "shortName": "A. Andrade",
+        "jersey": 16,
+        "pos": "MID",
+        "age": 37,
+        "dob": "1989-02-23",
+        "height": "6' 0\"",
+        "weight": "161 lbs",
+        "club": "LASK Linz"
       },
       {
         "id": "116825",
@@ -10708,7 +10708,7 @@
         "shortName": "L. Mendes",
         "jersey": 3,
         "pos": "DEF",
-        "age": 35,
+        "age": 36,
         "dob": "1990-07-03",
         "height": "6' 0\"",
         "weight": "141 lbs",
@@ -13196,7 +13196,7 @@
         "shortName": "M. Keller",
         "jersey": 21,
         "pos": "GK",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-03",
         "height": "6' 2\"",
         "weight": "192 lbs",
@@ -14390,7 +14390,7 @@
         "shortName": "F. Balogun",
         "jersey": 20,
         "pos": "FWD",
-        "age": 24,
+        "age": 25,
         "dob": "2001-07-03",
         "height": "5' 10\"",
         "weight": "146 lbs",
