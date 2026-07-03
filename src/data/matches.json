@@ -5414,19 +5414,27 @@
       "away": "Cape Verde",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "25'",
-      "goals": [],
+      "clock": "32'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "L. Messi",
+          "minute": "29'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "64.2",
-        "shotsOnTarget": "1",
-        "totalShots": "2"
+        "possessionPct": "65.6",
+        "shotsOnTarget": "2",
+        "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "35.8",
+        "possessionPct": "34.4",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -5722,6 +5730,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T22:30:45.233Z",
+  "lastUpdated": "2026-07-03T22:32:25.447Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
