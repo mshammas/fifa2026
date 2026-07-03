@@ -5243,10 +5243,18 @@
       "group": null,
       "venue": "BMO Field, Toronto",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "51'",
-      "goals": [],
+      "clock": "58'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "I. Perisic",
+          "minute": "53'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -5256,14 +5264,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "67.5",
+        "possessionPct": "66.5",
         "shotsOnTarget": "1",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "32.5",
-        "shotsOnTarget": "1",
-        "totalShots": "5"
+        "possessionPct": "33.5",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "recap": null
     },
@@ -5608,6 +5616,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T00:16:24.434Z",
+  "lastUpdated": "2026-07-03T00:18:19.858Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
