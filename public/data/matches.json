@@ -5364,7 +5364,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "103'",
+      "clock": "105'",
       "goals": [
         {
           "side": "away",
@@ -5381,16 +5381,23 @@
           "og": true
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "H. Hassan",
+          "minute": "105'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "42.9",
+        "possessionPct": "42.5",
         "shotsOnTarget": "1",
         "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "57.1",
+        "possessionPct": "57.5",
         "shotsOnTarget": "3",
-        "totalShots": "11"
+        "totalShots": "12"
       },
       "recap": null
     },
@@ -5701,6 +5708,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T20:16:34.858Z",
+  "lastUpdated": "2026-07-03T20:18:23.768Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
