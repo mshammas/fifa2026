@@ -5290,16 +5290,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "60.5",
+        "possessionPct": "60.4",
         "shotsOnTarget": "3",
         "totalShots": "15"
       },
       "awayStats": {
-        "possessionPct": "39.5",
+        "possessionPct": "39.6",
         "shotsOnTarget": "6",
         "totalShots": "13"
       },
-      "recap": null
+      "recap": "Gonçalo Ramos headed a stoppage-time winner and Josko Gvardiol had an equaliser controversially disallowed as Portugal beat Croatia 2-1 at the World Cup."
     },
     {
       "id": "e760498",
@@ -5314,8 +5314,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5642,6 +5650,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T01:12:25.997Z",
+  "lastUpdated": "2026-07-03T02:58:26.817Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
