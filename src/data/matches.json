@@ -5242,16 +5242,23 @@
       "away": "Croatia",
       "group": null,
       "venue": "BMO Field, Toronto",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "66'",
+      "clock": "74'",
       "goals": [
         {
           "side": "away",
           "player": "I. Perisic",
           "minute": "53'",
           "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "C. Ronaldo",
+          "minute": "68'",
+          "pen": true,
           "og": false
         }
       ],
@@ -5271,7 +5278,7 @@
       ],
       "homeStats": {
         "possessionPct": "65.8",
-        "shotsOnTarget": "1",
+        "shotsOnTarget": "2",
         "totalShots": "11"
       },
       "awayStats": {
@@ -5622,6 +5629,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T00:32:26.480Z",
+  "lastUpdated": "2026-07-03T00:34:22.394Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
