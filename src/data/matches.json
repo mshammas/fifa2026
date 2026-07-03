@@ -5417,7 +5417,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "68'",
+      "clock": "69'",
       "goals": [
         {
           "side": "home",
@@ -5434,14 +5434,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "K. Pina",
+          "minute": "68'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "64.3",
+        "possessionPct": "64.4",
         "shotsOnTarget": "4",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "35.7",
+        "possessionPct": "35.6",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
@@ -5737,6 +5744,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T23:28:25.957Z",
+  "lastUpdated": "2026-07-03T23:30:46.053Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
