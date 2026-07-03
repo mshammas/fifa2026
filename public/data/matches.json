@@ -5310,8 +5310,8 @@
       "venue": "BC Place, Vancouver",
       "homeScore": 2,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+6'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -5343,12 +5343,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "44.1",
-        "shotsOnTarget": "4",
-        "totalShots": "9"
+        "possessionPct": "44.5",
+        "shotsOnTarget": "5",
+        "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "55.9",
+        "possessionPct": "55.5",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
@@ -5678,6 +5678,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T04:56:23.156Z",
+  "lastUpdated": "2026-07-03T04:58:21.670Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
