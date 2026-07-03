@@ -5242,10 +5242,10 @@
       "away": "Croatia",
       "group": null,
       "venue": "BMO Field, Toronto",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "56'",
+      "clock": "68'",
       "goals": [
         {
           "side": "away",
@@ -5261,17 +5261,23 @@
           "player": "R. Dias",
           "minute": "17'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Modric",
+          "minute": "59'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "66.6",
-        "shotsOnTarget": "1",
-        "totalShots": "9"
+        "possessionPct": "65.8",
+        "shotsOnTarget": "2",
+        "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "33.4",
-        "shotsOnTarget": "2",
-        "totalShots": "6"
+        "possessionPct": "34.2",
+        "shotsOnTarget": "3",
+        "totalShots": "7"
       },
       "recap": null
     },
@@ -5616,6 +5622,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T00:26:25.469Z",
+  "lastUpdated": "2026-07-03T00:28:22.037Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
