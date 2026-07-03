@@ -5245,7 +5245,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "64'",
+      "clock": "56'",
       "goals": [
         {
           "side": "away",
@@ -5261,23 +5261,17 @@
           "player": "R. Dias",
           "minute": "17'",
           "type": "yellow"
-        },
-        {
-          "side": "away",
-          "player": "L. Modric",
-          "minute": "59'",
-          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "65.8",
+        "possessionPct": "66.6",
         "shotsOnTarget": "1",
-        "totalShots": "10"
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "34.2",
-        "shotsOnTarget": "3",
-        "totalShots": "7"
+        "possessionPct": "33.4",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "recap": null
     },
@@ -5622,6 +5616,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T00:24:21.571Z",
+  "lastUpdated": "2026-07-03T00:26:25.469Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
