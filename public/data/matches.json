@@ -5402,10 +5402,10 @@
       },
       "awayStats": {
         "possessionPct": "58.3",
-        "shotsOnTarget": "4",
+        "shotsOnTarget": "3",
         "totalShots": "14"
       },
-      "recap": null
+      "recap": "Egypt recorded their first World Cup knockout victory as Australia's decision to send on goalkeeper Mat Ryan specifically for the penalty shootout failed to pay off."
     },
     {
       "id": "e760500",
@@ -5420,8 +5420,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5547,7 +5555,7 @@
       "id": "e760509",
       "date": "2026-07-07T16:00Z",
       "home": "Round of 32 14 Winner",
-      "away": "Round of 32 16 Winner",
+      "away": "Egypt",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": null,
@@ -5714,6 +5722,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T20:58:22.660Z",
+  "lastUpdated": "2026-07-03T21:58:26.278Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
