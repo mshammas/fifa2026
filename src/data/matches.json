@@ -5363,8 +5363,8 @@
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "45'+5'",
       "goals": [
         {
           "side": "away",
@@ -5376,12 +5376,12 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "43.9",
+        "possessionPct": "41.8",
         "shotsOnTarget": "1",
-        "totalShots": "6"
+        "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "56.1",
+        "possessionPct": "58.2",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -5694,6 +5694,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T18:56:24.597Z",
+  "lastUpdated": "2026-07-03T18:58:25.604Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
