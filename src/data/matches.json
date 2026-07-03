@@ -5310,13 +5310,20 @@
       "venue": "BC Place, Vancouver",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "47'",
       "goals": [
         {
           "side": "home",
           "player": "B. Embolo",
           "minute": "10'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "D. Ndoye",
+          "minute": "46'",
           "pen": false,
           "og": false
         }
@@ -5665,6 +5672,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T04:04:23.257Z",
+  "lastUpdated": "2026-07-03T04:06:25.252Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
