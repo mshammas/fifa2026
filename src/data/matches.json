@@ -5361,10 +5361,10 @@
       "away": "Egypt",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": 1,
+      "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "60'",
+      "clock": "49'",
       "goals": [
         {
           "side": "away",
@@ -5372,23 +5372,16 @@
           "minute": "13'",
           "pen": false,
           "og": false
-        },
-        {
-          "side": "home",
-          "player": "M. Hany",
-          "minute": "55'",
-          "pen": false,
-          "og": true
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "43.6",
+        "possessionPct": "44",
         "shotsOnTarget": "1",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "56.4",
+        "possessionPct": "56",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -5701,6 +5694,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T19:22:22.593Z",
+  "lastUpdated": "2026-07-03T19:24:26.051Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
