@@ -5352,7 +5352,7 @@
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
-      "recap": null
+      "recap": "Breel Embolo and Dan Ndoye both scored and Switzerland advanced to the Round of 16."
     },
     {
       "id": "e760499",
@@ -5367,8 +5367,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5527,7 +5535,7 @@
     {
       "id": "e760508",
       "date": "2026-07-07T20:00Z",
-      "home": "Round of 32 13 Winner",
+      "home": "Switzerland",
       "away": "Round of 32 15 Winner",
       "group": null,
       "venue": "BC Place, Vancouver",
@@ -5678,6 +5686,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T04:58:21.670Z",
+  "lastUpdated": "2026-07-03T17:58:20.748Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
