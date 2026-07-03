@@ -5415,9 +5415,9 @@
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "63'",
       "goals": [
         {
           "side": "home",
@@ -5425,18 +5425,25 @@
           "minute": "29'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "D. Duarte",
+          "minute": "59'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "65.4",
+        "possessionPct": "63.5",
         "shotsOnTarget": "3",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "34.6",
-        "shotsOnTarget": "0",
-        "totalShots": "2"
+        "possessionPct": "36.5",
+        "shotsOnTarget": "2",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -5730,6 +5737,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T23:24:25.353Z",
+  "lastUpdated": "2026-07-03T23:26:27.728Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
