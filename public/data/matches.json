@@ -5311,7 +5311,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "34'",
+      "clock": "36'",
       "goals": [
         {
           "side": "home",
@@ -5321,14 +5321,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "F. Chaïbi",
+          "minute": "36'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "42.2",
+        "possessionPct": "41.8",
         "shotsOnTarget": "2",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "57.8",
+        "possessionPct": "58.2",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
@@ -5658,6 +5665,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T03:34:21.833Z",
+  "lastUpdated": "2026-07-03T03:36:27.100Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
