@@ -5308,10 +5308,10 @@
       "away": "Algeria",
       "group": null,
       "venue": "BC Place, Vancouver",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -5320,7 +5320,7 @@
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "100",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5650,6 +5650,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-03T03:00:42.982Z",
+  "lastUpdated": "2026-07-03T03:02:26.544Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
