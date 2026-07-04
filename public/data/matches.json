@@ -5488,11 +5488,19 @@
       "away": "Ghana",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "13'",
-      "goals": [],
+      "clock": "15'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "J. Arias",
+          "minute": "14'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -5502,12 +5510,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "80.5",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "81.9",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "19.5",
+        "possessionPct": "18.1",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -5786,6 +5794,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T01:44:25.070Z",
+  "lastUpdated": "2026-07-04T01:46:25.762Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
