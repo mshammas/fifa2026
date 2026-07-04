@@ -5651,7 +5651,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "90'+4'",
+      "clock": "90'+6'",
       "goals": [
         {
           "side": "away",
@@ -5673,17 +5673,23 @@
           "player": "M. Koné",
           "minute": "81'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Olise",
+          "minute": "90'+7'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "23.4",
+        "possessionPct": "23.6",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "76.6",
-        "shotsOnTarget": "3",
-        "totalShots": "13"
+        "possessionPct": "76.4",
+        "shotsOnTarget": "4",
+        "totalShots": "14"
       },
       "recap": null
     },
@@ -5926,6 +5932,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T23:00:50.327Z",
+  "lastUpdated": "2026-07-04T23:02:25.812Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
