@@ -5414,10 +5414,10 @@
       "away": "Cape Verde",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "91'",
+      "clock": "93'",
       "goals": [
         {
           "side": "home",
@@ -5432,6 +5432,13 @@
           "minute": "59'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "L. Martínez",
+          "minute": "92'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -5443,12 +5450,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "67.5",
-        "shotsOnTarget": "8",
-        "totalShots": "15"
+        "possessionPct": "66.9",
+        "shotsOnTarget": "9",
+        "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "32.5",
+        "possessionPct": "33.1",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
@@ -5744,6 +5751,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T00:06:20.725Z",
+  "lastUpdated": "2026-07-04T00:08:22.542Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
