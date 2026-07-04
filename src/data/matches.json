@@ -5414,10 +5414,10 @@
       "away": "Cape Verde",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "107'",
+      "clock": "116'",
       "goals": [
         {
           "side": "home",
@@ -5446,6 +5446,13 @@
           "minute": "103'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "D. Borges",
+          "minute": "111'",
+          "pen": false,
+          "og": true
         }
       ],
       "cards": [
@@ -5454,17 +5461,23 @@
           "player": "K. Pina",
           "minute": "68'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "G. Montiel",
+          "minute": "115'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "64.8",
+        "possessionPct": "64.6",
         "shotsOnTarget": "10",
-        "totalShots": "21"
+        "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "35.2",
+        "possessionPct": "35.4",
         "shotsOnTarget": "3",
-        "totalShots": "9"
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -5481,8 +5494,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5758,6 +5779,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T00:34:25.883Z",
+  "lastUpdated": "2026-07-04T00:36:25.081Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
