@@ -5649,10 +5649,18 @@
       "group": null,
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "68'",
-      "goals": [],
+      "clock": "70'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "K. Mbappé",
+          "minute": "70'",
+          "pen": true,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -5668,8 +5676,8 @@
       },
       "awayStats": {
         "possessionPct": "78.4",
-        "shotsOnTarget": "1",
-        "totalShots": "10"
+        "shotsOnTarget": "2",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -5912,6 +5920,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T22:32:22.511Z",
+  "lastUpdated": "2026-07-04T22:34:23.580Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
