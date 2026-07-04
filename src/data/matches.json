@@ -5648,19 +5648,19 @@
       "away": "France",
       "group": null,
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "4'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "25",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "75",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5905,6 +5905,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T21:06:25.962Z",
+  "lastUpdated": "2026-07-04T21:08:27.377Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
