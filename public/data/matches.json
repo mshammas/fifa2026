@@ -5491,9 +5491,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "12'",
+      "clock": "13'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "J. Arias",
+          "minute": "12'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
         "possessionPct": "80.5",
         "shotsOnTarget": "0",
@@ -5779,6 +5786,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T01:42:25.295Z",
+  "lastUpdated": "2026-07-04T01:44:25.070Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
