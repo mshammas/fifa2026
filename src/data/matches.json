@@ -5417,7 +5417,7 @@
       "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "120'+3'",
+      "clock": "114'",
       "goals": [
         {
           "side": "home",
@@ -5461,23 +5461,17 @@
           "player": "K. Pina",
           "minute": "68'",
           "type": "yellow"
-        },
-        {
-          "side": "home",
-          "player": "G. Montiel",
-          "minute": "115'",
-          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "63.7",
+        "possessionPct": "65.5",
         "shotsOnTarget": "10",
         "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "36.3",
-        "shotsOnTarget": "5",
-        "totalShots": "16"
+        "possessionPct": "34.5",
+        "shotsOnTarget": "3",
+        "totalShots": "10"
       },
       "recap": null
     },
@@ -5779,6 +5773,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T00:44:26.295Z",
+  "lastUpdated": "2026-07-04T00:46:23.983Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
