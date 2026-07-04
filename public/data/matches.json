@@ -5555,16 +5555,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "17'",
+      "clock": "22'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "R. Halhal",
+          "minute": "20'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "27.2",
+        "possessionPct": "36.7",
         "shotsOnTarget": "2",
-        "totalShots": "3"
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "72.8",
+        "possessionPct": "63.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5826,6 +5833,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T17:22:22.672Z",
+  "lastUpdated": "2026-07-04T17:24:25.276Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
