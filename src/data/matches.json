@@ -5555,7 +5555,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "45'+4'",
+      "clock": "45'+6'",
       "goals": [],
       "cards": [
         {
@@ -5587,15 +5587,21 @@
           "player": "A. Ounahi",
           "minute": "45'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "B. El Khannouss",
+          "minute": "45'+6'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "35",
+        "possessionPct": "33.1",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "65",
+        "possessionPct": "66.9",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -5857,6 +5863,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T17:50:37.141Z",
+  "lastUpdated": "2026-07-04T17:52:30.091Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
