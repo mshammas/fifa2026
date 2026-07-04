@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T08:51:32.956Z",
+  "lastUpdated": "2026-07-04T08:26:21.200Z",
   "rosters": {
     "Algeria": [
       {
@@ -816,7 +816,7 @@
         "shortName": "A. O'Neill",
         "jersey": 13,
         "pos": "MID",
-        "age": 27,
+        "age": 28,
         "dob": "1998-07-04",
         "height": "6' 0\"",
         "weight": "152 lbs",
@@ -2664,7 +2664,7 @@
         "shortName": "D. Duarte",
         "jersey": 14,
         "pos": "MID",
-        "age": 26,
+        "age": 27,
         "dob": "1999-07-04",
         "height": "5' 10\"",
         "weight": "152 lbs",
@@ -3780,7 +3780,7 @@
         "dob": "1999-07-06",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "VVV-Venlo"
+        "club": "Curaçao"
       },
       {
         "id": "301456",
@@ -3972,7 +3972,7 @@
         "dob": "1999-11-11",
         "height": "5' 9\"",
         "weight": "146 lbs",
-        "club": "Curaçao"
+        "club": "FC Den Bosch"
       },
       {
         "id": "167213",
@@ -4202,7 +4202,7 @@
         "dob": "1990-08-08",
         "height": "5' 8\"",
         "weight": "141 lbs",
-        "club": "Aris"
+        "club": "FC Hradec Králové"
       },
       {
         "id": "303726",
@@ -4471,18 +4471,6 @@
         "club": "AC Milan"
       },
       {
-        "id": "281316",
-        "name": "Kevin Rodríguez",
-        "shortName": "K. Rodríguez",
-        "jersey": 11,
-        "pos": "DEF",
-        "age": 20,
-        "dob": "2005-10-29",
-        "height": "5' 6\"",
-        "weight": "139 lbs",
-        "club": "Peñarol"
-      },
-      {
         "id": "256560",
         "name": "Ángelo Preciado",
         "shortName": "Á. Preciado",
@@ -4625,6 +4613,18 @@
         "height": "5' 7\"",
         "weight": "146 lbs",
         "club": "Venezia"
+      },
+      {
+        "id": "281316",
+        "name": "Kevin Rodríguez",
+        "shortName": "K. Rodríguez",
+        "jersey": 11,
+        "pos": "FWD",
+        "age": 26,
+        "dob": "2000-03-04",
+        "height": "6' 3\"",
+        "weight": "183 lbs",
+        "club": "Peñarol"
       },
       {
         "id": "171771",
@@ -5787,18 +5787,6 @@
         "club": "Bayern München"
       },
       {
-        "id": "290811",
-        "name": "Jamie Leweling",
-        "shortName": "J. Leweling",
-        "jersey": 9,
-        "pos": "MID",
-        "age": 25,
-        "dob": "2001-02-26",
-        "height": "6' 1\"",
-        "weight": "190 lbs",
-        "club": "VfB Stuttgart"
-      },
-      {
         "id": "303821",
         "name": "Jamal Musiala",
         "shortName": "J. Musiala",
@@ -5893,6 +5881,18 @@
         "height": "6' 4\"",
         "weight": "183 lbs",
         "club": "Arsenal"
+      },
+      {
+        "id": "290811",
+        "name": "Jamie Leweling",
+        "shortName": "J. Leweling",
+        "jersey": 9,
+        "pos": "FWD",
+        "age": 25,
+        "dob": "2001-02-26",
+        "height": "6' 1\"",
+        "weight": "190 lbs",
+        "club": "VfB Stuttgart"
       },
       {
         "id": "298349",
@@ -6556,7 +6556,7 @@
         "dob": "1995-03-29",
         "height": "6' 4\"",
         "weight": "172 lbs",
-        "club": "Caykur Rizespor"
+        "club": "AEK Athens"
       },
       {
         "id": "304212",
@@ -7462,7 +7462,7 @@
         "dob": "2003-01-02",
         "height": "6' 0\"",
         "weight": "161 lbs",
-        "club": "Nice"
+        "club": "Eintracht Frankfurt"
       },
       {
         "id": "329483",
@@ -9102,7 +9102,7 @@
         "shortName": "A. Paulsen",
         "jersey": 12,
         "pos": "GK",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-04",
         "height": "6' 0\"",
         "weight": "183 lbs",
@@ -9821,6 +9821,18 @@
         "club": "Plaza Amador"
       },
       {
+        "id": "189775",
+        "name": "Andrés Andrade",
+        "shortName": "A. Andrade",
+        "jersey": 16,
+        "pos": "DEF",
+        "age": 27,
+        "dob": "1998-10-16",
+        "height": "6' 2\"",
+        "weight": "190 lbs",
+        "club": "LASK Linz"
+      },
+      {
         "id": "216420",
         "name": "Amir Murillo",
         "shortName": "A. Murillo",
@@ -9915,18 +9927,6 @@
         "height": "6' 1\"",
         "weight": "194 lbs",
         "club": "Minnesota United FC"
-      },
-      {
-        "id": "189775",
-        "name": "Andrés Andrade",
-        "shortName": "A. Andrade",
-        "jersey": 16,
-        "pos": "MID",
-        "age": 37,
-        "dob": "1989-02-23",
-        "height": "6' 0\"",
-        "weight": "161 lbs",
-        "club": "LASK Linz"
       },
       {
         "id": "116825",
@@ -12184,7 +12184,7 @@
         "dob": "2004-10-23",
         "height": "5' 7\"",
         "weight": "150 lbs",
-        "club": "Orlando Pirates"
+        "club": "Union St.-Gilloise"
       },
       {
         "id": "335450",
