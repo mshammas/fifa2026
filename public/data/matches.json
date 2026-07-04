@@ -5651,7 +5651,7 @@
       "homeScore": 0,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "82'",
+      "clock": "78'",
       "goals": [
         {
           "side": "away",
@@ -5667,21 +5667,15 @@
           "player": "B. Barcola",
           "minute": "19'",
           "type": "yellow"
-        },
-        {
-          "side": "away",
-          "player": "M. Koné",
-          "minute": "81'",
-          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "23.9",
+        "possessionPct": "21.5",
         "shotsOnTarget": "0",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "76.1",
+        "possessionPct": "78.5",
         "shotsOnTarget": "2",
         "totalShots": "11"
       },
@@ -5926,6 +5920,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T22:46:21.866Z",
+  "lastUpdated": "2026-07-04T22:48:25.323Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
