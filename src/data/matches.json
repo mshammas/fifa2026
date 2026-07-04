@@ -5555,7 +5555,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "44'",
+      "clock": "45'",
       "goals": [],
       "cards": [
         {
@@ -5581,15 +5581,21 @@
           "player": "J. David",
           "minute": "43'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "A. Ounahi",
+          "minute": "45'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "34.5",
+        "possessionPct": "34.1",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "65.5",
+        "possessionPct": "65.9",
         "shotsOnTarget": "1",
         "totalShots": "1"
       },
@@ -5851,6 +5857,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T17:45:28.757Z",
+  "lastUpdated": "2026-07-04T17:46:22.149Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
