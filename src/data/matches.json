@@ -5416,8 +5416,8 @@
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 3,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "114'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -5461,17 +5461,23 @@
           "player": "K. Pina",
           "minute": "68'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "G. Montiel",
+          "minute": "115'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "65.5",
+        "possessionPct": "63.5",
         "shotsOnTarget": "10",
         "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "34.5",
-        "shotsOnTarget": "3",
-        "totalShots": "10"
+        "possessionPct": "36.5",
+        "shotsOnTarget": "5",
+        "totalShots": "16"
       },
       "recap": null
     },
@@ -5605,7 +5611,7 @@
     {
       "id": "e760509",
       "date": "2026-07-07T16:00Z",
-      "home": "Round of 32 14 Winner",
+      "home": "Argentina",
       "away": "Egypt",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
@@ -5773,6 +5779,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T00:46:23.983Z",
+  "lastUpdated": "2026-07-04T00:48:26.318Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
