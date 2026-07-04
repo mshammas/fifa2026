@@ -5650,8 +5650,8 @@
       "venue": "Lincoln Financial Field, Philadelphia, Pennsylvania",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+10'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -5682,12 +5682,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "23.9",
+        "possessionPct": "24",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "76.1",
+        "possessionPct": "76",
         "shotsOnTarget": "5",
         "totalShots": "15"
       },
@@ -5798,7 +5798,7 @@
     {
       "id": "e760510",
       "date": "2026-07-09T20:00Z",
-      "home": "Round of 16 1 Winner",
+      "home": "France",
       "away": "Morocco",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
@@ -5932,6 +5932,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T23:04:26.917Z",
+  "lastUpdated": "2026-07-04T23:06:20.414Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
