@@ -5555,8 +5555,16 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "48'",
-      "goals": [],
+      "clock": "50'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "A. Ounahi",
+          "minute": "50'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -5593,12 +5601,18 @@
           "player": "B. El Khannouss",
           "minute": "45'+6'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "L. de Fougerolles",
+          "minute": "49'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
         "possessionPct": "33.3",
         "shotsOnTarget": "2",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "awayStats": {
         "possessionPct": "66.7",
@@ -5863,6 +5877,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T18:12:21.417Z",
+  "lastUpdated": "2026-07-04T18:14:20.642Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
