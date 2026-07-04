@@ -5470,12 +5470,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "63.5",
+        "possessionPct": "63.6",
         "shotsOnTarget": "10",
         "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "36.5",
+        "possessionPct": "36.4",
         "shotsOnTarget": "5",
         "totalShots": "16"
       },
@@ -5488,21 +5488,21 @@
       "away": "Ghana",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "5'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "76.9",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "23.1",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -5779,6 +5779,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T01:34:27.075Z",
+  "lastUpdated": "2026-07-04T01:36:21.012Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
