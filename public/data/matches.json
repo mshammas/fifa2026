@@ -5553,9 +5553,9 @@
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
-      "clock": "90'+8'",
+      "clock": "90'+9'",
       "goals": [
         {
           "side": "away",
@@ -5568,6 +5568,13 @@
           "side": "away",
           "player": "A. Ounahi",
           "minute": "82'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "S. Rahimi",
+          "minute": "90'+8'",
           "pen": false,
           "og": false
         }
@@ -5625,12 +5632,12 @@
       "homeStats": {
         "possessionPct": "44.5",
         "shotsOnTarget": "3",
-        "totalShots": "12"
+        "totalShots": "11"
       },
       "awayStats": {
         "possessionPct": "55.5",
-        "shotsOnTarget": "3",
-        "totalShots": "4"
+        "shotsOnTarget": "4",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -5757,7 +5764,7 @@
       "id": "e760510",
       "date": "2026-07-09T20:00Z",
       "home": "Round of 16 1 Winner",
-      "away": "Round of 16 2 Winner",
+      "away": "Morocco",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
       "homeScore": null,
@@ -5890,6 +5897,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T19:02:23.267Z",
+  "lastUpdated": "2026-07-04T19:04:20.740Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
