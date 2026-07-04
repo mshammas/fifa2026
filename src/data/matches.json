@@ -5553,14 +5553,21 @@
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "82'",
+      "clock": "83'",
       "goals": [
         {
           "side": "away",
           "player": "A. Ounahi",
           "minute": "50'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "A. Ounahi",
+          "minute": "82'",
           "pen": false,
           "og": false
         }
@@ -5616,14 +5623,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "39.7",
+        "possessionPct": "39.5",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "60.3",
-        "shotsOnTarget": "2",
-        "totalShots": "2"
+        "possessionPct": "60.5",
+        "shotsOnTarget": "3",
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -5883,6 +5890,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T18:46:21.921Z",
+  "lastUpdated": "2026-07-04T18:48:20.479Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
