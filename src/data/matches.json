@@ -5415,9 +5415,9 @@
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "101'",
+      "clock": "104'",
       "goals": [
         {
           "side": "home",
@@ -5439,6 +5439,13 @@
           "minute": "92'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "S. Lopes Cabral",
+          "minute": "103'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -5450,12 +5457,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "66.1",
+        "possessionPct": "65.1",
         "shotsOnTarget": "9",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "33.9",
+        "possessionPct": "34.9",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
@@ -5751,6 +5758,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T00:16:20.566Z",
+  "lastUpdated": "2026-07-04T00:18:22.613Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
