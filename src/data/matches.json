@@ -5490,8 +5490,8 @@
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "90'+8'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -5534,12 +5534,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "60.4",
+        "possessionPct": "60.7",
         "shotsOnTarget": "8",
         "totalShots": "20"
       },
       "awayStats": {
-        "possessionPct": "39.6",
+        "possessionPct": "39.3",
         "shotsOnTarget": "0",
         "totalShots": "8"
       },
@@ -5668,7 +5668,7 @@
       "id": "e760508",
       "date": "2026-07-07T20:00Z",
       "home": "Switzerland",
-      "away": "Round of 32 15 Winner",
+      "away": "Colombia",
       "group": null,
       "venue": "BC Place, Vancouver",
       "homeScore": null,
@@ -5818,6 +5818,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T03:32:20.483Z",
+  "lastUpdated": "2026-07-04T03:34:25.409Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
