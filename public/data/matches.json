@@ -5552,19 +5552,19 @@
       "away": "Morocco",
       "group": null,
       "venue": "NRG Stadium, Houston, Texas",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "clock": "15'",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "NS",
+      "clock": null,
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "32.7",
-        "shotsOnTarget": "2",
-        "totalShots": "3"
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "67.3",
+        "possessionPct": "0",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5826,6 +5826,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T17:16:26.418Z",
+  "lastUpdated": "2026-07-04T17:18:24.287Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
