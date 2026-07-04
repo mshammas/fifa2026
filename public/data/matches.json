@@ -5488,14 +5488,14 @@
       "away": "Ghana",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "LIVE",
-      "clock": "1'",
+      "homeScore": null,
+      "awayScore": null,
+      "status": "NS",
+      "clock": null,
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "100",
+        "possessionPct": "0",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5779,6 +5779,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T01:32:20.571Z",
+  "lastUpdated": "2026-07-04T01:34:27.075Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
