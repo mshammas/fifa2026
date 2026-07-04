@@ -5490,8 +5490,8 @@
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "46'",
       "goals": [
         {
           "side": "home",
@@ -5510,12 +5510,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "66.9",
+        "possessionPct": "66.8",
         "shotsOnTarget": "3",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "33.1",
+        "possessionPct": "33.2",
         "shotsOnTarget": "0",
         "totalShots": "6"
       },
@@ -5794,6 +5794,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T02:38:20.758Z",
+  "lastUpdated": "2026-07-04T02:40:36.989Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
