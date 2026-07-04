@@ -5491,7 +5491,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "64'",
+      "clock": "66'",
       "goals": [
         {
           "side": "home",
@@ -5512,6 +5512,12 @@
           "side": "away",
           "player": "C. Yirenkyi",
           "minute": "49'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "F. Issahaku",
+          "minute": "66'",
           "type": "yellow"
         }
       ],
@@ -5800,6 +5806,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T02:58:23.694Z",
+  "lastUpdated": "2026-07-04T03:00:47.085Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
