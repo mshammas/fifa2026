@@ -5703,7 +5703,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+9'",
+      "clock": "90'+3'",
       "goals": [
         {
           "side": "away",
@@ -5720,21 +5720,14 @@
           "og": false
         }
       ],
-      "cards": [
-        {
-          "side": "home",
-          "player": "Neymar",
-          "minute": "90'+6'",
-          "type": "yellow"
-        }
-      ],
+      "cards": [],
       "homeStats": {
-        "possessionPct": "33.3",
+        "possessionPct": "33",
         "shotsOnTarget": "3",
-        "totalShots": "13"
+        "totalShots": "11"
       },
       "awayStats": {
-        "possessionPct": "66.7",
+        "possessionPct": "67",
         "shotsOnTarget": "5",
         "totalShots": "9"
       },
@@ -5962,6 +5955,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-05T22:02:25.442Z",
+  "lastUpdated": "2026-07-05T22:04:23.935Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
