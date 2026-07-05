@@ -5702,8 +5702,8 @@
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+11'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -5736,12 +5736,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "33.3",
+        "possessionPct": "33.5",
         "shotsOnTarget": "4",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "66.7",
+        "possessionPct": "66.5",
         "shotsOnTarget": "5",
         "totalShots": "9"
       },
@@ -5869,7 +5869,7 @@
     {
       "id": "e760512",
       "date": "2026-07-11T21:00Z",
-      "home": "Round of 16 3 Winner",
+      "home": "Norway",
       "away": "Round of 16 4 Winner",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
@@ -5969,6 +5969,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-05T22:06:25.559Z",
+  "lastUpdated": "2026-07-05T22:08:23.405Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
