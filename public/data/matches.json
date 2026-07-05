@@ -5736,20 +5736,20 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "33.5",
+        "possessionPct": "33.6",
         "shotsOnTarget": "4",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "66.5",
+        "possessionPct": "66.4",
         "shotsOnTarget": "5",
         "totalShots": "9"
       },
-      "recap": null
+      "recap": "Erling Haaland struck two late goals as Norway stunned Brazil on Sunday by winning 2-1 in East Rutherford, New Jersey, to reach the World Cup quarterfinals."
     },
     {
       "id": "e760505",
-      "date": "2026-07-06T00:00Z",
+      "date": "2026-07-06T01:00Z",
       "home": "Mexico",
       "away": "England",
       "group": null,
@@ -5760,8 +5760,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5969,6 +5977,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-05T22:08:23.405Z",
+  "lastUpdated": "2026-07-05T23:58:26.468Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
