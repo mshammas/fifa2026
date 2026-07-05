@@ -5701,14 +5701,21 @@
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "87'",
+      "clock": "90'+2'",
       "goals": [
         {
           "side": "away",
           "player": "E. Haaland",
           "minute": "79'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "E. Haaland",
+          "minute": "90'",
           "pen": false,
           "og": false
         }
@@ -5721,8 +5728,8 @@
       },
       "awayStats": {
         "possessionPct": "67.7",
-        "shotsOnTarget": "4",
-        "totalShots": "8"
+        "shotsOnTarget": "5",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -5948,6 +5955,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-05T21:52:24.170Z",
+  "lastUpdated": "2026-07-05T21:54:21.294Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
