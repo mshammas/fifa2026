@@ -5700,10 +5700,10 @@
       "away": "Norway",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+3'",
+      "clock": "90'+11'",
       "goals": [
         {
           "side": "away",
@@ -5718,16 +5718,30 @@
           "minute": "90'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "Neymar",
+          "minute": "90'+10'",
+          "pen": true,
+          "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "Neymar",
+          "minute": "90'+6'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "33",
-        "shotsOnTarget": "3",
-        "totalShots": "11"
+        "possessionPct": "33.3",
+        "shotsOnTarget": "4",
+        "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "67",
+        "possessionPct": "66.7",
         "shotsOnTarget": "5",
         "totalShots": "9"
       },
@@ -5955,6 +5969,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-05T22:04:23.935Z",
+  "lastUpdated": "2026-07-05T22:06:25.559Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
