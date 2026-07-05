@@ -5682,16 +5682,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "24",
+        "possessionPct": "24.1",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "76",
+        "possessionPct": "75.9",
         "shotsOnTarget": "5",
         "totalShots": "15"
       },
-      "recap": null
+      "recap": "Kylian Mbappé scored his 19th career World Cup goal, and France survived stifling heat to beat Paraguay 1-0 on Saturday, sending Les Bleus into the quarterfinals for the fourth straight time.\n\n"
     },
     {
       "id": "e760504",
@@ -5706,8 +5706,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5932,6 +5940,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-04T23:06:20.414Z",
+  "lastUpdated": "2026-07-05T19:58:25.335Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
