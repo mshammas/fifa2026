@@ -5700,10 +5700,10 @@
       "away": "Norway",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "2'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -5940,6 +5940,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-05T20:00:49.251Z",
+  "lastUpdated": "2026-07-05T20:02:20.514Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
