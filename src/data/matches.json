@@ -5757,7 +5757,7 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "53'",
+      "clock": "55'",
       "goals": [
         {
           "side": "away",
@@ -5787,15 +5787,21 @@
           "player": "D. Rice",
           "minute": "1'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Quansah",
+          "minute": "54'",
+          "type": "red"
         }
       ],
       "homeStats": {
-        "possessionPct": "60.4",
+        "possessionPct": "60.7",
         "shotsOnTarget": "3",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "39.6",
+        "possessionPct": "39.3",
         "shotsOnTarget": "3",
         "totalShots": "4"
       },
@@ -6006,6 +6012,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T02:16:23.650Z",
+  "lastUpdated": "2026-07-06T02:18:20.764Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
