@@ -5859,10 +5859,18 @@
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "89'",
-      "goals": [],
+      "clock": "90'+2'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "M. Merino",
+          "minute": "90'+1'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -5872,14 +5880,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "42.5",
+        "possessionPct": "41.8",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "57.5",
-        "shotsOnTarget": "5",
-        "totalShots": "14"
+        "possessionPct": "58.2",
+        "shotsOnTarget": "6",
+        "totalShots": "15"
       },
       "recap": null
     },
@@ -6071,6 +6079,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T20:54:25.147Z",
+  "lastUpdated": "2026-07-06T20:56:31.504Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
