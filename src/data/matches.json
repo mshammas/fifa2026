@@ -5755,9 +5755,9 @@
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 1,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
-      "clock": "58'",
+      "clock": "65'",
       "goals": [
         {
           "side": "away",
@@ -5779,6 +5779,13 @@
           "minute": "42'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "H. Kane",
+          "minute": "60'",
+          "pen": true,
+          "og": false
         }
       ],
       "cards": [
@@ -5796,14 +5803,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "60.9",
+        "possessionPct": "58.9",
         "shotsOnTarget": "3",
         "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "39.1",
-        "shotsOnTarget": "3",
-        "totalShots": "4"
+        "possessionPct": "41.1",
+        "shotsOnTarget": "4",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -6012,6 +6019,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T02:26:25.046Z",
+  "lastUpdated": "2026-07-06T02:28:23.688Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
