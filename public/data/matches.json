@@ -5757,7 +5757,7 @@
       "homeScore": 2,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "90'+8'",
+      "clock": "90'+9'",
       "goals": [
         {
           "side": "away",
@@ -5825,15 +5825,27 @@
           "player": "N. O'Reilly",
           "minute": "72'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "J. Vásquez",
+          "minute": "90'+8'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Henderson",
+          "minute": "90'+8'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "66.5",
+        "possessionPct": "66.3",
         "shotsOnTarget": "5",
         "totalShots": "18"
       },
       "awayStats": {
-        "possessionPct": "33.5",
+        "possessionPct": "33.7",
         "shotsOnTarget": "5",
         "totalShots": "6"
       },
@@ -6044,6 +6056,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T03:02:24.191Z",
+  "lastUpdated": "2026-07-06T03:04:26.436Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
