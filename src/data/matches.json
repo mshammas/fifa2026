@@ -5755,9 +5755,9 @@
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 1,
-      "awayScore": 2,
+      "awayScore": 3,
       "status": "LIVE",
-      "clock": "60'",
+      "clock": "62'",
       "goals": [
         {
           "side": "away",
@@ -5778,6 +5778,13 @@
           "player": "J. Quiñones",
           "minute": "42'",
           "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "H. Kane",
+          "minute": "60'",
+          "pen": true,
           "og": false
         }
       ],
@@ -5802,8 +5809,8 @@
       },
       "awayStats": {
         "possessionPct": "39.2",
-        "shotsOnTarget": "3",
-        "totalShots": "4"
+        "shotsOnTarget": "4",
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -6012,6 +6019,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T02:22:23.946Z",
+  "lastUpdated": "2026-07-06T02:24:24.607Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
