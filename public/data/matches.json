@@ -5754,10 +5754,10 @@
       "away": "England",
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 3,
       "status": "LIVE",
-      "clock": "63'",
+      "clock": "83'",
       "goals": [
         {
           "side": "away",
@@ -5786,6 +5786,13 @@
           "minute": "60'",
           "pen": true,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "R. Jiménez",
+          "minute": "69'",
+          "pen": true,
+          "og": false
         }
       ],
       "cards": [
@@ -5800,15 +5807,33 @@
           "player": "J. Quansah",
           "minute": "54'",
           "type": "red"
+        },
+        {
+          "side": "away",
+          "player": "M. Guéhi",
+          "minute": "68'",
+          "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "J. Sánchez",
+          "minute": "71'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "N. O'Reilly",
+          "minute": "72'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "59.8",
-        "shotsOnTarget": "3",
-        "totalShots": "9"
+        "possessionPct": "63.5",
+        "shotsOnTarget": "4",
+        "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "40.2",
+        "possessionPct": "36.5",
         "shotsOnTarget": "4",
         "totalShots": "5"
       },
@@ -6019,6 +6044,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T02:44:25.820Z",
+  "lastUpdated": "2026-07-06T02:46:21.727Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
