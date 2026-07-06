@@ -5754,19 +5754,26 @@
       "away": "England",
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "6'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "D. Rice",
+          "minute": "1'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "73.3",
         "shotsOnTarget": "0",
-        "totalShots": "0"
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "0",
+        "possessionPct": "26.7",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -5977,6 +5984,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T01:04:26.707Z",
+  "lastUpdated": "2026-07-06T01:06:23.898Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
