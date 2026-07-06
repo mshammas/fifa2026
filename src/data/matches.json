@@ -5754,10 +5754,10 @@
       "away": "England",
       "group": null,
       "venue": "Estadio Banorte, Mexico City",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "42'",
+      "clock": "44'",
       "goals": [
         {
           "side": "away",
@@ -5772,6 +5772,13 @@
           "minute": "38'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "J. Quiñones",
+          "minute": "42'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -5783,12 +5790,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "60.6",
-        "shotsOnTarget": "1",
-        "totalShots": "4"
+        "possessionPct": "60.3",
+        "shotsOnTarget": "2",
+        "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "39.4",
+        "possessionPct": "39.7",
         "shotsOnTarget": "3",
         "totalShots": "3"
       },
@@ -5999,6 +6006,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T01:42:22.509Z",
+  "lastUpdated": "2026-07-06T01:44:22.596Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
