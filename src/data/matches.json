@@ -5860,8 +5860,8 @@
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 0,
       "awayScore": 1,
-      "status": "LIVE",
-      "clock": "90'+8'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -5883,15 +5883,21 @@
           "player": "R. Veiga",
           "minute": "90'+4'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "F. Torres",
+          "minute": "90'+8'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "44.1",
+        "possessionPct": "44.5",
         "shotsOnTarget": "2",
-        "totalShots": "9"
+        "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "55.9",
+        "possessionPct": "55.5",
         "shotsOnTarget": "6",
         "totalShots": "15"
       },
@@ -6085,6 +6091,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T21:00:51.833Z",
+  "lastUpdated": "2026-07-06T21:02:23.069Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
