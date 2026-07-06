@@ -5901,7 +5901,7 @@
         "shotsOnTarget": "6",
         "totalShots": "15"
       },
-      "recap": null
+      "recap": "Cristiano Ronaldo's World Cup dream ended in tears as Mikel Merino stepped off the bench to fire Spain into the quarterfinals with an injury-time winner in Dallas."
     },
     {
       "id": "e760507",
@@ -5916,8 +5916,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -5974,7 +5982,7 @@
     {
       "id": "e760511",
       "date": "2026-07-10T19:00Z",
-      "home": "Round of 16 5 Winner",
+      "home": "Spain",
       "away": "Round of 16 6 Winner",
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
@@ -6091,6 +6099,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T21:02:23.069Z",
+  "lastUpdated": "2026-07-06T23:58:27.245Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
