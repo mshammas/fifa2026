@@ -5858,21 +5858,21 @@
       "away": "Spain",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "4'",
       "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "32.5",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "67.5",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -6064,6 +6064,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T19:02:27.178Z",
+  "lastUpdated": "2026-07-06T19:04:22.288Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
