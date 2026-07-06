@@ -5756,8 +5756,8 @@
       "venue": "Estadio Banorte, Mexico City",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "HT",
-      "clock": null,
+      "status": "LIVE",
+      "clock": "60'",
       "goals": [
         {
           "side": "away",
@@ -5787,17 +5787,23 @@
           "player": "D. Rice",
           "minute": "1'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "J. Quansah",
+          "minute": "54'",
+          "type": "red"
         }
       ],
       "homeStats": {
-        "possessionPct": "62.7",
+        "possessionPct": "60.8",
         "shotsOnTarget": "3",
-        "totalShots": "7"
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "37.3",
+        "possessionPct": "39.2",
         "shotsOnTarget": "3",
-        "totalShots": "3"
+        "totalShots": "4"
       },
       "recap": null
     },
@@ -6006,6 +6012,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-06T02:20:37.003Z",
+  "lastUpdated": "2026-07-06T02:22:23.946Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
