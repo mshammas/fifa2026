@@ -6079,16 +6079,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "48'",
+      "clock": "53'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "G. Xhaka",
+          "minute": "51'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "50.2",
+        "possessionPct": "50.8",
         "shotsOnTarget": "2",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "49.8",
+        "possessionPct": "49.2",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -6231,6 +6238,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T21:10:57.574Z",
+  "lastUpdated": "2026-07-07T21:12:22.995Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
