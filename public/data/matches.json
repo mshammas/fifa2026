@@ -6079,7 +6079,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "AET-pens",
+      "clock": "Pens",
       "goals": [],
       "cards": [
         {
@@ -6262,6 +6262,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T22:42:24.217Z",
+  "lastUpdated": "2026-07-07T22:44:26.635Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
