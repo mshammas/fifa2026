@@ -5911,9 +5911,9 @@
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": 1,
-      "awayScore": 3,
+      "awayScore": 4,
       "status": "LIVE",
-      "clock": "90'+2'",
+      "clock": "90'+4'",
       "goals": [
         {
           "side": "away",
@@ -5942,6 +5942,13 @@
           "minute": "57'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "R. Lukaku",
+          "minute": "90'+3'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [
@@ -5959,14 +5966,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "56.3",
+        "possessionPct": "56.2",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "43.7",
-        "shotsOnTarget": "6",
-        "totalShots": "14"
+        "possessionPct": "43.8",
+        "shotsOnTarget": "7",
+        "totalShots": "15"
       },
       "recap": null
     },
@@ -6141,6 +6148,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T01:56:22.233Z",
+  "lastUpdated": "2026-07-07T01:58:21.518Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
