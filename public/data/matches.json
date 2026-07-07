@@ -5912,8 +5912,8 @@
       "venue": "Lumen Field, Seattle, Washington",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "45'+6'",
+      "status": "HT",
+      "clock": null,
       "goals": [
         {
           "side": "away",
@@ -5946,12 +5946,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "47.3",
+        "possessionPct": "47.4",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "52.7",
+        "possessionPct": "52.6",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
@@ -6128,6 +6128,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T00:52:27.908Z",
+  "lastUpdated": "2026-07-07T00:54:23.018Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
