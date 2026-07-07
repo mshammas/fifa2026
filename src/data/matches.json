@@ -6079,7 +6079,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "59'",
+      "clock": "62'",
       "goals": [],
       "cards": [
         {
@@ -6093,17 +6093,23 @@
           "player": "D. Zakaria",
           "minute": "59'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Suárez",
+          "minute": "60'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "50.6",
+        "possessionPct": "50.4",
         "shotsOnTarget": "2",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "49.4",
-        "shotsOnTarget": "1",
-        "totalShots": "5"
+        "possessionPct": "49.6",
+        "shotsOnTarget": "2",
+        "totalShots": "6"
       },
       "recap": null
     },
@@ -6244,6 +6250,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T21:20:56.304Z",
+  "lastUpdated": "2026-07-07T21:22:22.697Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
