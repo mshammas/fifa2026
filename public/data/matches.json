@@ -5984,10 +5984,10 @@
       "away": "Egypt",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "82'",
+      "clock": "84'",
       "goals": [
         {
           "side": "away",
@@ -6009,16 +6009,23 @@
           "minute": "79'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "L. Messi",
+          "minute": "83'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "64.9",
-        "shotsOnTarget": "5",
-        "totalShots": "16"
+        "possessionPct": "65.7",
+        "shotsOnTarget": "6",
+        "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "35.1",
+        "possessionPct": "34.3",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
@@ -6178,6 +6185,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T17:48:28.757Z",
+  "lastUpdated": "2026-07-07T17:50:56.702Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
