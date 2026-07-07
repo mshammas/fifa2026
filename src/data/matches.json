@@ -6087,15 +6087,21 @@
           "player": "G. Xhaka",
           "minute": "51'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "D. Zakaria",
+          "minute": "59'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "49.9",
+        "possessionPct": "50.6",
         "shotsOnTarget": "2",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "50.1",
+        "possessionPct": "49.4",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
@@ -6238,6 +6244,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T21:18:22.171Z",
+  "lastUpdated": "2026-07-07T21:20:56.304Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
