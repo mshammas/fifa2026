@@ -6078,8 +6078,8 @@
       "venue": "BC Place, Vancouver",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "Pens",
+      "status": "FT",
+      "clock": null,
       "goals": [],
       "cards": [
         {
@@ -6262,6 +6262,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T22:57:24.820Z",
+  "lastUpdated": "2026-07-07T22:58:24.062Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
