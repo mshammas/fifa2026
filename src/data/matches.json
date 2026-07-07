@@ -5984,10 +5984,10 @@
       "away": "Egypt",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+1'",
+      "clock": "90'+5'",
       "goals": [
         {
           "side": "away",
@@ -6016,18 +6016,32 @@
           "minute": "83'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "E. Fernández",
+          "minute": "90'+2'",
+          "pen": false,
+          "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "M. Shoubir",
+          "minute": "90'+3'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "65.4",
-        "shotsOnTarget": "6",
-        "totalShots": "18"
+        "possessionPct": "64.6",
+        "shotsOnTarget": "7",
+        "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "34.6",
+        "possessionPct": "35.4",
         "shotsOnTarget": "2",
-        "totalShots": "4"
+        "totalShots": "5"
       },
       "recap": null
     },
@@ -6185,6 +6199,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T17:58:27.120Z",
+  "lastUpdated": "2026-07-07T18:01:10.600Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
