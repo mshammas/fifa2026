@@ -6079,7 +6079,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "94'",
+      "clock": "96'",
       "goals": [],
       "cards": [
         {
@@ -6099,15 +6099,21 @@
           "player": "L. Suárez",
           "minute": "60'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "D. Sánchez",
+          "minute": "95'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "51.5",
+        "possessionPct": "51.9",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "48.5",
+        "possessionPct": "48.1",
         "shotsOnTarget": "2",
         "totalShots": "8"
       },
@@ -6250,6 +6256,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T22:04:21.926Z",
+  "lastUpdated": "2026-07-07T22:06:26.257Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
