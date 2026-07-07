@@ -5910,10 +5910,10 @@
       "away": "Belgium",
       "group": null,
       "venue": "Lumen Field, Seattle, Washington",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "28'",
+      "clock": "32'",
       "goals": [
         {
           "side": "away",
@@ -5921,16 +5921,23 @@
           "minute": "9'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "M. Tillman",
+          "minute": "31'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "46.9",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "45.4",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "53.1",
+        "possessionPct": "54.6",
         "shotsOnTarget": "3",
         "totalShots": "7"
       },
@@ -6107,6 +6114,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T00:30:51.137Z",
+  "lastUpdated": "2026-07-07T00:32:22.052Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
