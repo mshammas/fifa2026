@@ -5950,6 +5950,12 @@
           "player": "W. McKennie",
           "minute": "35'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "M. Tillman",
+          "minute": "69'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
@@ -6135,6 +6141,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T01:32:26.038Z",
+  "lastUpdated": "2026-07-07T01:34:25.934Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
