@@ -5985,21 +5985,14 @@
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 0,
-      "awayScore": 2,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "60'",
+      "clock": "61'",
       "goals": [
         {
           "side": "away",
           "player": "Y. Ibrahim",
           "minute": "15'",
-          "pen": false,
-          "og": false
-        },
-        {
-          "side": "away",
-          "player": "M. Zico",
-          "minute": "58'",
           "pen": false,
           "og": false
         }
@@ -6171,6 +6164,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T17:24:28.995Z",
+  "lastUpdated": "2026-07-07T17:26:26.438Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
