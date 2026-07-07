@@ -5987,7 +5987,7 @@
       "homeScore": 0,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "70'",
+      "clock": "72'",
       "goals": [
         {
           "side": "away",
@@ -6004,21 +6004,14 @@
           "og": false
         }
       ],
-      "cards": [
-        {
-          "side": "away",
-          "player": "M. Zico",
-          "minute": "61'",
-          "type": "yellow"
-        }
-      ],
+      "cards": [],
       "homeStats": {
-        "possessionPct": "62.9",
+        "possessionPct": "63.3",
         "shotsOnTarget": "4",
         "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "37.1",
+        "possessionPct": "36.7",
         "shotsOnTarget": "2",
         "totalShots": "3"
       },
@@ -6178,6 +6171,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T17:34:21.798Z",
+  "lastUpdated": "2026-07-07T17:36:24.154Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
