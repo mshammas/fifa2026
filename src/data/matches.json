@@ -6079,7 +6079,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "102'",
+      "clock": "105'+1'",
       "goals": [],
       "cards": [
         {
@@ -6105,17 +6105,23 @@
           "player": "D. Sánchez",
           "minute": "95'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "M. Muheim",
+          "minute": "105'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "51.6",
+        "possessionPct": "52.4",
         "shotsOnTarget": "2",
         "totalShots": "6"
       },
       "awayStats": {
-        "possessionPct": "48.4",
-        "shotsOnTarget": "2",
-        "totalShots": "10"
+        "possessionPct": "47.6",
+        "shotsOnTarget": "3",
+        "totalShots": "11"
       },
       "recap": null
     },
@@ -6256,6 +6262,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T22:14:26.913Z",
+  "lastUpdated": "2026-07-07T22:16:22.707Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
