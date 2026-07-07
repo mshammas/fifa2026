@@ -5987,7 +5987,7 @@
       "homeScore": 3,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "90'+5'",
+      "clock": "90'+9'",
       "goals": [
         {
           "side": "away",
@@ -6031,15 +6031,27 @@
           "player": "M. Shoubir",
           "minute": "90'+3'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "H. Fathy",
+          "minute": "90'+4'",
+          "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "M. Attia",
+          "minute": "90'+8'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "64.6",
+        "possessionPct": "63.9",
         "shotsOnTarget": "7",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "35.4",
+        "possessionPct": "36.1",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
@@ -6199,6 +6211,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T18:01:10.600Z",
+  "lastUpdated": "2026-07-07T18:02:33.694Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
