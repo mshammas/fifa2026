@@ -6049,19 +6049,25 @@
           "player": "—",
           "minute": "90'+9'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "H. Hassan",
+          "minute": "90'+12'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "63.7",
+        "possessionPct": "63.6",
         "shotsOnTarget": "7",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "36.3",
+        "possessionPct": "36.4",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
-      "recap": null
+      "recap": "Argentina remarkably beat Egypt 3-2 with a stoppage-time winner after turning around a two-goal deficit in the World Cup round of 16."
     },
     {
       "id": "e760508",
@@ -6076,8 +6082,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -6134,7 +6148,7 @@
     {
       "id": "e760513",
       "date": "2026-07-12T01:00Z",
-      "home": "Round of 16 7 Winner",
+      "home": "Argentina",
       "away": "Round of 16 8 Winner",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
@@ -6217,6 +6231,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T18:06:22.172Z",
+  "lastUpdated": "2026-07-07T19:58:21.432Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
