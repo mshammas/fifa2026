@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-07T09:24:06.195Z",
+  "lastUpdated": "2026-07-08T08:08:19.496Z",
   "rosters": {
     "Algeria": [
       {
@@ -1594,7 +1594,7 @@
         "dob": "1998-04-15",
         "height": "6' 2\"",
         "weight": "172 lbs",
-        "club": "Gaziantep FK"
+        "club": "Partizan Belgrade"
       },
       {
         "id": "246836",
@@ -4471,6 +4471,18 @@
         "club": "AC Milan"
       },
       {
+        "id": "281316",
+        "name": "Kevin Rodríguez",
+        "shortName": "K. Rodríguez",
+        "jersey": 11,
+        "pos": "DEF",
+        "age": 20,
+        "dob": "2005-10-29",
+        "height": "5' 6\"",
+        "weight": "139 lbs",
+        "club": "Peñarol"
+      },
+      {
         "id": "256560",
         "name": "Ángelo Preciado",
         "shortName": "Á. Preciado",
@@ -4613,18 +4625,6 @@
         "height": "5' 7\"",
         "weight": "146 lbs",
         "club": "Venezia"
-      },
-      {
-        "id": "281316",
-        "name": "Kevin Rodríguez",
-        "shortName": "K. Rodríguez",
-        "jersey": 11,
-        "pos": "FWD",
-        "age": 26,
-        "dob": "2000-03-04",
-        "height": "6' 3\"",
-        "weight": "183 lbs",
-        "club": "Peñarol"
       },
       {
         "id": "171771",
@@ -7052,7 +7052,7 @@
         "dob": "2003-04-27",
         "height": "5' 11\"",
         "weight": "157 lbs",
-        "club": "FC Utrecht"
+        "club": "Jong FC Utrecht"
       },
       {
         "id": "311149",
@@ -7164,14 +7164,14 @@
       },
       {
         "id": "274166",
-        "name": "Ali Yousif",
-        "shortName": "A. Yousif",
+        "name": "Hashim Ali",
+        "shortName": "H. Ali",
         "jersey": 13,
         "pos": "FWD",
-        "age": 30,
-        "dob": "1996-01-19",
-        "height": "5' 11\"",
-        "weight": "161 lbs",
+        "age": 25,
+        "dob": "2000-08-17",
+        "height": "5' 5\"",
+        "weight": "119 lbs",
         "club": "Al Sadd"
       },
       {
@@ -8824,7 +8824,7 @@
         "shortName": "V. van Dijk",
         "jersey": 4,
         "pos": "DEF",
-        "age": 34,
+        "age": 35,
         "dob": "1991-07-08",
         "height": "6' 5\"",
         "weight": "203 lbs",
@@ -10664,7 +10664,7 @@
         "dob": "2000-02-05",
         "height": "6' 3\"",
         "weight": "179 lbs",
-        "club": "Qatar"
+        "club": "Al Rayyan"
       },
       {
         "id": "288537",
@@ -10736,7 +10736,7 @@
         "dob": "2002-02-20",
         "height": "5' 11\"",
         "weight": "152 lbs",
-        "club": "Qatar"
+        "club": "Al Rayyan"
       },
       {
         "id": "346649",
@@ -10868,7 +10868,7 @@
         "dob": "1993-01-31",
         "height": "5' 10\"",
         "weight": "146 lbs",
-        "club": "Al Gharafa"
+        "club": "Al Rayyan"
       },
       {
         "id": "109204",
@@ -12470,7 +12470,7 @@
         "shortName": "S. Heung-Min",
         "jersey": 7,
         "pos": "FWD",
-        "age": 33,
+        "age": 34,
         "dob": "1992-07-08",
         "height": "6' 0\"",
         "weight": "168 lbs",
@@ -13110,7 +13110,7 @@
         "shortName": "B. Nygren",
         "jersey": 10,
         "pos": "FWD",
-        "age": 24,
+        "age": 25,
         "dob": "2001-07-08",
         "height": "6' 2\"",
         "weight": "168 lbs",
@@ -14941,18 +14941,6 @@
         "club": "Esteghlal"
       },
       {
-        "id": "288949",
-        "name": "Oston Urunov",
-        "shortName": "O. Urunov",
-        "jersey": 11,
-        "pos": "MID",
-        "age": 25,
-        "dob": "2000-12-19",
-        "height": "5' 11\"",
-        "weight": "168 lbs",
-        "club": "Persepolis"
-      },
-      {
         "id": "195274",
         "name": "Dostonbek Khamdamov",
         "shortName": "D. Khamdamov",
@@ -15011,6 +14999,18 @@
         "height": "6' 3\"",
         "weight": "163 lbs",
         "club": "Akron Tolyatti"
+      },
+      {
+        "id": "288949",
+        "name": "Oston Urunov",
+        "shortName": "O. Urunov",
+        "jersey": 11,
+        "pos": "FWD",
+        "age": 25,
+        "dob": "2000-12-19",
+        "height": "5' 11\"",
+        "weight": "168 lbs",
+        "club": "Persepolis"
       },
       {
         "id": "216937",
