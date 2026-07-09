@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-08T08:08:19.496Z",
+  "lastUpdated": "2026-07-09T09:28:59.562Z",
   "rosters": {
     "Algeria": [
       {
@@ -1602,7 +1602,7 @@
         "shortName": "D. Hadzikadunic",
         "jersey": 3,
         "pos": "DEF",
-        "age": 27,
+        "age": 28,
         "dob": "1998-07-09",
         "height": "6' 3\"",
         "weight": "179 lbs",
@@ -6606,7 +6606,7 @@
         "dob": "1992-06-30",
         "height": "6' 2\"",
         "weight": "183 lbs",
-        "club": "Sepahan"
+        "club": null
       },
       {
         "id": "317748",
@@ -6702,7 +6702,7 @@
         "dob": "1990-03-21",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": "Esteghlal"
+        "club": null
       },
       {
         "id": "401990",
@@ -8054,7 +8054,7 @@
         "dob": "1999-03-23",
         "height": "6' 0\"",
         "weight": "161 lbs",
-        "club": "Khaldiya"
+        "club": null
       },
       {
         "id": "321486",
@@ -10768,7 +10768,7 @@
         "shortName": "B. Khoukhi",
         "jersey": 16,
         "pos": "DEF",
-        "age": 35,
+        "age": 36,
         "dob": "1990-07-09",
         "height": "5' 11\"",
         "weight": "161 lbs",
