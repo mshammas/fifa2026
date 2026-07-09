@@ -6114,16 +6114,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "53.2",
+        "possessionPct": "53.4",
         "shotsOnTarget": "2",
         "totalShots": "7"
       },
       "awayStats": {
-        "possessionPct": "46.8",
+        "possessionPct": "46.6",
         "shotsOnTarget": "3",
         "totalShots": "15"
       },
-      "recap": null
+      "recap": "Rubén Vargas struck the winning spot-kick as Switzerland beat Colombia 4-3 in a penalty shoot-out to reach the World Cup quarterfinals after a goalless 120 minutes in Vancouver."
     },
     {
       "id": "e760510",
@@ -6138,8 +6138,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -6262,6 +6270,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-07T22:58:24.062Z",
+  "lastUpdated": "2026-07-09T19:58:26.109Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
