@@ -6132,19 +6132,27 @@
       "away": "Morocco",
       "group": null,
       "venue": "Gillette Stadium, Foxborough, Massachusetts",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "58'",
-      "goals": [],
+      "clock": "61'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "K. Mbappé",
+          "minute": "60'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "51.3",
-        "shotsOnTarget": "4",
-        "totalShots": "15"
+        "possessionPct": "51.5",
+        "shotsOnTarget": "5",
+        "totalShots": "16"
       },
       "awayStats": {
-        "possessionPct": "48.7",
+        "possessionPct": "48.5",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -6270,6 +6278,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-09T21:24:24.721Z",
+  "lastUpdated": "2026-07-09T21:26:21.985Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
