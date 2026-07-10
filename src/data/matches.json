@@ -6161,16 +6161,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "48.1",
+        "possessionPct": "48",
         "shotsOnTarget": "8",
         "totalShots": "22"
       },
       "awayStats": {
-        "possessionPct": "51.9",
+        "possessionPct": "52",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
-      "recap": null
+      "recap": "Kylian Mbappé had a goal and an assist after missing a first-half penalty kick, Ousmane Dembélé scored the other goal and France beat Morocco 2-0 Thursday in the World Cup quarterfinals."
     },
     {
       "id": "e760511",
@@ -6185,8 +6185,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -6226,7 +6234,7 @@
     {
       "id": "e760514",
       "date": "2026-07-14T19:00Z",
-      "home": "Quarterfinal 1 Winner",
+      "home": "France",
       "away": "Quarterfinal 2 Winner",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
@@ -6292,6 +6300,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-09T22:02:25.111Z",
+  "lastUpdated": "2026-07-10T18:58:24.356Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
