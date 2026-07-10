@@ -6182,16 +6182,24 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "27'",
-      "goals": [],
+      "clock": "30'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "F. Ruiz",
+          "minute": "30'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "63.7",
-        "shotsOnTarget": "0",
-        "totalShots": "3"
+        "possessionPct": "62.4",
+        "shotsOnTarget": "1",
+        "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "36.3",
+        "possessionPct": "37.6",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -6300,6 +6308,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-10T19:28:21.463Z",
+  "lastUpdated": "2026-07-10T19:30:51.808Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
