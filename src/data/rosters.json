@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-09T09:28:59.562Z",
+  "lastUpdated": "2026-07-10T09:01:35.430Z",
   "rosters": {
     "Algeria": [
       {
@@ -6606,7 +6606,7 @@
         "dob": "1992-06-30",
         "height": "6' 2\"",
         "weight": "183 lbs",
-        "club": null
+        "club": "Sepahan"
       },
       {
         "id": "317748",
@@ -6702,7 +6702,7 @@
         "dob": "1990-03-21",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": null
+        "club": "Esteghlal"
       },
       {
         "id": "401990",
@@ -8054,7 +8054,7 @@
         "dob": "1999-03-23",
         "height": "6' 0\"",
         "weight": "161 lbs",
-        "club": null
+        "club": "Khaldiya"
       },
       {
         "id": "321486",
@@ -14020,7 +14020,7 @@
         "dob": "1995-07-15",
         "height": "5' 11\"",
         "weight": "172 lbs",
-        "club": "Kasimpasa"
+        "club": "Fenerbahce"
       },
       {
         "id": "355369",
