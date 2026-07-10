@@ -6180,9 +6180,9 @@
       "group": null,
       "venue": "SoFi Stadium, Inglewood, California",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "38'",
+      "clock": "45'+5'",
       "goals": [
         {
           "side": "home",
@@ -6190,18 +6190,32 @@
           "minute": "30'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "C. De Ketelaere",
+          "minute": "41'",
+          "pen": false,
+          "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "P. Cubarsí",
+          "minute": "43'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "65.5",
+        "possessionPct": "62.9",
         "shotsOnTarget": "3",
-        "totalShots": "6"
+        "totalShots": "9"
       },
       "awayStats": {
-        "possessionPct": "34.5",
-        "shotsOnTarget": "0",
-        "totalShots": "1"
+        "possessionPct": "37.1",
+        "shotsOnTarget": "1",
+        "totalShots": "2"
       },
       "recap": null
     },
@@ -6308,6 +6322,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-10T19:48:26.092Z",
+  "lastUpdated": "2026-07-10T19:50:50.961Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
