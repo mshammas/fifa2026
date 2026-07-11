@@ -6251,10 +6251,10 @@
       "away": "England",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 2,
+      "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "56'",
+      "clock": "58'",
       "goals": [
         {
           "side": "home",
@@ -6269,20 +6269,13 @@
           "minute": "45'+2'",
           "pen": false,
           "og": false
-        },
-        {
-          "side": "home",
-          "player": "T. Heggem",
-          "minute": "55'",
-          "pen": false,
-          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
         "possessionPct": "36.2",
-        "shotsOnTarget": "6",
-        "totalShots": "8"
+        "shotsOnTarget": "4",
+        "totalShots": "7"
       },
       "awayStats": {
         "possessionPct": "63.8",
@@ -6377,6 +6370,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-11T22:18:21.187Z",
+  "lastUpdated": "2026-07-11T22:20:43.498Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
