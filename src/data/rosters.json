@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-10T09:01:35.430Z",
+  "lastUpdated": "2026-07-11T07:40:23.120Z",
   "rosters": {
     "Algeria": [
       {
@@ -1022,7 +1022,7 @@
         "shortName": "P. Lienhart",
         "jersey": 15,
         "pos": "DEF",
-        "age": 29,
+        "age": 30,
         "dob": "1996-07-11",
         "height": "6' 2\"",
         "weight": "183 lbs",
@@ -2560,7 +2560,7 @@
         "dob": "1992-06-17",
         "height": "6' 1\"",
         "weight": "183 lbs",
-        "club": "Shamrock Rovers"
+        "club": null
       },
       {
         "id": "271129",
@@ -2910,7 +2910,7 @@
         "dob": "1998-01-23",
         "height": "5' 11\"",
         "weight": "174 lbs",
-        "club": "Cruz Azul"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "197401",
@@ -2982,7 +2982,7 @@
         "dob": "1991-07-12",
         "height": "5' 11\"",
         "weight": "161 lbs",
-        "club": "Minnesota United FC"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "239566",
@@ -5966,7 +5966,7 @@
         "dob": "2000-06-08",
         "height": "6' 3\"",
         "weight": "161 lbs",
-        "club": "St Patrick's Athletic"
+        "club": null
       },
       {
         "id": "378501",
@@ -6022,11 +6022,11 @@
         "shortName": "G. Mensah",
         "jersey": 14,
         "pos": "DEF",
-        "age": 27,
-        "dob": "1998-07-18",
-        "height": "5' 10\"",
+        "age": 25,
+        "dob": "2000-10-09",
+        "height": "6' 0\"",
         "weight": "152 lbs",
-        "club": "AJ Auxerre"
+        "club": "Varbergs BoIS FC"
       },
       {
         "id": "174508",
@@ -6944,7 +6944,7 @@
         "dob": "2002-03-01",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": "Heerenveen"
+        "club": "Orebro SK"
       },
       {
         "id": "378968",
@@ -7100,7 +7100,7 @@
         "dob": "2004-03-16",
         "height": "6' 0\"",
         "weight": "172 lbs",
-        "club": "Venezia"
+        "club": "Stromsgodset"
       },
       {
         "id": "384274",
@@ -7374,7 +7374,7 @@
         "shortName": "A. Diallo",
         "jersey": 15,
         "pos": "MID",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-11",
         "height": "5' 8\"",
         "weight": "159 lbs",
@@ -8224,7 +8224,7 @@
         "dob": "2000-05-23",
         "height": "5' 10\"",
         "weight": "161 lbs",
-        "club": "América"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "379193",
@@ -8248,7 +8248,7 @@
         "dob": "1994-08-15",
         "height": "5' 10\"",
         "weight": "172 lbs",
-        "club": "Toluca"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "303577",
@@ -8284,7 +8284,7 @@
         "dob": "2000-05-08",
         "height": "5' 8\"",
         "weight": "152 lbs",
-        "club": "Cruz Azul"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "242614",
@@ -8332,7 +8332,7 @@
         "dob": "2005-08-05",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "Atlético de Madrid"
+        "club": "MLS All-Stars"
       },
       {
         "id": "389575",
@@ -8344,7 +8344,7 @@
         "dob": "2008-10-14",
         "height": "5' 6\"",
         "weight": "137 lbs",
-        "club": "Tijuana"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "265969",
@@ -8392,7 +8392,7 @@
         "dob": "1997-11-25",
         "height": "5' 9\"",
         "weight": "168 lbs",
-        "club": "Toluca"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "260775",
@@ -8452,7 +8452,7 @@
         "dob": "1998-09-07",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Guadalajara"
+        "club": "Liga MX All-Stars"
       }
     ],
     "Morocco": [
@@ -9190,7 +9190,7 @@
         "dob": "1999-02-25",
         "height": "6' 3\"",
         "weight": "192 lbs",
-        "club": "Sligo Rovers"
+        "club": null
       },
       {
         "id": "332367",
@@ -9239,18 +9239,6 @@
         "height": "6' 0\"",
         "weight": "181 lbs",
         "club": "Viking FK"
-      },
-      {
-        "id": "297803",
-        "name": "Matthew Garbett",
-        "shortName": "M. Garbett",
-        "jersey": 7,
-        "pos": "MID",
-        "age": 24,
-        "dob": "2002-04-13",
-        "height": "6' 4\"",
-        "weight": "163 lbs",
-        "club": "Peterborough United"
       },
       {
         "id": "297798",
@@ -9323,6 +9311,18 @@
         "height": "5' 10\"",
         "weight": "163 lbs",
         "club": "Newcastle Jets"
+      },
+      {
+        "id": "297803",
+        "name": "Matthew Garbett",
+        "shortName": "M. Garbett",
+        "jersey": 7,
+        "pos": "FWD",
+        "age": 24,
+        "dob": "2002-04-13",
+        "height": "6' 4\"",
+        "weight": "163 lbs",
+        "club": "Falkenbergs FF"
       },
       {
         "id": "134190",
@@ -10200,7 +10200,7 @@
         "shortName": "D. Bobadilla",
         "jersey": 16,
         "pos": "MID",
-        "age": 24,
+        "age": 25,
         "dob": "2001-07-11",
         "height": "5' 11\"",
         "weight": "168 lbs",
@@ -11540,7 +11540,7 @@
         "shortName": "R. Stewart",
         "jersey": 14,
         "pos": "FWD",
-        "age": 29,
+        "age": 30,
         "dob": "1996-07-11",
         "height": "6' 2\"",
         "weight": "185 lbs",
@@ -12858,7 +12858,7 @@
         "shortName": "J. Widell Zetterström",
         "jersey": 1,
         "pos": "GK",
-        "age": 27,
+        "age": 28,
         "dob": "1998-07-11",
         "height": "6' 6\"",
         "weight": "192 lbs",
@@ -13162,7 +13162,7 @@
         "dob": "1997-05-23",
         "height": "6' 6\"",
         "weight": "192 lbs",
-        "club": "Club Brugge"
+        "club": "Falkenbergs FF"
       }
     ],
     "Switzerland": [
@@ -14226,7 +14226,7 @@
         "dob": "2004-08-09",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "Villarreal"
+        "club": "MLS All-Stars"
       },
       {
         "id": "77072",
@@ -14322,7 +14322,7 @@
         "dob": "2001-05-10",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Vancouver Whitecaps"
+        "club": "MLS All-Stars"
       },
       {
         "id": "216617",
@@ -14358,7 +14358,7 @@
         "dob": "2001-04-19",
         "height": "6' 1\"",
         "weight": "172 lbs",
-        "club": "Columbus Crew"
+        "club": "MLS All-Stars"
       },
       {
         "id": "289120",
@@ -14418,7 +14418,7 @@
         "dob": "1998-02-07",
         "height": "5' 6\"",
         "weight": "146 lbs",
-        "club": "América"
+        "club": "Liga MX All-Stars"
       }
     ],
     "Uruguay": [
@@ -14708,7 +14708,7 @@
         "dob": "2000-05-20",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "América"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "159042",
