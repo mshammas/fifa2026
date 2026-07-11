@@ -6233,16 +6233,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "67.8",
+        "possessionPct": "67.9",
         "shotsOnTarget": "8",
         "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "32.2",
+        "possessionPct": "32.1",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
-      "recap": null
+      "recap": "Mikel Merino scored in the 88th minute on a rebound yielded by backup Belgium goalkeeper Senne Lammens, and Spain advanced to the World Cup semifinals with a 2-1 victory on Friday."
     },
     {
       "id": "e760512",
@@ -6257,8 +6257,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -6282,7 +6290,7 @@
       "id": "e760514",
       "date": "2026-07-14T19:00Z",
       "home": "France",
-      "away": "Quarterfinal 2 Winner",
+      "away": "Spain",
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": null,
@@ -6347,6 +6355,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-10T21:00:57.265Z",
+  "lastUpdated": "2026-07-11T20:58:24.723Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
