@@ -6253,8 +6253,8 @@
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "120'+1'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -6287,12 +6287,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "47.3",
+        "possessionPct": "47.7",
         "shotsOnTarget": "4",
         "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "52.7",
+        "possessionPct": "52.3",
         "shotsOnTarget": "8",
         "totalShots": "14"
       },
@@ -6335,7 +6335,7 @@
     {
       "id": "e760515",
       "date": "2026-07-15T19:00Z",
-      "home": "Quarterfinal 3 Winner",
+      "home": "England",
       "away": "Quarterfinal 4 Winner",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
@@ -6384,6 +6384,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-11T23:46:22.235Z",
+  "lastUpdated": "2026-07-11T23:48:23.343Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
