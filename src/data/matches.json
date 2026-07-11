@@ -6254,7 +6254,7 @@
       "homeScore": 1,
       "awayScore": 2,
       "status": "LIVE",
-      "clock": "115'",
+      "clock": "117'",
       "goals": [
         {
           "side": "home",
@@ -6278,14 +6278,21 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "K. Ajer",
+          "minute": "117'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "47",
+        "possessionPct": "47.2",
         "shotsOnTarget": "4",
         "totalShots": "13"
       },
       "awayStats": {
-        "possessionPct": "53",
+        "possessionPct": "52.8",
         "shotsOnTarget": "8",
         "totalShots": "14"
       },
@@ -6377,6 +6384,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-11T23:40:47.504Z",
+  "lastUpdated": "2026-07-11T23:42:21.590Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
