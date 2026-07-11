@@ -6252,9 +6252,9 @@
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "39'",
+      "clock": "45'+4'",
       "goals": [
         {
           "side": "home",
@@ -6262,18 +6262,25 @@
           "minute": "36'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "J. Bellingham",
+          "minute": "45'+2'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "34.9",
-        "shotsOnTarget": "2",
-        "totalShots": "2"
+        "possessionPct": "32.5",
+        "shotsOnTarget": "3",
+        "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "65.1",
-        "shotsOnTarget": "0",
-        "totalShots": "1"
+        "possessionPct": "67.5",
+        "shotsOnTarget": "1",
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -6363,6 +6370,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-11T21:48:26.806Z",
+  "lastUpdated": "2026-07-11T21:50:42.879Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
