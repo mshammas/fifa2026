@@ -6251,27 +6251,19 @@
       "away": "England",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 1,
+      "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "37'",
-      "goals": [
-        {
-          "side": "home",
-          "player": "A. Schjelderup",
-          "minute": "36'",
-          "pen": false,
-          "og": false
-        }
-      ],
+      "clock": "31'",
+      "goals": [],
       "cards": [],
       "homeStats": {
-        "possessionPct": "35.7",
-        "shotsOnTarget": "2",
-        "totalShots": "2"
+        "possessionPct": "31",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "64.3",
+        "possessionPct": "69",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
@@ -6363,6 +6355,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-11T21:38:23.529Z",
+  "lastUpdated": "2026-07-11T21:40:48.506Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
