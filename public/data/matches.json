@@ -6251,10 +6251,10 @@
       "away": "England",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": null,
-      "awayScore": null,
-      "status": "NS",
-      "clock": null,
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "LIVE",
+      "clock": "1'",
       "goals": [],
       "cards": [],
       "homeStats": {
@@ -6355,6 +6355,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-11T21:01:02.116Z",
+  "lastUpdated": "2026-07-11T21:02:21.551Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
