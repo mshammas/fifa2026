@@ -6306,14 +6306,21 @@
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "67'",
+      "clock": "69'",
       "goals": [
         {
           "side": "home",
           "player": "A. Mac Allister",
           "minute": "10'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "D. Ndoye",
+          "minute": "67'",
           "pen": false,
           "og": false
         }
@@ -6324,17 +6331,23 @@
           "player": "B. Embolo",
           "minute": "44'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "L. Paredes",
+          "minute": "69'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "46.5",
+        "possessionPct": "46.1",
         "shotsOnTarget": "1",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "53.5",
-        "shotsOnTarget": "4",
-        "totalShots": "8"
+        "possessionPct": "53.9",
+        "shotsOnTarget": "5",
+        "totalShots": "9"
       },
       "recap": null
     },
@@ -6407,6 +6420,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-12T02:28:21.460Z",
+  "lastUpdated": "2026-07-12T02:30:52.195Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
