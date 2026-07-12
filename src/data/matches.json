@@ -6305,10 +6305,10 @@
       "away": "Switzerland",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "111'",
+      "clock": "114'",
       "goals": [
         {
           "side": "home",
@@ -6321,6 +6321,13 @@
           "side": "away",
           "player": "D. Ndoye",
           "minute": "67'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "J. Álvarez",
+          "minute": "112'",
           "pen": false,
           "og": false
         }
@@ -6352,12 +6359,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "59.6",
-        "shotsOnTarget": "3",
-        "totalShots": "17"
+        "possessionPct": "59.7",
+        "shotsOnTarget": "5",
+        "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "40.4",
+        "possessionPct": "40.3",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
@@ -6432,6 +6439,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-12T03:32:24.193Z",
+  "lastUpdated": "2026-07-12T03:34:24.571Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
