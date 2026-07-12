@@ -6308,7 +6308,7 @@
       "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "43'",
+      "clock": "45'",
       "goals": [
         {
           "side": "home",
@@ -6318,16 +6318,23 @@
           "og": false
         }
       ],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "B. Embolo",
+          "minute": "44'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "40.5",
+        "possessionPct": "41",
         "shotsOnTarget": "1",
         "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "59.5",
+        "possessionPct": "59",
         "shotsOnTarget": "1",
-        "totalShots": "4"
+        "totalShots": "3"
       },
       "recap": null
     },
@@ -6400,6 +6407,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-12T01:44:23.657Z",
+  "lastUpdated": "2026-07-12T01:46:21.512Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
