@@ -6308,7 +6308,7 @@
       "homeScore": 1,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "96'",
+      "clock": "99'",
       "goals": [
         {
           "side": "home",
@@ -6343,15 +6343,21 @@
           "player": "T. Almada",
           "minute": "97'",
           "type": "yellow"
+        },
+        {
+          "side": "home",
+          "player": "L. Martínez",
+          "minute": "98'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "57.5",
+        "possessionPct": "57.2",
         "shotsOnTarget": "3",
         "totalShots": "14"
       },
       "awayStats": {
-        "possessionPct": "42.5",
+        "possessionPct": "42.8",
         "shotsOnTarget": "5",
         "totalShots": "9"
       },
@@ -6426,6 +6432,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-12T03:12:21.482Z",
+  "lastUpdated": "2026-07-12T03:14:23.277Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
