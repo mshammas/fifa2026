@@ -6305,10 +6305,10 @@
       "away": "Switzerland",
       "group": null,
       "venue": "GEHA Field at Arrowhead Stadium, Kansas City, Missouri",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 1,
       "status": "LIVE",
-      "clock": "120'",
+      "clock": "120'+2'",
       "goals": [
         {
           "side": "home",
@@ -6328,6 +6328,13 @@
           "side": "home",
           "player": "J. Álvarez",
           "minute": "112'",
+          "pen": false,
+          "og": false
+        },
+        {
+          "side": "home",
+          "player": "L. Martínez",
+          "minute": "120'+1'",
           "pen": false,
           "og": false
         }
@@ -6365,12 +6372,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "59",
-        "shotsOnTarget": "5",
-        "totalShots": "19"
+        "possessionPct": "58.9",
+        "shotsOnTarget": "6",
+        "totalShots": "21"
       },
       "awayStats": {
-        "possessionPct": "41",
+        "possessionPct": "41.1",
         "shotsOnTarget": "5",
         "totalShots": "11"
       },
@@ -6445,6 +6452,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-12T03:40:43.295Z",
+  "lastUpdated": "2026-07-12T03:42:27.159Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
