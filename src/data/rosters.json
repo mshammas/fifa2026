@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-11T07:40:23.120Z",
+  "lastUpdated": "2026-07-12T07:59:38.812Z",
   "rosters": {
     "Algeria": [
       {
@@ -410,7 +410,7 @@
         "dob": "1988-02-12",
         "height": "6' 0\"",
         "weight": "183 lbs",
-        "club": "Benfica"
+        "club": "River Plate"
       },
       {
         "id": "249663",
@@ -664,7 +664,7 @@
         "dob": "1994-04-28",
         "height": "6' 2\"",
         "weight": "181 lbs",
-        "club": "Apoel Nicosia"
+        "club": "FK TSC"
       },
       {
         "id": "332081",
@@ -1606,7 +1606,7 @@
         "dob": "1998-07-09",
         "height": "6' 3\"",
         "weight": "179 lbs",
-        "club": "Sampdoria"
+        "club": "Rostov"
       },
       {
         "id": "318390",
@@ -2072,7 +2072,7 @@
         "shortName": "Vinícius Júnior",
         "jersey": 7,
         "pos": "FWD",
-        "age": 25,
+        "age": 26,
         "dob": "2000-07-12",
         "height": "5' 9\"",
         "weight": "170 lbs",
@@ -2450,7 +2450,7 @@
         "dob": "1999-11-26",
         "height": "5' 11\"",
         "weight": "161 lbs",
-        "club": "LAFC"
+        "club": "Toronto FC II"
       },
       {
         "id": "284769",
@@ -2486,7 +2486,7 @@
         "dob": "2002-09-26",
         "height": "5' 7\"",
         "weight": "148 lbs",
-        "club": "Austin FC"
+        "club": "Toronto FC II"
       }
     ],
     "Cape Verde": [
@@ -2560,7 +2560,7 @@
         "dob": "1992-06-17",
         "height": "6' 1\"",
         "weight": "183 lbs",
-        "club": null
+        "club": "Shamrock Rovers"
       },
       {
         "id": "271129",
@@ -2978,7 +2978,7 @@
         "shortName": "J. Rodríguez",
         "jersey": 10,
         "pos": "MID",
-        "age": 34,
+        "age": 35,
         "dob": "1991-07-12",
         "height": "5' 11\"",
         "weight": "161 lbs",
@@ -3042,7 +3042,7 @@
         "dob": "1993-01-18",
         "height": "5' 6\"",
         "weight": "157 lbs",
-        "club": "América de Cali"
+        "club": "River Plate"
       },
       {
         "id": "255295",
@@ -4250,7 +4250,7 @@
         "dob": "1999-05-31",
         "height": "5' 7\"",
         "weight": "141 lbs",
-        "club": "Slavia Prague"
+        "club": "Liberec"
       },
       {
         "id": "343937",
@@ -4471,18 +4471,6 @@
         "club": "AC Milan"
       },
       {
-        "id": "281316",
-        "name": "Kevin Rodríguez",
-        "shortName": "K. Rodríguez",
-        "jersey": 11,
-        "pos": "DEF",
-        "age": 20,
-        "dob": "2005-10-29",
-        "height": "5' 6\"",
-        "weight": "139 lbs",
-        "club": "Peñarol"
-      },
-      {
         "id": "256560",
         "name": "Ángelo Preciado",
         "shortName": "Á. Preciado",
@@ -4540,7 +4528,7 @@
         "dob": "2007-05-04",
         "height": "5' 10\"",
         "weight": "157 lbs",
-        "club": "Strasbourg"
+        "club": "River Plate"
       },
       {
         "id": "297150",
@@ -4625,6 +4613,18 @@
         "height": "5' 7\"",
         "weight": "146 lbs",
         "club": "Venezia"
+      },
+      {
+        "id": "281316",
+        "name": "Kevin Rodríguez",
+        "shortName": "K. Rodríguez",
+        "jersey": 11,
+        "pos": "FWD",
+        "age": 26,
+        "dob": "2000-03-04",
+        "height": "6' 3\"",
+        "weight": "183 lbs",
+        "club": "Union St.-Gilloise"
       },
       {
         "id": "171771",
@@ -5966,7 +5966,7 @@
         "dob": "2000-06-08",
         "height": "6' 3\"",
         "weight": "161 lbs",
-        "club": null
+        "club": "St Patrick's Athletic"
       },
       {
         "id": "378501",
@@ -6022,11 +6022,11 @@
         "shortName": "G. Mensah",
         "jersey": 14,
         "pos": "DEF",
-        "age": 25,
-        "dob": "2000-10-09",
-        "height": "6' 0\"",
+        "age": 27,
+        "dob": "1998-07-18",
+        "height": "5' 10\"",
         "weight": "152 lbs",
-        "club": "Varbergs BoIS FC"
+        "club": "AJ Auxerre"
       },
       {
         "id": "174508",
@@ -6384,7 +6384,7 @@
         "shortName": "J. Duverne",
         "jersey": 22,
         "pos": "DEF",
-        "age": 28,
+        "age": 29,
         "dob": "1997-07-12",
         "height": "6' 0\"",
         "weight": "170 lbs",
@@ -7004,7 +7004,7 @@
         "dob": "1999-12-07",
         "height": "5' 8\"",
         "weight": "141 lbs",
-        "club": "Slovacko"
+        "club": "Viktoria Plzen"
       },
       {
         "id": "371649",
@@ -7156,7 +7156,7 @@
         "shortName": "A. Qasim",
         "jersey": 11,
         "pos": "FWD",
-        "age": 22,
+        "age": 23,
         "dob": "2003-07-12",
         "height": "6' 0\"",
         "weight": "161 lbs",
@@ -7652,7 +7652,7 @@
         "shortName": "J. Suzuki",
         "jersey": 25,
         "pos": "DEF",
-        "age": 22,
+        "age": 23,
         "dob": "2003-07-12",
         "height": "5' 11\"",
         "weight": "157 lbs",
@@ -8260,7 +8260,7 @@
         "dob": "2007-01-21",
         "height": "6' 1\"",
         "weight": "181 lbs",
-        "club": "Guadalajara"
+        "club": "River Plate"
       },
       {
         "id": "241627",
@@ -8840,7 +8840,7 @@
         "dob": "1995-02-18",
         "height": "5' 11\"",
         "weight": "183 lbs",
-        "club": "Manchester City"
+        "club": "Fenerbahce"
       },
       {
         "id": "282583",
@@ -9190,7 +9190,7 @@
         "dob": "1999-02-25",
         "height": "6' 3\"",
         "weight": "192 lbs",
-        "club": null
+        "club": "Sligo Rovers"
       },
       {
         "id": "332367",
@@ -9644,7 +9644,7 @@
         "shortName": "O. Bobb",
         "jersey": 22,
         "pos": "MID",
-        "age": 22,
+        "age": 23,
         "dob": "2003-07-12",
         "height": "5' 9\"",
         "weight": "159 lbs",
@@ -9905,6 +9905,18 @@
         "club": "Pumas UNAM"
       },
       {
+        "id": "288563",
+        "name": "Tomás Rodríguez",
+        "shortName": "T. Rodríguez",
+        "jersey": 9,
+        "pos": "MID",
+        "age": 22,
+        "dob": "2004-01-05",
+        "height": "6' 0\"",
+        "weight": "163 lbs",
+        "club": "Acassuso"
+      },
+      {
         "id": "201919",
         "name": "Édgar Yoel Bárcenas",
         "shortName": "É. Bárcenas",
@@ -9939,18 +9951,6 @@
         "height": "6' 0\"",
         "weight": "163 lbs",
         "club": "San Diego FC"
-      },
-      {
-        "id": "288563",
-        "name": "Tomás Rodríguez",
-        "shortName": "T. Rodríguez",
-        "jersey": 9,
-        "pos": "FWD",
-        "age": 27,
-        "dob": "1999-03-09",
-        "height": "6' 0\"",
-        "weight": "163 lbs",
-        "club": "Acassuso"
       },
       {
         "id": "195326",
@@ -10252,7 +10252,7 @@
         "dob": "2002-02-11",
         "height": "5' 9\"",
         "weight": "148 lbs",
-        "club": "Atlanta United FC"
+        "club": "River Plate"
       },
       {
         "id": "301653",
@@ -12052,7 +12052,7 @@
         "dob": "2004-04-30",
         "height": "6' 2\"",
         "weight": "159 lbs",
-        "club": "Philadelphia Union"
+        "club": "Philadelphia Union II"
       },
       {
         "id": "310593",
@@ -12796,7 +12796,7 @@
         "shortName": "N. Williams",
         "jersey": 17,
         "pos": "FWD",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-12",
         "height": "5' 11\"",
         "weight": "148 lbs",
@@ -13948,7 +13948,7 @@
         "dob": "1994-03-13",
         "height": "6' 3\"",
         "weight": "183 lbs",
-        "club": "Caykur Rizespor"
+        "club": "Trabzonspor"
       },
       {
         "id": "225563",
@@ -14226,7 +14226,7 @@
         "dob": "2004-08-09",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "MLS All-Stars"
+        "club": "Villarreal"
       },
       {
         "id": "77072",
@@ -14528,7 +14528,7 @@
         "dob": "1997-11-09",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Flamengo"
+        "club": "River Plate"
       },
       {
         "id": "254007",
@@ -14672,7 +14672,7 @@
         "dob": "1999-08-12",
         "height": "5' 10\"",
         "weight": "152 lbs",
-        "club": "Braga"
+        "club": "Sporting CP"
       },
       {
         "id": "271788",
