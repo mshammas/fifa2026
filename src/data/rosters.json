@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-12T07:59:38.812Z",
+  "lastUpdated": "2026-07-13T08:47:37.918Z",
   "rosters": {
     "Algeria": [
       {
@@ -4090,7 +4090,7 @@
         "shortName": "L. Hornícek",
         "jersey": 23,
         "pos": "GK",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-13",
         "height": "6' 6\"",
         "weight": "203 lbs",
@@ -5080,7 +5080,7 @@
         "shortName": "M. Guéhi",
         "jersey": 6,
         "pos": "DEF",
-        "age": 25,
+        "age": 26,
         "dob": "2000-07-13",
         "height": "6' 0\"",
         "weight": "174 lbs",
@@ -5974,7 +5974,7 @@
         "shortName": "B. Asare",
         "jersey": 16,
         "pos": "GK",
-        "age": 33,
+        "age": 34,
         "dob": "1992-07-13",
         "height": "6' 2\"",
         "weight": "172 lbs",
@@ -7942,7 +7942,7 @@
         "shortName": "M. Abughoush",
         "jersey": 18,
         "pos": "DEF",
-        "age": 20,
+        "age": 21,
         "dob": "2005-07-13",
         "height": "6' 0\"",
         "weight": "161 lbs",
@@ -8172,7 +8172,7 @@
         "shortName": "G. Ochoa",
         "jersey": 13,
         "pos": "GK",
-        "age": 40,
+        "age": 41,
         "dob": "1985-07-13",
         "height": "6' 3\"",
         "weight": "185 lbs",
@@ -11528,7 +11528,7 @@
         "shortName": "C. Adams",
         "jersey": 10,
         "pos": "FWD",
-        "age": 29,
+        "age": 30,
         "dob": "1996-07-13",
         "height": "5' 9\"",
         "weight": "152 lbs",
@@ -12808,7 +12808,7 @@
         "shortName": "L. Yamal",
         "jersey": 19,
         "pos": "FWD",
-        "age": 18,
+        "age": 19,
         "dob": "2007-07-13",
         "height": "5' 10\"",
         "weight": "168 lbs",
@@ -12832,7 +12832,7 @@
         "shortName": "V. Muñoz",
         "jersey": 25,
         "pos": "FWD",
-        "age": 22,
+        "age": 23,
         "dob": "2003-07-13",
         "height": "5' 8\"",
         "weight": "152 lbs",
@@ -13162,7 +13162,7 @@
         "dob": "1997-05-23",
         "height": "6' 6\"",
         "weight": "192 lbs",
-        "club": "Falkenbergs FF"
+        "club": "Club Brugge"
       }
     ],
     "Switzerland": [
@@ -13586,7 +13586,7 @@
         "dob": "1999-02-22",
         "height": "5' 11\"",
         "weight": "161 lbs",
-        "club": "Sheffield Wednesday"
+        "club": "Young Boys"
       },
       {
         "id": "296982",
@@ -13786,7 +13786,7 @@
         "shortName": "S. Tounekti",
         "jersey": 26,
         "pos": "FWD",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-13",
         "height": "6' 0\"",
         "weight": "174 lbs",
