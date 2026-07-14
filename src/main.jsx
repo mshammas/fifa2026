@@ -2730,13 +2730,23 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   const minDate = "2026-06-11";
   const maxDate = "2026-07-19";
 
-  const matchStage = (m) => {
-    if (m.status === "NS" && !m.group) {
-      const d = m.date?.slice(0, 10);
-      if (d >= "2026-07-09" && d <= "2026-07-12") return "qf";
-      if (d >= "2026-07-14" && d <= "2026-07-15") return "sf";
-      if (d >= "2026-07-19") return "final";
+  // Knockout rounds have fixed sizes (R32=16, R16=8, QF=4, SF=2, 3rd=1, Final=1);
+  // chunking the sorted knockout matches by round size survives once matches finish,
+  // unlike guessing the stage from hardcoded date windows + NS status.
+  const knockoutStageById = useMemo(() => {
+    const rounds = [["r32", 16], ["r16", 8], ["qf", 4], ["sf", 2], ["third", 1], ["final", 1]];
+    const knockout = matches.filter((m) => !m.group).sort((a, b) => new Date(a.date) - new Date(b.date));
+    const map = new Map();
+    let idx = 0;
+    for (const [key, count] of rounds) {
+      for (let i = 0; i < count && idx < knockout.length; i++, idx++) map.set(knockout[idx].id, key);
     }
+    return map;
+  }, [matches]);
+
+  const matchStage = (m) => {
+    const s = knockoutStageById.get(m.id);
+    if (s === "qf" || s === "sf" || s === "final") return s;
     return m.status === "NS" ? "upcoming" : null;
   };
 

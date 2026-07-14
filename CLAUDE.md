@@ -203,6 +203,11 @@ Do not regress these when adding new UI elements — check against this list.
 - When `search` is empty: group filter and favs-only row are shown as normal.
 - Searching bypasses the group filter entirely (the two are mutually exclusive modes).
 
+### Schedule tab stage filter (`ScheduleTab.matchStage`)
+- Knockout rounds have fixed sizes (R32=16, R16=8, QF=4, SF=2, 3rd place=1, Final=1 → 32 knockout matches total, always). `knockoutStageById` sorts all `!m.group` matches by date and chunks them by these fixed round sizes to build an id→stage map — this is the reliable way to tell which round a knockout match belongs to.
+- Do NOT classify knockout stage by hardcoded date windows or by gating on `m.status === "NS"` — both break once real dates ship (ESPN's placeholder dates shift as the bracket plays out) and once a round's matches actually kick off/finish (status moves off `NS`), which caused the "Qtr" filter to show zero matches for completed quarterfinals.
+- The four stage-filter chips are "Upcoming" / "Qtr" / "Semi" / "Final" — there's no chip for R32/R16/3rd-place; those matches only surface via "Upcoming" while still `NS`, same as before.
+
 ### Text size scaling (`wc_font_scale`)
 - Values: `1` (Normal), `1.25` (Large), `1.5` (Huge). Default: `1`.
 - Applied as `zoom: ${fontScale}` on the `html` element inside `GlobalStyles`.
