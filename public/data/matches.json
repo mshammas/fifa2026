@@ -6391,15 +6391,22 @@
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "LIVE",
-      "clock": "58'",
+      "clock": "60'",
       "goals": [
         {
           "side": "away",
           "player": "M. Oyarzabal",
           "minute": "22'",
           "pen": true,
+          "og": false
+        },
+        {
+          "side": "away",
+          "player": "P. Porro",
+          "minute": "58'",
+          "pen": false,
           "og": false
         }
       ],
@@ -6418,14 +6425,14 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "47.2",
+        "possessionPct": "46.4",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
       "awayStats": {
-        "possessionPct": "52.8",
-        "shotsOnTarget": "1",
-        "totalShots": "6"
+        "possessionPct": "53.6",
+        "shotsOnTarget": "2",
+        "totalShots": "8"
       },
       "recap": null
     },
@@ -6481,6 +6488,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-14T20:20:50.780Z",
+  "lastUpdated": "2026-07-14T20:22:27.107Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
