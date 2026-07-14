@@ -6391,10 +6391,18 @@
       "group": null,
       "venue": "AT&T Stadium, Arlington, Texas",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "21'",
-      "goals": [],
+      "clock": "22'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "M. Oyarzabal",
+          "minute": "22'",
+          "pen": true,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -6467,6 +6475,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-14T19:20:53.579Z",
+  "lastUpdated": "2026-07-14T19:22:27.489Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
