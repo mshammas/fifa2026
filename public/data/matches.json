@@ -6393,16 +6393,23 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "8'",
+      "clock": "11'",
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "home",
+          "player": "A. Rabiot",
+          "minute": "9'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "35.6",
+        "possessionPct": "34.7",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "64.4",
+        "possessionPct": "65.3",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
@@ -6460,6 +6467,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-14T19:08:28.045Z",
+  "lastUpdated": "2026-07-14T19:10:53.746Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
