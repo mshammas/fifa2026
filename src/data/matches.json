@@ -6431,16 +6431,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "49.2",
+        "possessionPct": "49.1",
         "shotsOnTarget": "3",
         "totalShots": "10"
       },
       "awayStats": {
-        "possessionPct": "50.8",
+        "possessionPct": "50.9",
         "shotsOnTarget": "2",
         "totalShots": "10"
       },
-      "recap": null
+      "recap": "Mikel Oyarzabal and Pedro Porro gave Spain a 2-0 win over France in the first semifinal of the World Cup."
     },
     {
       "id": "e760515",
@@ -6455,14 +6455,22 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
       "id": "e760516",
       "date": "2026-07-18T21:00Z",
-      "home": "Semifinal 1 Loser",
+      "home": "France",
       "away": "Semifinal 2 Loser",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
@@ -6479,7 +6487,7 @@
     {
       "id": "e760517",
       "date": "2026-07-19T19:00Z",
-      "home": "Semifinal 1 Winner",
+      "home": "Spain",
       "away": "Semifinal 2 Winner",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
@@ -6494,6 +6502,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-14T21:01:04.987Z",
+  "lastUpdated": "2026-07-15T18:58:26.253Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
