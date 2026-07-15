@@ -6452,7 +6452,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "40'",
+      "clock": "42'",
       "goals": [],
       "cards": [
         {
@@ -6460,15 +6460,21 @@
           "player": "E. Anderson",
           "minute": "37'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Martínez",
+          "minute": "42'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "41.9",
+        "possessionPct": "38.9",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "58.1",
+        "possessionPct": "61.1",
         "shotsOnTarget": "0",
         "totalShots": "2"
       },
@@ -6509,6 +6515,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-15T19:40:58.508Z",
+  "lastUpdated": "2026-07-15T19:42:26.614Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
