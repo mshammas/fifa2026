@@ -6451,8 +6451,8 @@
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
       "homeScore": 1,
       "awayScore": 2,
-      "status": "LIVE",
-      "clock": "90'+11'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -6503,12 +6503,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "35.1",
+        "possessionPct": "35.6",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "64.9",
+        "possessionPct": "64.4",
         "shotsOnTarget": "5",
         "totalShots": "15"
       },
@@ -6518,7 +6518,7 @@
       "id": "e760516",
       "date": "2026-07-18T21:00Z",
       "home": "France",
-      "away": "Semifinal 2 Loser",
+      "away": "England",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": null,
@@ -6535,7 +6535,7 @@
       "id": "e760517",
       "date": "2026-07-19T19:00Z",
       "home": "Spain",
-      "away": "Semifinal 2 Winner",
+      "away": "Argentina",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": null,
@@ -6549,6 +6549,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-15T21:02:23.457Z",
+  "lastUpdated": "2026-07-15T21:04:28.526Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
