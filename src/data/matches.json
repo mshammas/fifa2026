@@ -6449,11 +6449,19 @@
       "away": "Argentina",
       "group": null,
       "venue": "Mercedes-Benz Stadium, Atlanta, Georgia",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "53'",
-      "goals": [],
+      "clock": "55'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "A. Gordon",
+          "minute": "55'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "home",
@@ -6475,12 +6483,12 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "46",
+        "possessionPct": "44.6",
         "shotsOnTarget": "0",
         "totalShots": "1"
       },
       "awayStats": {
-        "possessionPct": "54",
+        "possessionPct": "55.4",
         "shotsOnTarget": "1",
         "totalShots": "4"
       },
@@ -6521,6 +6529,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-15T20:14:26.712Z",
+  "lastUpdated": "2026-07-15T20:16:23.705Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
