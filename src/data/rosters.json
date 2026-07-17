@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-16T07:56:06.965Z",
+  "lastUpdated": "2026-07-17T07:56:40.168Z",
   "rosters": {
     "Algeria": [
       {
@@ -1686,7 +1686,7 @@
         "shortName": "N. Celik",
         "jersey": 24,
         "pos": "DEF",
-        "age": 19,
+        "age": 20,
         "dob": "2006-07-17",
         "height": "6' 4\"",
         "weight": "183 lbs",
@@ -2877,6 +2877,18 @@
         "club": "Bologna"
       },
       {
+        "id": "164756",
+        "name": "Santiago Arias",
+        "shortName": "S. Arias",
+        "jersey": 4,
+        "pos": "DEF",
+        "age": 34,
+        "dob": "1992-01-13",
+        "height": "5' 10\"",
+        "weight": "168 lbs",
+        "club": "Independiente"
+      },
+      {
         "id": "196901",
         "name": "Yerry Mina",
         "shortName": "Y. Mina",
@@ -2910,7 +2922,7 @@
         "dob": "1998-01-23",
         "height": "5' 11\"",
         "weight": "174 lbs",
-        "club": "Cruz Azul"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "197401",
@@ -2935,18 +2947,6 @@
         "height": "6' 2\"",
         "weight": "181 lbs",
         "club": "Galatasaray"
-      },
-      {
-        "id": "164756",
-        "name": "Santiago Arias",
-        "shortName": "S. Arias",
-        "jersey": 4,
-        "pos": "MID",
-        "age": 31,
-        "dob": "1995-06-19",
-        "height": "5' 11\"",
-        "weight": "172 lbs",
-        "club": "Cienciano del Cusco"
       },
       {
         "id": "307756",
@@ -3792,7 +3792,7 @@
         "dob": "1999-07-06",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "Curaçao"
+        "club": "VVV-Venlo"
       },
       {
         "id": "301456",
@@ -4483,6 +4483,18 @@
         "club": "AC Milan"
       },
       {
+        "id": "281316",
+        "name": "Kevin Rodríguez",
+        "shortName": "K. Rodríguez",
+        "jersey": 11,
+        "pos": "DEF",
+        "age": 20,
+        "dob": "2005-10-29",
+        "height": "5' 6\"",
+        "weight": "139 lbs",
+        "club": "Peñarol"
+      },
+      {
         "id": "256560",
         "name": "Ángelo Preciado",
         "shortName": "Á. Preciado",
@@ -4625,18 +4637,6 @@
         "height": "5' 7\"",
         "weight": "146 lbs",
         "club": "Venezia"
-      },
-      {
-        "id": "281316",
-        "name": "Kevin Rodríguez",
-        "shortName": "K. Rodríguez",
-        "jersey": 11,
-        "pos": "FWD",
-        "age": 26,
-        "dob": "2000-03-04",
-        "height": "6' 3\"",
-        "weight": "183 lbs",
-        "club": "Peñarol"
       },
       {
         "id": "171771",
@@ -8263,6 +8263,18 @@
         "club": "Liga MX All-Stars"
       },
       {
+        "id": "303577",
+        "name": "Brian Gutiérrez",
+        "shortName": "B. Gutiérrez",
+        "jersey": 26,
+        "pos": "DEF",
+        "age": 19,
+        "dob": "2007-01-21",
+        "height": "6' 1\"",
+        "weight": "181 lbs",
+        "club": "River Plate"
+      },
+      {
         "id": "241627",
         "name": "Edson Álvarez",
         "shortName": "E. Álvarez",
@@ -8332,7 +8344,7 @@
         "dob": "2005-08-05",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "Atlético de Madrid"
+        "club": "MLS All-Stars"
       },
       {
         "id": "389575",
@@ -8369,18 +8381,6 @@
         "height": "5' 10\"",
         "weight": "161 lbs",
         "club": "Dinamo Moscow"
-      },
-      {
-        "id": "303577",
-        "name": "Brian Gutiérrez",
-        "shortName": "B. Gutiérrez",
-        "jersey": 26,
-        "pos": "MID",
-        "age": 23,
-        "dob": "2003-06-17",
-        "height": "5' 10\"",
-        "weight": "159 lbs",
-        "club": "Guadalajara"
       },
       {
         "id": "167060",
@@ -8464,7 +8464,7 @@
         "dob": "1998-09-07",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Guadalajara"
       }
     ],
     "Morocco": [
@@ -10348,7 +10348,7 @@
         "dob": "1999-08-14",
         "height": "6' 0\"",
         "weight": "172 lbs",
-        "club": "Red Bull Bragantino"
+        "club": "Deportivo Santaní"
       }
     ],
     "Portugal": [
@@ -12918,7 +12918,7 @@
         "shortName": "V. Lindelöf",
         "jersey": 3,
         "pos": "DEF",
-        "age": 31,
+        "age": 32,
         "dob": "1994-07-17",
         "height": "6' 2\"",
         "weight": "181 lbs",
@@ -13570,7 +13570,7 @@
         "shortName": "A. Arous",
         "jersey": 5,
         "pos": "DEF",
-        "age": 21,
+        "age": 22,
         "dob": "2004-07-17",
         "height": "6' 2\"",
         "weight": "174 lbs",
@@ -14334,7 +14334,7 @@
         "dob": "2001-05-10",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Vancouver Whitecaps"
+        "club": "MLS All-Stars"
       },
       {
         "id": "216617",
@@ -14370,7 +14370,7 @@
         "dob": "2001-04-19",
         "height": "6' 1\"",
         "weight": "172 lbs",
-        "club": "Columbus Crew"
+        "club": "MLS All-Stars"
       },
       {
         "id": "289120",
