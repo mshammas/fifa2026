@@ -6503,16 +6503,16 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "35.6",
+        "possessionPct": "35.8",
         "shotsOnTarget": "2",
         "totalShots": "5"
       },
       "awayStats": {
-        "possessionPct": "64.4",
+        "possessionPct": "64.2",
         "shotsOnTarget": "5",
         "totalShots": "15"
       },
-      "recap": null
+      "recap": "Defending champion Argentina rallied to beat England 2-1 on Wednesday and reach the World Cup final."
     },
     {
       "id": "e760516",
@@ -6527,8 +6527,16 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     },
     {
@@ -6549,6 +6557,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-15T21:04:28.526Z",
+  "lastUpdated": "2026-07-18T20:58:23.807Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
