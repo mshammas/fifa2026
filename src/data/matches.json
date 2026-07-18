@@ -6522,20 +6522,28 @@
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "status": "LIVE",
-      "clock": "1'",
-      "goals": [],
+      "clock": "4'",
+      "goals": [
+        {
+          "side": "away",
+          "player": "D. Rice",
+          "minute": "3'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "0",
+        "possessionPct": "27.6",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "awayStats": {
-        "possessionPct": "0",
-        "shotsOnTarget": "0",
-        "totalShots": "0"
+        "possessionPct": "72.4",
+        "shotsOnTarget": "1",
+        "totalShots": "1"
       },
       "recap": null
     },
@@ -6557,6 +6565,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-18T21:02:25.679Z",
+  "lastUpdated": "2026-07-18T21:04:26.647Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
