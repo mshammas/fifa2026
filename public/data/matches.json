@@ -6522,9 +6522,9 @@
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
       "homeScore": 3,
-      "awayScore": 4,
+      "awayScore": 5,
       "status": "LIVE",
-      "clock": "85'",
+      "clock": "89'",
       "goals": [
         {
           "side": "away",
@@ -6574,18 +6574,25 @@
           "minute": "66'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "away",
+          "player": "B. Saka",
+          "minute": "87'",
+          "pen": true,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "46.2",
+        "possessionPct": "45.8",
         "shotsOnTarget": "8",
         "totalShots": "17"
       },
       "awayStats": {
-        "possessionPct": "53.8",
-        "shotsOnTarget": "9",
-        "totalShots": "17"
+        "possessionPct": "54.2",
+        "shotsOnTarget": "10",
+        "totalShots": "18"
       },
       "recap": null
     },
@@ -6607,6 +6614,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-18T22:50:35.028Z",
+  "lastUpdated": "2026-07-18T22:52:24.651Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
