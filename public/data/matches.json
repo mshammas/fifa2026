@@ -6521,10 +6521,10 @@
       "away": "England",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 4,
       "status": "LIVE",
-      "clock": "63'",
+      "clock": "67'",
       "goals": [
         {
           "side": "away",
@@ -6567,18 +6567,25 @@
           "minute": "54'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "K. Mbappé",
+          "minute": "66'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "42.6",
-        "shotsOnTarget": "4",
-        "totalShots": "9"
+        "possessionPct": "44.6",
+        "shotsOnTarget": "7",
+        "totalShots": "12"
       },
       "awayStats": {
-        "possessionPct": "57.4",
+        "possessionPct": "55.4",
         "shotsOnTarget": "8",
-        "totalShots": "14"
+        "totalShots": "15"
       },
       "recap": null
     },
@@ -6600,6 +6607,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-18T22:28:28.519Z",
+  "lastUpdated": "2026-07-18T22:30:48.359Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
