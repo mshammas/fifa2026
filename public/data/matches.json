@@ -6521,10 +6521,10 @@
       "away": "England",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 4,
       "status": "LIVE",
-      "clock": "51'",
+      "clock": "55'",
       "goals": [
         {
           "side": "away",
@@ -6560,18 +6560,25 @@
           "minute": "48'",
           "pen": false,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "B. Barcola",
+          "minute": "54'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "44.2",
-        "shotsOnTarget": "3",
-        "totalShots": "7"
+        "possessionPct": "44.4",
+        "shotsOnTarget": "4",
+        "totalShots": "8"
       },
       "awayStats": {
-        "possessionPct": "55.8",
+        "possessionPct": "55.6",
         "shotsOnTarget": "7",
-        "totalShots": "12"
+        "totalShots": "13"
       },
       "recap": null
     },
@@ -6593,6 +6600,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-18T22:16:38.823Z",
+  "lastUpdated": "2026-07-18T22:18:22.838Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
