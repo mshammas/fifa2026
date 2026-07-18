@@ -6521,10 +6521,10 @@
       "away": "England",
       "group": null,
       "venue": "Hard Rock Stadium, Miami Gardens, Florida",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 5,
       "status": "LIVE",
-      "clock": "90'+4'",
+      "clock": "90'+7'",
       "goals": [
         {
           "side": "away",
@@ -6581,13 +6581,20 @@
           "minute": "87'",
           "pen": true,
           "og": false
+        },
+        {
+          "side": "home",
+          "player": "O. Dembélé",
+          "minute": "90'+6'",
+          "pen": false,
+          "og": false
         }
       ],
       "cards": [],
       "homeStats": {
         "possessionPct": "46.4",
-        "shotsOnTarget": "8",
-        "totalShots": "19"
+        "shotsOnTarget": "9",
+        "totalShots": "20"
       },
       "awayStats": {
         "possessionPct": "53.6",
@@ -6614,6 +6621,6 @@
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-18T22:58:22.168Z",
+  "lastUpdated": "2026-07-18T23:00:42.426Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
