@@ -6620,7 +6620,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "105'+2'",
+      "clock": "103'",
       "goals": [],
       "cards": [
         {
@@ -6652,27 +6652,21 @@
           "player": "E. Fernández",
           "minute": "90'+3'",
           "type": "red"
-        },
-        {
-          "side": "away",
-          "player": "—",
-          "minute": "104'",
-          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "67.3",
+        "possessionPct": "68.1",
         "shotsOnTarget": "11",
-        "totalShots": "19"
+        "totalShots": "18"
       },
       "awayStats": {
-        "possessionPct": "32.7",
+        "possessionPct": "31.9",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-19T21:38:21.723Z",
+  "lastUpdated": "2026-07-19T21:40:32.725Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
