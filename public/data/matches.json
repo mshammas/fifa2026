@@ -6620,7 +6620,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "50'",
+      "clock": "52'",
       "goals": [],
       "cards": [
         {
@@ -6628,21 +6628,27 @@
           "player": "L. Martínez",
           "minute": "41'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Paredes",
+          "minute": "52'",
+          "type": "yellow"
         }
       ],
       "homeStats": {
-        "possessionPct": "61.5",
+        "possessionPct": "60.8",
         "shotsOnTarget": "3",
         "totalShots": "4"
       },
       "awayStats": {
-        "possessionPct": "38.5",
+        "possessionPct": "39.2",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-19T20:28:25.294Z",
+  "lastUpdated": "2026-07-19T20:30:39.636Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
