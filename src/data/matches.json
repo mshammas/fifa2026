@@ -6619,8 +6619,8 @@
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 1,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "120'",
+      "status": "FT",
+      "clock": null,
       "goals": [
         {
           "side": "home",
@@ -6672,21 +6672,27 @@
           "player": "A. Mac Allister",
           "minute": "111'",
           "type": "yellow"
+        },
+        {
+          "side": "away",
+          "player": "L. Paredes",
+          "minute": "120'+6'",
+          "type": "red"
         }
       ],
       "homeStats": {
-        "possessionPct": "66.4",
+        "possessionPct": "65.1",
         "shotsOnTarget": "12",
         "totalShots": "20"
       },
       "awayStats": {
-        "possessionPct": "33.6",
+        "possessionPct": "34.9",
         "shotsOnTarget": "0",
-        "totalShots": "1"
+        "totalShots": "2"
       },
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-19T22:04:28.835Z",
+  "lastUpdated": "2026-07-19T22:06:23.215Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
