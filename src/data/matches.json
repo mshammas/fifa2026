@@ -6599,16 +6599,16 @@
       ],
       "cards": [],
       "homeStats": {
-        "possessionPct": "46",
+        "possessionPct": "45.9",
         "shotsOnTarget": "9",
         "totalShots": "19"
       },
       "awayStats": {
-        "possessionPct": "54",
+        "possessionPct": "54.1",
         "shotsOnTarget": "11",
         "totalShots": "19"
       },
-      "recap": null
+      "recap": "England beat France 6-4 in chaotic third-place World Cup playoff on Saturday in Miami."
     },
     {
       "id": "e760517",
@@ -6623,11 +6623,19 @@
       "clock": null,
       "goals": [],
       "cards": [],
-      "homeStats": null,
-      "awayStats": null,
+      "homeStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
+      "awayStats": {
+        "possessionPct": "0",
+        "shotsOnTarget": "0",
+        "totalShots": "0"
+      },
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-18T23:04:22.219Z",
+  "lastUpdated": "2026-07-19T18:58:26.676Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
