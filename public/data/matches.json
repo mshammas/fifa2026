@@ -6619,23 +6619,30 @@
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "LIVE",
-      "clock": "36'",
+      "status": "HT",
+      "clock": null,
       "goals": [],
-      "cards": [],
+      "cards": [
+        {
+          "side": "away",
+          "player": "L. Martínez",
+          "minute": "41'",
+          "type": "yellow"
+        }
+      ],
       "homeStats": {
-        "possessionPct": "63.2",
-        "shotsOnTarget": "1",
-        "totalShots": "1"
+        "possessionPct": "64.6",
+        "shotsOnTarget": "2",
+        "totalShots": "3"
       },
       "awayStats": {
-        "possessionPct": "36.8",
+        "possessionPct": "35.4",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-19T19:56:29.548Z",
+  "lastUpdated": "2026-07-19T19:58:27.140Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
