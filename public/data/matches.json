@@ -6617,11 +6617,19 @@
       "away": "Argentina",
       "group": null,
       "venue": "MetLife Stadium, East Rutherford, New Jersey",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "LIVE",
-      "clock": "ET-HT",
-      "goals": [],
+      "clock": "109'",
+      "goals": [
+        {
+          "side": "home",
+          "player": "F. Torres",
+          "minute": "106'",
+          "pen": false,
+          "og": false
+        }
+      ],
       "cards": [
         {
           "side": "away",
@@ -6661,18 +6669,18 @@
         }
       ],
       "homeStats": {
-        "possessionPct": "67.3",
-        "shotsOnTarget": "11",
-        "totalShots": "19"
+        "possessionPct": "67.1",
+        "shotsOnTarget": "12",
+        "totalShots": "20"
       },
       "awayStats": {
-        "possessionPct": "32.7",
+        "possessionPct": "32.9",
         "shotsOnTarget": "0",
         "totalShots": "0"
       },
       "recap": null
     }
   ],
-  "lastUpdated": "2026-07-19T21:44:25.341Z",
+  "lastUpdated": "2026-07-19T21:46:26.204Z",
   "source": "ESPN full schedule + live · 104 matches · zero API tokens used"
 }
