@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-19T08:00:42.730Z",
+  "lastUpdated": "2026-07-20T08:41:45.038Z",
   "rosters": {
     "Algeria": [
       {
@@ -5382,7 +5382,7 @@
         "shortName": "L. Digne",
         "jersey": 3,
         "pos": "DEF",
-        "age": 32,
+        "age": 33,
         "dob": "1993-07-20",
         "height": "5' 10\"",
         "weight": "161 lbs",
@@ -5696,7 +5696,7 @@
         "shortName": "W. Anton",
         "jersey": 3,
         "pos": "DEF",
-        "age": 29,
+        "age": 30,
         "dob": "1996-07-20",
         "height": "6' 2\"",
         "weight": "190 lbs",
@@ -9672,7 +9672,7 @@
         "dob": "1999-10-12",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": "Bodo/Glimt"
+        "club": null
       },
       {
         "id": "188230",
@@ -10140,7 +10140,7 @@
         "shortName": "J. Canale",
         "jersey": 13,
         "pos": "DEF",
-        "age": 29,
+        "age": 30,
         "dob": "1996-07-20",
         "height": "6' 2\"",
         "weight": "174 lbs",
@@ -12748,7 +12748,7 @@
         "shortName": "Á. Baena",
         "jersey": 15,
         "pos": "MID",
-        "age": 24,
+        "age": 25,
         "dob": "2001-07-20",
         "height": "5' 9\"",
         "weight": "152 lbs",
