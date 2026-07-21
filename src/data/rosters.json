@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-20T08:41:45.038Z",
+  "lastUpdated": "2026-07-21T08:10:55.759Z",
   "rosters": {
     "Algeria": [
       {
@@ -2132,7 +2132,7 @@
         "shortName": "Endrick",
         "jersey": 19,
         "pos": "FWD",
-        "age": 19,
+        "age": 20,
         "dob": "2006-07-21",
         "height": "5' 8\"",
         "weight": "148 lbs",
@@ -4620,7 +4620,7 @@
         "shortName": "A. Valencia",
         "jersey": 8,
         "pos": "FWD",
-        "age": 22,
+        "age": 23,
         "dob": "2003-07-21",
         "height": "5' 8\"",
         "weight": "150 lbs",
@@ -9672,7 +9672,7 @@
         "dob": "1999-10-12",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": null
+        "club": "Bodo/Glimt"
       },
       {
         "id": "188230",
@@ -9692,7 +9692,7 @@
         "shortName": "E. Haaland",
         "jersey": 9,
         "pos": "FWD",
-        "age": 25,
+        "age": 26,
         "dob": "2000-07-21",
         "height": "6' 5\"",
         "weight": "205 lbs",
@@ -11118,7 +11118,7 @@
         "shortName": "J. Thakri",
         "jersey": 25,
         "pos": "DEF",
-        "age": 24,
+        "age": 25,
         "dob": "2001-07-21",
         "height": "6' 0\"",
         "weight": "179 lbs",
@@ -12144,7 +12144,7 @@
         "shortName": "K. Sebelebele",
         "jersey": 25,
         "pos": "MID",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-21",
         "height": "5' 5\"",
         "weight": "119 lbs",
