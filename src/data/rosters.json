@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-21T08:10:55.759Z",
+  "lastUpdated": "2026-07-22T08:10:34.618Z",
   "rosters": {
     "Algeria": [
       {
@@ -156,7 +156,7 @@
         "dob": "1998-05-26",
         "height": "6' 0\"",
         "weight": "181 lbs",
-        "club": "Feyenoord Rotterdam"
+        "club": "FC Twente"
       },
       {
         "id": "241116",
@@ -521,18 +521,6 @@
         "club": "Atlético de Madrid"
       },
       {
-        "id": "337970",
-        "name": "Nico Paz",
-        "shortName": "N. Paz",
-        "jersey": 18,
-        "pos": "MID",
-        "age": 21,
-        "dob": "2004-09-08",
-        "height": "6' 1\"",
-        "weight": "172 lbs",
-        "club": "Como"
-      },
-      {
         "id": "249299",
         "name": "Alexis Mac Allister",
         "shortName": "A. Mac Allister",
@@ -605,6 +593,18 @@
         "club": "Atlético de Madrid"
       },
       {
+        "id": "337970",
+        "name": "Nico Paz",
+        "shortName": "N. Paz",
+        "jersey": 18,
+        "pos": "FWD",
+        "age": 21,
+        "dob": "2004-09-08",
+        "height": "6' 1\"",
+        "weight": "172 lbs",
+        "club": "Como"
+      },
+      {
         "id": "311743",
         "name": "José Manuel López",
         "shortName": "J. López",
@@ -652,7 +652,7 @@
         "dob": "1995-01-06",
         "height": "6' 1\"",
         "weight": "179 lbs",
-        "club": "FC Xanthi"
+        "club": "Randers FC"
       },
       {
         "id": "335240",
@@ -2728,7 +2728,7 @@
         "dob": "1998-06-14",
         "height": "5' 9\"",
         "weight": "159 lbs",
-        "club": "Estrela"
+        "club": "Grêmio"
       },
       {
         "id": "310261",
@@ -2850,7 +2850,7 @@
         "dob": "1995-03-29",
         "height": "6' 7\"",
         "weight": "214 lbs",
-        "club": "Vélez Sarsfield"
+        "club": "Monopoli 1966"
       },
       {
         "id": "146679",
@@ -2994,7 +2994,7 @@
         "dob": "2000-07-15",
         "height": "6' 0\"",
         "weight": "146 lbs",
-        "club": "Krasnodar"
+        "club": "Instituto (Córdoba)"
       },
       {
         "id": "82816",
@@ -3284,7 +3284,7 @@
         "dob": "1996-08-12",
         "height": "5' 9\"",
         "weight": "159 lbs",
-        "club": "Atromitos"
+        "club": "Sivasspor"
       },
       {
         "id": "182337",
@@ -3702,7 +3702,7 @@
         "shortName": "A. Budimir",
         "jersey": 11,
         "pos": "FWD",
-        "age": 34,
+        "age": 35,
         "dob": "1991-07-22",
         "height": "6' 3\"",
         "weight": "163 lbs",
@@ -3816,7 +3816,7 @@
         "dob": "1993-12-23",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": "Curaçao"
+        "club": "Abha"
       },
       {
         "id": "270807",
@@ -4262,7 +4262,7 @@
         "dob": "1999-05-31",
         "height": "5' 7\"",
         "weight": "141 lbs",
-        "club": "Liberec"
+        "club": "Slavia Prague"
       },
       {
         "id": "343937",
@@ -5276,7 +5276,7 @@
         "dob": "2002-07-26",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "Aston Villa"
+        "club": "Chelsea"
       },
       {
         "id": "268782",
@@ -6158,7 +6158,7 @@
         "dob": "2004-03-08",
         "height": "5' 10\"",
         "weight": "161 lbs",
-        "club": "Leicester City"
+        "club": "Ipswich Town"
       },
       {
         "id": "123518",
@@ -6568,7 +6568,7 @@
         "dob": "1995-03-29",
         "height": "6' 4\"",
         "weight": "172 lbs",
-        "club": "AEK Athens"
+        "club": "Caykur Rizespor"
       },
       {
         "id": "304212",
@@ -7426,7 +7426,7 @@
         "dob": "2006-04-06",
         "height": "5' 8\"",
         "weight": "150 lbs",
-        "club": "Trabzonspor"
+        "club": "Fiorentina"
       },
       {
         "id": "309185",
@@ -8332,7 +8332,7 @@
         "dob": "1996-03-24",
         "height": "5' 7\"",
         "weight": "141 lbs",
-        "club": "AEK Athens"
+        "club": "Monterrey"
       },
       {
         "id": "318554",
@@ -9118,7 +9118,7 @@
         "dob": "2002-07-04",
         "height": "6' 0\"",
         "weight": "183 lbs",
-        "club": "AFC Bournemouth"
+        "club": "Motherwell"
       },
       {
         "id": "228288",
@@ -9202,7 +9202,7 @@
         "dob": "1999-02-25",
         "height": "6' 3\"",
         "weight": "192 lbs",
-        "club": "Auckland FC"
+        "club": "Sligo Rovers"
       },
       {
         "id": "332367",
@@ -9215,6 +9215,18 @@
         "height": "6' 3\"",
         "weight": "183 lbs",
         "club": "Portland Timbers"
+      },
+      {
+        "id": "282239",
+        "name": "Callan Elliot",
+        "shortName": "C. Elliot",
+        "jersey": 24,
+        "pos": "DEF",
+        "age": 27,
+        "dob": "1999-07-07",
+        "height": "5' 10\"",
+        "weight": "150 lbs",
+        "club": "FC Xanthi"
       },
       {
         "id": "103819",
@@ -9301,18 +9313,6 @@
         "club": "Silkeborg IF"
       },
       {
-        "id": "297794",
-        "name": "Jesse Randall",
-        "shortName": "J. Randall",
-        "jersey": 21,
-        "pos": "MID",
-        "age": 23,
-        "dob": "2002-08-19",
-        "height": "5' 9\"",
-        "weight": "152 lbs",
-        "club": "Dundee United"
-      },
-      {
         "id": "156146",
         "name": "Ryan Thomas",
         "shortName": "R. Thomas",
@@ -9323,18 +9323,6 @@
         "height": "5' 9\"",
         "weight": "152 lbs",
         "club": "PEC Zwolle"
-      },
-      {
-        "id": "282239",
-        "name": "Callan Elliot",
-        "shortName": "C. Elliot",
-        "jersey": 24,
-        "pos": "MID",
-        "age": 27,
-        "dob": "1999-07-07",
-        "height": "5' 10\"",
-        "weight": "150 lbs",
-        "club": "FC Xanthi"
       },
       {
         "id": "351369",
@@ -9407,6 +9395,18 @@
         "height": "5' 8\"",
         "weight": "141 lbs",
         "club": "Saint-Étienne"
+      },
+      {
+        "id": "297794",
+        "name": "Jesse Randall",
+        "shortName": "J. Randall",
+        "jersey": 21,
+        "pos": "FWD",
+        "age": 23,
+        "dob": "2002-08-19",
+        "height": "5' 9\"",
+        "weight": "152 lbs",
+        "club": "Dundee United"
       }
     ],
     "Norway": [
@@ -9773,18 +9773,6 @@
         "club": "Slovan Bratislava"
       },
       {
-        "id": "286667",
-        "name": "José Córdoba",
-        "shortName": "J. Córdoba",
-        "jersey": 3,
-        "pos": "DEF",
-        "age": 25,
-        "dob": "2001-06-03",
-        "height": "6' 2\"",
-        "weight": "192 lbs",
-        "club": "Norwich City"
-      },
-      {
         "id": "216418",
         "name": "Fidel Escobar",
         "shortName": "F. Escobar",
@@ -9890,7 +9878,7 @@
         "dob": "1997-02-06",
         "height": "5' 7\"",
         "weight": "159 lbs",
-        "club": "Monagas SC"
+        "club": "Slovan Bratislava"
       },
       {
         "id": "238763",
@@ -9915,18 +9903,6 @@
         "height": "5' 7\"",
         "weight": "172 lbs",
         "club": "Pumas UNAM"
-      },
-      {
-        "id": "288563",
-        "name": "Tomás Rodríguez",
-        "shortName": "T. Rodríguez",
-        "jersey": 9,
-        "pos": "MID",
-        "age": 27,
-        "dob": "1999-03-09",
-        "height": "6' 0\"",
-        "weight": "163 lbs",
-        "club": "Saprissa"
       },
       {
         "id": "201919",
@@ -9963,6 +9939,30 @@
         "height": "6' 0\"",
         "weight": "163 lbs",
         "club": "San Diego FC"
+      },
+      {
+        "id": "286667",
+        "name": "José Córdoba",
+        "shortName": "J. Córdoba",
+        "jersey": 3,
+        "pos": "FWD",
+        "age": 27,
+        "dob": "1998-12-10",
+        "height": "6' 2\"",
+        "weight": "192 lbs",
+        "club": "Norwich City"
+      },
+      {
+        "id": "288563",
+        "name": "Tomás Rodríguez",
+        "shortName": "T. Rodríguez",
+        "jersey": 9,
+        "pos": "FWD",
+        "age": 27,
+        "dob": "1999-03-09",
+        "height": "6' 0\"",
+        "weight": "163 lbs",
+        "club": "Barcelona SC"
       },
       {
         "id": "195326",
@@ -10422,7 +10422,7 @@
         "dob": "2002-05-16",
         "height": "6' 2\"",
         "weight": "185 lbs",
-        "club": "Benfica"
+        "club": "SL Benfica"
       },
       {
         "id": "238902",
@@ -10614,7 +10614,7 @@
         "dob": "1999-12-29",
         "height": "6' 0\"",
         "weight": "168 lbs",
-        "club": "Sporting CP"
+        "club": "Al Ahli"
       },
       {
         "id": "258917",
@@ -11002,7 +11002,7 @@
         "dob": "1991-10-10",
         "height": "6' 1\"",
         "weight": "170 lbs",
-        "club": "AL Ula"
+        "club": "Al Hilal"
       },
       {
         "id": "171878",
@@ -11988,7 +11988,7 @@
         "shortName": "A. Modiba",
         "jersey": 6,
         "pos": "DEF",
-        "age": 30,
+        "age": 31,
         "dob": "1995-07-22",
         "height": "5' 6\"",
         "weight": "161 lbs",
@@ -12664,7 +12664,7 @@
         "shortName": "M. Cucurella",
         "jersey": 24,
         "pos": "DEF",
-        "age": 27,
+        "age": 28,
         "dob": "1998-07-22",
         "height": "5' 9\"",
         "weight": "146 lbs",
@@ -13260,7 +13260,7 @@
         "dob": "1995-07-19",
         "height": "6' 2\"",
         "weight": "201 lbs",
-        "club": "Manchester City"
+        "club": "Internazionale"
       },
       {
         "id": "136865",
@@ -13296,7 +13296,7 @@
         "dob": "2003-07-31",
         "height": "6' 4\"",
         "weight": "196 lbs",
-        "club": "Eintracht Frankfurt"
+        "club": "Coventry City"
       },
       {
         "id": "332574",
@@ -13344,7 +13344,7 @@
         "dob": "2005-10-14",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": "SC Freiburg"
+        "club": "Aston Villa"
       },
       {
         "id": "149981",
@@ -13852,7 +13852,7 @@
         "dob": "1997-02-17",
         "height": "5' 11\"",
         "weight": "172 lbs",
-        "club": "AS Roma"
+        "club": "Juventus"
       },
       {
         "id": "267178",
@@ -14130,7 +14130,7 @@
         "dob": "1994-06-24",
         "height": "6' 3\"",
         "weight": "183 lbs",
-        "club": "Lyon"
+        "club": "New England Revolution"
       },
       {
         "id": "252974",
@@ -14608,7 +14608,7 @@
         "shortName": "F. Valverde",
         "jersey": 8,
         "pos": "MID",
-        "age": 27,
+        "age": 28,
         "dob": "1998-07-22",
         "height": "6' 0\"",
         "weight": "172 lbs",
@@ -15034,7 +15034,7 @@
         "dob": "1995-06-29",
         "height": "6' 3\"",
         "weight": "172 lbs",
-        "club": "AS Roma"
+        "club": "Istanbul Basaksehir"
       },
       {
         "id": "253231",
