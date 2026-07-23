@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-22T08:10:34.618Z",
+  "lastUpdated": "2026-07-23T08:15:47.385Z",
   "rosters": {
     "Algeria": [
       {
@@ -422,7 +422,7 @@
         "dob": "1988-02-12",
         "height": "6' 0\"",
         "weight": "183 lbs",
-        "club": "River Plate"
+        "club": "Benfica"
       },
       {
         "id": "249663",
@@ -478,7 +478,7 @@
         "shortName": "V. Barco",
         "jersey": 8,
         "pos": "MID",
-        "age": 21,
+        "age": 22,
         "dob": "2004-07-23",
         "height": "5' 7\"",
         "weight": "148 lbs",
@@ -957,6 +957,18 @@
         "club": "RB Salzburg"
       },
       {
+        "id": "313230",
+        "name": "David Affengruber",
+        "shortName": "D. Affengruber",
+        "jersey": 2,
+        "pos": "GK",
+        "age": 34,
+        "dob": "1992-03-04",
+        "height": "6' 1\"",
+        "weight": "172 lbs",
+        "club": "Elche"
+      },
+      {
         "id": "387869",
         "name": "Florian Wiegele",
         "shortName": "F. Wiegele",
@@ -979,18 +991,6 @@
         "height": "6' 0\"",
         "weight": "179 lbs",
         "club": "Brøndby IF"
-      },
-      {
-        "id": "313230",
-        "name": "David Affengruber",
-        "shortName": "D. Affengruber",
-        "jersey": 2,
-        "pos": "DEF",
-        "age": 25,
-        "dob": "2001-03-19",
-        "height": "6' 1\"",
-        "weight": "172 lbs",
-        "club": "Elche"
       },
       {
         "id": "250543",
@@ -1630,7 +1630,7 @@
         "dob": "2003-02-28",
         "height": "6' 4\"",
         "weight": "183 lbs",
-        "club": "Sassuolo"
+        "club": "Leeds United"
       },
       {
         "id": "170553",
@@ -1786,7 +1786,7 @@
         "dob": "2005-03-14",
         "height": "6' 0\"",
         "weight": "179 lbs",
-        "club": "Bosnia-Herzegovina"
+        "club": "Liberec"
       },
       {
         "id": "322244",
@@ -1858,7 +1858,7 @@
         "dob": "1994-06-20",
         "height": "6' 5\"",
         "weight": "196 lbs",
-        "club": "TSG Hoffenheim"
+        "club": "RB Salzburg"
       },
       {
         "id": "305118",
@@ -2028,7 +2028,7 @@
         "dob": "1992-02-23",
         "height": "6' 1\"",
         "weight": "183 lbs",
-        "club": "Real Madrid Castilla"
+        "club": "Inter Miami CF"
       },
       {
         "id": "218522",
@@ -2668,7 +2668,7 @@
         "dob": "1993-11-23",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "PEC Zwolle"
+        "club": "NEC Nijmegen"
       },
       {
         "id": "246442",
@@ -2826,7 +2826,7 @@
         "dob": "1988-08-31",
         "height": "6' 0\"",
         "weight": "172 lbs",
-        "club": "Atlético Nacional"
+        "club": "Atlante"
       },
       {
         "id": "185147",
@@ -2877,18 +2877,6 @@
         "club": "Bologna"
       },
       {
-        "id": "164756",
-        "name": "Santiago Arias",
-        "shortName": "S. Arias",
-        "jersey": 4,
-        "pos": "DEF",
-        "age": 34,
-        "dob": "1992-01-13",
-        "height": "5' 10\"",
-        "weight": "168 lbs",
-        "club": "Independiente"
-      },
-      {
         "id": "196901",
         "name": "Yerry Mina",
         "shortName": "Y. Mina",
@@ -2922,7 +2910,7 @@
         "dob": "1998-01-23",
         "height": "5' 11\"",
         "weight": "174 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Cruz Azul"
       },
       {
         "id": "197401",
@@ -2947,6 +2935,18 @@
         "height": "6' 2\"",
         "weight": "181 lbs",
         "club": "Galatasaray"
+      },
+      {
+        "id": "164756",
+        "name": "Santiago Arias",
+        "shortName": "S. Arias",
+        "jersey": 4,
+        "pos": "MID",
+        "age": 31,
+        "dob": "1995-06-19",
+        "height": "5' 11\"",
+        "weight": "172 lbs",
+        "club": "Cienciano del Cusco"
       },
       {
         "id": "307756",
@@ -3006,7 +3006,7 @@
         "dob": "1991-07-12",
         "height": "5' 11\"",
         "weight": "161 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Minnesota United FC"
       },
       {
         "id": "239566",
@@ -3026,7 +3026,7 @@
         "shortName": "G. Puerta",
         "jersey": 14,
         "pos": "MID",
-        "age": 22,
+        "age": 23,
         "dob": "2003-07-23",
         "height": "5' 9\"",
         "weight": "152 lbs",
@@ -3066,7 +3066,7 @@
         "dob": "1993-01-18",
         "height": "5' 6\"",
         "weight": "157 lbs",
-        "club": "River Plate"
+        "club": "América de Cali"
       },
       {
         "id": "255295",
@@ -4552,7 +4552,7 @@
         "dob": "2007-05-04",
         "height": "5' 10\"",
         "weight": "157 lbs",
-        "club": "River Plate"
+        "club": "Strasbourg"
       },
       {
         "id": "297150",
@@ -6400,7 +6400,7 @@
         "dob": "1997-07-12",
         "height": "6' 0\"",
         "weight": "170 lbs",
-        "club": "KAA Gent"
+        "club": "Nantes"
       },
       {
         "id": "385479",
@@ -6568,7 +6568,7 @@
         "dob": "1995-03-29",
         "height": "6' 4\"",
         "weight": "172 lbs",
-        "club": "Caykur Rizespor"
+        "club": "AEK Athens"
       },
       {
         "id": "304212",
@@ -6944,7 +6944,7 @@
         "dob": "1992-04-12",
         "height": "6' 4\"",
         "weight": "185 lbs",
-        "club": "IF Brommapojkarna"
+        "club": "Port FC"
       },
       {
         "id": "244679",
@@ -7064,7 +7064,7 @@
         "dob": "2003-04-27",
         "height": "5' 11\"",
         "weight": "157 lbs",
-        "club": "FC Utrecht"
+        "club": "Jong FC Utrecht"
       },
       {
         "id": "311149",
@@ -7246,7 +7246,7 @@
         "dob": "1999-01-23",
         "height": "6' 5\"",
         "weight": "185 lbs",
-        "club": "Nantes"
+        "club": "Amed SFK"
       },
       {
         "id": "343964",
@@ -8236,7 +8236,7 @@
         "dob": "2000-05-23",
         "height": "5' 10\"",
         "weight": "161 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "América"
       },
       {
         "id": "379193",
@@ -8260,7 +8260,7 @@
         "dob": "1994-08-15",
         "height": "5' 10\"",
         "weight": "172 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Toluca"
       },
       {
         "id": "303577",
@@ -8272,7 +8272,7 @@
         "dob": "2007-01-21",
         "height": "6' 1\"",
         "weight": "181 lbs",
-        "club": "River Plate"
+        "club": "Guadalajara"
       },
       {
         "id": "241627",
@@ -8296,7 +8296,7 @@
         "dob": "2000-05-08",
         "height": "5' 8\"",
         "weight": "152 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Cruz Azul"
       },
       {
         "id": "242614",
@@ -8356,7 +8356,7 @@
         "dob": "2008-10-14",
         "height": "5' 6\"",
         "weight": "137 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Tijuana"
       },
       {
         "id": "265969",
@@ -8404,7 +8404,7 @@
         "dob": "1997-11-25",
         "height": "5' 9\"",
         "weight": "168 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Toluca"
       },
       {
         "id": "260775",
@@ -8464,7 +8464,7 @@
         "dob": "1998-09-07",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "Guadalajara"
       }
     ],
     "Morocco": [
@@ -8562,7 +8562,7 @@
         "dob": "1997-01-09",
         "height": "6' 4\"",
         "weight": "192 lbs",
-        "club": "Fulham"
+        "club": "Ipswich Town"
       },
       {
         "id": "307870",
@@ -8888,7 +8888,7 @@
         "dob": "1996-04-18",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "Internazionale"
+        "club": "Real Madrid"
       },
       {
         "id": "353951",
@@ -9142,7 +9142,7 @@
         "dob": "1994-01-10",
         "height": "5' 10\"",
         "weight": "161 lbs",
-        "club": "Wellington Phoenix FC"
+        "club": "Club Olimpia"
       },
       {
         "id": "254441",
@@ -10084,7 +10084,7 @@
         "dob": "1991-04-17",
         "height": "5' 10\"",
         "weight": "168 lbs",
-        "club": "Cerro Porteño"
+        "club": "FC Juarez"
       },
       {
         "id": "215401",
@@ -10132,7 +10132,7 @@
         "dob": "1993-02-09",
         "height": "6' 1\"",
         "weight": "183 lbs",
-        "club": "Atlético-MG"
+        "club": "Atlanta United FC"
       },
       {
         "id": "227682",
@@ -10264,7 +10264,7 @@
         "dob": "2002-02-11",
         "height": "5' 9\"",
         "weight": "148 lbs",
-        "club": "River Plate"
+        "club": "Atlanta United FC"
       },
       {
         "id": "301653",
@@ -10422,7 +10422,7 @@
         "dob": "2002-05-16",
         "height": "6' 2\"",
         "weight": "185 lbs",
-        "club": "SL Benfica"
+        "club": "Benfica"
       },
       {
         "id": "238902",
@@ -13093,18 +13093,6 @@
         "club": "Mjällby AIF"
       },
       {
-        "id": "314164",
-        "name": "Taha Ali",
-        "shortName": "T. Ali",
-        "jersey": 26,
-        "pos": "MID",
-        "age": 28,
-        "dob": "1998-07-01",
-        "height": "5' 9\"",
-        "weight": "139 lbs",
-        "club": "Malmö FF"
-      },
-      {
         "id": "235662",
         "name": "Alexander Isak",
         "shortName": "A. Isak",
@@ -13175,6 +13163,18 @@
         "height": "6' 6\"",
         "weight": "192 lbs",
         "club": "Club Brugge"
+      },
+      {
+        "id": "314164",
+        "name": "Taha Ali",
+        "shortName": "T. Ali",
+        "jersey": 26,
+        "pos": "FWD",
+        "age": 28,
+        "dob": "1998-07-01",
+        "height": "5' 9\"",
+        "weight": "139 lbs",
+        "club": "Malmö FF"
       }
     ],
     "Switzerland": [
@@ -14238,7 +14238,7 @@
         "dob": "2004-08-09",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "MLS All-Stars"
+        "club": "Villarreal"
       },
       {
         "id": "77072",
@@ -14370,7 +14370,7 @@
         "dob": "2001-04-19",
         "height": "6' 1\"",
         "weight": "172 lbs",
-        "club": "MLS All-Stars"
+        "club": "Columbus Crew"
       },
       {
         "id": "289120",
@@ -14430,7 +14430,7 @@
         "dob": "1998-02-07",
         "height": "5' 6\"",
         "weight": "146 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "América"
       }
     ],
     "Uruguay": [
@@ -14540,7 +14540,7 @@
         "dob": "1997-11-09",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "River Plate"
+        "club": "Flamengo"
       },
       {
         "id": "254007",
@@ -14720,7 +14720,7 @@
         "dob": "2000-05-20",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "Liga MX All-Stars"
+        "club": "América"
       },
       {
         "id": "159042",
@@ -14838,7 +14838,7 @@
         "shortName": "S. Nasrullaev",
         "jersey": 13,
         "pos": "DEF",
-        "age": 27,
+        "age": 28,
         "dob": "1998-07-23",
         "height": "6' 0\"",
         "weight": "159 lbs",
