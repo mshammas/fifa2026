@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-23T08:15:47.385Z",
+  "lastUpdated": "2026-07-24T08:08:21.790Z",
   "rosters": {
     "Algeria": [
       {
@@ -48,7 +48,7 @@
         "dob": "1991-10-22",
         "height": "6' 1\"",
         "weight": "179 lbs",
-        "club": "Lille"
+        "club": "Levante"
       },
       {
         "id": "407797",
@@ -422,7 +422,7 @@
         "dob": "1988-02-12",
         "height": "6' 0\"",
         "weight": "183 lbs",
-        "club": "Benfica"
+        "club": "River Plate"
       },
       {
         "id": "249663",
@@ -676,7 +676,7 @@
         "dob": "1994-04-28",
         "height": "6' 2\"",
         "weight": "181 lbs",
-        "club": "FK TSC"
+        "club": "Apoel Nicosia"
       },
       {
         "id": "332081",
@@ -844,7 +844,7 @@
         "dob": "1998-06-07",
         "height": "5' 7\"",
         "weight": "150 lbs",
-        "club": "Heart of Midlothian"
+        "club": "Rangers"
       },
       {
         "id": "330259",
@@ -871,18 +871,6 @@
         "club": "St. Pauli"
       },
       {
-        "id": "318429",
-        "name": "Nishan Velupillay",
-        "shortName": "N. Velupillay",
-        "jersey": 23,
-        "pos": "MID",
-        "age": 25,
-        "dob": "2001-05-07",
-        "height": "5' 11\"",
-        "weight": "170 lbs",
-        "club": "Melbourne Victory"
-      },
-      {
         "id": "403528",
         "name": "Paul Okon-Engstler",
         "shortName": "P. Okon-Engstler",
@@ -892,7 +880,7 @@
         "dob": "2005-01-24",
         "height": "6' 1\"",
         "weight": "183 lbs",
-        "club": "Sydney FC"
+        "club": "FC Cologne"
       },
       {
         "id": "140994",
@@ -931,6 +919,18 @@
         "club": "Watford"
       },
       {
+        "id": "318429",
+        "name": "Nishan Velupillay",
+        "shortName": "N. Velupillay",
+        "jersey": 23,
+        "pos": "FWD",
+        "age": 25,
+        "dob": "2001-05-07",
+        "height": "5' 11\"",
+        "weight": "170 lbs",
+        "club": "Melbourne Victory"
+      },
+      {
         "id": "312261",
         "name": "Tete Yengi",
         "shortName": "T. Yengi",
@@ -957,18 +957,6 @@
         "club": "RB Salzburg"
       },
       {
-        "id": "313230",
-        "name": "David Affengruber",
-        "shortName": "D. Affengruber",
-        "jersey": 2,
-        "pos": "GK",
-        "age": 34,
-        "dob": "1992-03-04",
-        "height": "6' 1\"",
-        "weight": "172 lbs",
-        "club": "Elche"
-      },
-      {
         "id": "387869",
         "name": "Florian Wiegele",
         "shortName": "F. Wiegele",
@@ -991,6 +979,18 @@
         "height": "6' 0\"",
         "weight": "179 lbs",
         "club": "Brøndby IF"
+      },
+      {
+        "id": "313230",
+        "name": "David Affengruber",
+        "shortName": "D. Affengruber",
+        "jersey": 2,
+        "pos": "DEF",
+        "age": 25,
+        "dob": "2001-03-19",
+        "height": "6' 1\"",
+        "weight": "172 lbs",
+        "club": "Elche"
       },
       {
         "id": "250543",
@@ -1098,7 +1098,7 @@
         "dob": "1997-09-28",
         "height": "5' 9\"",
         "weight": "172 lbs",
-        "club": "RB Leipzig"
+        "club": "Nottingham Forest"
       },
       {
         "id": "305956",
@@ -1352,7 +1352,7 @@
         "dob": "1991-09-12",
         "height": "6' 3\"",
         "weight": "192 lbs",
-        "club": "Lille"
+        "club": "Sunderland"
       },
       {
         "id": "309570",
@@ -1424,7 +1424,7 @@
         "dob": "1997-05-07",
         "height": "5' 9\"",
         "weight": "159 lbs",
-        "club": "Aston Villa"
+        "club": "Manchester United"
       },
       {
         "id": "193849",
@@ -1484,7 +1484,7 @@
         "dob": "1994-12-04",
         "height": "5' 8\"",
         "weight": "141 lbs",
-        "club": "Arsenal"
+        "club": "Besiktas"
       },
       {
         "id": "283672",
@@ -1786,7 +1786,7 @@
         "dob": "2005-03-14",
         "height": "6' 0\"",
         "weight": "179 lbs",
-        "club": "Liberec"
+        "club": "Bosnia-Herzegovina"
       },
       {
         "id": "322244",
@@ -2752,7 +2752,7 @@
         "dob": "1990-11-27",
         "height": "5' 8\"",
         "weight": "150 lbs",
-        "club": "Apollon Limassol"
+        "club": "Sivasspor"
       },
       {
         "id": "271675",
@@ -2850,7 +2850,7 @@
         "dob": "1995-03-29",
         "height": "6' 7\"",
         "weight": "214 lbs",
-        "club": "Monopoli 1966"
+        "club": "Boca Juniors"
       },
       {
         "id": "146679",
@@ -2875,6 +2875,18 @@
         "height": "6' 2\"",
         "weight": "183 lbs",
         "club": "Bologna"
+      },
+      {
+        "id": "164756",
+        "name": "Santiago Arias",
+        "shortName": "S. Arias",
+        "jersey": 4,
+        "pos": "DEF",
+        "age": 34,
+        "dob": "1992-01-13",
+        "height": "5' 10\"",
+        "weight": "168 lbs",
+        "club": "Independiente"
       },
       {
         "id": "196901",
@@ -2937,18 +2949,6 @@
         "club": "Galatasaray"
       },
       {
-        "id": "164756",
-        "name": "Santiago Arias",
-        "shortName": "S. Arias",
-        "jersey": 4,
-        "pos": "MID",
-        "age": 31,
-        "dob": "1995-06-19",
-        "height": "5' 11\"",
-        "weight": "172 lbs",
-        "club": "Cienciano del Cusco"
-      },
-      {
         "id": "307756",
         "name": "Kevin Castaño",
         "shortName": "K. Castaño",
@@ -2983,18 +2983,6 @@
         "height": "5' 11\"",
         "weight": "163 lbs",
         "club": "Flamengo"
-      },
-      {
-        "id": "176058",
-        "name": "Jhon Córdoba",
-        "shortName": "J. Córdoba",
-        "jersey": 9,
-        "pos": "MID",
-        "age": 26,
-        "dob": "2000-07-15",
-        "height": "6' 0\"",
-        "weight": "146 lbs",
-        "club": "Instituto (Córdoba)"
       },
       {
         "id": "82816",
@@ -3066,7 +3054,7 @@
         "dob": "1993-01-18",
         "height": "5' 6\"",
         "weight": "157 lbs",
-        "club": "América de Cali"
+        "club": "River Plate"
       },
       {
         "id": "255295",
@@ -3091,6 +3079,18 @@
         "height": "5' 11\"",
         "weight": "152 lbs",
         "club": "Bayern München"
+      },
+      {
+        "id": "176058",
+        "name": "Jhon Córdoba",
+        "shortName": "J. Córdoba",
+        "jersey": 9,
+        "pos": "FWD",
+        "age": 33,
+        "dob": "1993-05-11",
+        "height": "6' 2\"",
+        "weight": "185 lbs",
+        "club": "Krasnodar"
       },
       {
         "id": "336809",
@@ -3148,7 +3148,7 @@
         "shortName": "T. Fayulu",
         "jersey": 16,
         "pos": "GK",
-        "age": 26,
+        "age": 27,
         "dob": "1999-07-24",
         "height": "6' 4\"",
         "weight": "183 lbs",
@@ -3332,7 +3332,7 @@
         "dob": "1995-01-02",
         "height": "6' 3\"",
         "weight": "161 lbs",
-        "club": "Lamia"
+        "club": "Kilmarnock"
       },
       {
         "id": "235875",
@@ -3550,7 +3550,7 @@
         "dob": "2007-02-24",
         "height": "6' 4\"",
         "weight": "190 lbs",
-        "club": "Tottenham Hotspur"
+        "club": "Brighton & Hove Albion"
       },
       {
         "id": "216579",
@@ -4174,10 +4174,10 @@
         "shortName": "L. Krejcí",
         "jersey": 7,
         "pos": "DEF",
-        "age": 27,
-        "dob": "1999-04-20",
-        "height": "6' 3\"",
-        "weight": "192 lbs",
+        "age": 34,
+        "dob": "1992-07-05",
+        "height": "5' 11\"",
+        "weight": "148 lbs",
         "club": "Wolverhampton Wanderers"
       },
       {
@@ -4552,7 +4552,7 @@
         "dob": "2007-05-04",
         "height": "5' 10\"",
         "weight": "157 lbs",
-        "club": "Strasbourg"
+        "club": "River Plate"
       },
       {
         "id": "297150",
@@ -4577,18 +4577,6 @@
         "height": "6' 2\"",
         "weight": "168 lbs",
         "club": "FC Midtjylland"
-      },
-      {
-        "id": "318090",
-        "name": "Nilson Angulo",
-        "shortName": "N. Angulo",
-        "jersey": 20,
-        "pos": "MID",
-        "age": 23,
-        "dob": "2003-06-19",
-        "height": "6' 0\"",
-        "weight": "150 lbs",
-        "club": "Sunderland"
       },
       {
         "id": "262111",
@@ -4687,6 +4675,18 @@
         "club": "Flamengo"
       },
       {
+        "id": "318090",
+        "name": "Nilson Angulo",
+        "shortName": "N. Angulo",
+        "jersey": 20,
+        "pos": "FWD",
+        "age": 23,
+        "dob": "2003-06-19",
+        "height": "6' 0\"",
+        "weight": "150 lbs",
+        "club": "Sunderland"
+      },
+      {
         "id": "367725",
         "name": "Jeremy Arévalo",
         "shortName": "J. Arévalo",
@@ -4782,7 +4782,7 @@
         "dob": "2001-04-30",
         "height": "6' 4\"",
         "weight": "185 lbs",
-        "club": "Zamalek"
+        "club": "Ludogorets Razgrad"
       },
       {
         "id": "187571",
@@ -5219,6 +5219,18 @@
         "club": "Manchester United"
       },
       {
+        "id": "265653",
+        "name": "Morgan Rogers",
+        "shortName": "M. Rogers",
+        "jersey": 17,
+        "pos": "MID",
+        "age": 23,
+        "dob": "2002-07-26",
+        "height": "6' 2\"",
+        "weight": "174 lbs",
+        "club": "Chelsea"
+      },
+      {
         "id": "251400",
         "name": "Eberechi Eze",
         "shortName": "E. Eze",
@@ -5265,18 +5277,6 @@
         "height": "6' 2\"",
         "weight": "174 lbs",
         "club": "Manchester United"
-      },
-      {
-        "id": "265653",
-        "name": "Morgan Rogers",
-        "shortName": "M. Rogers",
-        "jersey": 17,
-        "pos": "FWD",
-        "age": 23,
-        "dob": "2002-07-26",
-        "height": "6' 2\"",
-        "weight": "174 lbs",
-        "club": "Chelsea"
       },
       {
         "id": "268782",
@@ -5676,7 +5676,7 @@
         "dob": "1996-09-30",
         "height": "6' 4\"",
         "weight": "190 lbs",
-        "club": "Bayern München"
+        "club": "Besiktas"
       },
       {
         "id": "169438",
@@ -6038,7 +6038,7 @@
         "dob": "1998-07-18",
         "height": "5' 10\"",
         "weight": "152 lbs",
-        "club": "AJ Auxerre"
+        "club": "FC Cologne"
       },
       {
         "id": "174508",
@@ -6050,7 +6050,7 @@
         "dob": "1994-07-02",
         "height": "5' 10\"",
         "weight": "150 lbs",
-        "club": "PAOK Salonika"
+        "club": "PAOK"
       },
       {
         "id": "261505",
@@ -6666,7 +6666,7 @@
         "dob": "1993-09-29",
         "height": "5' 10\"",
         "weight": "152 lbs",
-        "club": "Persepolis"
+        "club": "ML Vitebsk"
       },
       {
         "id": "243943",
@@ -6782,7 +6782,7 @@
         "shortName": "R. Cheshmi",
         "jersey": 15,
         "pos": "MID",
-        "age": 32,
+        "age": 33,
         "dob": "1993-07-24",
         "height": "6' 4\"",
         "weight": "181 lbs",
@@ -6956,7 +6956,7 @@
         "dob": "2002-03-01",
         "height": "6' 0\"",
         "weight": "163 lbs",
-        "club": "Orebro SK"
+        "club": "Pogon Szczecin"
       },
       {
         "id": "378968",
@@ -7005,18 +7005,6 @@
         "height": "5' 11\"",
         "weight": "161 lbs",
         "club": "Iraq"
-      },
-      {
-        "id": "345320",
-        "name": "Merchas Doski",
-        "shortName": "M. Doski",
-        "jersey": 23,
-        "pos": "DEF",
-        "age": 26,
-        "dob": "1999-12-07",
-        "height": "5' 8\"",
-        "weight": "141 lbs",
-        "club": "Viktoria Plzen"
       },
       {
         "id": "371649",
@@ -7076,7 +7064,7 @@
         "dob": "1997-07-27",
         "height": "6' 0\"",
         "weight": "157 lbs",
-        "club": "Jonkopings Sodra"
+        "club": "Cracovia"
       },
       {
         "id": "274173",
@@ -7113,6 +7101,18 @@
         "height": "6' 0\"",
         "weight": "172 lbs",
         "club": "Venezia"
+      },
+      {
+        "id": "345320",
+        "name": "Merchas Doski",
+        "shortName": "M. Doski",
+        "jersey": 23,
+        "pos": "MID",
+        "age": 26,
+        "dob": "1999-12-07",
+        "height": "5' 8\"",
+        "weight": "141 lbs",
+        "club": "Viktoria Plzen"
       },
       {
         "id": "384274",
@@ -7354,7 +7354,7 @@
         "dob": "1991-07-19",
         "height": "5' 7\"",
         "weight": "161 lbs",
-        "club": "Al Orobah"
+        "club": "NK Maribor"
       },
       {
         "id": "184118",
@@ -7379,18 +7379,6 @@
         "height": "6' 0\"",
         "weight": "196 lbs",
         "club": "Al Ahli"
-      },
-      {
-        "id": "291630",
-        "name": "Amad Diallo",
-        "shortName": "A. Diallo",
-        "jersey": 15,
-        "pos": "MID",
-        "age": 24,
-        "dob": "2002-07-11",
-        "height": "5' 8\"",
-        "weight": "159 lbs",
-        "club": "Manchester United"
       },
       {
         "id": "213718",
@@ -7487,6 +7475,18 @@
         "height": "6' 1\"",
         "weight": "170 lbs",
         "club": "Stade de Reims"
+      },
+      {
+        "id": "291630",
+        "name": "Amad Diallo",
+        "shortName": "A. Diallo",
+        "jersey": 15,
+        "pos": "FWD",
+        "age": 24,
+        "dob": "2002-07-11",
+        "height": "5' 8\"",
+        "weight": "159 lbs",
+        "club": "Manchester United"
       },
       {
         "id": "210397",
@@ -8200,7 +8200,7 @@
         "dob": "1997-12-10",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "PAOK Salonika"
+        "club": "PAOK"
       },
       {
         "id": "224323",
@@ -8248,7 +8248,7 @@
         "dob": "2004-05-12",
         "height": "5' 10\"",
         "weight": "161 lbs",
-        "club": "Jong AZ"
+        "club": "AZ Alkmaar"
       },
       {
         "id": "132098",
@@ -8272,7 +8272,7 @@
         "dob": "2007-01-21",
         "height": "6' 1\"",
         "weight": "181 lbs",
-        "club": "Guadalajara"
+        "club": "River Plate"
       },
       {
         "id": "241627",
@@ -9202,7 +9202,7 @@
         "dob": "1999-02-25",
         "height": "6' 3\"",
         "weight": "192 lbs",
-        "club": "Sligo Rovers"
+        "club": "Auckland FC"
       },
       {
         "id": "332367",
@@ -9226,7 +9226,7 @@
         "dob": "1999-07-07",
         "height": "5' 10\"",
         "weight": "150 lbs",
-        "club": "FC Xanthi"
+        "club": "Auckland FC"
       },
       {
         "id": "103819",
@@ -9330,11 +9330,11 @@
         "shortName": "L. Bayliss",
         "jersey": 25,
         "pos": "MID",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-24",
         "height": "5' 10\"",
         "weight": "163 lbs",
-        "club": "Newcastle Jets"
+        "club": "Auckland FC"
       },
       {
         "id": "134190",
@@ -9358,7 +9358,7 @@
         "dob": "2000-05-01",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Motherwell"
+        "club": "Swansea City"
       },
       {
         "id": "175958",
@@ -10084,7 +10084,7 @@
         "dob": "1991-04-17",
         "height": "5' 10\"",
         "weight": "168 lbs",
-        "club": "FC Juarez"
+        "club": "Cerro Porteño"
       },
       {
         "id": "215401",
@@ -10264,7 +10264,7 @@
         "dob": "2002-02-11",
         "height": "5' 9\"",
         "weight": "148 lbs",
-        "club": "Atlanta United FC"
+        "club": "River Plate"
       },
       {
         "id": "301653",
@@ -10348,7 +10348,7 @@
         "dob": "1999-08-14",
         "height": "6' 0\"",
         "weight": "172 lbs",
-        "club": "Deportivo Santaní"
+        "club": "Red Bull Bragantino"
       }
     ],
     "Portugal": [
@@ -11678,7 +11678,7 @@
         "dob": "1992-06-04",
         "height": "6' 4\"",
         "weight": "174 lbs",
-        "club": "Maccabi Haifa"
+        "club": "Al-Faisaly"
       },
       {
         "id": "268796",
@@ -11763,18 +11763,6 @@
         "height": "5' 8\"",
         "weight": "141 lbs",
         "club": "AS Monaco"
-      },
-      {
-        "id": "268641",
-        "name": "Iliman Ndiaye",
-        "shortName": "I. Ndiaye",
-        "jersey": 13,
-        "pos": "MID",
-        "age": 26,
-        "dob": "2000-03-06",
-        "height": "5' 11\"",
-        "weight": "172 lbs",
-        "club": "Everton"
       },
       {
         "id": "253992",
@@ -11895,6 +11883,18 @@
         "height": "6' 3\"",
         "weight": "183 lbs",
         "club": "Samsunspor"
+      },
+      {
+        "id": "268641",
+        "name": "Iliman Ndiaye",
+        "shortName": "I. Ndiaye",
+        "jersey": 13,
+        "pos": "FWD",
+        "age": 26,
+        "dob": "2000-03-06",
+        "height": "5' 11\"",
+        "weight": "172 lbs",
+        "club": "Everton"
       },
       {
         "id": "241012",
@@ -13972,7 +13972,7 @@
         "dob": "1998-01-11",
         "height": "6' 0\"",
         "weight": "179 lbs",
-        "club": "Borussia Dortmund"
+        "club": "Besiktas"
       },
       {
         "id": "272700",
@@ -14540,7 +14540,7 @@
         "dob": "1997-11-09",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Flamengo"
+        "club": "River Plate"
       },
       {
         "id": "254007",
@@ -14958,7 +14958,7 @@
         "shortName": "D. Khamdamov",
         "jersey": 17,
         "pos": "MID",
-        "age": 29,
+        "age": 30,
         "dob": "1996-07-24",
         "height": "5' 10\"",
         "weight": "139 lbs",
@@ -15034,7 +15034,7 @@
         "dob": "1995-06-29",
         "height": "6' 3\"",
         "weight": "172 lbs",
-        "club": "Istanbul Basaksehir"
+        "club": "AS Roma"
       },
       {
         "id": "253231",
