@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-25T07:53:52.351Z",
+  "lastUpdated": "2026-07-26T08:11:14.334Z",
   "rosters": {
     "Algeria": [
       {
@@ -236,7 +236,7 @@
         "shortName": "Y. Titraoui",
         "jersey": 24,
         "pos": "MID",
-        "age": 22,
+        "age": 23,
         "dob": "2003-07-26",
         "height": "5' 7\"",
         "weight": "152 lbs",
@@ -1570,7 +1570,7 @@
         "dob": "1995-12-02",
         "height": "6' 4\"",
         "weight": "190 lbs",
-        "club": "St. Pauli"
+        "club": "Al Diriyah"
       },
       {
         "id": "401246",
@@ -1786,7 +1786,7 @@
         "dob": "2005-03-14",
         "height": "6' 0\"",
         "weight": "179 lbs",
-        "club": "Liberec"
+        "club": "Bosnia-Herzegovina"
       },
       {
         "id": "322244",
@@ -2222,7 +2222,7 @@
         "dob": "2003-11-27",
         "height": "6' 4\"",
         "weight": "203 lbs",
-        "club": "Crystal Palace"
+        "club": "Dundee"
       },
       {
         "id": "293691",
@@ -2512,7 +2512,7 @@
         "dob": "1986-06-03",
         "height": "6' 2\"",
         "weight": "161 lbs",
-        "club": "GD Chaves"
+        "club": "Colo Colo"
       },
       {
         "id": "260758",
@@ -2922,7 +2922,7 @@
         "dob": "1998-01-23",
         "height": "5' 11\"",
         "weight": "174 lbs",
-        "club": "Cruz Azul"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "197401",
@@ -3006,7 +3006,7 @@
         "dob": "1991-07-12",
         "height": "5' 11\"",
         "weight": "161 lbs",
-        "club": "Minnesota United FC"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "239566",
@@ -3212,7 +3212,7 @@
         "dob": "1996-02-15",
         "height": "6' 1\"",
         "weight": "183 lbs",
-        "club": "Larissa FC"
+        "club": "FCSB"
       },
       {
         "id": "204329",
@@ -3936,7 +3936,7 @@
         "dob": "1991-08-21",
         "height": "5' 11\"",
         "weight": "170 lbs",
-        "club": "Curaçao"
+        "club": "IGDIR FK"
       },
       {
         "id": "359132",
@@ -4857,18 +4857,6 @@
         "club": "Al Ahly"
       },
       {
-        "id": "378495",
-        "name": "Mostafa Zico",
-        "shortName": "M. Zico",
-        "jersey": 11,
-        "pos": "MID",
-        "age": 29,
-        "dob": "1997-04-27",
-        "height": "5' 10\"",
-        "weight": "161 lbs",
-        "club": "Pyramids FC"
-      },
-      {
         "id": "285057",
         "name": "Hamdy Fathy",
         "shortName": "H. Fathy",
@@ -4963,6 +4951,18 @@
         "height": "5' 9\"",
         "weight": "172 lbs",
         "club": "Liverpool"
+      },
+      {
+        "id": "378495",
+        "name": "Mostafa Zico",
+        "shortName": "M. Zico",
+        "jersey": 11,
+        "pos": "FWD",
+        "age": 29,
+        "dob": "1997-04-27",
+        "height": "5' 10\"",
+        "weight": "161 lbs",
+        "club": "Pyramids FC"
       },
       {
         "id": "276440",
@@ -5224,7 +5224,7 @@
         "shortName": "M. Rogers",
         "jersey": 17,
         "pos": "MID",
-        "age": 23,
+        "age": 24,
         "dob": "2002-07-26",
         "height": "6' 2\"",
         "weight": "174 lbs",
@@ -5736,7 +5736,7 @@
         "dob": "2003-06-16",
         "height": "5' 9\"",
         "weight": "148 lbs",
-        "club": "Eintracht Frankfurt"
+        "club": "Bayern München"
       },
       {
         "id": "249548",
@@ -6560,15 +6560,15 @@
       },
       {
         "id": "250241",
-        "name": "Frantzdy Pierrot",
+        "name": "Frantz Pierrot",
         "shortName": "F. Pierrot",
         "jersey": 20,
         "pos": "FWD",
-        "age": 31,
-        "dob": "1995-03-29",
+        "age": 27,
+        "dob": "1999-04-20",
         "height": "6' 4\"",
         "weight": "172 lbs",
-        "club": "AEK Athens"
+        "club": "Galway United FC"
       },
       {
         "id": "304212",
@@ -7776,7 +7776,7 @@
         "dob": "1997-10-20",
         "height": "5' 8\"",
         "weight": "148 lbs",
-        "club": "Celtic"
+        "club": "Ipswich Town"
       },
       {
         "id": "265953",
@@ -8236,7 +8236,7 @@
         "dob": "2000-05-23",
         "height": "5' 10\"",
         "weight": "161 lbs",
-        "club": "América"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "379193",
@@ -8260,7 +8260,7 @@
         "dob": "1994-08-15",
         "height": "5' 10\"",
         "weight": "172 lbs",
-        "club": "Toluca"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "303577",
@@ -8272,7 +8272,7 @@
         "dob": "2007-01-21",
         "height": "6' 1\"",
         "weight": "181 lbs",
-        "club": "River Plate"
+        "club": "Guadalajara"
       },
       {
         "id": "241627",
@@ -8296,7 +8296,7 @@
         "dob": "2000-05-08",
         "height": "5' 8\"",
         "weight": "152 lbs",
-        "club": "Cruz Azul"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "242614",
@@ -8344,7 +8344,7 @@
         "dob": "2005-08-05",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "Atlético de Madrid"
+        "club": "MLS All-Stars"
       },
       {
         "id": "389575",
@@ -8356,7 +8356,7 @@
         "dob": "2008-10-14",
         "height": "5' 6\"",
         "weight": "137 lbs",
-        "club": "Tijuana"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "265969",
@@ -8404,7 +8404,7 @@
         "dob": "1997-11-25",
         "height": "5' 9\"",
         "weight": "168 lbs",
-        "club": "Toluca"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "260775",
@@ -8464,7 +8464,7 @@
         "dob": "1998-09-07",
         "height": "5' 9\"",
         "weight": "152 lbs",
-        "club": "Guadalajara"
+        "club": "Liga MX All-Stars"
       }
     ],
     "Morocco": [
@@ -8987,18 +8987,6 @@
         "club": "Barcelona"
       },
       {
-        "id": "284792",
-        "name": "Crysencio Summerville",
-        "shortName": "C. Summerville",
-        "jersey": 24,
-        "pos": "MID",
-        "age": 24,
-        "dob": "2001-10-30",
-        "height": "5' 8\"",
-        "weight": "139 lbs",
-        "club": "West Ham United"
-      },
-      {
         "id": "282230",
         "name": "Quinten Timber",
         "shortName": "Q. Timber",
@@ -9093,6 +9081,18 @@
         "height": "5' 11\"",
         "weight": "174 lbs",
         "club": "Sunderland"
+      },
+      {
+        "id": "284792",
+        "name": "Crysencio Summerville",
+        "shortName": "C. Summerville",
+        "jersey": 24,
+        "pos": "FWD",
+        "age": 24,
+        "dob": "2001-10-30",
+        "height": "5' 8\"",
+        "weight": "139 lbs",
+        "club": "Al Hilal"
       }
     ],
     "New Zealand": [
@@ -9202,7 +9202,7 @@
         "dob": "1999-02-25",
         "height": "6' 3\"",
         "weight": "192 lbs",
-        "club": "Sligo Rovers"
+        "club": "Auckland FC"
       },
       {
         "id": "332367",
@@ -9821,6 +9821,18 @@
         "club": "Plaza Amador"
       },
       {
+        "id": "189775",
+        "name": "Andrés Andrade",
+        "shortName": "A. Andrade",
+        "jersey": 16,
+        "pos": "DEF",
+        "age": 27,
+        "dob": "1998-10-16",
+        "height": "6' 2\"",
+        "weight": "190 lbs",
+        "club": "LASK Linz"
+      },
+      {
         "id": "216420",
         "name": "Amir Murillo",
         "shortName": "A. Murillo",
@@ -9893,6 +9905,18 @@
         "club": "Pumas UNAM"
       },
       {
+        "id": "288563",
+        "name": "Tomás Rodríguez",
+        "shortName": "T. Rodríguez",
+        "jersey": 9,
+        "pos": "MID",
+        "age": 24,
+        "dob": "2002-02-21",
+        "height": "6' 0\"",
+        "weight": "163 lbs",
+        "club": "Barcelona SC"
+      },
+      {
         "id": "201919",
         "name": "Édgar Yoel Bárcenas",
         "shortName": "É. Bárcenas",
@@ -9917,18 +9941,6 @@
         "club": "Minnesota United FC"
       },
       {
-        "id": "189775",
-        "name": "Andrés Andrade",
-        "shortName": "A. Andrade",
-        "jersey": 16,
-        "pos": "MID",
-        "age": 37,
-        "dob": "1989-02-23",
-        "height": "6' 0\"",
-        "weight": "161 lbs",
-        "club": "LASK Linz"
-      },
-      {
         "id": "116825",
         "name": "Aníbal Godoy",
         "shortName": "A. Godoy",
@@ -9951,18 +9963,6 @@
         "height": "6' 2\"",
         "weight": "192 lbs",
         "club": "Pérez Zeledón"
-      },
-      {
-        "id": "288563",
-        "name": "Tomás Rodríguez",
-        "shortName": "T. Rodríguez",
-        "jersey": 9,
-        "pos": "FWD",
-        "age": 27,
-        "dob": "1999-03-09",
-        "height": "6' 0\"",
-        "weight": "163 lbs",
-        "club": "Barcelona SC"
       },
       {
         "id": "195326",
@@ -10164,7 +10164,7 @@
         "shortName": "A. Maidana",
         "jersey": 26,
         "pos": "DEF",
-        "age": 20,
+        "age": 21,
         "dob": "2005-07-26",
         "height": "5' 10\"",
         "weight": "161 lbs",
@@ -10422,7 +10422,7 @@
         "dob": "2002-05-16",
         "height": "6' 2\"",
         "weight": "185 lbs",
-        "club": "Benfica"
+        "club": "Benfica B"
       },
       {
         "id": "238902",
@@ -12438,7 +12438,7 @@
         "dob": "2001-02-19",
         "height": "5' 8\"",
         "weight": "146 lbs",
-        "club": "Paris Saint-Germain"
+        "club": "Atlético de Madrid"
       },
       {
         "id": "304793",
@@ -13093,6 +13093,18 @@
         "club": "Mjällby AIF"
       },
       {
+        "id": "314164",
+        "name": "Taha Ali",
+        "shortName": "T. Ali",
+        "jersey": 26,
+        "pos": "MID",
+        "age": 28,
+        "dob": "1998-07-01",
+        "height": "5' 9\"",
+        "weight": "139 lbs",
+        "club": "Malmö FF"
+      },
+      {
         "id": "235662",
         "name": "Alexander Isak",
         "shortName": "A. Isak",
@@ -13163,18 +13175,6 @@
         "height": "6' 6\"",
         "weight": "192 lbs",
         "club": "Club Brugge"
-      },
-      {
-        "id": "314164",
-        "name": "Taha Ali",
-        "shortName": "T. Ali",
-        "jersey": 26,
-        "pos": "FWD",
-        "age": 28,
-        "dob": "1998-07-01",
-        "height": "5' 9\"",
-        "weight": "139 lbs",
-        "club": "Malmö FF"
       }
     ],
     "Switzerland": [
@@ -14238,7 +14238,7 @@
         "dob": "2004-08-09",
         "height": "6' 2\"",
         "weight": "174 lbs",
-        "club": "Villarreal"
+        "club": "MLS All-Stars"
       },
       {
         "id": "77072",
@@ -14430,7 +14430,7 @@
         "dob": "1998-02-07",
         "height": "5' 6\"",
         "weight": "146 lbs",
-        "club": "América"
+        "club": "Liga MX All-Stars"
       }
     ],
     "Uruguay": [
@@ -14720,7 +14720,7 @@
         "dob": "2000-05-20",
         "height": "5' 9\"",
         "weight": "150 lbs",
-        "club": "América"
+        "club": "Liga MX All-Stars"
       },
       {
         "id": "159042",
