@@ -1,9 +1,9 @@
 name: Fetch Squad Rosters
 
 on:
+  # TOURNAMENT COMPLETE — daily 06:00 UTC cron removed. Squads are final.
+  # Manual dispatch kept as an escape hatch only.
   workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * *'   # daily at 06:00 UTC
 
 jobs:
   fetch:

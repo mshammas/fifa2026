@@ -26,6 +26,12 @@ const FLAGS = {
 };
 const flag = (team) => FLAGS[team] || "⚽";
 
+// The tournament finished on 2026-07-19 (Spain 1-0 Argentina, a.e.t.).
+// Derived from the data rather than hardcoded: once every match is FT there is
+// nothing left to poll for, so the 30 s background refresh switches itself off
+// and the homepage shows the tournament recap instead of a live feed.
+const TOURNAMENT_COMPLETE = (matchesData.matches || []).every((m) => m.status === "FT");
+
 function useLocalStorage(key, init) {
   const [val, setVal] = useState(() => {
     try { return JSON.parse(localStorage.getItem(key)) ?? init; } catch { return init; }
@@ -2844,6 +2850,367 @@ function ScheduleTab({ matches, tz, onMatchClick }) {
   );
 }
 
+/* ============================================================
+   Tournament recap — shown on the homepage once every match is FT.
+   Everything below is derived from matches.json, not hardcoded, so the
+   numbers stay honest even if a result is later corrected upstream.
+   ============================================================ */
+
+const KO_ROUNDS = [["r32", 16, "Round of 32"], ["r16", 8, "Round of 16"], ["qf", 4, "Quarter-final"], ["sf", 2, "Semi-final"], ["third", 1, "Third place"], ["final", 1, "Final"]];
+
+function knockoutStages(matches) {
+  const knockout = matches.filter((m) => !m.group).sort((a, b) => new Date(a.date) - new Date(b.date));
+  const map = new Map();
+  let idx = 0;
+  for (const [key, count, label] of KO_ROUNDS) {
+    for (let i = 0; i < count && idx < knockout.length; i++, idx++) map.set(knockout[idx].id, { key, label });
+  }
+  return map;
+}
+
+// A match went past 90' if any goal or card was recorded beyond regulation.
+function wentToExtraTime(m) {
+  return [...(m.goals || []), ...(m.cards || [])].some((e) => parseEventMin(e.minute) > 90);
+}
+
+function useTournamentSummary(matches) {
+  return useMemo(() => {
+    const stages = knockoutStages(matches);
+    const stageOf = (m) => (m.group ? { key: "group", label: `Group ${m.group}` } : stages.get(m.id) || { key: "ko", label: "Knockout" });
+    const byStage = (key) => matches.filter((m) => stages.get(m.id)?.key === key);
+
+    const final = byStage("final")[0] || null;
+    const thirdPlace = byStage("third")[0] || null;
+    if (!final || final.homeScore == null) return null;
+
+    const homeWon = final.homeScore > final.awayScore;
+    const champion = homeWon ? final.home : final.away;
+    const runnerUp = homeWon ? final.away : final.home;
+    const third = thirdPlace && thirdPlace.homeScore != null
+      ? (thirdPlace.homeScore > thirdPlace.awayScore ? thirdPlace.home : thirdPlace.away)
+      : null;
+    const fourth = thirdPlace && thirdPlace.homeScore != null
+      ? (thirdPlace.homeScore > thirdPlace.awayScore ? thirdPlace.away : thirdPlace.home)
+      : null;
+
+    // Winning goal in the final = last goal scored by the champion.
+    const winningGoal = [...(final.goals || [])]
+      .filter((g) => (g.side === "home" ? final.home : final.away) === champion)
+      .sort((a, b) => parseEventMin(a.minute) - parseEventMin(b.minute))
+      .pop() || null;
+
+    // Champion's full run, in order, with stage labels and result letters.
+    const path = matches
+      .filter((m) => m.home === champion || m.away === champion)
+      .sort((a, b) => new Date(a.date) - new Date(b.date))
+      .map((m) => {
+        const isHome = m.home === champion;
+        const gf = isHome ? m.homeScore : m.awayScore;
+        const ga = isHome ? m.awayScore : m.homeScore;
+        return { m, opponent: isHome ? m.away : m.home, gf, ga, result: gf > ga ? "W" : gf < ga ? "L" : "D", stage: stageOf(m).label };
+      });
+    const champGF = path.reduce((s, r) => s + (r.gf || 0), 0);
+    const champGA = path.reduce((s, r) => s + (r.ga || 0), 0);
+    const champCleanSheets = path.filter((r) => r.ga === 0).length;
+    // The one goal (or few) the champion conceded all tournament.
+    const goalsConceded = path.flatMap((r) =>
+      (r.m.goals || [])
+        .filter((g) => (g.side === "home" ? r.m.home : r.m.away) !== champion)
+        .map((g) => ({ ...g, opponent: r.opponent, stage: r.stage }))
+    );
+
+    // Tournament totals.
+    let goals = 0, pens = 0, ogs = 0, yellows = 0, reds = 0, extraTimeGames = 0;
+    const scorerMap = {};
+    for (const m of matches) {
+      for (const g of m.goals || []) {
+        goals++;
+        if (g.pen) pens++;
+        if (g.og) { ogs++; continue; }          // own goals don't credit a scorer
+        const team = g.side === "home" ? m.home : m.away;
+        const k = `${g.player}||${team}`;
+        if (!scorerMap[k]) scorerMap[k] = { player: g.player, team, goals: 0 };
+        scorerMap[k].goals++;
+      }
+      for (const c of m.cards || []) (c.type === "red" ? reds++ : yellows++);
+      if (!m.group && wentToExtraTime(m)) extraTimeGames++;
+    }
+    const scorers = Object.values(scorerMap).sort((a, b) => b.goals - a.goals || a.player.localeCompare(b.player));
+    const teams = new Set(matches.flatMap((m) => [m.home, m.away]));
+
+    const withTotals = matches.map((m) => ({ m, total: (m.homeScore || 0) + (m.awayScore || 0), diff: Math.abs((m.homeScore || 0) - (m.awayScore || 0)) }));
+    const biggestWin = [...withTotals].sort((a, b) => b.diff - a.diff || b.total - a.total)[0]?.m || null;
+    const highestScoring = [...withTotals].sort((a, b) => b.total - a.total)[0]?.m || null;
+
+    return {
+      final, thirdPlace, champion, runnerUp, third, fourth, winningGoal,
+      finalWentToET: wentToExtraTime(final),
+      path, champGF, champGA, champCleanSheets, goalsConceded,
+      totals: { matches: matches.length, teams: teams.size, goals, pens, ogs, yellows, reds, extraTimeGames, perMatch: (goals / matches.length).toFixed(2) },
+      scorers, biggestWin, highestScoring,
+      findMatch: (home, away) => matches.find((m) => m.home === home && m.away === away) || null,
+    };
+  }, [matches]);
+}
+
+function RecapSection({ title, subtitle, children }) {
+  return (
+    <section style={{ marginBottom: 22 }}>
+      <h2 style={{ fontSize: 18, fontWeight: 900, color: C.text, margin: "0 0 2px" }}>{title}</h2>
+      {subtitle && <div style={{ fontSize: 14, color: C.dim, marginBottom: 10 }}>{subtitle}</div>}
+      {!subtitle && <div style={{ height: 10 }} />}
+      {children}
+    </section>
+  );
+}
+
+function StatTile({ value, label, accent }) {
+  return (
+    <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "12px 10px", textAlign: "center", minWidth: 0 }}>
+      <div style={{ fontSize: 24, fontWeight: 900, color: accent || C.text, lineHeight: 1.1 }}>{value}</div>
+      <div style={{ fontSize: 13, color: C.dim, fontWeight: 700, marginTop: 4 }}>{label}</div>
+    </div>
+  );
+}
+
+function ScoreLine({ m, onOpenMatch, note }) {
+  if (!m) return null;
+  return (
+    <button
+      onClick={() => onOpenMatch && onOpenMatch(m)}
+      style={{ display: "flex", alignItems: "center", gap: 8, width: "100%", background: "transparent", border: "none", padding: 0, color: C.text, textAlign: "left", cursor: onOpenMatch ? "pointer" : "default" }}
+    >
+      <span style={{ flex: 1, fontSize: 15, fontWeight: 700, minWidth: 0 }}>
+        {flag(m.home)} {m.home} <span style={{ color: C.gold, fontWeight: 900 }}>{m.homeScore}–{m.awayScore}</span> {m.away} {flag(m.away)}
+      </span>
+      {note && <span style={{ fontSize: 13, color: C.dim, whiteSpace: "nowrap" }}>{note}</span>}
+    </button>
+  );
+}
+
+function TournamentRecap({ matches, tz, onOpenMatch, onPlayerClick, onGoToStandings }) {
+  const s = useTournamentSummary(matches);
+  const wide = useWindowWidth() >= 768;
+  const [showPath, setShowPath] = useState(true);
+  if (!s) return null;
+
+  const { final, thirdPlace, champion, runnerUp, third, fourth, winningGoal, totals } = s;
+  const topScorer = s.scorers[0];
+  const golden = s.scorers.filter((x) => x.goals === topScorer?.goals);
+
+  // Editorial picks. Each resolves against real data — if a match is missing
+  // (corrected result, renamed team) the card just drops out rather than lying.
+  const stories = [
+    s.goalsConceded.length > 0 && s.goalsConceded.length <= 3 && {
+      icon: "🧱",
+      title: `${champion} conceded ${s.goalsConceded.length === 1 ? "one goal" : `${s.goalsConceded.length} goals`} all tournament`,
+      body: `${s.champCleanSheets} clean sheets in ${s.path.length} matches. The only time they were beaten: ${s.goalsConceded.map((g) => `${g.player} (${g.opponent}, ${g.minute})`).join(", ")}.`,
+      match: null,
+    },
+    final && {
+      icon: "🎯",
+      title: `${runnerUp} did not register a shot on target in the final`,
+      body: `${champion} had ${final[final.home === champion ? "homeStats" : "awayStats"]?.totalShots || "—"} shots and ${final[final.home === champion ? "homeStats" : "awayStats"]?.shotsOnTarget || "—"} on target with ${final[final.home === champion ? "homeStats" : "awayStats"]?.possessionPct || "—"}% of the ball. ${runnerUp} managed ${final[final.home === runnerUp ? "homeStats" : "awayStats"]?.totalShots || "—"}, none on target — and finished the match with ${11 - (final.cards || []).filter((c) => c.type === "red" && (c.side === "home" ? final.home : final.away) === runnerUp).length} men.`,
+      match: final,
+    },
+    thirdPlace && {
+      icon: "🎢",
+      title: `Ten goals in the third-place play-off`,
+      body: `The wildest game of the tournament came after both teams had already lost their semi-finals.`,
+      match: thirdPlace,
+    },
+    s.findMatch("Germany", "Paraguay") && {
+      icon: "😱",
+      title: "Paraguay knocked Germany out on penalties",
+      body: "Germany had 75.6% of the ball and 21 shots in the Round of 32, drew 1-1, and went out in the shootout.",
+      match: s.findMatch("Germany", "Paraguay"),
+    },
+    s.findMatch("Brazil", "Norway") && {
+      icon: "⚡",
+      title: "Haaland sent Brazil home",
+      body: "Two late goals in the Round of 16 ended Brazil's tournament and carried Norway into the quarter-finals on their return to the World Cup.",
+      match: s.findMatch("Brazil", "Norway"),
+    },
+    s.findMatch("Netherlands", "Morocco") && {
+      icon: "🇲🇦",
+      title: "Morocco reached the quarter-finals again",
+      body: "Unbeaten through the group, past the Netherlands on penalties, then three past Canada — before France ended the run.",
+      match: s.findMatch("Netherlands", "Morocco"),
+    },
+    s.findMatch("Spain", "Cape Verde") && {
+      icon: "🌟",
+      title: "Cape Verde's first World Cup",
+      body: "Debutants who went unbeaten in the group — including a goalless draw with the eventual champions — and pushed Argentina to extra time in the Round of 32.",
+      match: s.findMatch("Argentina", "Cape Verde"),
+    },
+    s.biggestWin && {
+      icon: "💥",
+      title: "Biggest win of the tournament",
+      body: `The heaviest scoreline across all ${totals.matches} matches.`,
+      match: s.biggestWin,
+    },
+  ].filter(Boolean);
+
+  const podium = [
+    { medal: "🥇", place: "Champions", team: champion, color: C.gold },
+    { medal: "🥈", place: "Runners-up", team: runnerUp, color: "#c0c6d4" },
+    third && { medal: "🥉", place: "Third", team: third, color: "#cd8032" },
+    fourth && { medal: "4️⃣", place: "Fourth", team: fourth, color: C.dim },
+  ].filter(Boolean);
+
+  return (
+    <div style={{ marginBottom: 26 }}>
+      {/* ---------- Champion hero ---------- */}
+      <div
+        onClick={() => onOpenMatch && onOpenMatch(final)}
+        style={{
+          background: `linear-gradient(150deg, ${C.gold}30, ${C.card} 60%)`,
+          border: `1px solid ${C.gold}66`, borderRadius: 18, padding: wide ? "26px 24px" : "22px 16px",
+          marginBottom: 18, cursor: "pointer", overflow: "hidden",
+        }}
+      >
+        <div style={{ fontSize: 13, fontWeight: 900, color: C.gold, letterSpacing: 1.5, textTransform: "uppercase" }}>
+          🏆 World Cup 2026 Champions
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 12 }}>
+          <span style={{ fontSize: wide ? 64 : 52, lineHeight: 1 }}>{flag(champion)}</span>
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontSize: wide ? 40 : 32, fontWeight: 900, lineHeight: 1.1 }}>{champion}</div>
+            <div style={{ fontSize: 15, color: C.dim, fontWeight: 700, marginTop: 2 }}>
+              Beat {runnerUp} {final.homeScore}–{final.awayScore}{s.finalWentToET ? " (a.e.t.)" : ""} in the final
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr)", gap: 6, marginTop: 16, fontSize: 15, color: C.dim }}>
+          {winningGoal && (
+            <div>⚽ <strong style={{ color: C.text }}>{winningGoal.player}</strong> {winningGoal.minute} — the goal that won the World Cup</div>
+          )}
+          <div>📅 {fmt(final.date, tz, { weekday: "long", month: "long", day: "numeric" })}</div>
+          {final.venue && <div>📍 {final.venue}</div>}
+        </div>
+
+        <div style={{ marginTop: 14, fontSize: 14, color: C.gold, fontWeight: 800 }}>Tap for the full match →</div>
+      </div>
+
+      {/* ---------- Podium ---------- */}
+      <div style={{ display: "grid", gridTemplateColumns: `repeat(${podium.length}, minmax(0, 1fr))`, gap: 8, marginBottom: 22 }}>
+        {podium.map((p) => (
+          <div key={p.place} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "12px 6px", textAlign: "center", minWidth: 0 }}>
+            <div style={{ fontSize: 22 }}>{p.medal}</div>
+            <div style={{ fontSize: 26, marginTop: 2 }}>{flag(p.team)}</div>
+            <div style={{ fontSize: 14, fontWeight: 800, marginTop: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{p.team}</div>
+            <div style={{ fontSize: 13, color: p.color, fontWeight: 700, marginTop: 2 }}>{p.place}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* ---------- Champion's road ---------- */}
+      <RecapSection
+        title={`${flag(champion)} ${champion}'s road to the title`}
+        subtitle={`${s.path.filter((r) => r.result === "W").length}W ${s.path.filter((r) => r.result === "D").length}D ${s.path.filter((r) => r.result === "L").length}L · ${s.champGF} scored, ${s.champGA} conceded · ${s.champCleanSheets} clean sheets`}
+      >
+        <button
+          onClick={() => setShowPath((v) => !v)}
+          style={{ display: "block", width: "100%", background: "transparent", border: "none", padding: 0, marginBottom: showPath ? 8 : 0, fontSize: 14, fontWeight: 800, color: C.green, textAlign: "left" }}
+        >
+          {showPath ? "Hide all matches ▲" : `Show all ${s.path.length} matches ▼`}
+        </button>
+        {showPath && (
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+            {s.path.map((r, i) => (
+              <button
+                key={r.m.id}
+                onClick={() => onOpenMatch && onOpenMatch(r.m)}
+                style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "11px 12px", background: r.stage === "Final" ? `${C.gold}14` : "transparent", border: "none", borderTop: i === 0 ? "none" : `1px solid ${C.border}`, color: C.text, textAlign: "left" }}
+              >
+                <span style={{
+                  width: 24, height: 24, flexShrink: 0, borderRadius: 6, fontSize: 13, fontWeight: 900,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: r.result === "W" ? `${C.green}28` : r.result === "D" ? `${C.dim}28` : `${C.red}28`,
+                  color: r.result === "W" ? C.green : r.result === "D" ? C.dim : C.red,
+                }}>{r.result}</span>
+                <span style={{ flex: 1, minWidth: 0 }}>
+                  <span style={{ display: "block", fontSize: 15, fontWeight: 700, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    {flag(r.opponent)} {r.opponent}
+                  </span>
+                  <span style={{ display: "block", fontSize: 13, color: C.dim, marginTop: 1 }}>{r.stage}</span>
+                </span>
+                <span style={{ fontSize: 17, fontWeight: 900, whiteSpace: "nowrap" }}>{r.gf}–{r.ga}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </RecapSection>
+
+      {/* ---------- By the numbers ---------- */}
+      <RecapSection title="📊 By the numbers" subtitle="Across the first 48-team World Cup">
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(${wide ? 4 : 3}, minmax(0, 1fr))`, gap: 8 }}>
+          <StatTile value={totals.matches} label="Matches" />
+          <StatTile value={totals.goals} label="Goals" accent={C.green} />
+          <StatTile value={totals.perMatch} label="Per match" />
+          <StatTile value={totals.teams} label="Teams" />
+          <StatTile value={totals.pens} label="Penalties" />
+          <StatTile value={totals.ogs} label="Own goals" />
+          <StatTile value={totals.yellows} label="🟨 Yellows" accent={C.gold} />
+          <StatTile value={totals.reds} label="🟥 Reds" accent={C.red} />
+          <StatTile value={totals.extraTimeGames} label="Extra time" />
+        </div>
+      </RecapSection>
+
+      {/* ---------- Golden Boot ---------- */}
+      {topScorer && (
+        <RecapSection title="👟 Golden Boot" subtitle={golden.length > 1 ? `Shared on ${topScorer.goals} goals` : `${topScorer.goals} goals`}>
+          <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, overflow: "hidden" }}>
+            {s.scorers.slice(0, 6).map((sc, i) => (
+              <button
+                key={sc.player + sc.team}
+                onClick={() => onPlayerClick && onPlayerClick(sc.player, sc.team)}
+                style={{ display: "flex", alignItems: "center", gap: 12, width: "100%", padding: "12px 14px", border: "none", borderTop: i === 0 ? "none" : `1px solid ${C.border}`, background: i === 0 ? `${C.gold}1a` : "transparent", color: C.text, textAlign: "left" }}
+              >
+                <span style={{ fontSize: 15, fontWeight: 900, color: C.gold, width: 20, flexShrink: 0 }}>{i + 1}</span>
+                <span style={{ fontSize: 24, flexShrink: 0 }}>{flag(sc.team)}</span>
+                <span style={{ flex: 1, fontSize: 16, fontWeight: 700, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{sc.player}</span>
+                <span style={{ fontSize: 13, color: C.dim, whiteSpace: "nowrap" }}>{sc.team}</span>
+                <span style={{ fontSize: 20, fontWeight: 900, color: C.gold, minWidth: 22, textAlign: "right" }}>{sc.goals}</span>
+              </button>
+            ))}
+          </div>
+        </RecapSection>
+      )}
+
+      {/* ---------- Stories ---------- */}
+      <RecapSection title="📖 Stories of the tournament">
+        <div style={{ display: "grid", gridTemplateColumns: wide ? "repeat(2, minmax(0, 1fr))" : "minmax(0, 1fr)", gap: 10 }}>
+          {stories.map((st) => (
+            <div key={st.title} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "14px 15px", minWidth: 0 }}>
+              <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                <span style={{ fontSize: 22, flexShrink: 0 }}>{st.icon}</span>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 16, fontWeight: 800, lineHeight: 1.3 }}>{st.title}</div>
+                  <div style={{ fontSize: 14, color: C.dim, marginTop: 6, lineHeight: 1.5 }}>{st.body}</div>
+                  {st.match && (
+                    <div style={{ marginTop: 10, paddingTop: 10, borderTop: `1px solid ${C.border}` }}>
+                      <ScoreLine m={st.match} onOpenMatch={onOpenMatch} />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </RecapSection>
+
+      {/* ---------- Divider into the archive ---------- */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "26px 0 18px" }}>
+        <div style={{ flex: 1, height: 1, background: C.border }} />
+        <span style={{ fontSize: 14, fontWeight: 800, color: C.dim, whiteSpace: "nowrap" }}>Every match, in full</span>
+        <div style={{ flex: 1, height: 1, background: C.border }} />
+      </div>
+    </div>
+  );
+}
+
 function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive, onGoToTeams, onGoToStandings, onPlayerClick }) {
   const groups = useMemo(() => ["All", ...Array.from(new Set(matches.map((m) => m.group).filter(Boolean))).sort()], [matches]);
   const [groupFilter, setGroupFilter] = useLocalStorage("wc_group_filter", "All");
@@ -2924,7 +3291,17 @@ function MatchesTab({ matches, tz, favTeams, predictions, onPredict, onOpenLive,
 
   return (
     <div>
-      {favTeams.length === 0 && (
+      {TOURNAMENT_COMPLETE && !searchTerm && !favOnly && groupFilter === "All" && (
+        <TournamentRecap
+          matches={matches}
+          tz={tz}
+          onOpenMatch={onOpenLive}
+          onPlayerClick={onPlayerClick}
+          onGoToStandings={onGoToStandings}
+        />
+      )}
+
+      {!TOURNAMENT_COMPLETE && favTeams.length === 0 && (
         <button
           onClick={onGoToTeams}
           style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", background: `${C.gold}0d`, border: `1px dashed ${C.gold}55`, borderRadius: 12, padding: "12px 14px", marginBottom: 14, cursor: "pointer", color: C.text, textAlign: "left" }}
@@ -4221,14 +4598,18 @@ export default function App() {
     } catch { /* silently ignore network errors */ }
   }, []);
 
-  // Auto-refresh every 30 s (always — catches matches kicking off even from NS state).
+  // Auto-refresh every 30 s (catches matches kicking off even from NS state).
+  // Off once the tournament is complete — the data is final, so polling would
+  // just re-download an unchanging file from every open tab forever.
   useEffect(() => {
+    if (TOURNAMENT_COMPLETE) return;
     const t = setInterval(refreshMatches, 30_000);
     return () => clearInterval(t);
   }, [refreshMatches]);
 
   // Immediate refresh when returning to the tab.
   useEffect(() => {
+    if (TOURNAMENT_COMPLETE) return;
     const onVisible = () => { if (document.visibilityState === "visible") refreshMatches(); };
     document.addEventListener("visibilitychange", onVisible);
     return () => document.removeEventListener("visibilitychange", onVisible);
@@ -4252,6 +4633,9 @@ export default function App() {
   useEffect(() => {
     const lastVisit = parseInt(localStorage.getItem("wc_last_visit_ts") || "0");
     localStorage.setItem("wc_last_visit_ts", String(Date.now()));
+    // Nothing can have changed since the last visit once every match is FT —
+    // skip the mount fetch entirely rather than diffing a frozen dataset.
+    if (TOURNAMENT_COMPLETE) return;
     const wasAway = Date.now() - lastVisit > 3 * 60 * 1000;
     if (!wasAway || !lastVisit) return;
     const prev = (() => { try { return JSON.parse(localStorage.getItem("wc_prev_scores")); } catch { return null; } })();

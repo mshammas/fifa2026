@@ -1,7 +1,11 @@
 # ⚽ FIFA World Cup 2026 — Live Scores
 
 A zero-API-token live scores progressive web app (PWA) for the 2026 FIFA World Cup.  
-Scores refresh automatically every ~5 minutes via a scheduled GitHub Action. No login, no account, no ads.
+No login, no account, no ads.
+
+> 🏆 **The tournament is over.** Spain beat Argentina 1-0 after extra time at MetLife Stadium on 19 July 2026 to win their second World Cup.
+> The app is now a **complete archive** of all 104 matches, and the homepage opens on a tournament recap — final standings, Spain's road to the title, the numbers, the Golden Boot race, and the stories of the tournament.
+> The scheduled scrapers have been switched off; the data is final.
 
 **Live site → [fifa.shammas.in](https://fifa.shammas.in)**
 
@@ -117,7 +121,7 @@ Tap the 🔔 bell to open notification settings. Grant browser permission once, 
 
 ![Notification settings](docs/screenshots/07-notifications-settings.jpg)
 
-> Notifications fire when scores are fetched (~every 5 minutes) while this tab is open. They do not require a service worker or push subscription.
+> Notifications fired when scores were fetched (~every 5 minutes) while the tab was open. They do not require a service worker or push subscription. Now that the tournament is finished there are no further score changes, so nothing will fire.
 
 ---
 
@@ -177,8 +181,10 @@ Installing adds the app to your home screen / taskbar and lets it open without a
 
 ## How Scores Update
 
+> **Now stopped.** The scheduled runs below were removed once the tournament ended — `matches.json` is final. Both workflows still exist and can be triggered by hand from the Actions tab if a result ever needs correcting.
+
 ```
-GitHub Action (every 5 min)
+GitHub Action (was: every 5 min — now manual only)
        │
        ▼
 fetch-scores.mjs  ──▶  ESPN public API  (no key required)
@@ -194,7 +200,7 @@ Your browser loads the latest bundle  (scores baked in at build time)
 ```
 
 - **Source:** ESPN's public scoreboard API — zero API tokens, zero secrets.
-- **Frequency:** Every 5 minutes (configurable in `.github/workflows/fetch-scores.yml`).
+- **Frequency:** Was every 5 minutes during the tournament; the cron has been removed from `.github/workflows/fetch-scores.yml` now that every match is finished.
 - **Fallback:** If ESPN is unreachable, the scraper falls back to Wikipedia match tables.
 - **No runtime calls:** Your browser never hits any external API. All data is baked into the static JS bundle at deploy time.
 

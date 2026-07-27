@@ -6,7 +6,7 @@
 **What it does:**
 - Live FIFA World Cup 2026 match scores, goals, cards, stats and recaps
 - Full schedule (104 matches), group standings, knockout bracket, watch/highlights links
-- Auto-updates every 5 minutes via GitHub Action scraping ESPN's public scoreboard API
+- **Tournament complete (2026-07-19).** All automations are stopped — see "Post-tournament state" below. The app is now an archive with a recap homepage.
 - Timezone picker (popover), browser notifications (goals/kick-off/FT/red cards), score predictor
 - Fullscreen live match view: 3-panel layout (Score | Goals | Stats) on desktop/tablet, single-column on mobile
 - Installable as PWA (service worker + manifest)
@@ -24,7 +24,7 @@
 - `src/main.jsx` — Entire React app (all components, hooks, styles in one file)
 - `src/data/matches.json` — Match data (scores, goals, cards, stats, recaps) — auto-updated by scraper
 - `scripts/fetch-scores.mjs` — ESPN scraper: fetches standings + scoreboard, builds matches.json
-- `.github/workflows/fetch-scores.yml` — Runs scraper every 5 minutes, commits JSON, triggers deploy
+- `.github/workflows/fetch-scores.yml` — Scraper + commit + deploy. Cron removed post-tournament; `workflow_dispatch` only
 - `.github/workflows/deploy.yml` — Builds with Vite and deploys to GitHub Pages
 - `vite.config.js` — `base: './'` so assets work at both root domain and Pages subpath
 - `index.html` — HTML shell with PWA meta tags and OG/Twitter cards
@@ -118,6 +118,39 @@ git rebase FETCH_HEAD
 git push git@github-mshammas:mshammas/fifa2026.git HEAD:main
 ```
 The score bot commits `matches.json` frequently — always rebase before pushing to avoid conflicts.
+
+## Post-tournament state (v1.2 — tournament complete)
+
+The 2026 World Cup ended on **2026-07-19: Spain 1-0 Argentina (a.e.t.)**, Ferran Torres 106', MetLife Stadium. Third place: England 6-4 France. `matches.json` holds all 104 matches at FT and is final.
+
+### Automations stopped
+- `fetch-scores.yml` — `schedule:` cron (*/5 min) **removed**. `workflow_dispatch` kept as an escape hatch for correcting a result.
+- `fetch-rosters.yml` — daily 06:00 UTC cron **removed**. `workflow_dispatch` kept.
+- `deploy.yml` — **unchanged**. It only runs on push to `main`, which is the desired behaviour for a static archive.
+- **External pinger** — lives outside this repo (it drove the real 5-minute beat during matches). Must be disabled separately in whatever service hosts it; nothing in this repo can turn it off.
+
+### `TOURNAMENT_COMPLETE` flag (`src/main.jsx`)
+```js
+const TOURNAMENT_COMPLETE = (matchesData.matches || []).every((m) => m.status === "FT");
+```
+Derived from the data, not hardcoded to a date. When true it:
+- disables the 30 s `setInterval` background refresh in `App` (every open tab was re-downloading an unchanging file forever),
+- disables the `visibilitychange` refresh,
+- skips the "What did I miss?" mount fetch (nothing can have changed),
+- renders `<TournamentRecap>` at the top of `MatchesTab` and hides the "follow a team" nudge.
+
+Manual refresh paths (`FloatingActions`, `PullToRefresh`, the modal refresh) are deliberately left working.
+
+### `TournamentRecap` (`src/main.jsx`, above `MatchesTab`)
+Homepage recap, shown only when `TOURNAMENT_COMPLETE` **and** no filter is active (no search, no fav-only, group = "All") — so filtering still gives a clean match list. Sections: champion hero → podium → champion's road → by the numbers → Golden Boot → stories → "Every match, in full" divider into the existing archive.
+
+Supporting pieces:
+- `knockoutStages(matches)` — top-level version of the round-chunking trick from `ScheduleTab` (R32=16, R16=8, QF=4, SF=2, 3rd=1, Final=1). Returns `Map<id, {key,label}>`.
+- `wentToExtraTime(m)` — any goal or card past 90' via `parseEventMin`.
+- `useTournamentSummary(matches)` — one `useMemo` computing champion/runner-up/third/fourth, winning goal, champion's path, totals, scorers, biggest win, highest-scoring match. Returns `null` if the final has no score, so the recap self-hides.
+- `RecapSection`, `StatTile`, `ScoreLine` — small presentational helpers.
+
+**Everything numeric is derived from `matches.json`.** The story cards carry authored one-line framing but resolve their scoreline against real match objects and drop out via `.filter(Boolean)` if the match isn't found — so a corrected result can never leave the page asserting something false.
 
 ## Current Status (v1.1)
 
